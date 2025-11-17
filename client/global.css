@@ -116,24 +116,32 @@
   }
 
   h1 {
-    @apply text-4xl font-bold tracking-tight;
+    @apply text-5xl font-bold tracking-tight;
   }
 
   h2 {
-    @apply text-3xl font-bold tracking-tight;
+    @apply text-4xl font-bold tracking-tight;
   }
 
   h3 {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-semibold;
+  }
+
+  h4 {
+    @apply text-lg font-semibold;
   }
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent;
+    @apply text-primary;
   }
 
   .glass-morphism {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
+    @apply bg-white border border-border rounded-lg shadow-sm;
+  }
+
+  .card-shadow {
+    @apply shadow-sm hover:shadow-md transition-shadow;
   }
 }
