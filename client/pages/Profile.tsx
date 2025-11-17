@@ -9,7 +9,8 @@ import {
   Edit,
   Save,
   LogOut,
-  Heart,
+  FileText,
+  Zap,
 } from "lucide-react";
 
 export default function Profile() {
@@ -23,7 +24,7 @@ export default function Profile() {
     phone: "+34 600 000 000",
     location: "Madrid, España",
     company: "Mi Empresa",
-    bio: "Emprendedor apasionado por la innovación y el financiamiento colaborativo",
+    bio: "Emprendedor apasionado por la innovación",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -48,24 +49,30 @@ export default function Profile() {
 
   return (
     <Layout>
-      <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-blue-50">
         <div className="container max-w-4xl mx-auto">
           {/* Profile Header */}
-          <div className="glass-morphism rounded-2xl p-8 sm:p-12 mb-8">
+          <div className="bg-white rounded-lg border border-border/40 p-8 sm:p-12 mb-8">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
-              <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center">
-                <User className="w-12 h-12 text-primary-foreground" />
+              <div className="w-24 h-24 bg-blue-100 rounded-lg flex items-center justify-center">
+                <User className="w-12 h-12 text-primary" />
               </div>
               <div className="flex-1">
-                <h1 className="text-4xl font-bold mb-2">{formData.name}</h1>
-                <p className="text-foreground/60 flex items-center gap-2">
+                <h1 className="text-4xl font-bold text-foreground mb-2">{formData.name}</h1>
+                <p className="text-foreground/70 flex items-center gap-2">
                   <Mail className="w-4 h-4" />
                   {formData.email}
                 </p>
               </div>
               <button
-                onClick={() => setIsEditing(!isEditing)}
-                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center gap-2"
+                onClick={() => {
+                  if (isEditing) {
+                    handleSave();
+                  } else {
+                    setIsEditing(true);
+                  }
+                }}
+                className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
               >
                 {isEditing ? (
                   <>
@@ -80,30 +87,18 @@ export default function Profile() {
                 )}
               </button>
             </div>
-
-            {isEditing && (
-              <button
-                onClick={() => {
-                  setIsEditing(false);
-                  handleSave();
-                }}
-                className="text-sm text-primary hover:text-primary/80"
-              >
-                o haz clic en Guardar
-              </button>
-            )}
           </div>
 
-          {/* Profile Information */}
+          {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Profile Form */}
+            {/* Profile Form */}
             <div className="lg:col-span-2">
-              <div className="glass-morphism rounded-2xl p-8 space-y-6">
-                <h2 className="text-2xl font-bold">Información Personal</h2>
+              <div className="bg-white rounded-lg border border-border/40 p-8 space-y-6">
+                <h2 className="text-2xl font-bold text-foreground">Información Personal</h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-sm font-semibold text-foreground mb-2">
                       Nombre Completo
                     </label>
                     <input
@@ -112,12 +107,12 @@ export default function Profile() {
                       value={formData.name}
                       onChange={handleInputChange}
                       disabled={!isEditing}
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
+                      className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:bg-blue-50 disabled:text-foreground/60"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-sm font-semibold text-foreground mb-2">
                       Email
                     </label>
                     <input
@@ -125,12 +120,12 @@ export default function Profile() {
                       name="email"
                       value={formData.email}
                       disabled
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg disabled:opacity-50"
+                      className="w-full px-4 py-3 border border-border/40 rounded-lg disabled:bg-blue-50 disabled:text-foreground/60"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-sm font-semibold text-foreground mb-2">
                       Teléfono
                     </label>
                     <input
@@ -139,12 +134,12 @@ export default function Profile() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       disabled={!isEditing}
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
+                      className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:bg-blue-50 disabled:text-foreground/60"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-sm font-semibold text-foreground mb-2">
                       Ubicación
                     </label>
                     <input
@@ -153,13 +148,13 @@ export default function Profile() {
                       value={formData.location}
                       onChange={handleInputChange}
                       disabled={!isEditing}
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
+                      className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:bg-blue-50 disabled:text-foreground/60"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Empresa
                   </label>
                   <input
@@ -168,12 +163,12 @@ export default function Profile() {
                     value={formData.company}
                     onChange={handleInputChange}
                     disabled={!isEditing}
-                    className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
+                    className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:bg-blue-50 disabled:text-foreground/60"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Biografía
                   </label>
                   <textarea
@@ -182,7 +177,7 @@ export default function Profile() {
                     onChange={handleInputChange}
                     disabled={!isEditing}
                     rows={4}
-                    className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:border-primary transition-colors disabled:opacity-50 resize-none"
+                    className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:bg-blue-50 disabled:text-foreground/60 resize-none"
                   />
                 </div>
               </div>
@@ -190,40 +185,48 @@ export default function Profile() {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Stats */}
-              <div className="glass-morphism rounded-2xl p-6">
-                <h3 className="text-xl font-bold mb-6">Mi Actividad</h3>
+              {/* Stats Card */}
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-primary" />
+                  Mi Actividad
+                </h3>
                 <div className="space-y-4">
-                  <div>
-                    <p className="text-foreground/60 text-sm mb-1">
+                  <div className="p-4 bg-blue-50 rounded-lg border border-border/40">
+                    <p className="text-sm text-foreground/60 mb-1">
                       Financiamientos Activos
                     </p>
                     <p className="text-3xl font-bold text-primary">3</p>
                   </div>
-                  <div>
-                    <p className="text-foreground/60 text-sm mb-1">
+                  <div className="p-4 bg-blue-50 rounded-lg border border-border/40">
+                    <p className="text-sm text-foreground/60 mb-1">
                       Capital Recibido
                     </p>
-                    <p className="text-3xl font-bold text-accent">$250K</p>
+                    <p className="text-3xl font-bold text-primary">$250K</p>
                   </div>
-                  <div>
-                    <p className="text-foreground/60 text-sm mb-1">
+                  <div className="p-4 bg-blue-50 rounded-lg border border-border/40">
+                    <p className="text-sm text-foreground/60 mb-1">
                       Inversiones Realizadas
                     </p>
-                    <p className="text-3xl font-bold text-secondary">5</p>
+                    <p className="text-3xl font-bold text-primary">5</p>
                   </div>
                 </div>
               </div>
 
-              {/* Quick Links */}
-              <div className="glass-morphism rounded-2xl p-6">
-                <h3 className="text-xl font-bold mb-4">Acciones Rápidas</h3>
+              {/* Quick Actions */}
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                  <FileText className="w-5 h-5 text-primary" />
+                  Acciones
+                </h3>
                 <div className="space-y-3">
-                  <button className="w-full px-4 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-semibold text-sm">
-                    Solicitar Financiamiento
-                  </button>
-                  <button className="w-full px-4 py-3 bg-border/30 text-foreground rounded-lg hover:bg-border/50 transition-colors font-semibold text-sm flex items-center justify-center gap-2">
-                    <Heart className="w-4 h-4" />
+                  <a
+                    href="/productos/financiamiento"
+                    className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold text-sm text-center block"
+                  >
+                    Nueva Solicitud
+                  </a>
+                  <button className="w-full px-4 py-3 bg-secondary text-primary rounded-lg hover:bg-blue-100 transition-colors font-semibold text-sm border border-primary/20">
                     Ver Oportunidades
                   </button>
                 </div>
@@ -232,7 +235,7 @@ export default function Profile() {
               {/* Logout */}
               <button
                 onClick={handleLogout}
-                className="w-full px-4 py-3 bg-destructive/10 border border-destructive/30 text-destructive rounded-lg hover:bg-destructive/20 transition-colors font-semibold text-sm flex items-center justify-center gap-2"
+                className="w-full px-4 py-3 bg-red-50 border border-red-200 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-semibold text-sm flex items-center justify-center gap-2"
               >
                 <LogOut className="w-4 h-4" />
                 Cerrar Sesión
