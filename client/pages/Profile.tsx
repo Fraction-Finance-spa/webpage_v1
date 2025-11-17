@@ -189,27 +189,24 @@ export default function Profile() {
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
                   <Zap className="w-5 h-5 text-primary" />
-                  Mi Actividad
+                  Mi Portafolio
                 </h3>
-                <div className="space-y-4">
-                  <div className="p-4 bg-blue-50 rounded-lg border border-border/40">
-                    <p className="text-sm text-foreground/60 mb-1">
-                      Financiamientos Activos
-                    </p>
-                    <p className="text-3xl font-bold text-primary">3</p>
-                  </div>
-                  <div className="p-4 bg-blue-50 rounded-lg border border-border/40">
-                    <p className="text-sm text-foreground/60 mb-1">
-                      Capital Recibido
-                    </p>
-                    <p className="text-3xl font-bold text-primary">$250K</p>
-                  </div>
-                  <div className="p-4 bg-blue-50 rounded-lg border border-border/40">
-                    <p className="text-sm text-foreground/60 mb-1">
-                      Inversiones Realizadas
-                    </p>
-                    <p className="text-3xl font-bold text-primary">5</p>
-                  </div>
+                <div className="space-y-4 text-foreground/70">
+                  <p className="text-sm">Gestiona tus activos tokenizados y mantén el control de tu cartera en tiempo real.</p>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-center gap-2">
+                      <Lock className="w-4 h-4 text-primary" />
+                      Seguridad de grado bancario
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Zap className="w-4 h-4 text-primary" />
+                      Acceso 24/7 a tus activos
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <BarChart3 className="w-4 h-4 text-primary" />
+                      Reportes en tiempo real
+                    </li>
+                  </ul>
                 </div>
               </div>
 
