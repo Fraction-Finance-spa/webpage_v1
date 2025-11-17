@@ -58,7 +58,14 @@ const App = () => (
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
-  const root = (globalThis as any).__APP_ROOT__ || createRoot(rootElement);
-  (globalThis as any).__APP_ROOT__ = root;
-  root.render(<App />);
+  try {
+    const root = (globalThis as any).__APP_ROOT__ || createRoot(rootElement);
+    (globalThis as any).__APP_ROOT__ = root;
+    root.render(<App />);
+  } catch (error) {
+    // Root already exists, just render
+    if ((globalThis as any).__APP_ROOT__) {
+      (globalThis as any).__APP_ROOT__.render(<App />);
+    }
+  }
 }
