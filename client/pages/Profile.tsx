@@ -11,6 +11,8 @@ import {
   LogOut,
   FileText,
   Zap,
+  Lock,
+  BarChart3,
 } from "lucide-react";
 
 export default function Profile() {
