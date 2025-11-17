@@ -34,7 +34,7 @@ const App = () => (
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
 
           {/* Productos */}
-          <Route path="/productos/financiamiento" element={<Placeholder />} />
+          <Route path="/productos/financiamiento" element={<FinancingForm />} />
           <Route path="/productos/inversiones" element={<Placeholder />} />
 
           {/* Ecosistema */}
