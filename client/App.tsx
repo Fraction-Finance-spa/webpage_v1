@@ -56,11 +56,12 @@ const App = () => (
   </QueryClientProvider>
 );
 
-const rootElement = document.getElementById("root");
-if (rootElement && !rootElement._reactRootContainer && !(globalThis as any).__APP_ROOT__) {
-  const root = createRoot(rootElement);
+const rootElement = document.getElementById("root")!;
+let root = (globalThis as any).__APP_ROOT__;
+
+if (!root) {
+  root = createRoot(rootElement);
   (globalThis as any).__APP_ROOT__ = root;
-  root.render(<App />);
-} else if ((globalThis as any).__APP_ROOT__) {
-  (globalThis as any).__APP_ROOT__.render(<App />);
 }
+
+root.render(<App />);
