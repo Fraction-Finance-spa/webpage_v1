@@ -6,7 +6,10 @@ import {
   Zap,
   Shield,
   ArrowRight,
-  DollarSign,
+  CheckCircle,
+  Briefcase,
+  Target,
+  Lightbulb,
 } from "lucide-react";
 
 export default function Index() {
@@ -15,18 +18,20 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-20 pb-32 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-blue-50 to-white py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
         <div className="container max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="space-y-8 animate-fade-in">
-              <div className="space-y-4">
-                <h1 className="gradient-text text-5xl sm:text-6xl font-black leading-tight">
-                  Financiamiento Colaborativo
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <div className="inline-block px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold">
+                  💰 Financiamiento Colaborativo
+                </div>
+                <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight">
+                  Acceso a Capital sin Límites
                 </h1>
-                <p className="text-xl text-foreground/80 leading-relaxed">
-                  Conectamos empresas con inversores globales. Impulsa tu negocio
-                  con acceso a capital colaborativo y oportunidades de inversión
-                  única.
+                <p className="text-xl text-foreground/70 leading-relaxed max-w-lg">
+                  Conecta con inversores globales y obtén financiamiento para hacer crecer tu empresa.
+                  Proceso rápido, seguro y transparente.
                 </p>
               </div>
 
@@ -34,23 +39,23 @@ export default function Index() {
                 {isLoggedIn ? (
                   <Link
                     to="/productos/financiamiento"
-                    className="px-8 py-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                    className="px-8 py-4 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-bold text-lg flex items-center justify-center gap-2"
                   >
-                    Explorar Financiamiento
+                    Solicitar Financiamiento
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 ) : (
                   <>
                     <Link
                       to="/signup"
-                      className="px-8 py-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                      className="px-8 py-4 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-bold text-lg flex items-center justify-center gap-2"
                     >
                       Comenzar Ahora
                       <ArrowRight className="w-5 h-5" />
                     </Link>
                     <Link
                       to="#features"
-                      className="px-8 py-4 bg-border/30 text-foreground rounded-xl font-bold text-lg hover:bg-border/50 transition-colors"
+                      className="px-8 py-4 bg-secondary text-primary rounded-md hover:bg-blue-100 transition-colors font-bold text-lg border border-blue-200"
                     >
                       Conocer Más
                     </Link>
@@ -58,39 +63,53 @@ export default function Index() {
                 )}
               </div>
 
-              <div className="pt-8 border-t border-border/40 flex flex-col sm:flex-row gap-8 text-sm">
+              <div className="pt-8 border-t border-border/40 grid grid-cols-3 gap-6">
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">
-                    500+
-                  </div>
-                  <p className="text-foreground/60">Empresas financiadas</p>
+                  <div className="text-3xl font-bold text-primary mb-2">500+</div>
+                  <p className="text-sm text-foreground/70">Empresas financiadas</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-accent mb-2">
-                    $100M+
-                  </div>
-                  <p className="text-foreground/60">Capital desembolsado</p>
+                  <div className="text-3xl font-bold text-primary mb-2">$100M+</div>
+                  <p className="text-sm text-foreground/70">Capital desembolsado</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-secondary mb-2">
-                    50K+
-                  </div>
-                  <p className="text-foreground/60">Inversores activos</p>
+                  <div className="text-3xl font-bold text-primary mb-2">50K+</div>
+                  <p className="text-sm text-foreground/70">Inversores activos</p>
                 </div>
               </div>
             </div>
 
             {/* Hero Illustration */}
-            <div className="relative h-96 sm:h-[500px] animate-slide-up">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
-              <div className="relative h-full bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl border border-primary/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="inline-block p-4 bg-primary/20 rounded-2xl mb-4">
-                    <DollarSign className="w-16 h-16 text-primary" />
+            <div className="hidden lg:block">
+              <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg p-12 border border-border/40">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-border/40">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Crecimiento Rápido</p>
+                      <p className="text-sm text-foreground/60">+250% en 12 meses</p>
+                    </div>
                   </div>
-                  <p className="text-foreground/60">
-                    Acceso a financiamiento sin límites
-                  </p>
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-border/40">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">100% Seguro</p>
+                      <p className="text-sm text-foreground/60">Tecnología blockchain</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-border/40">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Users className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Comunidad Global</p>
+                      <p className="text-sm text-foreground/60">50K+ inversores</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -99,66 +118,58 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-32 px-4 sm:px-6 lg:px-8 bg-card">
+      <section id="features" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="gradient-text text-4xl sm:text-5xl font-bold mb-4">
-              Por qué elegir Fraction Finance
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+              ¿Por qué elegir Fraction Finance?
             </h2>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Una plataforma diseñada para conectar empresas con oportunidades
-              de crecimiento
+              La plataforma de financiamiento más segura y confiable de América Latina
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
+                icon: Zap,
+                title: "Proceso Rápido",
+                description: "Obtén respuesta en 48 horas. Sin trámites complicados ni documentación excesiva.",
+              },
+              {
                 icon: TrendingUp,
-                title: "Crecimiento Garantizado",
-                description:
-                  "Acceso a capital colaborativo diseñado para acelerar tu crecimiento empresarial",
+                title: "Crecimiento Acelerado",
+                description: "Acceso a capital diseñado específicamente para acelerar tu crecimiento empresarial.",
               },
               {
                 icon: Users,
-                title: "Comunidad Global",
-                description:
-                  "Conecta con miles de inversores de todo el mundo interesados en tu visión",
-              },
-              {
-                icon: Zap,
-                title: "Proceso Rápido",
-                description:
-                  "Financiamiento en menos de 48 horas con nuestro proceso simplificado",
+                title: "Red Global",
+                description: "Conecta con inversores de todo el mundo interesados en tu industria.",
               },
               {
                 icon: Shield,
-                title: "Seguridad Garantizada",
-                description:
-                  "Tus datos y transacciones están protegidos con tecnología blockchain",
+                title: "100% Seguro",
+                description: "Tecnología blockchain y regulación completa para proteger tus transacciones.",
               },
               {
-                icon: DollarSign,
-                title: "Sin Comisiones Ocultas",
-                description:
-                  "Transparencia total en todos nuestros procesos y tarifas",
+                icon: CheckCircle,
+                title: "Transparencia Total",
+                description: "Sin comisiones ocultas. Todos los costos son claros desde el inicio.",
               },
               {
-                icon: Users,
-                title: "Soporte 24/7",
-                description:
-                  "Equipo dedicado listo para ayudarte en cada paso del proceso",
+                icon: Target,
+                title: "Soporte Experto",
+                description: "Equipo dedicado disponible 24/7 para guiarte en cada paso del proceso.",
               },
             ].map((feature, i) => (
               <div
                 key={i}
-                className="glass-morphism p-8 rounded-2xl hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 animate-fade-in"
-                style={{ animationDelay: `${i * 50}ms` }}
+                className="p-8 bg-white border border-border/40 rounded-lg hover:shadow-md transition-shadow card-shadow"
               >
-                <div className="inline-block p-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">
+                <h3 className="text-xl font-semibold text-foreground mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-foreground/70">{feature.description}</p>
@@ -169,49 +180,52 @@ export default function Index() {
       </section>
 
       {/* How it Works Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-blue-50">
         <div className="container max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="gradient-text text-4xl sm:text-5xl font-bold mb-4">
-              Cómo funciona
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+              Tres pasos simples
             </h2>
             <p className="text-xl text-foreground/70">
-              Tres simples pasos para conseguir financiamiento
+              De solicitud a capital en tu cuenta
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                step: "1",
-                title: "Solicita Financiamiento",
+                step: 1,
+                icon: Briefcase,
+                title: "Completa tu Perfil",
                 description:
-                  "Completa tu perfil empresarial y describe tu proyecto en detalle",
+                  "Describe tu empresa, sector, y necesidades de financiamiento",
               },
               {
-                step: "2",
+                step: 2,
+                icon: Lightbulb,
                 title: "Conecta con Inversores",
                 description:
-                  "Nuestro algoritmo te conecta con inversores interesados en tu sector",
+                  "Nuestro algoritmo te presenta con inversores interesados en tu sector",
               },
               {
-                step: "3",
+                step: 3,
+                icon: CheckCircle,
                 title: "Recibe Capital",
                 description:
-                  "Acepta propuestas y recibe el capital directamente en tu cuenta",
+                  "Negocia términos y recibe el capital directamente en tu cuenta",
               },
             ].map((item, i) => (
               <div key={i} className="relative">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 font-bold text-2xl text-primary-foreground">
+                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-6 text-white font-bold text-2xl">
                     {item.step}
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
+                  <div className="absolute top-7 left-[55%] w-[90%] h-1 bg-blue-200 -z-10 hidden md:block" />
+                  <h3 className="text-2xl font-bold text-foreground mb-3">
+                    {item.title}
+                  </h3>
                   <p className="text-foreground/70">{item.description}</p>
                 </div>
-                {i < 2 && (
-                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gradient-to-r from-primary to-transparent" />
-                )}
               </div>
             ))}
           </div>
@@ -219,20 +233,19 @@ export default function Index() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-primary">
         <div className="container max-w-4xl mx-auto">
-          <div className="rounded-3xl bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 border border-primary/30 p-12 sm:p-16 text-center">
+          <div className="text-center text-white">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               ¿Listo para transformar tu empresa?
             </h2>
-            <p className="text-xl text-foreground/80 mb-8 max-w-2xl mx-auto">
-              Únete a cientos de empresas que ya están creciendo con
-              Fraction Finance
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Únete a cientos de empresas que ya están creciendo con Fraction Finance
             </p>
             {!isLoggedIn && (
               <Link
                 to="/signup"
-                className="inline-block px-10 py-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl font-bold text-lg hover:opacity-90 transition-opacity"
+                className="inline-block px-10 py-4 bg-white text-primary rounded-md hover:bg-blue-50 transition-colors font-bold text-lg"
               >
                 Registrarse Ahora
               </Link>
