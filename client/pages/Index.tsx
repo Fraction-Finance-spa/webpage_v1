@@ -316,7 +316,15 @@ export default function Index() {
       {/* CTA Section */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
+          {/* Section gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/5 to-white/0"></div>
+
+          {/* Center animated blob */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
+
+          {/* Corner accents */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/5 to-transparent rounded-full filter blur-3xl opacity-15 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-primary/5 to-transparent rounded-full filter blur-3xl opacity-15 animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
         <div className="container max-w-4xl mx-auto">
