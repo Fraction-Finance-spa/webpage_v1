@@ -297,19 +297,19 @@ export default function Index() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-primary">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container max-w-4xl mx-auto">
-          <div className="text-center text-white">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+          <div className="text-center text-black">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
               Sé Parte del Futuro Financiero
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-black mb-8 max-w-2xl mx-auto">
               Accede a Early Access y comienza a tokenizar activos hoy mismo. Forma parte de la revolución de los mercados de capitales digitales.
             </p>
             {!isLoggedIn && (
               <Link
                 to="/signup"
-                className="inline-block px-10 py-4 bg-white text-primary rounded-md hover:bg-blue-50 transition-colors font-bold text-lg"
+                className="inline-block px-10 py-4 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-bold text-lg"
               >
                 Solicitar Early Access
               </Link>
