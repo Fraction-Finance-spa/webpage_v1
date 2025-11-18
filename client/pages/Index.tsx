@@ -80,7 +80,7 @@ export default function Index() {
               Invierte en Activos Digitales
             </h2>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Transformamos una amplia gama de instrumentos financieros en activos digitales líquidos, accesibles y eficientes.
+              Transformamos instrumentos financieros en activos digitales accesibles.
             </p>
           </div>
 
