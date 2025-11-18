@@ -130,7 +130,14 @@ export default function Index() {
       {/* Features Section */}
       <section id="features" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-30"></div>
+          {/* Background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/5 to-white/0"></div>
+
+          {/* Right animated blob */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
+
+          {/* Left accent blob */}
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-primary/8 to-transparent rounded-full filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
         </div>
 
         <div className="container max-w-6xl mx-auto">
