@@ -499,10 +499,6 @@ export default function FinancingForm() {
               {loading ? "Procesando..." : "Enviar Solicitud"}
               {!loading && <ArrowRight className="w-5 h-5" />}
             </button>
-
-            <p className="text-center text-foreground/60 text-sm mt-4">
-              Respuesta en 48 horas. Sin comisiones ocultas.
-            </p>
           </form>
         </div>
       </div>
