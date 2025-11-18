@@ -28,7 +28,7 @@ export default function Index() {
                   🚀 El Futuro de la Tokenización
                 </div>
                 <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight">
-                  Financiamiento e Inversión todo en un Lugar
+                  <strong className="text-black">Acceso a financiamiento sin limites</strong>
                 </h1>
                 <p className="text-xl text-foreground/70 leading-relaxed max-w-lg">
                   Accede a nuevas oportunidades con fondos tokenizados. Transforma activos tradicionales en tokens basados en blockchain con seguridad de grado institucional.
