@@ -81,9 +81,11 @@ export default function Layout({ children }: LayoutProps) {
         <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-              <span className="text-white font-bold text-lg">FF</span>
-            </div>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fd5dd99b5237142fdb43b73e7cf10903b?format=webp&width=800"
+              alt="Fraction Finance Logo"
+              className="h-10 w-auto"
+            />
             <span className="font-bold text-xl text-foreground">
               Fraction Finance
             </span>
