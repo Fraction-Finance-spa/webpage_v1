@@ -41,10 +41,12 @@ export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const userEmail = localStorage.getItem("userEmail");
+  const userName = localStorage.getItem("userName");
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userEmail");
+    localStorage.removeItem("userName");
     window.location.href = "/";
   };
 
@@ -133,7 +135,7 @@ export default function Layout({ children }: LayoutProps) {
                   to="/profile"
                   className="hidden sm:inline text-foreground/70 hover:text-primary transition-colors text-sm font-medium"
                 >
-                  {userEmail}
+                  {userName || userEmail}
                 </Link>
                 <button
                   onClick={handleLogout}
