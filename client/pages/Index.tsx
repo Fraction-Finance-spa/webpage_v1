@@ -19,12 +19,18 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-white py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
+      <section className="relative min-h-screen flex items-center py-20 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20"></div>
+        </div>
+
         <div className="container max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+            <div className="space-y-8 z-10">
               <div className="space-y-6">
-                <div className="inline-block px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold">
+                <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-md text-primary rounded-full text-sm font-semibold border border-white/20">
                   🚀 El Futuro de la Tokenización
                 </div>
                 <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight">
@@ -43,7 +49,7 @@ export default function Index() {
                 {isLoggedIn ? (
                   <Link
                     to="/productos/financiamiento"
-                    className="px-8 py-4 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-bold text-lg flex items-center justify-center gap-2"
+                    className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                   >
                     Tokenizar Activos
                     <ArrowRight className="w-5 h-5" />
@@ -52,14 +58,14 @@ export default function Index() {
                   <>
                     <Link
                       to="/signup"
-                      className="px-8 py-4 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-bold text-lg flex items-center justify-center gap-2"
+                      className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                     >
                       Early Access
                       <ArrowRight className="w-5 h-5" />
                     </Link>
                     <Link
                       to="#features"
-                      className="px-8 py-4 bg-secondary text-primary rounded-md hover:bg-blue-100 transition-colors font-bold text-lg border border-blue-200"
+                      className="px-8 py-4 bg-white/10 backdrop-blur-md text-primary rounded-xl hover:bg-white/20 transition-all font-bold text-lg border border-white/20 hover:border-white/40"
                     >
                       Explorar Mercados
                     </Link>
@@ -67,13 +73,16 @@ export default function Index() {
                 )}
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* Assets Section */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-border/40">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent"></div>
+        </div>
+
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -92,9 +101,9 @@ export default function Index() {
             ].map((asset, i) => (
               <div
                 key={i}
-                className="p-8 bg-blue-50 border border-border/40 rounded-lg hover:shadow-md transition-shadow card-shadow text-center"
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 text-center shadow-lg hover:shadow-2xl group"
               >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all">
                   <asset.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground">
@@ -107,7 +116,11 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-blue-50">
+      <section id="features" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-30"></div>
+        </div>
+
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
@@ -159,9 +172,9 @@ export default function Index() {
             ].map((feature, i) => (
               <div
                 key={i}
-                className="p-8 bg-white border border-border/40 rounded-lg hover:shadow-md transition-shadow card-shadow"
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 shadow-lg hover:shadow-2xl group"
               >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all">
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">
@@ -175,8 +188,12 @@ export default function Index() {
       </section>
 
       {/* Tokenize Section */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="container max-w-4xl mx-auto">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-30"></div>
+        </div>
+
+        <div className="container max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
@@ -211,28 +228,28 @@ export default function Index() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/nosotros/contacto"
-                  className="px-8 py-4 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-bold flex items-center justify-center gap-2"
+                  className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                 >
                   Contacto
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
                   to="/nosotros/empresa"
-                  className="px-8 py-4 bg-secondary text-primary rounded-md hover:bg-blue-100 transition-colors font-bold border border-blue-200"
+                  className="px-8 py-4 bg-white/10 backdrop-blur-md text-primary rounded-xl hover:bg-white/20 transition-all font-bold border border-white/20 hover:border-white/40"
                 >
                   Saber Más
                 </Link>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg p-8 border border-border/40">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-lg">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-foreground">
                   Una plataforma completa
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary/30 to-primary/10 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
                       <span className="text-primary font-bold text-sm">1</span>
                     </div>
                     <div>
@@ -241,7 +258,7 @@ export default function Index() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary/30 to-primary/10 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
                       <span className="text-primary font-bold text-sm">2</span>
                     </div>
                     <div>
@@ -250,7 +267,7 @@ export default function Index() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary/30 to-primary/10 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
                       <span className="text-primary font-bold text-sm">3</span>
                     </div>
                     <div>
@@ -266,9 +283,13 @@ export default function Index() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
+        </div>
+
         <div className="container max-w-4xl mx-auto">
-          <div className="text-center text-black">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 sm:p-16 text-center shadow-2xl">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
               Sé Parte del Futuro Financiero
             </h2>
@@ -278,7 +299,7 @@ export default function Index() {
             {!isLoggedIn && (
               <Link
                 to="/signup"
-                className="inline-block px-10 py-4 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-bold text-lg"
+                className="inline-block px-10 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg shadow-lg hover:shadow-xl"
               >
                 Solicitar Early Access
               </Link>
@@ -288,10 +309,10 @@ export default function Index() {
       </section>
 
       {/* Disclaimer */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-blue-50 border-t border-border/40">
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="container max-w-6xl mx-auto">
-          <div className="text-center text-sm text-foreground/60">
-            <p>
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center shadow-lg">
+            <p className="text-sm text-foreground/60">
               <strong>Aviso Importante:</strong> Este sitio está en fase de desarrollo y la información es meramente informativa. 
               Fraction Finance se encuentra en proceso de aprobación y regulación ante la CMF. El contenido está sujeto a cambios sin previo aviso.
             </p>
