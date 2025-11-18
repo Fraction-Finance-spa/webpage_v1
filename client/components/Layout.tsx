@@ -82,13 +82,10 @@ export default function Layout({ children }: LayoutProps) {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fd5dd99b5237142fdb43b73e7cf10903b?format=webp&width=800"
+              src="https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F177c19b2c22f4a9287a59c7d5e1960cc?format=webp&width=800"
               alt="Fraction Finance Logo"
               className="h-10 w-auto"
             />
-            <span className="font-bold text-xl text-foreground">
-              Fraction Finance
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
