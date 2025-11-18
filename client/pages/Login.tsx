@@ -67,14 +67,14 @@ export default function Login() {
                   Email
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-3.5 w-5 h-5 text-foreground/40" />
+                  <Mail className="absolute left-4 top-3.5 w-5 h-5 text-white/60" />
                   <input
                     id="email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="tu@email.com"
-                    className="w-full pl-12 pr-4 py-3 bg-white border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
