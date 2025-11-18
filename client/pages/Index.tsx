@@ -114,20 +114,31 @@ export default function Index() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Capital de Trabajo", icon: Zap },
-              { name: "Bonos", icon: BarChart3 },
-              { name: "Deuda Privada", icon: TrendingUp },
+              { name: "Capital de Trabajo", icon: Zap, animation: "spin-slow" },
+              { name: "Bonos", icon: BarChart3, animation: "bounce-gentle" },
+              { name: "Deuda Privada", icon: TrendingUp, animation: "pulse-scale" },
             ].map((asset, i) => (
               <div
                 key={i}
                 className="bg-white backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 text-center shadow-lg hover:shadow-2xl group"
               >
                 {i === 2 ? (
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all" style={{ backgroundColor: "rgba(255, 255, 255, 1)" }}>
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 1)",
+                      animation: `${asset.animation} 3s ease-in-out infinite`
+                    }}
+                  >
                     <asset.icon className="w-6 h-6" style={{ color: "rgb(0, 26, 255)", stroke: "rgb(0, 26, 255)" }} />
                   </div>
                 ) : (
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all">
+                  <div
+                    className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all"
+                    style={{
+                      animation: `${asset.animation} 3s ease-in-out infinite`
+                    }}
+                  >
                     <asset.icon className="w-6 h-6 text-primary" />
                   </div>
                 )}
