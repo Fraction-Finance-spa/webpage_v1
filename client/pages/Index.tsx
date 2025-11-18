@@ -47,7 +47,7 @@ export default function Index() {
                 </div>
                 <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight">
                   <div className="inline text-black font-black">
-                    <span style={{ fontWeight: "normal", marginRight: "88px" }}>
+                    <span style={{ fontWeight: "600", marginRight: "88px" }}>
                       Acceso a financiamiento sin limites
                     </span>
                   </div>
@@ -92,7 +92,7 @@ export default function Index() {
       </section>
 
       {/* Assets Section */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)" }}>
         <div className="absolute inset-0 -z-10">
           {/* Section background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/3 to-white/5"></div>
@@ -120,10 +120,10 @@ export default function Index() {
             ].map((asset, i) => (
               <div
                 key={i}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 text-center shadow-lg hover:shadow-2xl group"
+                className="bg-white backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 text-center shadow-lg hover:shadow-2xl group"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all">
-                  <asset.icon className="w-6 h-6 text-primary" />
+                  <asset.icon className={`w-6 h-6 ${i === 2 ? 'text-white' : 'text-primary'}`} />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground">
                   {asset.name}
@@ -135,7 +135,7 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+      <section id="features" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)" }}>
         <div className="absolute inset-0 -z-10">
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/5 to-white/0"></div>
@@ -266,12 +266,6 @@ export default function Index() {
                   Contacto
                   <ArrowRight className="w-5 h-5" />
                 </Link>
-                <Link
-                  to="/nosotros/empresa"
-                  className="px-8 py-4 bg-white/10 backdrop-blur-md text-primary rounded-xl hover:bg-white/20 transition-all font-bold border border-white/20 hover:border-white/40"
-                >
-                  Saber Más
-                </Link>
               </div>
             </div>
 
@@ -281,12 +275,14 @@ export default function Index() {
 
 
       {/* Disclaimer */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
+      <section className="py-8 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)" }}>
         <div className="container max-w-6xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center shadow-lg">
+          <div className="bg-white backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center shadow-lg">
             <p className="text-sm text-foreground/60">
-              <strong>Aviso Importante:</strong> Este sitio está en fase de desarrollo y la información es meramente informativa. 
-              Fraction Finance se encuentra en proceso de aprobación y regulación ante la CMF. El contenido está sujeto a cambios sin previo aviso.
+              <strong>Aviso Importante:</strong>
+              <div style={{ fontWeight: "500" }}>
+                {" "} Este sitio está en fase de desarrollo y la información es meramente informativa. Fraction Finance se encuentra en proceso de aprobación y regulación ante la CMF. El contenido está sujeto a cambios sin previo aviso.
+              </div>
             </p>
           </div>
         </div>
