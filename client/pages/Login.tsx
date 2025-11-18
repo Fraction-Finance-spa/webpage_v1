@@ -40,9 +40,13 @@ export default function Login() {
 
   return (
     <Layout>
-      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 bg-blue-50">
-        <div className="w-full max-w-md">
-          <div className="bg-white rounded-lg border border-border/40 p-8 sm:p-12">
+      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20"></div>
+        </div>
+        <div className="w-full max-w-md relative z-10">
+          <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 sm:p-12 shadow-xl">
             <div className="text-center mb-12">
               <div className="inline-block mb-4 p-3 bg-blue-100 rounded-lg">
                 <Mail className="w-8 h-8 text-primary" />
