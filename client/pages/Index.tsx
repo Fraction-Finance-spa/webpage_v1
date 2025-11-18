@@ -226,15 +226,15 @@ export default function Index() {
                 <ul className="space-y-2">
                   <li className="flex items-center gap-3">
                     <Shield className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>Seguridad de grado bancario</span>
+                    <span>Seguridad</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Zap className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>Proceso automatizado sin intermediarios</span>
+                    <span>Proceso automatizado</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Globe className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>Acceso a mercados globales</span>
+                    <span>Acceso a nuevos mercados</span>
                   </li>
                 </ul>
               </div>
