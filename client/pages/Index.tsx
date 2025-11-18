@@ -68,40 +68,6 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Hero Illustration */}
-            <div className="hidden lg:block">
-              <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg p-12 border border-border/40">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-border/40">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Coins className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">Fondos Tokenizados</p>
-                      <p className="text-sm text-foreground/60">Acceso global 24/7</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-border/40">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Shield className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">Seguridad Institucional</p>
-                      <p className="text-sm text-foreground/60">Grado bancario</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-border/40">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Users className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">Red Global</p>
-                      <p className="text-sm text-foreground/60">Inversores de todo el mundo</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
