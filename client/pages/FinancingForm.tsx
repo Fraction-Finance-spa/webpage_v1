@@ -4,6 +4,7 @@ import { ArrowRight, AlertCircle, CheckCircle } from "lucide-react";
 
 interface FormData {
   companyName: string;
+  rutEmpresa: string;
   industry: string;
   foundedYear: string;
   employeeCount: string;
@@ -11,6 +12,7 @@ interface FormData {
   financingAmount: string;
   financingPurpose: string;
   businessStage: string;
+  financingType: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -24,6 +26,7 @@ export default function FinancingForm() {
 
   const [formData, setFormData] = useState<FormData>({
     companyName: "",
+    rutEmpresa: "",
     industry: "",
     foundedYear: "",
     employeeCount: "",
@@ -31,6 +34,7 @@ export default function FinancingForm() {
     financingAmount: "",
     financingPurpose: "",
     businessStage: "",
+    financingType: "",
     firstName: "",
     lastName: "",
     email: userEmail,
@@ -47,6 +51,8 @@ export default function FinancingForm() {
 
     if (!formData.companyName.trim())
       newErrors.companyName = "Nombre de empresa requerido";
+    if (!formData.rutEmpresa.trim())
+      newErrors.rutEmpresa = "RUT de empresa requerido";
     if (!formData.industry) newErrors.industry = "Industria requerida";
     if (!formData.foundedYear) newErrors.foundedYear = "Año de fundación requerido";
     if (!formData.employeeCount) newErrors.employeeCount = "Número de empleados requerido";
@@ -54,6 +60,8 @@ export default function FinancingForm() {
       newErrors.monthlyRevenue = "Ingresos mensuales requeridos";
     if (!formData.financingAmount)
       newErrors.financingAmount = "Monto de financiamiento requerido";
+    if (!formData.financingType)
+      newErrors.financingType = "Tipo de financiamiento requerido";
     if (!formData.financingPurpose)
       newErrors.financingPurpose = "Propósito del financiamiento requerido";
     if (!formData.businessStage) newErrors.businessStage = "Etapa de negocio requerida";
@@ -203,6 +211,27 @@ export default function FinancingForm() {
 
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
+                    RUT Empresa *
+                  </label>
+                  <input
+                    type="text"
+                    name="rutEmpresa"
+                    value={formData.rutEmpresa}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border ${
+                      errors.rutEmpresa ? "border-red-500" : "border-border/40"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                    placeholder="Ej: 12.345.678-9"
+                  />
+                  {errors.rutEmpresa && (
+                    <p className="text-red-600 text-sm mt-1">{errors.rutEmpresa}</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Industria *
                   </label>
                   <select
@@ -268,9 +297,52 @@ export default function FinancingForm() {
                     <p className="text-red-600 text-sm mt-1">{errors.employeeCount}</p>
                   )}
                 </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Año de Fundación *
+                  </label>
+                  <input
+                    type="number"
+                    name="foundedYear"
+                    value={formData.foundedYear}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border ${
+                      errors.foundedYear ? "border-red-500" : "border-border/40"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                    placeholder="2020"
+                  />
+                  {errors.foundedYear && (
+                    <p className="text-red-600 text-sm mt-1">{errors.foundedYear}</p>
+                  )}
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Número de Empleados *
+                  </label>
+                  <select
+                    name="employeeCount"
+                    value={formData.employeeCount}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border ${
+                      errors.employeeCount ? "border-red-500" : "border-border/40"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                  >
+                    <option value="">Selecciona rango</option>
+                    <option value="1-5">1-5</option>
+                    <option value="6-20">6-20</option>
+                    <option value="21-50">21-50</option>
+                    <option value="51-100">51-100</option>
+                    <option value="100+">100+</option>
+                  </select>
+                  {errors.employeeCount && (
+                    <p className="text-red-600 text-sm mt-1">{errors.employeeCount}</p>
+                  )}
+                </div>
+
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
                     Ingresos Mensuales *
@@ -329,6 +401,29 @@ export default function FinancingForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
+                    Tipo de Financiamiento *
+                  </label>
+                  <select
+                    name="financingType"
+                    value={formData.financingType}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border ${
+                      errors.financingType ? "border-red-500" : "border-border/40"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                  >
+                    <option value="">Selecciona tipo</option>
+                    <option value="capital-trabajo">Capital de Trabajo</option>
+                    <option value="bonos-corporativos">Bonos Corporativos</option>
+                    <option value="deuda-privada">Deuda Privada</option>
+                    <option value="fondos-inversion">Fondos de Inversión</option>
+                  </select>
+                  {errors.financingType && (
+                    <p className="text-red-600 text-sm mt-1">{errors.financingType}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Monto de Financiamiento Solicitado *
                   </label>
                   <select
@@ -350,7 +445,9 @@ export default function FinancingForm() {
                     <p className="text-red-600 text-sm mt-1">{errors.financingAmount}</p>
                   )}
                 </div>
+              </div>
 
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
                     Propósito del Financiamiento *
