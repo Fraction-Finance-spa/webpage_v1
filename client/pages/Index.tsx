@@ -122,9 +122,15 @@ export default function Index() {
                 key={i}
                 className="bg-white backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 text-center shadow-lg hover:shadow-2xl group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all">
-                  <asset.icon className={`w-6 h-6 ${i === 2 ? 'text-white' : 'text-primary'}`} />
-                </div>
+                {i === 2 ? (
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all" style={{ backgroundColor: "rgba(255, 255, 255, 1)" }}>
+                    <asset.icon className="w-6 h-6" style={{ color: "rgb(0, 26, 255)", stroke: "rgb(0, 26, 255)" }} />
+                  </div>
+                ) : (
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all">
+                    <asset.icon className="w-6 h-6 text-primary" />
+                  </div>
+                )}
                 <h3 className="text-lg font-semibold text-foreground">
                   {asset.name}
                 </h3>
