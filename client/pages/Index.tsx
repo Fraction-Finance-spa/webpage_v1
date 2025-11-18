@@ -92,7 +92,12 @@ export default function Index() {
       {/* Assets Section */}
       <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent"></div>
+          {/* Section background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/3 to-white/5"></div>
+
+          {/* Decorative blobs */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-primary/8 to-transparent rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-blue-400/6 to-transparent rounded-full filter blur-3xl opacity-15 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
         </div>
 
         <div className="container max-w-6xl mx-auto">
