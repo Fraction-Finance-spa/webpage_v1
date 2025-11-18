@@ -49,7 +49,33 @@ export default function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground relative">
+      {/* Page Background Design */}
+      <div className="fixed inset-0 -z-20 overflow-hidden">
+        {/* Main gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-blue-50/30"></div>
+
+        {/* Animated gradient blobs */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full filter blur-3xl opacity-40 animate-pulse"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-gradient-to-tr from-primary/8 to-transparent rounded-full filter blur-3xl opacity-25 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -bottom-32 right-1/4 w-96 h-96 bg-gradient-to-tl from-blue-400/10 to-transparent rounded-full filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `
+            linear-gradient(0deg, transparent 24%, rgba(0, 70, 255, 0.05) 25%, rgba(0, 70, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 70, 255, 0.05) 75%, rgba(0, 70, 255, 0.05) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, rgba(0, 70, 255, 0.05) 25%, rgba(0, 70, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 70, 255, 0.05) 75%, rgba(0, 70, 255, 0.05) 76%, transparent 77%, transparent)
+          `,
+          backgroundSize: '60px 60px'
+        }}></div>
+
+        {/* Radial gradient overlay for depth */}
+        <div className="absolute inset-0 bg-radial-gradient" style={{
+          background: 'radial-gradient(circle at 50% 50%, transparent 0%, rgba(255, 255, 255, 0.5) 100%)'
+        }}></div>
+      </div>
+
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/10 backdrop-blur-xl border-b border-white/10">
         <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
