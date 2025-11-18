@@ -278,12 +278,12 @@ export default function Index() {
       <section className="py-8 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)" }}>
         <div className="container max-w-6xl mx-auto">
           <div className="bg-white backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center shadow-lg">
-            <p className="text-sm text-foreground/60">
+            <div className="text-sm text-foreground/60">
               <strong>Aviso Importante:</strong>
               <div style={{ fontWeight: "500" }}>
                 {" "} Este sitio está en fase de desarrollo y la información es meramente informativa. Fraction Finance se encuentra en proceso de aprobación y regulación ante la CMF. El contenido está sujeto a cambios sin previo aviso.
               </div>
-            </p>
+            </div>
           </div>
         </div>
       </section>
