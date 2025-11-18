@@ -424,7 +424,7 @@ export default function FinancingForm() {
 
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
-                    Monto de Financiamiento Solicitado *
+                    Monto de Financiamiento Solicitado ($) *
                   </label>
                   <input
                     type="number"
