@@ -84,14 +84,14 @@ export default function Login() {
                   Contraseña
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-4 top-3.5 w-5 h-5 text-foreground/40" />
+                  <Lock className="absolute left-4 top-3.5 w-5 h-5 text-white/60" />
                   <input
                     id="password"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-12 pr-4 py-3 bg-white border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 font-bold flex items-center justify-center gap-2"
+                className="w-full px-4 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 font-bold flex items-center justify-center gap-2"
               >
                 {loading ? "Cargando..." : "Ingresar"}
                 {!loading && <ArrowRight className="w-5 h-5" />}
@@ -107,7 +107,7 @@ export default function Login() {
             </form>
 
             <div className="mt-8 pt-8 border-t border-border/40 text-center">
-              <p className="text-foreground/70 mb-2">
+              <p className="text-white/70 mb-2">
                 ¿No tienes cuenta?{" "}
                 <Link to="/signup" className="text-primary hover:text-primary/80 font-semibold">
                   Regístrate aquí
@@ -116,7 +116,7 @@ export default function Login() {
             </div>
           </div>
 
-          <p className="text-center text-foreground/60 text-sm mt-6">
+          <p className="text-center text-white/60 text-sm mt-6">
             Demo: usa cualquier email y contraseña (mín. 6 caracteres)
           </p>
         </div>
