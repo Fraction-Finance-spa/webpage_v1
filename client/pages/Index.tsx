@@ -19,7 +19,7 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center py-20 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center py-20 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 -z-10">
           {/* Primary animated blob */}
@@ -72,7 +72,9 @@ export default function Index() {
                       to="/signup"
                       className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                     >
-                      Early Access
+                      <div style={{ cursor: 'pointer', pointerEvents: 'auto', display: 'flex' }}>
+                        <p>Registrarse</p>
+                      </div>
                       <ArrowRight className="w-5 h-5" />
                     </Link>
                     <Link
@@ -273,79 +275,10 @@ export default function Index() {
               </div>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-lg">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-foreground">
-                  Una plataforma completa
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-primary/30 to-primary/10 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
-                      <span className="text-primary font-bold text-sm">1</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">Emite Activos</p>
-                      <p className="text-sm text-foreground/70">Crea y tokeniza tus activos en minutos</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-primary/30 to-primary/10 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
-                      <span className="text-primary font-bold text-sm">2</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">Registra Transacciones</p>
-                      <p className="text-sm text-foreground/70">Transparencia total en tiempo real</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-primary/30 to-primary/10 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
-                      <span className="text-primary font-bold text-sm">3</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">Gestiona tu Cartera</p>
-                      <p className="text-sm text-foreground/70">Control total desde una plataforma</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute inset-0 -z-10">
-          {/* Section gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/5 to-white/0"></div>
-
-          {/* Center animated blob */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
-
-          {/* Corner accents */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/5 to-transparent rounded-full filter blur-3xl opacity-15 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-primary/5 to-transparent rounded-full filter blur-3xl opacity-15 animate-pulse" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="container max-w-4xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 sm:p-16 text-center shadow-2xl">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
-              Sé Parte del Futuro Financiero
-            </h2>
-            <p className="text-xl text-black mb-8 max-w-2xl mx-auto">
-              Accede a Early Access y comienza a tokenizar activos hoy mismo. Forma parte de la revolución de los mercados de capitales digitales.
-            </p>
-            {!isLoggedIn && (
-              <Link
-                to="/signup"
-                className="inline-block px-10 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg shadow-lg hover:shadow-xl"
-              >
-                Solicitar Early Access
-              </Link>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* Disclaimer */}
       <section className="py-8 px-4 sm:px-6 lg:px-8">
