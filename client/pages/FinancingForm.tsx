@@ -426,21 +426,17 @@ export default function FinancingForm() {
                   <label className="block text-sm font-semibold text-foreground mb-2">
                     Monto de Financiamiento Solicitado *
                   </label>
-                  <select
+                  <input
+                    type="number"
                     name="financingAmount"
                     value={formData.financingAmount}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border ${
                       errors.financingAmount ? "border-red-500" : "border-border/40"
                     } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
-                  >
-                    <option value="">Selecciona monto</option>
-                    <option value="10k-50k">$10K - $50K</option>
-                    <option value="50k-100k">$50K - $100K</option>
-                    <option value="100k-250k">$100K - $250K</option>
-                    <option value="250k-500k">$250K - $500K</option>
-                    <option value="500k+">$500K+</option>
-                  </select>
+                    placeholder="Ej: 50000"
+                    min="0"
+                  />
                   {errors.financingAmount && (
                     <p className="text-red-600 text-sm mt-1">{errors.financingAmount}</p>
                   )}
