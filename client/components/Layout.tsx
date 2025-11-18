@@ -51,7 +51,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-border/60">
+      <header className="sticky top-0 z-50 bg-white/10 backdrop-blur-xl border-b border-white/10">
         <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
