@@ -75,14 +75,14 @@ export default function Signup() {
                   Nombre Completo
                 </label>
                 <div className="relative">
-                  <User className="absolute left-4 top-3.5 w-5 h-5 text-foreground/40" />
+                  <User className="absolute left-4 top-3.5 w-5 h-5 text-white/60" />
                   <input
                     id="name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Juan Pérez"
-                    className="w-full pl-12 pr-4 py-3 bg-white border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
@@ -92,14 +92,14 @@ export default function Signup() {
                   Email
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-3.5 w-5 h-5 text-foreground/40" />
+                  <Mail className="absolute left-4 top-3.5 w-5 h-5 text-white/60" />
                   <input
                     id="email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="tu@email.com"
-                    className="w-full pl-12 pr-4 py-3 bg-white border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
@@ -109,14 +109,14 @@ export default function Signup() {
                   Contraseña
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-4 top-3.5 w-5 h-5 text-foreground/40" />
+                  <Lock className="absolute left-4 top-3.5 w-5 h-5 text-white/60" />
                   <input
                     id="password"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-12 pr-4 py-3 bg-white border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
@@ -136,7 +136,7 @@ export default function Signup() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-12 pr-4 py-3 bg-white border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
@@ -144,7 +144,7 @@ export default function Signup() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 font-bold flex items-center justify-center gap-2"
+                className="w-full px-4 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 font-bold flex items-center justify-center gap-2"
               >
                 {loading ? "Creando cuenta..." : "Registrarse"}
                 {!loading && <ArrowRight className="w-5 h-5" />}
@@ -155,19 +155,19 @@ export default function Signup() {
               <div className="grid grid-cols-3 gap-2 text-xs">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-foreground/60">Acceso inmediato</span>
+                  <span className="text-white/60">Acceso inmediato</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-foreground/60">100% seguro</span>
+                  <span className="text-white/60">100% seguro</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-foreground/60">Rápido</span>
+                  <span className="text-white/60">Rápido</span>
                 </div>
               </div>
 
-              <p className="text-center text-foreground/70 text-sm pt-4 border-t border-border/40">
+              <p className="text-center text-white/70 text-sm pt-4 border-t border-white/10">
                 ¿Ya tienes cuenta?{" "}
                 <Link to="/login" className="text-primary hover:text-primary/80 font-semibold">
                   Inicia sesión
@@ -176,7 +176,7 @@ export default function Signup() {
             </div>
           </div>
 
-          <p className="text-center text-foreground/60 text-xs mt-6 max-w-sm mx-auto">
+          <p className="text-center text-white/60 text-xs mt-6 max-w-sm mx-auto">
             Al registrarte aceptas nuestros{" "}
             <a href="#" className="text-primary hover:text-primary/80 font-semibold">
               Términos de Servicio
