@@ -51,10 +51,14 @@ export default function Profile() {
 
   return (
     <Layout>
-      <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-blue-50">
-        <div className="container max-w-4xl mx-auto">
+      <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20"></div>
+        </div>
+        <div className="container max-w-4xl mx-auto relative z-10">
           {/* Profile Header */}
-          <div className="bg-white rounded-lg border border-border/40 p-8 sm:p-12 mb-8">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 sm:p-12 mb-8 shadow-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
               <div className="w-24 h-24 bg-blue-100 rounded-lg flex items-center justify-center">
                 <User className="w-12 h-12 text-primary" />
