@@ -84,12 +84,11 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { name: "Capital de Trabajo", icon: Zap },
               { name: "Bonos", icon: BarChart3 },
               { name: "Deuda Privada", icon: TrendingUp },
-              { name: "Fondos Crypto", icon: Coins },
             ].map((asset, i) => (
               <div
                 key={i}
