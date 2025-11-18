@@ -165,9 +165,9 @@ export default function Index() {
               },
               {
                 icon: Globe,
-                title: "Acceso Global",
+                title: "Acceso 24/7",
                 description:
-                  "Operaciones 24/7 en múltiples mercados. Transacciones transfronterizas rápidas, seguras y eficientes.",
+                  "Operaciones a toda hora. Transacciones transfronterizas rápidas, seguras y eficientes.",
               },
               {
                 icon: TrendingUp,
