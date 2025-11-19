@@ -85,52 +85,52 @@ export default function Signup() {
               )}
 
               <div className="space-y-2">
-                <label htmlFor="name" className="block text-sm font-semibold text-foreground">
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-800">
                   Nombre Completo
                 </label>
                 <div className="relative">
-                  <User className="absolute left-4 top-3.5 w-5 h-5 text-white/60" />
+                  <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
                   <input
                     id="name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Juan Pérez"
-                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="email" className="block text-sm font-semibold text-foreground">
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-800">
                   Email
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-3.5 w-5 h-5 text-white/60" />
+                  <Mail className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
                   <input
                     id="email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="tu@email.com"
-                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="password" className="block text-sm font-semibold text-foreground">
+                <label htmlFor="password" className="block text-sm font-semibold text-gray-800">
                   Contraseña
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-4 top-3.5 w-5 h-5 text-white/60" />
+                  <Lock className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
                   <input
                     id="password"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
@@ -138,19 +138,19 @@ export default function Signup() {
               <div className="space-y-2">
                 <label
                   htmlFor="confirmPassword"
-                  className="block text-sm font-semibold text-foreground"
+                  className="block text-sm font-semibold text-gray-800"
                 >
                   Confirmar Contraseña
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-4 top-3.5 w-5 h-5 text-foreground/40" />
+                  <Lock className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
                   <input
                     id="confirmPassword"
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                   />
                 </div>
               </div>
