@@ -93,7 +93,7 @@ export default function Index() {
       </section>
 
       {/* Assets Section */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)" }}>
+      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", fontFamily: "Inter, sans-serif" }}>
         <div className="absolute inset-0 -z-10">
           {/* Section background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/3 to-white/5"></div>
