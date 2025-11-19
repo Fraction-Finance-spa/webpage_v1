@@ -42,12 +42,15 @@ export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const userEmail = localStorage.getItem("userEmail");
-  const userName = localStorage.getItem("userName");
+  const userFirstName = localStorage.getItem("userFirstName") || "";
+  const userLastName = localStorage.getItem("userLastName") || "";
+  const userName = userFirstName + (userLastName ? " " + userLastName : "");
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userEmail");
-    localStorage.removeItem("userName");
+    localStorage.removeItem("userFirstName");
+    localStorage.removeItem("userLastName");
     window.location.href = "/";
   };
 
