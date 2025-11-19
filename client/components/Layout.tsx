@@ -256,7 +256,7 @@ export default function Layout({ children }: LayoutProps) {
                             <Link
                               key={subitem.label}
                               to={subitem.path || "#"}
-                              className="block px-4 py-2 text-foreground/60 hover:text-primary text-sm transition-colors"
+                              className="block px-4 py-2 text-foreground/60 hover:text-primary text-sm transition-colors flex items-center gap-2"
                               onClick={(e) => {
                                 setMobileMenuOpen(false);
                                 if (subitem.label === "Financiamiento") {
@@ -264,6 +264,7 @@ export default function Layout({ children }: LayoutProps) {
                                 }
                               }}
                             >
+                              {subitem.icon}
                               {subitem.label}
                             </Link>
                           ))}
