@@ -122,6 +122,7 @@ export default function Index() {
               { name: "Capital de Trabajo", icon: Zap, description: "Financiamiento flexible" },
               { name: "Bonos", icon: BarChart3, description: "Instrumentos corporativos" },
               { name: "Deuda Privada", icon: TrendingUp, description: "Rendimiento optimizado" },
+              { name: "Fondos de inversión", icon: Coins, description: "Carteras diversificadas" },
             ].map((asset, i) => (
               <div
                 key={i}
