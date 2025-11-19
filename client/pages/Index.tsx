@@ -25,8 +25,9 @@ export default function Index() {
         backgroundPosition: "center",
         backgroundSize: "cover",
         minHeight: "686px",
-        padding: "50px 32px",
+        padding: "150px 32px 50px 32px",
         marginBottom: "-4px",
+        marginTop: "0",
       }}>
         {/* Background decorative elements */}
         <div className="absolute inset-0 -z-10">
