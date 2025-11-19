@@ -97,7 +97,7 @@ export default function Index() {
       </section>
 
       {/* Assets Section */}
-      <section className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", fontFamily: "Inter, sans-serif", padding: "128px 32px 100px", marginBottom: "-3px" }}>
+      <section className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", fontFamily: "Inter, sans-serif", padding: "128px 32px 110px", marginBottom: "-3px" }}>
         <div className="absolute inset-0 -z-10">
           {/* Section background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/3 to-white/5"></div>
@@ -154,7 +154,7 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px 128px" }}>
+      <section id="features" className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px 128px", marginTop: "-1px" }}>
         <div className="absolute inset-0 -z-10">
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/5 to-white/0"></div>
@@ -233,7 +233,7 @@ export default function Index() {
       </section>
 
       {/* Tokenize Section */}
-      <section className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px" }}>
+      <section className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px", color: "rgba(0, 45, 255, 0.02)" }}>
         <div className="absolute inset-0 -z-10">
           {/* Section gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/3 to-white/0"></div>
@@ -249,7 +249,7 @@ export default function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <h2 className="text-4xl sm:text-5xl font-bold text-foreground">
+                <h2 className="text-4xl sm:text-5xl font-bold" style={{ color: "rgba(0, 0, 0, 1)" }}>
                   Tokeniza con Fraction
                 </h2>
                 <p className="text-xl text-foreground/70">
