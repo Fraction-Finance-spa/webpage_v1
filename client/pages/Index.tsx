@@ -20,12 +20,12 @@ export default function Index() {
     <Layout>
       {/* Hero Section */}
       <section className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden" style={{
-        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Ff34ffe5744e246fc90f605266f8241c7)",
+        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F4853101d48864ebdac035a870348a22a)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        minHeight: "686px",
-        padding: "150px 32px 100px 32px",
+        minHeight: "710px",
+        padding: "150px 32px 120px 32px",
         marginBottom: "-4px",
         marginTop: "0",
       }}>
