@@ -65,6 +65,9 @@ export default function App() {
             <Route path="/nosotros/careers" element={<Placeholder />} />
             <Route path="/nosotros/contacto" element={<Placeholder />} />
 
+            {/* Admin */}
+            <Route path="/admin" element={<Admin />} />
+
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
           </Routes>
