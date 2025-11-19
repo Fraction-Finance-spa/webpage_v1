@@ -255,7 +255,8 @@ export default function Index() {
                   Tokeniza con Fraction
                 </h2>
                 <p className="text-xl text-foreground/70">
-                  La forma más simple y segura de convertir activos. Tokenización y gestión con total transparencia.
+                  La forma más simple y segura de convertir activos
+                  financieros
                 </p>
               </div>
 
