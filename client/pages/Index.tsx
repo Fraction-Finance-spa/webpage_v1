@@ -295,7 +295,7 @@ export default function Index() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fd28b7233fb464c048c101a2a8634fbe0?format=webp&width=800"
                 alt="Tokenización Fraction"
-                className="w-full h-auto rounded-2xl shadow-2xl"
+                className="w-full h-auto rounded-2xl"
               />
             </div>
           </div>
