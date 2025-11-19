@@ -30,20 +30,20 @@ const navItems: NavItem[] = [
   {
     label: "Productos",
     submenu: [
-      { label: "Financiamiento", path: "/productos/financiamiento", description: "Acceso a fondos tokenizados y flexibles" },
-      { label: "Inversiones", path: "/productos/inversiones", description: "Oportunidades de inversión con alto rendimiento" },
+      { label: "Financiamiento", path: "/productos/financiamiento", description: "Acceso a fondos tokenizados y flexibles", icon: iconMap["Financiamiento"] },
+      { label: "Inversiones", path: "/productos/inversiones", description: "Oportunidades de inversión con alto rendimiento", icon: iconMap["Inversiones"] },
     ],
   },
   { label: "Ecosistema", path: "/ecosistema" },
   {
     label: "Nosotros",
     submenu: [
-      { label: "Nuestra Empresa", path: "/nosotros/empresa", description: "Conoce nuestra historia y misión" },
-      { label: "Modelo de Negocio", path: "/nosotros/modelo", description: "Cómo funcionamos y generamos valor" },
-      { label: "Educación Financiera", path: "/nosotros/educacion", description: "Recursos y herramientas para aprender" },
-      { label: "Blog", path: "/nosotros/blog", description: "Artículos y análisis del mercado" },
-      { label: "Trabaja con Nosotros", path: "/nosotros/careers", description: "Únete a nuestro equipo" },
-      { label: "Contacto", path: "/nosotros/contacto", description: "Ponte en contacto con nosotros" },
+      { label: "Nuestra Empresa", path: "/nosotros/empresa", description: "Conoce nuestra historia y misión", icon: iconMap["Nuestra Empresa"] },
+      { label: "Modelo de Negocio", path: "/nosotros/modelo", description: "Cómo funcionamos y generamos valor", icon: iconMap["Modelo de Negocio"] },
+      { label: "Educación Financiera", path: "/nosotros/educacion", description: "Recursos y herramientas para aprender", icon: iconMap["Educación Financiera"] },
+      { label: "Blog", path: "/nosotros/blog", description: "Artículos y análisis del mercado", icon: iconMap["Blog"] },
+      { label: "Trabaja con Nosotros", path: "/nosotros/careers", description: "Únete a nuestro equipo", icon: iconMap["Trabaja con Nosotros"] },
+      { label: "Contacto", path: "/nosotros/contacto", description: "Ponte en contacto con nosotros", icon: iconMap["Contacto"] },
     ],
   },
 ];
