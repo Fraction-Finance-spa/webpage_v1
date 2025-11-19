@@ -19,11 +19,12 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center py-20 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{
+      <section className="relative flex items-center justify-center py-20 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{
         backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F00a54def17254e8da3662befddf5b2a2)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
+        minHeight: "752px",
       }}>
         {/* Background decorative elements */}
         <div className="absolute inset-0 -z-10">
