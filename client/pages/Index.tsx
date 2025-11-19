@@ -78,7 +78,8 @@ export default function Index() {
                   <>
                     <Link
                       to="/signup"
-                      className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                      className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2"
+                      style={{ boxShadow: "0 0 0 0 rgba(0, 0, 0, 1)" }}
                     >
                       <div style={{ cursor: 'pointer', pointerEvents: 'auto', display: 'flex' }}>
                         <p>Registrarse</p>
