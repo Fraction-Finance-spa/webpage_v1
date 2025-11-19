@@ -114,37 +114,48 @@ export default function Index() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Capital de Trabajo", icon: Zap, animation: "spin-slow" },
-              { name: "Bonos", icon: BarChart3, animation: "bounce-gentle" },
-              { name: "Deuda Privada", icon: TrendingUp, animation: "pulse-scale" },
+              { name: "Capital de Trabajo", icon: Zap, animation: "spin-slow", description: "Financiamiento flexible" },
+              { name: "Bonos", icon: BarChart3, animation: "bounce-gentle", description: "Instrumentos corporativos" },
+              { name: "Deuda Privada", icon: TrendingUp, animation: "pulse-scale", description: "Rendimiento optimizado" },
             ].map((asset, i) => (
               <div
                 key={i}
-                className="bg-white backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 text-center shadow-lg hover:shadow-2xl group"
+                className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
               >
-                {i === 2 ? (
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all"
-                    style={{
-                      backgroundColor: "rgba(255, 255, 255, 1)",
-                      animation: `${asset.animation} 3s ease-in-out infinite`
-                    }}
-                  >
-                    <asset.icon className="w-6 h-6" style={{ color: "rgb(0, 26, 255)", stroke: "rgb(0, 26, 255)" }} />
-                  </div>
-                ) : (
-                  <div
-                    className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all"
-                    style={{
-                      animation: `${asset.animation} 3s ease-in-out infinite`
-                    }}
-                  >
-                    <asset.icon className="w-6 h-6 text-primary" />
-                  </div>
-                )}
-                <h3 className="text-lg font-semibold text-foreground">
-                  {asset.name}
-                </h3>
+                <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative p-8 sm:p-10 text-center h-full flex flex-col items-center justify-center">
+                  {i === 2 ? (
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500"
+                      style={{
+                        backgroundColor: "rgba(255, 255, 255, 0.8)",
+                        boxShadow: "0 8px 24px rgba(0, 26, 255, 0.1)",
+                        animation: `${asset.animation} 3s ease-in-out infinite`
+                      }}
+                    >
+                      <asset.icon className="w-7 h-7" style={{ color: "rgb(0, 26, 255)", stroke: "rgb(0, 26, 255)" }} />
+                    </div>
+                  ) : (
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(0, 26, 255, 0.15) 0%, rgba(0, 26, 255, 0.05) 100%)",
+                        boxShadow: "0 8px 24px rgba(0, 26, 255, 0.08)",
+                        animation: `${asset.animation} 3s ease-in-out infinite`
+                      }}
+                    >
+                      <asset.icon className="w-7 h-7 text-primary" />
+                    </div>
+                  )}
+                  <h3 className="text-xl font-bold text-foreground mb-2">
+                    {asset.name}
+                  </h3>
+                  <p className="text-sm text-foreground/60 font-medium">
+                    {asset.description}
+                  </p>
+                  <div className="w-12 h-1 bg-primary rounded-full mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
               </div>
             ))}
           </div>
