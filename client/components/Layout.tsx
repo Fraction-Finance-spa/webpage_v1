@@ -105,8 +105,10 @@ export default function Layout({ children }: LayoutProps) {
                 {item.submenu ? (
                   <>
                     <button className="text-foreground/70 hover:text-primary transition-colors py-2 font-medium flex items-center gap-1">
-                      {item.label}
-                      <ChevronDown className="w-4 h-4" />
+                      <div style={{ color: "rgba(0, 0, 0, 1)", fontSize: "20px" }}>
+                        {item.label}
+                      </div>
+                      <ChevronDown className="w-4 h-4" style={{ color: "rgba(0, 0, 0, 1)" }} />
                     </button>
                     <div className="absolute left-0 mt-0 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                       {item.submenu.map((subitem, idx) => (
