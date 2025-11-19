@@ -18,20 +18,20 @@ const navItems: NavItem[] = [
   {
     label: "Productos",
     submenu: [
-      { label: "Financiamiento", path: "/productos/financiamiento" },
-      { label: "Inversiones", path: "/productos/inversiones" },
+      { label: "Financiamiento", path: "/productos/financiamiento", description: "Acceso a fondos tokenizados y flexibles" },
+      { label: "Inversiones", path: "/productos/inversiones", description: "Oportunidades de inversión con alto rendimiento" },
     ],
   },
   { label: "Ecosistema", path: "/ecosistema" },
   {
     label: "Nosotros",
     submenu: [
-      { label: "Nuestra Empresa", path: "/nosotros/empresa" },
-      { label: "Modelo de Negocio", path: "/nosotros/modelo" },
-      { label: "Educación Financiera", path: "/nosotros/educacion" },
-      { label: "Blog", path: "/nosotros/blog" },
-      { label: "Trabaja con Nosotros", path: "/nosotros/careers" },
-      { label: "Contacto", path: "/nosotros/contacto" },
+      { label: "Nuestra Empresa", path: "/nosotros/empresa", description: "Conoce nuestra historia y misión" },
+      { label: "Modelo de Negocio", path: "/nosotros/modelo", description: "Cómo funcionamos y generamos valor" },
+      { label: "Educación Financiera", path: "/nosotros/educacion", description: "Recursos y herramientas para aprender" },
+      { label: "Blog", path: "/nosotros/blog", description: "Artículos y análisis del mercado" },
+      { label: "Trabaja con Nosotros", path: "/nosotros/careers", description: "Únete a nuestro equipo" },
+      { label: "Contacto", path: "/nosotros/contacto", description: "Ponte en contacto con nosotros" },
     ],
   },
 ];
