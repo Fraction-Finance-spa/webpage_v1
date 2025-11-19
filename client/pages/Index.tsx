@@ -114,10 +114,10 @@ export default function Index() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Capital de Trabajo", icon: Zap, animation: "spin-slow", description: "Financiamiento flexible" },
-              { name: "Bonos", icon: BarChart3, animation: "bounce-gentle", description: "Instrumentos corporativos" },
-              { name: "Deuda Privada", icon: TrendingUp, animation: "pulse-scale", description: "Rendimiento optimizado" },
-            ].map((asset, i) => (
+              { name: "Capital de Trabajo", icon: Zap, description: "Financiamiento flexible" },
+              { name: "Bonos", icon: BarChart3, description: "Instrumentos corporativos" },
+              { name: "Deuda Privada", icon: TrendingUp, description: "Rendimiento optimizado" },
+            ].map((asset) => (
               <div
                 key={i}
                 className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
