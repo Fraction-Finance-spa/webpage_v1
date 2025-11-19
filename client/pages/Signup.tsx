@@ -168,7 +168,9 @@ export default function Signup() {
               </div>
 
               <p className="text-center text-white/70 text-sm pt-4 border-t border-white/10">
-                ¿Ya tienes cuenta?{" "}
+                <div style={{ color: "rgba(0, 0, 0, 1)" }}>
+                  ¿Ya tienes cuenta?
+                </div>
                 <Link to="/login" className="text-primary hover:text-primary/80 font-semibold">
                   Inicia sesión
                 </Link>
