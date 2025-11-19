@@ -73,8 +73,8 @@ export default function Signup() {
               <div className="inline-block mb-4 p-3 bg-blue-100 rounded-lg">
                 <User className="w-8 h-8 text-primary" />
               </div>
-              <h1 className="text-4xl font-bold text-foreground mb-2">Crear Cuenta</h1>
-              <p className="text-foreground/70">Únete a Fraction Finance</p>
+              <h1 className="text-4xl font-bold text-gray-900 mb-2">Crear Cuenta</h1>
+              <p className="text-gray-600">Únete a Fraction Finance</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
