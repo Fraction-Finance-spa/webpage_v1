@@ -25,7 +25,7 @@ export default function Index() {
         backgroundPosition: "center",
         backgroundSize: "cover",
         minHeight: "686px",
-        padding: "150px 32px 50px 32px",
+        padding: "150px 32px 100px 32px",
         marginBottom: "-4px",
         marginTop: "0",
       }}>
