@@ -57,8 +57,10 @@ export default function Index() {
                     </span>
                   </div>
                 </h1>
-                <p className="text-xl leading-relaxed max-w-lg" style={{ color: "rgba(255, 255, 255, 1)" }}>
-                  Accede a nuevas oportunidades con fondos tokenizados. Transforma activos tradicionales en tokens basados en blockchain con seguridad de grado institucional.
+                <p style={{ color: "rgba(255, 255, 255, 1)", fontSize: "30px", fontWeight: "600", lineHeight: "50px", marginTop: "24px", maxWidth: "512px" }}>
+                  <span style={{ fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif', fontSize: '16px' }}>
+                    Impulsamos el crecimiento con soluciones digitales de inversión y financiamiento.
+                  </span>
                 </p>
               </div>
 
