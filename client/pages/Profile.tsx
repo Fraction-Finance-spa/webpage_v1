@@ -16,7 +16,9 @@ import {
 export default function Profile() {
   const navigate = useNavigate();
   const userEmail = localStorage.getItem("userEmail") || "";
-  const userName = localStorage.getItem("userName") || "Usuario";
+  const userFirstName = localStorage.getItem("userFirstName") || "";
+  const userLastName = localStorage.getItem("userLastName") || "";
+  const userName = userFirstName;
   const userProfileType = (localStorage.getItem("userProfileType") || "persona") as "persona" | "empresa";
   
   const [isEditing, setIsEditing] = useState(false);
