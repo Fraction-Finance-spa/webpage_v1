@@ -77,12 +77,6 @@ export default function Index() {
                       </div>
                       <ArrowRight className="w-5 h-5" />
                     </Link>
-                    <Link
-                      to="#features"
-                      className="px-8 py-4 bg-white/10 backdrop-blur-md text-primary rounded-xl hover:bg-white/20 transition-all font-bold text-lg border border-white/20 hover:border-white/40"
-                    >
-                      Explorar Mercados
-                    </Link>
                   </>
                 )}
               </div>
