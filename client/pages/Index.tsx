@@ -231,7 +231,7 @@ export default function Index() {
       </section>
 
       {/* Tokenize Section */}
-      <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+      <section className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px" }}>
         <div className="absolute inset-0 -z-10">
           {/* Section gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/3 to-white/0"></div>
