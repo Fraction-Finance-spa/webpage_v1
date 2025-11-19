@@ -277,10 +277,12 @@ export default function Index() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/nosotros/contacto"
+                  to="/signup"
                   className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                 >
-                  Contacto
+                  <div style={{ cursor: "pointer", pointerEvents: "auto", display: "flex" }}>
+                    <p>Solicita Financiamiento</p>
+                  </div>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
