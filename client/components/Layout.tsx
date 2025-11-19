@@ -413,6 +413,14 @@ export default function Layout({ children }: LayoutProps) {
                     Privacidad
                   </a>
                 </li>
+                <li>
+                  <Link
+                    to="/admin"
+                    className="text-white/70 hover:text-white transition-colors text-xs opacity-60 hover:opacity-100"
+                  >
+                    Admin
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
