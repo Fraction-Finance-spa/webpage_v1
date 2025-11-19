@@ -63,7 +63,7 @@ export default function Index() {
                   </div>
                 </h1>
                 <p style={{ color: "rgba(255, 255, 255, 1)", fontSize: "20px", fontWeight: "400", lineHeight: "28px", margin: "24px auto 0 auto" }}>
-                  <span style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 1)", letterSpacing: "1px", fontWeight: "600", fontSize: "20px", fontFamily: "Inter Tight, sans-serif" }}>
+                  <span style={{ letterSpacing: "1px", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)", font: '600 25px "Inter Tight", sans-serif' }}>
                     Impulsamos el crecimiento con soluciones digitales de inversión y financiamiento.
                   </span>
                 </p>
