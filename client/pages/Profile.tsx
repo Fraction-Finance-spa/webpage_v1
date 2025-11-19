@@ -25,8 +25,8 @@ export default function Profile() {
   
   // Persona form data
   const [personaData, setPersonaData] = useState({
-    nombre: userName,
-    apellidos: "",
+    nombre: userFirstName,
+    apellidos: userLastName,
     fechaNacimiento: "",
     nacionalidad: "",
     rutPasaporte: "",
