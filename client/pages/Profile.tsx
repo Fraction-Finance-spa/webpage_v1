@@ -80,7 +80,8 @@ export default function Profile() {
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userEmail");
-    localStorage.removeItem("userName");
+    localStorage.removeItem("userFirstName");
+    localStorage.removeItem("userLastName");
     localStorage.removeItem("userProfileType");
     localStorage.removeItem("userProfileData");
     navigate("/");
