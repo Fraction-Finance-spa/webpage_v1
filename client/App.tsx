@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import FinancingForm from "./pages/FinancingForm";
+import Admin from "./pages/Admin";
 import Placeholder from "./pages/Placeholder";
 
 const queryClient = new QueryClient();
