@@ -57,7 +57,7 @@ export default function Index() {
                     </span>
                   </div>
                 </h1>
-                <p className="text-xl text-foreground/70 leading-relaxed max-w-lg">
+                <p className="text-xl leading-relaxed max-w-lg" style={{ color: "rgba(255, 255, 255, 1)" }}>
                   Accede a nuevas oportunidades con fondos tokenizados. Transforma activos tradicionales en tokens basados en blockchain con seguridad de grado institucional.
                 </p>
               </div>
