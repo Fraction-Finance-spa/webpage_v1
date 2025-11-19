@@ -48,13 +48,27 @@ export default function Signup() {
 
   return (
     <Layout>
-      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style={{
+        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fc2c24d2c61be44c58d8307f0bb9149f7)",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        opacity: "0.91",
+      }}>
+        <div className="absolute inset-0 -z-10" style={{ left: "140px", top: "145px" }}>
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20" style={{ left: "856px", top: "720px" }}></div>
         </div>
         <div className="w-full max-w-md relative z-10" style={{ marginTop: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-          <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 sm:p-12 shadow-xl w-full">
+          <div className="backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl w-full" style={{
+            backgroundColor: "rgba(255, 255, 255, 1)",
+            marginTop: "20px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "20px 48px",
+          }}>
             <div className="text-center mb-12">
               <div className="inline-block mb-4 p-3 bg-blue-100 rounded-lg">
                 <User className="w-8 h-8 text-primary" />
@@ -155,15 +169,15 @@ export default function Signup() {
               <div className="grid grid-cols-3 gap-2 text-xs">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-white/60">Acceso inmediato</span>
+                  <span style={{ color: "rgba(0, 0, 0, 1)" }}>Acceso inmediato</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-white/60">100% seguro</span>
+                  <span style={{ color: "rgba(0, 0, 0, 1)" }}>100% seguro</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-white/60">Rápido</span>
+                  <span style={{ color: "rgba(0, 0, 0, 1)" }}>Rápido</span>
                 </div>
               </div>
 
@@ -178,16 +192,18 @@ export default function Signup() {
             </div>
           </div>
 
-          <p className="text-center text-white/60 text-xs mt-6 max-w-sm mx-auto">
-            Al registrarte aceptas nuestros{" "}
-            <a href="#" className="text-primary hover:text-primary/80 font-semibold">
+          <div className="text-center text-white/60 text-xs mt-6 max-w-sm mx-auto">
+            <div style={{ color: "rgba(255, 255, 255, 1)" }}>
+              Al registrarte aceptas nuestros
+            </div>
+            <div className="text-primary hover:text-primary/80 font-semibold">
               Términos de Servicio
-            </a>{" "}
-            y{" "}
-            <a href="#" className="text-primary hover:text-primary/80 font-semibold">
+            </div>
+            <span>y</span>
+            <div className="text-primary hover:text-primary/80 font-semibold">
               Política de Privacidad
-            </a>
-          </p>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
