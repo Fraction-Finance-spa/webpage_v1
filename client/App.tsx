@@ -28,8 +28,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
 
           {/* Productos */}
