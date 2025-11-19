@@ -42,15 +42,22 @@ export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const userEmail = localStorage.getItem("userEmail");
+  const userProfileType = localStorage.getItem("userProfileType");
   const userFirstName = localStorage.getItem("userFirstName") || "";
   const userLastName = localStorage.getItem("userLastName") || "";
-  const userName = userFirstName + (userLastName ? " " + userLastName : "");
+  const userCompanyName = localStorage.getItem("userCompanyName") || "";
+
+  const displayName = userProfileType === "empresa"
+    ? userCompanyName
+    : userFirstName + (userLastName ? " " + userLastName : "");
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userEmail");
     localStorage.removeItem("userFirstName");
     localStorage.removeItem("userLastName");
+    localStorage.removeItem("userCompanyName");
+    localStorage.removeItem("userProfileType");
     window.location.href = "/";
   };
 
@@ -161,7 +168,7 @@ export default function Layout({ children }: LayoutProps) {
                   to="/profile"
                   className="hidden sm:inline text-foreground/70 hover:text-primary transition-colors text-sm font-medium"
                 >
-                  {userName || userEmail}
+                  {displayName || userEmail}
                 </Link>
                 <button
                   onClick={handleLogout}
