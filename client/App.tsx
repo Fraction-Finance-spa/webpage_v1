@@ -17,7 +17,7 @@ const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  return isLoggedIn ? element : <Navigate to="/login" />;
+  return isLoggedIn ? element : <Navigate to="/auth" />;
 };
 
 const App = () => (
