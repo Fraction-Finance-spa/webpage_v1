@@ -28,6 +28,7 @@ export default function Index() {
         padding: "150px 32px 120px 32px",
         marginBottom: "-4px",
         marginTop: "0",
+        opacity: "0.92",
       }}>
         {/* Background decorative elements */}
         <div className="absolute inset-0 -z-10">
