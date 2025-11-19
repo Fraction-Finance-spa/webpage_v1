@@ -52,7 +52,7 @@ export default function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground relative">
+    <div className="flex flex-col min-h-screen text-foreground relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)" }}>
       {/* Page Background Design */}
       <div className="fixed inset-0 -z-20 overflow-hidden">
         {/* Main gradient background */}
