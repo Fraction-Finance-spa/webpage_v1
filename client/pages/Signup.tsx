@@ -53,8 +53,8 @@ export default function Signup() {
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20"></div>
         </div>
-        <div className="w-full max-w-md relative z-10">
-          <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 sm:p-12 shadow-xl">
+        <div className="w-full max-w-md relative z-10" style={{ marginTop: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+          <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 sm:p-12 shadow-xl w-full">
             <div className="text-center mb-12">
               <div className="inline-block mb-4 p-3 bg-blue-100 rounded-lg">
                 <User className="w-8 h-8 text-primary" />
