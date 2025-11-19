@@ -229,7 +229,12 @@ export default function Layout({ children }: LayoutProps) {
                               key={subitem.label}
                               to={subitem.path || "#"}
                               className="block px-4 py-2 text-foreground/60 hover:text-primary text-sm transition-colors"
-                              onClick={() => setMobileMenuOpen(false)}
+                              onClick={(e) => {
+                                setMobileMenuOpen(false);
+                                if (subitem.label === "Financiamiento") {
+                                  handleFinanciamientoClick(e);
+                                }
+                              }}
                             >
                               {subitem.label}
                             </Link>
