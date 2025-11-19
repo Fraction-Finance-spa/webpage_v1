@@ -52,8 +52,9 @@ export default function Index() {
               <div className="space-y-6">
                 <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight">
                   <div className="inline text-black font-black">
-                    <span style={{ fontWeight: "600", marginRight: "88px", color: "rgba(255, 255, 255, 1)" }}>
-                      Acceso a financiamiento sin limites
+                    <span style={{ fontWeight: "600", marginRight: "88px", color: "rgba(255, 255, 255, 1)", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)" }}>
+                      Acceso a financiamiento <br />
+                      sin limites
                     </span>
                   </div>
                 </h1>
