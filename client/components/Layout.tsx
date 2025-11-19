@@ -114,37 +114,27 @@ export default function Layout({ children }: LayoutProps) {
                       <ChevronDown className="w-4 h-4" style={{ color: "rgba(0, 0, 0, 1)" }} />
                     </button>
                     <div className="absolute left-0 mt-0 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      {item.submenu.map((subitem, idx) => {
-                        // Hide "Financiamiento" if not logged in
-                        if (subitem.label === "Financiamiento" && !isLoggedIn) {
-                          return null;
-                        }
-
-                        const filteredSubmenu = item.submenu.filter(s => !(s.label === "Financiamiento" && !isLoggedIn));
-                        const isFirst = filteredSubmenu[0] === subitem;
-                        const isLast = filteredSubmenu[filteredSubmenu.length - 1] === subitem;
-
-                        return (
-                          <Link
-                            key={subitem.label}
-                            to={subitem.path || "#"}
-                            className={cn(
-                              "block px-4 py-3 hover:bg-secondary transition-colors",
-                              isFirst && "rounded-t-lg",
-                              isLast && "rounded-b-lg"
-                            )}
-                          >
-                            <div className="text-foreground/70 hover:text-primary font-medium text-sm">
-                              {subitem.label}
+                      {item.submenu.map((subitem, idx) => (
+                        <Link
+                          key={subitem.label}
+                          to={subitem.path || "#"}
+                          onClick={subitem.label === "Financiamiento" ? handleFinanciamientoClick : undefined}
+                          className={cn(
+                            "block px-4 py-3 hover:bg-secondary transition-colors",
+                            idx === 0 && "rounded-t-lg",
+                            idx === item.submenu.length - 1 && "rounded-b-lg"
+                          )}
+                        >
+                          <div className="text-foreground/70 hover:text-primary font-medium text-sm">
+                            {subitem.label}
+                          </div>
+                          {subitem.description && (
+                            <div className="text-foreground/50 text-xs mt-1">
+                              {subitem.description}
                             </div>
-                            {subitem.description && (
-                              <div className="text-foreground/50 text-xs mt-1">
-                                {subitem.description}
-                              </div>
-                            )}
-                          </Link>
-                        );
-                      })}
+                          )}
+                        </Link>
+                      ))}
                     </div>
                   </>
                 ) : (
