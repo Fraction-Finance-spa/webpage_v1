@@ -31,7 +31,7 @@ export default function Index() {
         opacity: "0.92",
       }}>
         {/* Background decorative elements */}
-        <div className="absolute inset-0 -z-10" style={{ backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Ff34ffe5744e246fc90f605266f8241c7)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }}>
+        <div className="absolute inset-0 -z-10" style={{ backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F6167da881eab41e9aebafce58dbb6d51)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }}>
           {/* Primary animated blob */}
           <div className="absolute top-10 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
 
@@ -45,7 +45,8 @@ export default function Index() {
           <div className="absolute inset-0 opacity-[0.02]" style={{
             backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 70, 255, 0.05) 25%, rgba(0, 70, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 70, 255, 0.05) 75%, rgba(0, 70, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 70, 255, 0.05) 25%, rgba(0, 70, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 70, 255, 0.05) 75%, rgba(0, 70, 255, 0.05) 76%, transparent 77%, transparent)`,
             backgroundSize: '60px 60px',
-            width: '1171px'
+            width: '1169px',
+            top: '1px'
           }}></div>
         </div>
 
@@ -62,7 +63,7 @@ export default function Index() {
                   </div>
                 </h1>
                 <p style={{ color: "rgba(255, 255, 255, 1)", fontSize: "20px", fontWeight: "400", lineHeight: "28px", margin: "24px auto 0 auto" }}>
-                  <span style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 1)", letterSpacing: "1px", fontWeight: "600", fontSize: "20px" }}>
+                  <span style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 1)", letterSpacing: "1px", fontWeight: "600", fontSize: "20px", fontFamily: "Inter Tight, sans-serif" }}>
                     Impulsamos el crecimiento con soluciones digitales de inversión y financiamiento.
                   </span>
                 </p>
