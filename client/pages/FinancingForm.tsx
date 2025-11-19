@@ -170,7 +170,7 @@ export default function FinancingForm() {
                     inicia sesión
                   </a>{" "}
                   o{" "}
-                  <a href="/signup" className="text-primary hover:underline font-semibold">
+                  <a href="/auth" className="text-primary hover:underline font-semibold">
                     regístrate
                   </a>{" "}
                   para continuar.
@@ -446,7 +446,7 @@ export default function FinancingForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
-                    Propósito del Financiamiento *
+                    Prop��sito del Financiamiento *
                   </label>
                   <select
                     name="financingPurpose"
