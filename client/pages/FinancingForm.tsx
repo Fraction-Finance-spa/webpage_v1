@@ -166,7 +166,7 @@ export default function FinancingForm() {
                 </p>
                 <p className="text-foreground/70 text-sm">
                   Por favor{" "}
-                  <a href="/login" className="text-primary hover:underline font-semibold">
+                  <a href="/auth" className="text-primary hover:underline font-semibold">
                     inicia sesión
                   </a>{" "}
                   o{" "}
