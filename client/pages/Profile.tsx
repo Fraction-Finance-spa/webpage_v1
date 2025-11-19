@@ -23,10 +23,10 @@ export default function Profile() {
   const [formData, setFormData] = useState({
     name: userName,
     email: userEmail,
-    phone: "+34 600 000 000",
-    location: "Madrid, España",
-    company: "Mi Empresa",
-    bio: "Emprendedor apasionado por la innovación",
+    phone: "",
+    location: "",
+    company: "",
+    bio: "",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -173,19 +173,6 @@ export default function Profile() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2">
-                    Biografía
-                  </label>
-                  <textarea
-                    name="bio"
-                    value={formData.bio}
-                    onChange={handleInputChange}
-                    disabled={!isEditing}
-                    rows={4}
-                    className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:bg-blue-50 disabled:text-foreground/60 resize-none"
-                  />
-                </div>
               </div>
             </div>
 
