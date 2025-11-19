@@ -219,7 +219,7 @@ export default function Index() {
                 key={i}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 shadow-lg hover:shadow-2xl group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all" style={{ animation: "0.5s", backgroundImage: "linear-gradient(135deg, rgba(0, 26, 255, 0.15) 0%, rgba(0, 26, 255, 0.05) 100%)", borderRadius: "16px", boxShadow: "rgba(0, 26, 255, 0.08) 0px 8px 24px 0px", margin: "0 auto 24px" }}>
+                <div className="w-12 h-12 flex items-center justify-center transition-all" style={{ animationDuration: "0.5s", backgroundImage: "linear-gradient(135deg, rgba(0, 26, 255, 0.15) 0%, rgba(0, 26, 255, 0.05) 100%)", borderRadius: "16px", boxShadow: "rgba(0, 26, 255, 0.08) 0px 8px 24px 0px", margin: "0 auto 24px", transitionDuration: "0.5s" }}>
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3" style={{ textAlign: "center" }}>
