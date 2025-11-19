@@ -54,6 +54,13 @@ export default function Layout({ children }: LayoutProps) {
     window.location.href = "/";
   };
 
+  const handleFinanciamientoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!isLoggedIn) {
+      e.preventDefault();
+      window.location.href = "/auth";
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen text-foreground relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)" }}>
       {/* Page Background Design */}
