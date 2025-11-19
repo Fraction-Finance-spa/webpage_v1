@@ -80,14 +80,14 @@ export default function Layout({ children }: LayoutProps) {
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/10 backdrop-blur-xl border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
         <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F177c19b2c22f4a9287a59c7d5e1960cc?format=webp&width=800"
               alt="Fraction Finance Logo"
-              className="h-10 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
 
