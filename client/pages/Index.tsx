@@ -31,7 +31,7 @@ export default function Index() {
         opacity: "0.92",
       }}>
         {/* Background decorative elements */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-10" style={{ backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Ff34ffe5744e246fc90f605266f8241c7)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }}>
           {/* Primary animated blob */}
           <div className="absolute top-10 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
 
