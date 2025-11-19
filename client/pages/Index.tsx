@@ -58,8 +58,8 @@ export default function Index() {
                     </span>
                   </div>
                 </h1>
-                <p style={{ color: "rgba(255, 255, 255, 1)", fontSize: "30px", fontWeight: "600", lineHeight: "50px", marginTop: "24px", maxWidth: "512px" }}>
-                  <span style={{ fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif', fontSize: '16px' }}>
+                <p style={{ color: "rgba(255, 255, 255, 1)", fontSize: "20px", fontWeight: "400", lineHeight: "28px", margin: "0 auto", marginTop: "24px" }}>
+                  <span style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 1)", letterSpacing: "1px", fontWeight: "600", fontSize: "20px" }}>
                     Impulsamos el crecimiento con soluciones digitales de inversión y financiamiento.
                   </span>
                 </p>
