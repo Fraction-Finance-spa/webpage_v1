@@ -146,7 +146,7 @@ export default function Profile() {
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20"></div>
         </div>
-        <div className="container max-w-6xl mx-auto relative z-10">
+        <div className="container max-w-6xl mx-auto relative z-10" style={{ padding: "50px 32px 0" }}>
           {/* Profile Header */}
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 sm:p-12 mb-8 shadow-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
