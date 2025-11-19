@@ -278,7 +278,7 @@ export default function Layout({ children }: LayoutProps) {
                       className="block px-4 py-2 text-foreground/70 hover:text-primary text-sm font-medium"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {userEmail}
+                      {displayName || userEmail}
                     </Link>
                     <button
                       onClick={() => {
