@@ -54,7 +54,7 @@ export default function Layout({ children }: LayoutProps) {
   const handleFinanciamientoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isLoggedIn) {
       e.preventDefault();
-      window.location.href = "/signup";
+      window.location.href = "/auth";
     }
   };
 
@@ -171,14 +171,14 @@ export default function Layout({ children }: LayoutProps) {
             ) : (
               <div className="hidden sm:flex items-center gap-3">
                 <Link
-                  to="/login"
+                  to="/auth"
                   className="px-4 py-2 text-foreground/70 hover:text-primary transition-colors font-medium"
                   style={{ color: "rgba(0, 0, 0, 1)", fontSize: "16px" }}
                 >
                   Ingresar
                 </Link>
                 <Link
-                  to="/signup"
+                  to="/auth"
                   className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-medium"
                   style={{ fontSize: "16px" }}
                 >
@@ -284,14 +284,14 @@ export default function Layout({ children }: LayoutProps) {
                 ) : (
                   <>
                     <Link
-                      to="/login"
+                      to="/auth"
                       className="block text-center px-4 py-2 text-foreground/70 hover:text-primary text-sm font-medium"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Ingresar
                     </Link>
                     <Link
-                      to="/signup"
+                      to="/auth"
                       className="block text-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
                       onClick={() => setMobileMenuOpen(false)}
                     >
