@@ -242,21 +242,23 @@ export default function Layout({ children }: LayoutProps) {
                       </button>
                       {openSubmenu === item.label && (
                         <div className="pl-4 space-y-2 border-l border-border/40">
-                          {item.submenu.map((subitem) => (
-                            <Link
-                              key={subitem.label}
-                              to={subitem.path || "#"}
-                              className="block px-4 py-2 text-foreground/60 hover:text-primary text-sm transition-colors"
-                              onClick={(e) => {
-                                setMobileMenuOpen(false);
-                                if (subitem.label === "Financiamiento") {
-                                  handleFinanciamientoClick(e);
-                                }
-                              }}
-                            >
-                              {subitem.label}
-                            </Link>
-                          ))}
+                          {item.submenu.map((subitem) => {
+                            // Hide "Financiamiento" if not logged in
+                            if (subitem.label === "Financiamiento" && !isLoggedIn) {
+                              return null;
+                            }
+
+                            return (
+                              <Link
+                                key={subitem.label}
+                                to={subitem.path || "#"}
+                                className="block px-4 py-2 text-foreground/60 hover:text-primary text-sm transition-colors"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                {subitem.label}
+                              </Link>
+                            );
+                          })}
                         </div>
                       )}
                     </>
