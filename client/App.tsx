@@ -20,6 +20,21 @@ const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
   return isLoggedIn ? element : <Navigate to="/auth" />;
 };
 
+const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const profileType = localStorage.getItem("userProfileType");
+
+  if (!isLoggedIn) {
+    return <Navigate to="/auth" />;
+  }
+
+  if (profileType !== "empresa") {
+    return <Navigate to="/" />;
+  }
+
+  return element;
+};
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -35,7 +50,7 @@ export default function App() {
             <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
 
             {/* Productos */}
-            <Route path="/productos/financiamiento" element={<FinancingForm />} />
+            <Route path="/productos/financiamiento" element={<ProtectedRouteEmpresa element={<FinancingForm />} />} />
             <Route path="/productos/inversiones" element={<Placeholder />} />
 
             {/* Ecosistema */}
