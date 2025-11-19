@@ -79,7 +79,7 @@ export default function Index() {
                 ) : (
                   <>
                     <Link
-                      to="/signup"
+                      to="/auth"
                       className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2"
                       style={{ boxShadow: "0 0 0 0 rgba(0, 0, 0, 1)" }}
                     >
@@ -279,7 +279,7 @@ export default function Index() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/signup"
+                  to="/auth"
                   className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                 >
                   <div style={{ cursor: "pointer", pointerEvents: "auto", display: "flex" }}>
