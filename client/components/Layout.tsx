@@ -113,6 +113,7 @@ export default function Layout({ children }: LayoutProps) {
                         <Link
                           key={subitem.label}
                           to={subitem.path || "#"}
+                          onClick={subitem.label === "Financiamiento" ? handleFinanciamientoClick : undefined}
                           className={cn(
                             "block px-4 py-3 hover:bg-secondary transition-colors",
                             idx === 0 && "rounded-t-lg",
