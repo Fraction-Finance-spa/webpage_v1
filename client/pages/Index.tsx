@@ -20,7 +20,7 @@ export default function Index() {
     <Layout>
       {/* Hero Section */}
       <section className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden" style={{
-        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F00a54def17254e8da3662befddf5b2a2)",
+        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F78043bb818a942a0a7f545c5743e0721)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
