@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Mail, Lock, User, ArrowRight, CheckCircle } from "lucide-react";
+import { Mail, Lock, User, ArrowRight, CheckCircle, ArrowLeft } from "lucide-react";
 
 export default function Auth() {
-  const [activeTab, setActiveTab] = useState<"login" | "signup">("signup");
+  const [view, setView] = useState<"welcome" | "login" | "signup">("welcome");
   
   // Login state
   const [loginEmail, setLoginEmail] = useState("");
@@ -82,6 +82,17 @@ export default function Auth() {
     }, 1000);
   };
 
+  const handleBackToWelcome = () => {
+    setView("welcome");
+    setError("");
+    setLoginEmail("");
+    setLoginPassword("");
+    setSignupName("");
+    setSignupEmail("");
+    setSignupPassword("");
+    setSignupConfirmPassword("");
+  };
+
   return (
     <Layout>
       <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style={{
@@ -105,68 +116,135 @@ export default function Auth() {
             alignItems: "center",
             padding: "20px 48px",
           }}>
-            {/* Tabs */}
-            <div className="w-full flex gap-0 mb-8 border-b border-gray-200">
-              <div
-                onClick={() => {
-                  setActiveTab("signup");
-                  setError("");
-                }}
-                style={{
-                  display: "block",
-                  flexBasis: "0%",
-                  flexGrow: 1,
-                  fontWeight: "600",
-                  padding: "16px 0",
-                  backgroundColor: "rgba(0, 0, 0, 0)",
-                  borderColor: activeTab === "signup" ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)",
-                  borderBottomWidth: activeTab === "signup" ? "0px" : "0px",
-                  color: activeTab === "signup" ? "rgb(107, 114, 128)" : "rgb(107, 114, 128)",
-                  transitionDuration: "0.15s",
-                  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
-                  cursor: "pointer",
-                }}
-              >
-                {activeTab === "signup" && (
-                  <span style={{ color: "rgb(242, 242, 242)", fontFamily: "Helvetica, Arial, sans-serif", fontSize: "14px", fontWeight: "400", textAlign: "left", whiteSpaceCollapse: "preserve", backgroundColor: "rgb(42, 42, 42)" }}>
-                    Registrarse
-                  </span>
-                )}
-                {activeTab !== "signup" && "Registrarse"}
-              </div>
-              <div
-                onClick={() => {
-                  setActiveTab("login");
-                  setError("");
-                }}
-                style={{
-                  display: "block",
-                  flexBasis: "0%",
-                  flexGrow: 1,
-                  fontWeight: "600",
-                  padding: "16px 0",
-                  backgroundColor: "rgba(0, 0, 0, 0)",
-                  borderColor: "rgba(0, 0, 0, 0)",
-                  color: "rgb(107, 114, 128)",
-                  transitionDuration: "0.15s",
-                  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
-                  cursor: "pointer",
-                }}
-              >
-                Iniciar Sesión
-              </div>
-            </div>
-
-            {/* Signup Tab */}
-            {activeTab === "signup" && (
+            {/* Welcome View */}
+            {view === "welcome" && (
               <>
-                <div className="text-center mb-12 w-full">
+                <div className="text-center mb-12 w-full pt-4">
                   <h1 className="text-4xl font-bold text-gray-900 mb-2">¡Bienvenido!</h1>
                   <p className="text-gray-600">
                     <span style={{ color: "rgb(107, 114, 128)", fontSize: "14px", backgroundColor: "rgb(250, 250, 250)" }}>
                       Inicia sesión o crea una cuenta para comenzar.
                     </span>
                   </p>
+                </div>
+
+                <div className="space-y-3 w-full">
+                  <button
+                    onClick={() => {
+                      setView("login");
+                      setError("");
+                    }}
+                    className="w-full px-4 py-3 border-2 border-primary text-primary rounded-xl hover:bg-primary/5 transition-all shadow-md hover:shadow-lg font-bold flex items-center justify-center gap-2"
+                  >
+                    Iniciar Sesión
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setView("signup");
+                      setError("");
+                    }}
+                    className="w-full px-4 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl font-bold flex items-center justify-center gap-2"
+                  >
+                    Registrarse
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </>
+            )}
+
+            {/* Login View */}
+            {view === "login" && (
+              <>
+                <div className="flex items-center justify-start w-full mb-8">
+                  <button
+                    onClick={handleBackToWelcome}
+                    className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <ArrowLeft className="w-5 h-5" />
+                    <span className="text-sm font-medium">Atrás</span>
+                  </button>
+                </div>
+
+                <div className="text-center mb-12 w-full">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-2">Inicia Sesión</h1>
+                  <p className="text-gray-600">Accede a tu cuenta</p>
+                </div>
+
+                <form onSubmit={handleLoginSubmit} className="space-y-5 w-full">
+                  {error && (
+                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-red-600 text-sm font-medium">{error}</p>
+                    </div>
+                  )}
+
+                  <div className="space-y-2">
+                    <label htmlFor="login-email" className="block text-sm font-semibold text-gray-800">
+                      Email
+                    </label>
+                    <div className="relative">
+                      <Mail className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
+                      <input
+                        id="login-email"
+                        type="email"
+                        value={loginEmail}
+                        onChange={(e) => setLoginEmail(e.target.value)}
+                        placeholder="tu@email.com"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="login-password" className="block text-sm font-semibold text-gray-800">
+                      Contraseña
+                    </label>
+                    <div className="relative">
+                      <Lock className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
+                      <input
+                        id="login-password"
+                        type="password"
+                        value={loginPassword}
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                        placeholder="••••••••"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full px-4 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 font-bold flex items-center justify-center gap-2"
+                  >
+                    {loading ? "Cargando..." : "Ingresar"}
+                    {!loading && <ArrowRight className="w-5 h-5" />}
+                  </button>
+                </form>
+
+                <p className="text-center text-gray-600 text-sm mt-6 w-full">
+                  Demo: usa cualquier email y contraseña (mín. 6 caracteres)
+                </p>
+              </>
+            )}
+
+            {/* Signup View */}
+            {view === "signup" && (
+              <>
+                <div className="flex items-center justify-start w-full mb-8">
+                  <button
+                    onClick={handleBackToWelcome}
+                    className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <ArrowLeft className="w-5 h-5" />
+                    <span className="text-sm font-medium">Atrás</span>
+                  </button>
+                </div>
+
+                <div className="text-center mb-12 w-full">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-2">Crear Cuenta</h1>
+                  <p className="text-gray-600">Únete a Fraction Finance</p>
                 </div>
 
                 <form onSubmit={handleSignupSubmit} className="space-y-5 w-full">
@@ -273,71 +351,6 @@ export default function Auth() {
                     </div>
                   </div>
                 </div>
-              </>
-            )}
-
-            {/* Login Tab */}
-            {activeTab === "login" && (
-              <>
-                <div className="text-center mb-12 w-full">
-                  <h1 className="text-4xl font-bold text-gray-900 mb-2">Inicia Sesión</h1>
-                  <p className="text-gray-600">Accede a tu cuenta</p>
-                </div>
-
-                <form onSubmit={handleLoginSubmit} className="space-y-5 w-full">
-                  {error && (
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <p className="text-red-600 text-sm font-medium">{error}</p>
-                    </div>
-                  )}
-
-                  <div className="space-y-2">
-                    <label htmlFor="login-email" className="block text-sm font-semibold text-gray-800">
-                      Email
-                    </label>
-                    <div className="relative">
-                      <Mail className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
-                      <input
-                        id="login-email"
-                        type="email"
-                        value={loginEmail}
-                        onChange={(e) => setLoginEmail(e.target.value)}
-                        placeholder="tu@email.com"
-                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="login-password" className="block text-sm font-semibold text-gray-800">
-                      Contraseña
-                    </label>
-                    <div className="relative">
-                      <Lock className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
-                      <input
-                        id="login-password"
-                        type="password"
-                        value={loginPassword}
-                        onChange={(e) => setLoginPassword(e.target.value)}
-                        placeholder="••••••••"
-                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full px-4 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 font-bold flex items-center justify-center gap-2"
-                  >
-                    {loading ? "Cargando..." : "Ingresar"}
-                    {!loading && <ArrowRight className="w-5 h-5" />}
-                  </button>
-                </form>
-
-                <p className="text-center text-gray-600 text-sm mt-6 w-full">
-                  Demo: usa cualquier email y contraseña (mín. 6 caracteres)
-                </p>
               </>
             )}
           </div>
