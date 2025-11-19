@@ -20,41 +20,43 @@ const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
   return isLoggedIn ? element : <Navigate to="/auth" />;
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/login" element={<Navigate to="/auth" />} />
-          <Route path="/signup" element={<Navigate to="/auth" />} />
-          <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/login" element={<Navigate to="/auth" />} />
+            <Route path="/signup" element={<Navigate to="/auth" />} />
+            <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
 
-          {/* Productos */}
-          <Route path="/productos/financiamiento" element={<FinancingForm />} />
-          <Route path="/productos/inversiones" element={<Placeholder />} />
+            {/* Productos */}
+            <Route path="/productos/financiamiento" element={<FinancingForm />} />
+            <Route path="/productos/inversiones" element={<Placeholder />} />
 
-          {/* Ecosistema */}
-          <Route path="/ecosistema" element={<Placeholder />} />
+            {/* Ecosistema */}
+            <Route path="/ecosistema" element={<Placeholder />} />
 
-          {/* Nosotros */}
-          <Route path="/nosotros/empresa" element={<Placeholder />} />
-          <Route path="/nosotros/modelo" element={<Placeholder />} />
-          <Route path="/nosotros/educacion" element={<Placeholder />} />
-          <Route path="/nosotros/blog" element={<Placeholder />} />
-          <Route path="/nosotros/careers" element={<Placeholder />} />
-          <Route path="/nosotros/contacto" element={<Placeholder />} />
+            {/* Nosotros */}
+            <Route path="/nosotros/empresa" element={<Placeholder />} />
+            <Route path="/nosotros/modelo" element={<Placeholder />} />
+            <Route path="/nosotros/educacion" element={<Placeholder />} />
+            <Route path="/nosotros/blog" element={<Placeholder />} />
+            <Route path="/nosotros/careers" element={<Placeholder />} />
+            <Route path="/nosotros/contacto" element={<Placeholder />} />
 
-          {/* Catch-all */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+            {/* Catch-all */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
 
 const rootElement = document.getElementById("root")!;
 let root = (globalThis as any).__APP_ROOT__;
