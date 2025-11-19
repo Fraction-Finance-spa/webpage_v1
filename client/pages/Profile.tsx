@@ -14,7 +14,7 @@ import {
   CreditCard,
   TrendingUp,
   CheckCircle,
-  Bank,
+  Wallet,
 } from "lucide-react";
 
 export default function Profile() {
@@ -136,7 +136,7 @@ export default function Profile() {
     { id: "cuenta", label: "Información de la Cuenta", icon: <User className="w-5 h-5" /> },
     { id: "inversion", label: "Perfil de Inversión", icon: <TrendingUp className="w-5 h-5" /> },
     { id: "verificacion", label: "Verificación de Usuario", icon: <CheckCircle className="w-5 h-5" /> },
-    { id: "bancaria", label: "Cuenta Bancaria", icon: <Bank className="w-5 h-5" /> },
+    { id: "bancaria", label: "Cuenta Bancaria", icon: <Wallet className="w-5 h-5" /> },
   ];
 
   return (
