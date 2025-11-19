@@ -136,19 +136,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-foreground/70 text-sm">contact@fractionfinance.com</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-lg border border-border/40 p-6">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <Phone className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Teléfono</h3>
-                      <p className="text-foreground/70 text-sm">+569 1234 5678</p>
+                      <p className="text-foreground/70 text-sm">contacto@fractionfinance.cl</p>
                     </div>
                   </div>
                 </div>
@@ -161,7 +149,7 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Dirección</h3>
                       <p className="text-foreground/70 text-sm">
-                        Santiago, Chile
+                        Antonio Bellet N° 130, Oficina 1201, Providencia, Santiago, Chile
                       </p>
                     </div>
                   </div>
@@ -271,45 +259,6 @@ export default function Contact() {
                     )}
                   </button>
                 </form>
-              </div>
-            </div>
-          </div>
-
-          {/* FAQs */}
-          <div className="bg-white rounded-lg border border-border/40 p-8">
-            <h2 className="text-3xl font-bold text-foreground mb-8">Preguntas Frecuentes</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  ¿Cuál es el tiempo de respuesta?
-                </h3>
-                <p className="text-foreground/70 text-sm">
-                  Respondemos la mayoría de mensajes dentro de 24 horas hábiles.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  ¿Cómo reporto un problema técnico?
-                </h3>
-                <p className="text-foreground/70 text-sm">
-                  Selecciona "Soporte Técnico" en el asunto y describe el problema en detalle.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  ¿Puedo hablar con alguien directamente?
-                </h3>
-                <p className="text-foreground/70 text-sm">
-                  Llámanos al teléfono indicado o envía un mensaje indicando que prefieres una llamada.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  ¿Dónde están ubicados?
-                </h3>
-                <p className="text-foreground/70 text-sm">
-                  Estamos en Santiago, Chile. Puedes visitarnos o agendar una reunión.
-                </p>
               </div>
             </div>
           </div>
