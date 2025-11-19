@@ -119,10 +119,9 @@ export default function Index() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Capital de Trabajo", icon: Zap, description: "Financiamiento flexible" },
-              { name: "Bonos", icon: BarChart3, description: "Instrumentos corporativos" },
-              { name: "Deuda Privada", icon: TrendingUp, description: "Rendimiento optimizado" },
-              { name: "Fondos de inversión", icon: Coins, description: "Carteras diversificadas" },
+              { name: "Capital de Trabajo", icon: Zap, description: "Financiamiento de corto plazo para cubrir necesidades operativas, como inventarios, proveedores o flujo diario de caja." },
+              { name: "Bonos", icon: BarChart3, description: "Instrumentos de deuda emitidos por empresas para financiar expansión, proyectos o reestructuración, con pagos de interés y plazo definido." },
+              { name: "Deuda Privada", icon: TrendingUp, description: "Préstamos estructurados directamente entre empresa e inversionistas con condiciones flexibles y personalización del riesgo." },
             ].map((asset, i) => (
               <div
                 key={i}
@@ -130,7 +129,7 @@ export default function Index() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative p-8 sm:p-10 text-center h-full flex flex-col items-center justify-center">
+                <div className="relative p-8 sm:p-10 h-full flex flex-col items-center justify-center">
                   <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500"
                     style={{
@@ -143,7 +142,7 @@ export default function Index() {
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     {asset.name}
                   </h3>
-                  <p className="text-sm text-foreground/60 font-medium">
+                  <p className="text-sm text-foreground/60 font-medium text-left">
                     {asset.description}
                   </p>
                   <div className="w-12 h-1 bg-primary rounded-full mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -183,48 +182,48 @@ export default function Index() {
                 icon: Shield,
                 title: "Seguridad y Confianza",
                 description:
-                  "Seguridad de nivel bancario y protocolos avanzados. Verificación integrada y cumplimiento AML, además de reportes automatizados.",
+                  "Auditorías, verificación integrada y cumplimiento AML, además de reportes automatizados.",
               },
               {
                 icon: Zap,
                 title: "Tokenización Instantánea",
                 description:
-                  "Convierte activos físicos o financieros en tokens en minutos. Procesos totalmente automatizados, sin intermediarios.",
+                  "Convierte activos financieros en tokens en minutos. Procesos totalmente automatizados, sin intermediarios.",
               },
               {
                 icon: Globe,
                 title: "Acceso 24/7",
                 description:
-                  "Operaciones a toda hora. Transacciones transfronterizas rápidas, seguras y eficientes.",
+                  "Operaciones a toda hora. Transacciones rápidas, seguras y eficientes.",
               },
               {
                 icon: TrendingUp,
                 title: "Financiamiento colaborativo",
                 description:
-                  "Fracciona activos tradicionales y más. Crea oportunidades de inversión accesibles para cualquier inversor.",
+                  "Fracciona activos tradicionales y más. Crea oportunidades de inversión accesibles para cualquier tipo de usuario.",
               },
               {
                 icon: Users,
                 title: "Red de Inversores",
                 description:
-                  "Conecta con inversores institucionales y minoristas de todo el mundo. Aumenta la visibilidad y demanda de tus activos tokenizados.",
+                  "Conecta con inversores institucionales y minoristas. Aumenta la visibilidad y demanda de tus activos tokenizados.",
               },
               {
                 icon: Leaf,
                 title: "Innovación y Sostenibilidad",
                 description:
-                  "Foco en activos verdes y sostenibles. Impulsa la inversión responsable con impacto real en la economía y el medio ambiente.",
+                  "Impulsa la inversión responsable con impacto real en la economía y el medio ambiente.",
               },
             ].map((feature, i) => (
               <div
                 key={i}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 shadow-lg hover:shadow-2xl group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:from-primary/40 group-hover:to-primary/20 transition-all" style={{ animation: "0.5s", backgroundImage: "linear-gradient(135deg, rgba(0, 26, 255, 0.15) 0%, rgba(0, 26, 255, 0.05) 100%)", borderRadius: "16px", boxShadow: "rgba(0, 26, 255, 0.08) 0px 8px 24px 0px", margin: "0 auto 24px" }}>
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {feature.title === "Financiamiento colaborativo" ? <p>{feature.title}</p> : feature.title}
+                <h3 className="text-xl font-semibold text-foreground mb-3" style={{ textAlign: "center" }}>
+                  {feature.title === "Financiamiento colaborativo" ? <p style={{ textAlign: "center" }}>{feature.title}</p> : feature.title}
                 </h3>
                 <p className="text-foreground/70">{feature.description}</p>
               </div>
