@@ -29,6 +29,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/login" element={<Navigate to="/auth" />} />
+          <Route path="/signup" element={<Navigate to="/auth" />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
 
           {/* Productos */}
