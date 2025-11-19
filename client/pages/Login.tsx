@@ -108,7 +108,9 @@ export default function Login() {
 
             <div className="mt-8 pt-8 border-t border-border/40 text-center">
               <p className="text-white/70 mb-2">
-                ¿No tienes cuenta?{" "}
+                <div style={{ color: "rgba(0, 0, 0, 1)" }}>
+                  ¿No tienes cuenta?
+                </div>
                 <Link to="/signup" className="text-primary hover:text-primary/80 font-semibold">
                   Regístrate aquí
                 </Link>
