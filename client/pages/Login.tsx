@@ -107,14 +107,14 @@ export default function Login() {
             </form>
 
             <div className="mt-8 pt-8 border-t border-border/40 text-center">
-              <p className="text-white/70 mb-2">
-                <div style={{ color: "rgba(0, 0, 0, 1)" }}>
+              <div className="text-white/70 mb-2">
+                <span style={{ color: "rgba(0, 0, 0, 1)" }} className="block mb-2">
                   ¿No tienes cuenta?
-                </div>
+                </span>
                 <Link to="/signup" className="text-primary hover:text-primary/80 font-semibold">
                   Regístrate aquí
                 </Link>
-              </p>
+              </div>
             </div>
           </div>
 
