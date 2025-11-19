@@ -14,6 +14,7 @@ export default function Auth() {
   // Signup state
   const [signupFirstName, setSignupFirstName] = useState("");
   const [signupLastName, setSignupLastName] = useState("");
+  const [signupCompanyName, setSignupCompanyName] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
   const [signupConfirmPassword, setSignupConfirmPassword] = useState("");
@@ -61,13 +62,23 @@ export default function Auth() {
     e.preventDefault();
     setError("");
 
-    if (!signupFirstName || !signupLastName || !signupEmail || !signupPassword || !signupConfirmPassword) {
+    if (!signupEmail || !signupPassword || !signupConfirmPassword) {
       setError("Por favor completa todos los campos");
       return;
     }
 
     if (!signupProfileType) {
       setError("Por favor selecciona un tipo de perfil");
+      return;
+    }
+
+    if (signupProfileType === "persona" && (!signupFirstName || !signupLastName)) {
+      setError("Por favor completa nombre y apellido");
+      return;
+    }
+
+    if (signupProfileType === "empresa" && !signupCompanyName) {
+      setError("Por favor completa el nombre de la empresa");
       return;
     }
 
@@ -90,9 +101,15 @@ export default function Auth() {
     setTimeout(() => {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userEmail", signupEmail);
-      localStorage.setItem("userFirstName", signupFirstName);
-      localStorage.setItem("userLastName", signupLastName);
       localStorage.setItem("userProfileType", signupProfileType);
+
+      if (signupProfileType === "persona") {
+        localStorage.setItem("userFirstName", signupFirstName);
+        localStorage.setItem("userLastName", signupLastName);
+      } else {
+        localStorage.setItem("userCompanyName", signupCompanyName);
+      }
+
       setLoading(false);
       navigate("/profile");
     }, 1000);
@@ -106,6 +123,7 @@ export default function Auth() {
     setLoginProfileType("");
     setSignupFirstName("");
     setSignupLastName("");
+    setSignupCompanyName("");
     setSignupEmail("");
     setSignupPassword("");
     setSignupConfirmPassword("");
