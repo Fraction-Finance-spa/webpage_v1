@@ -85,13 +85,13 @@ export default function Auth() {
   return (
     <Layout>
       <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style={{
-        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fc2c24d2c61be44c58d8307f0bb9149f7)",
+        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F59f75e4bc0444c389fa97848de01b062)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
         opacity: "0.91",
       }}>
-        <div className="absolute inset-0 -z-10" style={{ left: "140px", top: "145px" }}>
+        <div className="absolute inset-0 -z-10" style={{ left: "83px", top: "85px", width: "1472px" }}>
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20" style={{ left: "856px", top: "720px" }}></div>
         </div>
@@ -107,32 +107,54 @@ export default function Auth() {
           }}>
             {/* Tabs */}
             <div className="w-full flex gap-0 mb-8 border-b border-gray-200">
-              <button
+              <div
                 onClick={() => {
                   setActiveTab("signup");
                   setError("");
                 }}
-                className={`flex-1 py-4 text-center font-semibold transition-all ${
-                  activeTab === "signup"
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-gray-500 hover:text-gray-700"
-                }`}
+                style={{
+                  display: "block",
+                  flexBasis: "0%",
+                  flexGrow: 1,
+                  fontWeight: "600",
+                  padding: "16px 0",
+                  backgroundColor: "rgba(0, 0, 0, 0)",
+                  borderColor: activeTab === "signup" ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)",
+                  borderBottomWidth: activeTab === "signup" ? "0px" : "0px",
+                  color: activeTab === "signup" ? "rgb(107, 114, 128)" : "rgb(107, 114, 128)",
+                  transitionDuration: "0.15s",
+                  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+                  cursor: "pointer",
+                }}
               >
-                Registrarse
-              </button>
-              <button
+                {activeTab === "signup" && (
+                  <span style={{ color: "rgb(242, 242, 242)", fontFamily: "Helvetica, Arial, sans-serif", fontSize: "14px", fontWeight: "400", textAlign: "left", whiteSpaceCollapse: "preserve", backgroundColor: "rgb(42, 42, 42)" }}>
+                    Registrarse
+                  </span>
+                )}
+                {activeTab !== "signup" && "Registrarse"}
+              </div>
+              <div
                 onClick={() => {
                   setActiveTab("login");
                   setError("");
                 }}
-                className={`flex-1 py-4 text-center font-semibold transition-all ${
-                  activeTab === "login"
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-gray-500 hover:text-gray-700"
-                }`}
+                style={{
+                  display: "block",
+                  flexBasis: "0%",
+                  flexGrow: 1,
+                  fontWeight: "600",
+                  padding: "16px 0",
+                  backgroundColor: "rgba(0, 0, 0, 0)",
+                  borderColor: "rgba(0, 0, 0, 0)",
+                  color: "rgb(107, 114, 128)",
+                  transitionDuration: "0.15s",
+                  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+                  cursor: "pointer",
+                }}
               >
                 Iniciar Sesión
-              </button>
+              </div>
             </div>
 
             {/* Signup Tab */}
@@ -140,7 +162,11 @@ export default function Auth() {
               <>
                 <div className="text-center mb-12 w-full">
                   <h1 className="text-4xl font-bold text-gray-900 mb-2">¡Bienvenido!</h1>
-                  <p className="text-gray-600">Únete a Fraction Finance</p>
+                  <p className="text-gray-600">
+                    <span style={{ color: "rgb(107, 114, 128)", fontSize: "14px", backgroundColor: "rgb(250, 250, 250)" }}>
+                      Inicia sesión o crea una cuenta para comenzar.
+                    </span>
+                  </p>
                 </div>
 
                 <form onSubmit={handleSignupSubmit} className="space-y-5 w-full">
