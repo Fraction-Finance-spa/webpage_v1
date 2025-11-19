@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import {
@@ -11,6 +12,10 @@ import {
   Zap,
   Lock,
   BarChart3,
+  CreditCard,
+  TrendingUp,
+  CheckCircle,
+  Bank,
 } from "lucide-react";
 
 export default function Profile() {
@@ -20,8 +25,9 @@ export default function Profile() {
   const userLastName = localStorage.getItem("userLastName") || "";
   const userName = userFirstName;
   const userProfileType = (localStorage.getItem("userProfileType") || "persona") as "persona" | "empresa";
-  
+
   const [isEditing, setIsEditing] = useState(false);
+  const [activeSection, setActiveSection] = useState<"cuenta" | "inversion" | "verificacion" | "bancaria">("cuenta");
   
   // Persona form data
   const [personaData, setPersonaData] = useState({
