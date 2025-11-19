@@ -101,14 +101,25 @@ export default function Layout({ children }: LayoutProps) {
                       {item.label}
                       <ChevronDown className="w-4 h-4" />
                     </button>
-                    <div className="absolute left-0 mt-0 w-56 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      {item.submenu.map((subitem) => (
+                    <div className="absolute left-0 mt-0 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      {item.submenu.map((subitem, idx) => (
                         <Link
                           key={subitem.label}
                           to={subitem.path || "#"}
-                          className="block px-4 py-3 text-foreground/70 hover:text-primary hover:bg-secondary first:rounded-t-lg last:rounded-b-lg transition-colors text-sm"
+                          className={cn(
+                            "block px-4 py-3 hover:bg-secondary transition-colors",
+                            idx === 0 && "rounded-t-lg",
+                            idx === item.submenu.length - 1 && "rounded-b-lg"
+                          )}
                         >
-                          {subitem.label}
+                          <div className="text-foreground/70 hover:text-primary font-medium text-sm">
+                            {subitem.label}
+                          </div>
+                          {subitem.description && (
+                            <div className="text-foreground/50 text-xs mt-1">
+                              {subitem.description}
+                            </div>
+                          )}
                         </Link>
                       ))}
                     </div>
