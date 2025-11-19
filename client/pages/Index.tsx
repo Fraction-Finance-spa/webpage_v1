@@ -112,7 +112,7 @@ export default function Index() {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Invierte en Activos Digitales
+              Financia e invierte en Activos Digitales
             </h2>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
               Transformamos instrumentos financieros en activos digitales accesibles.
