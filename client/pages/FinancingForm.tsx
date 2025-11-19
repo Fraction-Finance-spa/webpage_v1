@@ -297,51 +297,9 @@ export default function FinancingForm() {
                     <p className="text-red-600 text-sm mt-1">{errors.employeeCount}</p>
                   )}
                 </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2">
-                    Año de Fundación *
-                  </label>
-                  <input
-                    type="number"
-                    name="foundedYear"
-                    value={formData.foundedYear}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-3 border ${
-                      errors.foundedYear ? "border-red-500" : "border-border/40"
-                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
-                    placeholder="2020"
-                  />
-                  {errors.foundedYear && (
-                    <p className="text-red-600 text-sm mt-1">{errors.foundedYear}</p>
-                  )}
-                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2">
-                    Número de Empleados *
-                  </label>
-                  <select
-                    name="employeeCount"
-                    value={formData.employeeCount}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-3 border ${
-                      errors.employeeCount ? "border-red-500" : "border-border/40"
-                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
-                  >
-                    <option value="">Selecciona rango</option>
-                    <option value="1-5">1-5</option>
-                    <option value="6-20">6-20</option>
-                    <option value="21-50">21-50</option>
-                    <option value="51-100">51-100</option>
-                    <option value="100+">100+</option>
-                  </select>
-                  {errors.employeeCount && (
-                    <p className="text-red-600 text-sm mt-1">{errors.employeeCount}</p>
-                  )}
-                </div>
 
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
