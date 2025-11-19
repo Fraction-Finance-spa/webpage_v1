@@ -111,7 +111,7 @@ export default function Index() {
               { name: "Capital de Trabajo", icon: Zap, description: "Financiamiento flexible" },
               { name: "Bonos", icon: BarChart3, description: "Instrumentos corporativos" },
               { name: "Deuda Privada", icon: TrendingUp, description: "Rendimiento optimizado" },
-            ].map((asset) => (
+            ].map((asset, i) => (
               <div
                 key={i}
                 className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
