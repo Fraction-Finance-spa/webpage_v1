@@ -4,8 +4,6 @@ import Layout from "@/components/Layout";
 import {
   User,
   Mail,
-  Phone,
-  MapPin,
   Edit,
   Save,
   LogOut,
