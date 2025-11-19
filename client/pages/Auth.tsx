@@ -11,7 +11,8 @@ export default function Auth() {
   const [loginPassword, setLoginPassword] = useState("");
   
   // Signup state
-  const [signupName, setSignupName] = useState("");
+  const [signupFirstName, setSignupFirstName] = useState("");
+  const [signupLastName, setSignupLastName] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
   const [signupConfirmPassword, setSignupConfirmPassword] = useState("");
@@ -53,7 +54,7 @@ export default function Auth() {
     e.preventDefault();
     setError("");
 
-    if (!signupName || !signupEmail || !signupPassword || !signupConfirmPassword) {
+    if (!signupFirstName || !signupLastName || !signupEmail || !signupPassword || !signupConfirmPassword) {
       setError("Por favor completa todos los campos");
       return;
     }
@@ -82,7 +83,8 @@ export default function Auth() {
     setTimeout(() => {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userEmail", signupEmail);
-      localStorage.setItem("userName", signupName);
+      localStorage.setItem("userFirstName", signupFirstName);
+      localStorage.setItem("userLastName", signupLastName);
       localStorage.setItem("userProfileType", signupProfileType);
       setLoading(false);
       navigate("/profile");
@@ -94,7 +96,8 @@ export default function Auth() {
     setError("");
     setLoginEmail("");
     setLoginPassword("");
-    setSignupName("");
+    setSignupFirstName("");
+    setSignupLastName("");
     setSignupEmail("");
     setSignupPassword("");
     setSignupConfirmPassword("");
@@ -292,20 +295,38 @@ export default function Auth() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label htmlFor="signup-name" className="block text-sm font-semibold text-gray-800">
-                      Nombre Completo
-                    </label>
-                    <div className="relative">
-                      <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
-                      <input
-                        id="signup-name"
-                        type="text"
-                        value={signupName}
-                        onChange={(e) => setSignupName(e.target.value)}
-                        placeholder="Juan Pérez"
-                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
-                      />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label htmlFor="signup-first-name" className="block text-sm font-semibold text-gray-800">
+                        Nombre
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
+                        <input
+                          id="signup-first-name"
+                          type="text"
+                          value={signupFirstName}
+                          onChange={(e) => setSignupFirstName(e.target.value)}
+                          placeholder="Juan"
+                          className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="signup-last-name" className="block text-sm font-semibold text-gray-800">
+                        Apellidos
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
+                        <input
+                          id="signup-last-name"
+                          type="text"
+                          value={signupLastName}
+                          onChange={(e) => setSignupLastName(e.target.value)}
+                          placeholder="Pérez"
+                          className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                        />
+                      </div>
                     </div>
                   </div>
 
