@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, LogOut, ChevronDown } from "lucide-react";
+import { Menu, X, LogOut, ChevronDown, DollarSign, TrendingUp, Building2, Zap, BookOpen, Newspaper, Users, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LayoutProps {
@@ -11,8 +11,20 @@ interface NavItem {
   label: string;
   path?: string;
   description?: string;
+  icon?: React.ReactNode;
   submenu?: NavItem[];
 }
+
+const iconMap: Record<string, React.ReactNode> = {
+  "Financiamiento": <DollarSign className="w-4 h-4" />,
+  "Inversiones": <TrendingUp className="w-4 h-4" />,
+  "Nuestra Empresa": <Building2 className="w-4 h-4" />,
+  "Modelo de Negocio": <Zap className="w-4 h-4" />,
+  "Educación Financiera": <BookOpen className="w-4 h-4" />,
+  "Blog": <Newspaper className="w-4 h-4" />,
+  "Trabaja con Nosotros": <Users className="w-4 h-4" />,
+  "Contacto": <Mail className="w-4 h-4" />,
+};
 
 const navItems: NavItem[] = [
   {
