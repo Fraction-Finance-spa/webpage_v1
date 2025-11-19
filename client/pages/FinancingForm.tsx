@@ -146,7 +146,7 @@ export default function FinancingForm() {
 
   return (
     <Layout>
-      <div className="bg-blue-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="bg-blue-50 px-8 pb-12" style={{ paddingTop: "120px" }}>
         <div className="container max-w-4xl mx-auto">
           <div className="mb-12">
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
@@ -446,7 +446,7 @@ export default function FinancingForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
-                    Prop��sito del Financiamiento *
+                    <p>Propósito del Financiamiento *</p>
                   </label>
                   <select
                     name="financingPurpose"
@@ -547,7 +547,7 @@ export default function FinancingForm() {
                     className={`w-full px-4 py-3 border ${
                       errors.phone ? "border-red-500" : "border-border/40"
                     } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
-                    placeholder="+34 600 000 000"
+                    placeholder="+569 0000 0000"
                   />
                   {errors.phone && (
                     <p className="text-red-600 text-sm mt-1">{errors.phone}</p>
