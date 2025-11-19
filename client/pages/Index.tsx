@@ -196,7 +196,7 @@ export default function Index() {
               },
               {
                 icon: TrendingUp,
-                title: "Liquidez para Activos Tradicionales",
+                title: "Financiamiento colaborativo",
                 description:
                   "Fracciona activos tradicionales y más. Crea oportunidades de inversión accesibles para cualquier inversor.",
               },
