@@ -50,9 +50,6 @@ export default function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 z-10">
               <div className="space-y-6">
-                <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-md text-primary rounded-full text-sm font-semibold border border-white/20">
-                  🚀 El Futuro de la Tokenización
-                </div>
                 <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight">
                   <div className="inline text-black font-black">
                     <span style={{ fontWeight: "600", marginRight: "88px", color: "rgba(255, 255, 255, 1)" }}>
