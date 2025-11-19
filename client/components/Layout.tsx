@@ -141,7 +141,7 @@ export default function Layout({ children }: LayoutProps) {
                       "text-foreground/70 hover:text-primary transition-colors py-2 font-medium",
                       location.pathname === item.path && "text-primary"
                     )}
-                    style={{ color: "rgba(0, 0, 0, 1)", fontSize: "20px" }}
+                    style={item.label === "Ecosistema" ? { color: "rgba(0, 0, 0, 1)", fontSize: "20px" } : undefined}
                   >
                     {item.label}
                   </Link>
