@@ -351,40 +351,61 @@ export default function Auth() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  {signupProfileType === "persona" && (
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label htmlFor="signup-first-name" className="block text-sm font-semibold text-gray-800">
+                          Nombre
+                        </label>
+                        <div className="relative">
+                          <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
+                          <input
+                            id="signup-first-name"
+                            type="text"
+                            value={signupFirstName}
+                            onChange={(e) => setSignupFirstName(e.target.value)}
+                            placeholder="Juan"
+                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="signup-last-name" className="block text-sm font-semibold text-gray-800">
+                          Apellidos
+                        </label>
+                        <div className="relative">
+                          <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
+                          <input
+                            id="signup-last-name"
+                            type="text"
+                            value={signupLastName}
+                            onChange={(e) => setSignupLastName(e.target.value)}
+                            placeholder="Pérez"
+                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {signupProfileType === "empresa" && (
                     <div className="space-y-2">
-                      <label htmlFor="signup-first-name" className="block text-sm font-semibold text-gray-800">
-                        Nombre
+                      <label htmlFor="signup-company-name" className="block text-sm font-semibold text-gray-800">
+                        Nombre de la Empresa
                       </label>
                       <div className="relative">
                         <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
                         <input
-                          id="signup-first-name"
+                          id="signup-company-name"
                           type="text"
-                          value={signupFirstName}
-                          onChange={(e) => setSignupFirstName(e.target.value)}
-                          placeholder="Juan"
+                          value={signupCompanyName}
+                          onChange={(e) => setSignupCompanyName(e.target.value)}
+                          placeholder="Mi Empresa S.A."
                           className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
                         />
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <label htmlFor="signup-last-name" className="block text-sm font-semibold text-gray-800">
-                        Apellidos
-                      </label>
-                      <div className="relative">
-                        <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-600" />
-                        <input
-                          id="signup-last-name"
-                          type="text"
-                          value={signupLastName}
-                          onChange={(e) => setSignupLastName(e.target.value)}
-                          placeholder="Pérez"
-                          className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  )}
 
                   <div className="space-y-2">
                     <label htmlFor="signup-email" className="block text-sm font-semibold text-gray-800">
