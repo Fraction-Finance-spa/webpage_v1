@@ -1,0 +1,394 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Layout from "@/components/Layout";
+import {
+  LayoutDashboard,
+  Coins,
+  FileText,
+  BookOpen,
+  Users,
+  Clock,
+  Mail,
+  Briefcase,
+  Users2,
+  Building2,
+  Shield,
+  AlertCircle,
+  BarChart3,
+  Edit,
+  Trash2,
+  Plus,
+  Search,
+  LogOut,
+} from "lucide-react";
+
+type AdminSection = 
+  | "dashboard" 
+  | "activos" 
+  | "sto" 
+  | "blog" 
+  | "educacion" 
+  | "usuarios" 
+  | "waitlist" 
+  | "mensajes" 
+  | "empleos" 
+  | "equipo" 
+  | "socios" 
+  | "politicas" 
+  | "denuncias";
+
+export default function Admin() {
+  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState<AdminSection>("dashboard");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const menuItems = [
+    { id: "dashboard", label: "Panel", icon: <LayoutDashboard className="w-5 h-5" /> },
+    { id: "activos", label: "Activos Digitales", icon: <Coins className="w-5 h-5" /> },
+    { id: "sto", label: "Oferta de Financiamiento (STOs)", icon: <FileText className="w-5 h-5" /> },
+    { id: "blog", label: "Blog", icon: <Briefcase className="w-5 h-5" /> },
+    { id: "educacion", label: "Educación", icon: <BookOpen className="w-5 h-5" /> },
+    { id: "usuarios", label: "Usuarios", icon: <Users className="w-5 h-5" /> },
+    { id: "waitlist", label: "Lista de Espera", icon: <Clock className="w-5 h-5" /> },
+    { id: "mensajes", label: "Mensajes de Contacto", icon: <Mail className="w-5 h-5" /> },
+    { id: "empleos", label: "Empleos", icon: <Briefcase className="w-5 h-5" /> },
+    { id: "equipo", label: "Equipo", icon: <Users2 className="w-5 h-5" /> },
+    { id: "socios", label: "Socios del Ecosistema", icon: <Building2 className="w-5 h-5" /> },
+    { id: "politicas", label: "Políticas", icon: <Shield className="w-5 h-5" /> },
+    { id: "denuncias", label: "Denuncias y Reclamos", icon: <AlertCircle className="w-5 h-5" /> },
+  ] as const;
+
+  const handleLogout = () => {
+    navigate("/");
+  };
+
+  // Sample data for different sections
+  const [items, setItems] = useState({
+    activos: [
+      { id: 1, nombre: "Bitcoin Token", cantidad: 100, estado: "Activo" },
+      { id: 2, nombre: "Ethereum Token", cantidad: 50, estado: "Activo" },
+    ],
+    sto: [
+      { id: 1, nombre: "STO Proyecto A", monto: "$1,000,000", estado: "En Oferta" },
+      { id: 2, nombre: "STO Proyecto B", monto: "$500,000", estado: "Completado" },
+    ],
+    blog: [
+      { id: 1, titulo: "Cómo invertir en STOs", autor: "Admin", fecha: "2024-01-15", estado: "Publicado" },
+      { id: 2, titulo: "Guía de Activos Digitales", autor: "Admin", fecha: "2024-01-14", estado: "Borrador" },
+    ],
+    educacion: [
+      { id: 1, titulo: "Introducción a Blockchain", instructor: "Carlos", estudiantes: 120, estado: "Activo" },
+      { id: 2, titulo: "DeFi Avanzado", instructor: "María", estudiantes: 45, estado: "Activo" },
+    ],
+    usuarios: [
+      { id: 1, nombre: "Juan Pérez", email: "juan@example.com", tipo: "Persona", estado: "Activo" },
+      { id: 2, nombre: "Tech Corp", email: "contact@techcorp.com", tipo: "Empresa", estado: "Activo" },
+    ],
+    waitlist: [
+      { id: 1, email: "waiting1@example.com", fecha: "2024-01-15", interes: "Financiamiento" },
+      { id: 2, email: "waiting2@example.com", fecha: "2024-01-14", interes: "Inversiones" },
+    ],
+    mensajes: [
+      { id: 1, nombre: "Carlos", email: "carlos@example.com", asunto: "Consulta sobre STOs", leido: false },
+      { id: 2, nombre: "Ana", email: "ana@example.com", asunto: "Solicitud de Información", leido: true },
+    ],
+    empleos: [
+      { id: 1, posicion: "Desarrollador Senior", departamento: "Tech", estado: "Abierto" },
+      { id: 2, posicion: "Community Manager", departamento: "Marketing", estado: "Abierto" },
+    ],
+    equipo: [
+      { id: 1, nombre: "Carlos González", rol: "CEO", departamento: "Directiva" },
+      { id: 2, nombre: "María López", rol: "CTO", departamento: "Tech" },
+    ],
+    socios: [
+      { id: 1, nombre: "Blockchain Partners", categoria: "Tecnología", estado: "Activo" },
+      { id: 2, nombre: "Finance Solutions", categoria: "Finanzas", estado: "Activo" },
+    ],
+  });
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case "dashboard":
+        return (
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-foreground">Panel de Control</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-foreground/60 mb-2">Total Usuarios</p>
+                    <p className="text-3xl font-bold text-foreground">1,234</p>
+                  </div>
+                  <Users className="w-8 h-8 text-primary opacity-50" />
+                </div>
+              </div>
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-foreground/60 mb-2">STOs Activos</p>
+                    <p className="text-3xl font-bold text-foreground">12</p>
+                  </div>
+                  <FileText className="w-8 h-8 text-primary opacity-50" />
+                </div>
+              </div>
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-foreground/60 mb-2">Activos Digitales</p>
+                    <p className="text-3xl font-bold text-foreground">45</p>
+                  </div>
+                  <Coins className="w-8 h-8 text-primary opacity-50" />
+                </div>
+              </div>
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-foreground/60 mb-2">Mensajes Pendientes</p>
+                    <p className="text-3xl font-bold text-foreground">23</p>
+                  </div>
+                  <Mail className="w-8 h-8 text-primary opacity-50" />
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg border border-border/40 p-6">
+              <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+                <BarChart3 className="w-5 h-5 text-primary" />
+                Estadísticas Recientes
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">Usuarios registrados esta semana</p>
+                  <p className="font-bold text-foreground">+45</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">STOs completados</p>
+                  <p className="font-bold text-foreground">3</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">Mensajes recibidos</p>
+                  <p className="font-bold text-foreground">127</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "activos":
+      case "sto":
+      case "blog":
+      case "educacion":
+      case "usuarios":
+      case "waitlist":
+      case "mensajes":
+      case "empleos":
+      case "equipo":
+      case "socios":
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <h2 className="text-3xl font-bold text-foreground">
+                {menuItems.find((m) => m.id === activeSection)?.label}
+              </h2>
+              <button className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2">
+                <Plus className="w-5 h-5" />
+                Agregar Nuevo
+              </button>
+            </div>
+
+            <div className="bg-white rounded-lg border border-border/40 p-6">
+              <div className="mb-6 flex gap-4">
+                <div className="flex-1 relative">
+                  <Search className="absolute left-4 top-3 w-5 h-5 text-foreground/40" />
+                  <input
+                    type="text"
+                    placeholder="Buscar..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-12 pr-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-border/40">
+                      <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Nombre</th>
+                      <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Información</th>
+                      <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Estado</th>
+                      <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(items[activeSection as keyof typeof items] || []).map((item: any) => (
+                      <tr key={item.id} className="border-b border-border/40 hover:bg-secondary/30 transition-colors">
+                        <td className="px-4 py-3 text-sm text-foreground">{item.nombre || item.titulo || item.email}</td>
+                        <td className="px-4 py-3 text-sm text-foreground/60">
+                          {item.cantidad && `${item.cantidad} unidades`}
+                          {item.monto && item.monto}
+                          {item.autor && `Por: ${item.autor}`}
+                          {item.instructor && `Instructor: ${item.instructor}`}
+                          {item.tipo && item.tipo}
+                          {item.interes && item.interes}
+                          {item.asunto && item.asunto}
+                          {item.departamento && item.departamento}
+                          {item.categoria && item.categoria}
+                        </td>
+                        <td className="px-4 py-3 text-sm">
+                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                            item.estado === "Activo" || item.estado === "Publicado" || item.estado === "En Oferta" || item.estado === "Abierto"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-yellow-100 text-yellow-700"
+                          }`}>
+                            {item.estado}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3 text-sm space-x-2">
+                          <button className="p-2 hover:bg-secondary rounded-lg transition-colors">
+                            <Edit className="w-4 h-4 text-foreground/60 hover:text-primary" />
+                          </button>
+                          <button className="p-2 hover:bg-secondary rounded-lg transition-colors">
+                            <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "politicas":
+        return (
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-foreground">Políticas</h2>
+            <button className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2">
+              <Plus className="w-5 h-5" />
+              Agregar Política
+            </button>
+            <div className="space-y-4">
+              {[
+                { titulo: "Términos de Servicio", ultima: "2024-01-10", estado: "Vigente" },
+                { titulo: "Política de Privacidad", ultima: "2024-01-05", estado: "Vigente" },
+                { titulo: "Código de Conducta", ultima: "2023-12-20", estado: "Vigente" },
+              ].map((policy, idx) => (
+                <div key={idx} className="bg-white rounded-lg border border-border/40 p-6 flex items-center justify-between">
+                  <div>
+                    <h3 className="font-semibold text-foreground">{policy.titulo}</h3>
+                    <p className="text-sm text-foreground/60">Última actualización: {policy.ultima}</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">
+                      {policy.estado}
+                    </span>
+                    <Edit className="w-5 h-5 cursor-pointer hover:text-primary transition-colors" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case "denuncias":
+        return (
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-foreground">Denuncias y Reclamos</h2>
+            <div className="bg-white rounded-lg border border-border/40 p-6">
+              <div className="mb-6 flex gap-4">
+                <div className="flex-1 relative">
+                  <Search className="absolute left-4 top-3 w-5 h-5 text-foreground/40" />
+                  <input
+                    type="text"
+                    placeholder="Buscar denuncias..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-12 pr-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { id: 1, titulo: "Denuncia de Fraude", usuario: "User123", fecha: "2024-01-15", prioridad: "Alta", estado: "Pendiente" },
+                  { id: 2, titulo: "Comportamiento Inapropiado", usuario: "User456", fecha: "2024-01-14", prioridad: "Media", estado: "En Revisión" },
+                  { id: 3, titulo: "Error en Transacción", usuario: "User789", fecha: "2024-01-13", prioridad: "Alta", estado: "Resuelto" },
+                ].map((denuncia) => (
+                  <div key={denuncia.id} className="bg-white rounded-lg border border-border/40 p-4 flex items-center justify-between hover:bg-secondary/30 transition-colors">
+                    <div>
+                      <h3 className="font-semibold text-foreground">{denuncia.titulo}</h3>
+                      <p className="text-sm text-foreground/60">
+                        Usuario: {denuncia.usuario} • {denuncia.fecha}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                        denuncia.prioridad === "Alta" ? "bg-red-100 text-red-700" : "bg-yellow-100 text-yellow-700"
+                      }`}>
+                        {denuncia.prioridad}
+                      </span>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                        denuncia.estado === "Resuelto" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
+                      }`}>
+                        {denuncia.estado}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <Layout>
+      <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-blue-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-lg border border-border/40 p-6 sticky top-24 h-fit">
+                <h3 className="text-lg font-bold text-foreground mb-6">Admin</h3>
+                <nav className="space-y-2">
+                  {menuItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => setActiveSection(item.id)}
+                      className={`w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 font-medium text-sm ${
+                        activeSection === item.id
+                          ? "bg-primary text-white"
+                          : "text-foreground/70 hover:bg-secondary"
+                      }`}
+                    >
+                      {item.icon}
+                      {item.label}
+                    </button>
+                  ))}
+                </nav>
+                <button
+                  onClick={handleLogout}
+                  className="w-full mt-8 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold flex items-center justify-center gap-2"
+                >
+                  <LogOut className="w-5 h-5" />
+                  Salir
+                </button>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="lg:col-span-4">
+              <div className="bg-white rounded-lg border border-border/40 p-8">
+                {renderContent()}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+}
