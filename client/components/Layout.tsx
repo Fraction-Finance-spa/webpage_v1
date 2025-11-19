@@ -105,7 +105,7 @@ export default function Layout({ children }: LayoutProps) {
                 {item.submenu ? (
                   <>
                     <button className="text-foreground/70 hover:text-primary transition-colors py-2 font-medium flex items-center gap-1">
-                      <div style={{ color: "rgba(0, 0, 0, 1)", fontSize: "20px" }}>
+                      <div style={{ color: "rgba(0, 0, 0, 1)", fontSize: "18px" }}>
                         {item.label}
                       </div>
                       <ChevronDown className="w-4 h-4" style={{ color: "rgba(0, 0, 0, 1)" }} />
@@ -141,7 +141,7 @@ export default function Layout({ children }: LayoutProps) {
                       "text-foreground/70 hover:text-primary transition-colors py-2 font-medium",
                       location.pathname === item.path && "text-primary"
                     )}
-                    style={item.label === "Ecosistema" ? { color: "rgba(0, 0, 0, 1)", fontSize: "20px" } : undefined}
+                    style={item.label === "Ecosistema" ? { color: "rgba(0, 0, 0, 1)", fontSize: "18px" } : undefined}
                   >
                     {item.label}
                   </Link>
