@@ -9,6 +9,7 @@ export default function Auth() {
   // Login state
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [loginProfileType, setLoginProfileType] = useState<"persona" | "empresa" | "">("");
   
   // Signup state
   const [signupFirstName, setSignupFirstName] = useState("");
@@ -31,6 +32,11 @@ export default function Auth() {
       return;
     }
 
+    if (!loginProfileType) {
+      setError("Por favor selecciona un tipo de perfil");
+      return;
+    }
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginEmail)) {
       setError("Por favor ingresa un email válido");
       return;
@@ -45,6 +51,7 @@ export default function Auth() {
     setTimeout(() => {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userEmail", loginEmail);
+      localStorage.setItem("userProfileType", loginProfileType);
       setLoading(false);
       navigate("/profile");
     }, 1000);
@@ -96,6 +103,7 @@ export default function Auth() {
     setError("");
     setLoginEmail("");
     setLoginPassword("");
+    setLoginProfileType("");
     setSignupFirstName("");
     setSignupLastName("");
     setSignupEmail("");
@@ -189,6 +197,36 @@ export default function Auth() {
                       <p className="text-red-600 text-sm font-medium">{error}</p>
                     </div>
                   )}
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-semibold text-gray-800">
+                      Tipo de Perfil *
+                    </label>
+                    <div className="space-y-2">
+                      <label className="flex items-center gap-3 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                        <input
+                          type="radio"
+                          name="loginProfileType"
+                          value="persona"
+                          checked={loginProfileType === "persona"}
+                          onChange={(e) => setLoginProfileType(e.target.value as "persona")}
+                          className="w-4 h-4 text-primary cursor-pointer"
+                        />
+                        <span className="font-medium text-gray-900">Perfil Persona</span>
+                      </label>
+                      <label className="flex items-center gap-3 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                        <input
+                          type="radio"
+                          name="loginProfileType"
+                          value="empresa"
+                          checked={loginProfileType === "empresa"}
+                          onChange={(e) => setLoginProfileType(e.target.value as "empresa")}
+                          className="w-4 h-4 text-primary cursor-pointer"
+                        />
+                        <span className="font-medium text-gray-900">Perfil Empresa</span>
+                      </label>
+                    </div>
+                  </div>
 
                   <div className="space-y-2">
                     <label htmlFor="login-email" className="block text-sm font-semibold text-gray-800">
