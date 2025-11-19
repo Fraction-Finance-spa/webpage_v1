@@ -125,29 +125,15 @@ export default function Index() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative p-8 sm:p-10 text-center h-full flex flex-col items-center justify-center">
-                  {i === 2 ? (
-                    <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500"
-                      style={{
-                        backgroundColor: "rgba(255, 255, 255, 0.8)",
-                        boxShadow: "0 8px 24px rgba(0, 26, 255, 0.1)",
-                        animation: `${asset.animation} 3s ease-in-out infinite`
-                      }}
-                    >
-                      <asset.icon className="w-7 h-7" style={{ color: "rgb(0, 26, 255)", stroke: "rgb(0, 26, 255)" }} />
-                    </div>
-                  ) : (
-                    <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500"
-                      style={{
-                        background: "linear-gradient(135deg, rgba(0, 26, 255, 0.15) 0%, rgba(0, 26, 255, 0.05) 100%)",
-                        boxShadow: "0 8px 24px rgba(0, 26, 255, 0.08)",
-                        animation: `${asset.animation} 3s ease-in-out infinite`
-                      }}
-                    >
-                      <asset.icon className="w-7 h-7 text-primary" />
-                    </div>
-                  )}
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(0, 26, 255, 0.15) 0%, rgba(0, 26, 255, 0.05) 100%)",
+                      boxShadow: "0 8px 24px rgba(0, 26, 255, 0.08)"
+                    }}
+                  >
+                    <asset.icon className="w-7 h-7 text-primary" />
+                  </div>
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     {asset.name}
                   </h3>
