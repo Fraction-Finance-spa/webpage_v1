@@ -12,6 +12,7 @@ import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import FinancingForm from "./pages/FinancingForm";
 import Admin from "./pages/Admin";
+import Contact from "./pages/Contact";
 import Placeholder from "./pages/Placeholder";
 
 const queryClient = new QueryClient();
@@ -63,7 +64,7 @@ export default function App() {
             <Route path="/nosotros/educacion" element={<Placeholder />} />
             <Route path="/nosotros/blog" element={<Placeholder />} />
             <Route path="/nosotros/careers" element={<Placeholder />} />
-            <Route path="/nosotros/contacto" element={<Placeholder />} />
+            <Route path="/nosotros/contacto" element={<Contact />} />
 
             {/* Admin */}
             <Route path="/admin" element={<Admin />} />
