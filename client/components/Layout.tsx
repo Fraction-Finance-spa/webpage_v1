@@ -173,6 +173,7 @@ export default function Layout({ children }: LayoutProps) {
                 <Link
                   to="/login"
                   className="px-4 py-2 text-foreground/70 hover:text-primary transition-colors font-medium"
+                  style={{ color: "rgba(0, 0, 0, 1)", fontSize: "16px" }}
                 >
                   Ingresar
                 </Link>
