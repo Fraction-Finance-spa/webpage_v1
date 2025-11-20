@@ -258,7 +258,7 @@ export default function Layout({ children }: LayoutProps) {
                             <Link
                               key={subitem.label}
                               to={subitem.path || "#"}
-                              className="block px-4 py-2 text-foreground/60 hover:text-primary text-sm transition-colors flex items-center gap-2"
+                              className="block px-4 py-3 text-foreground/60 hover:text-primary transition-colors"
                               onClick={(e) => {
                                 setMobileMenuOpen(false);
                                 if (subitem.label === "Financiamiento") {
@@ -266,8 +266,15 @@ export default function Layout({ children }: LayoutProps) {
                                 }
                               }}
                             >
-                              {subitem.icon}
-                              {subitem.label}
+                              <div className="flex items-center gap-2 mb-1 font-medium text-sm">
+                                {subitem.icon}
+                                {subitem.label}
+                              </div>
+                              {subitem.description && (
+                                <div className="text-foreground/50 text-xs ml-7">
+                                  {subitem.description}
+                                </div>
+                              )}
                             </Link>
                           ))}
                         </div>
