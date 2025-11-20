@@ -412,7 +412,6 @@ export default function Admin() {
 
       case "activos":
       case "sto":
-      case "blog":
       case "educacion":
       case "usuarios":
       case "waitlist":
