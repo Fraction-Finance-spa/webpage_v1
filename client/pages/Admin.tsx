@@ -216,10 +216,6 @@ export default function Admin() {
       { id: 1, nombre: "Carlos", email: "carlos@example.com", asunto: "Consulta sobre STOs", leido: false },
       { id: 2, nombre: "Ana", email: "ana@example.com", asunto: "Solicitud de Información", leido: true },
     ],
-    empleos: [
-      { id: 1, posicion: "Desarrollador Senior", departamento: "Tech", estado: "Abierto" },
-      { id: 2, posicion: "Community Manager", departamento: "Marketing", estado: "Abierto" },
-    ],
     equipo: [
       { id: 1, nombre: "Carlos González", rol: "CEO", departamento: "Directiva" },
       { id: 2, nombre: "María López", rol: "CTO", departamento: "Tech" },
