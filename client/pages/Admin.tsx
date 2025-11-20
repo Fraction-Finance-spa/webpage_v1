@@ -309,6 +309,122 @@ export default function Admin() {
           </div>
         );
 
+      case "equipo":
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <h2 className="text-3xl font-bold text-foreground">Equipo</h2>
+            </div>
+
+            <div className="bg-white rounded-lg border border-border/40 p-8">
+              <h3 className="text-xl font-bold text-foreground mb-6">
+                {editingTeamMember ? "Editar Miembro del Equipo" : "Agregar Miembro del Equipo"}
+              </h3>
+              <form onSubmit={handleTeamFormSubmit} className="space-y-4 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Nombre</label>
+                    <input
+                      type="text"
+                      name="nombre"
+                      value={teamForm.nombre}
+                      onChange={handleTeamFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Rol</label>
+                    <input
+                      type="text"
+                      name="rol"
+                      value={teamForm.rol}
+                      onChange={handleTeamFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Departamento</label>
+                    <input
+                      type="text"
+                      name="departamento"
+                      value={teamForm.departamento}
+                      onChange={handleTeamFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Biografía</label>
+                  <textarea
+                    name="bio"
+                    value={teamForm.bio}
+                    onChange={handleTeamFormChange}
+                    rows={4}
+                    className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
+                  >
+                    {editingTeamMember ? "Actualizar" : "Agregar"}
+                  </button>
+                  {editingTeamMember && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingTeamMember(null);
+                        setTeamForm({ nombre: "", rol: "", departamento: "", bio: "" });
+                      }}
+                      className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
+                    >
+                      Cancelar
+                    </button>
+                  )}
+                </div>
+              </form>
+
+              <div className="border-t border-border/40 pt-6">
+                <h3 className="text-lg font-bold text-foreground mb-4">Miembros Actuales</h3>
+                <div className="space-y-3">
+                  {teamMembers.map((member) => (
+                    <div
+                      key={member.id}
+                      className="flex items-center justify-between bg-secondary/30 p-4 rounded-lg hover:bg-secondary/50 transition-colors"
+                    >
+                      <div>
+                        <h4 className="font-semibold text-foreground">{member.nombre}</h4>
+                        <p className="text-sm text-foreground/60">{member.rol} • {member.departamento}</p>
+                        {member.bio && <p className="text-sm text-foreground/50 mt-1">{member.bio}</p>}
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleEditTeamMember(member)}
+                          className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                        >
+                          <Edit className="w-4 h-4 text-foreground/60 hover:text-primary" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteTeamMember(member.id)}
+                          className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
       case "politicas":
         return (
           <div className="space-y-6">
