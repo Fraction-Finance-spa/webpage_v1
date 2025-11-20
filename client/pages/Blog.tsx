@@ -23,39 +23,16 @@ export default function Blog() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section
-        className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
-        style={{
-          backgroundImage:
-            "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fc2c24d2c61be44c58d8307f0bb9149f7)",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          minHeight: "500px",
-          padding: "100px 32px 80px 32px",
-        }}
-      >
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-10 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-gradient-to-tl from-primary/15 to-transparent rounded-full filter blur-3xl opacity-25 animate-pulse" style={{ animationDelay: "1s" }}></div>
-        </div>
+      <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-blue-50" style={{ paddingTop: "80px" }}>
+        <div className="max-w-6xl mx-auto" style={{ paddingTop: "40px" }}>
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h1 className="text-5xl font-bold text-foreground mb-4">Blog</h1>
+            <p className="text-xl text-foreground/70">
+              Artículos y análisis sobre finanzas digitales, inversión y activos tokenizados
+            </p>
+          </div>
 
-        <div className="container max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight mb-6">
-            <span style={{ color: "rgba(255, 255, 255, 1)", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)" }}>
-              Blog
-            </span>
-          </h1>
-          <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto" style={{ color: "rgba(255, 255, 255, 0.95)", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)" }}>
-            Artículos y análisis sobre finanzas digitales e inversión
-          </p>
-        </div>
-      </section>
-
-      {/* Blog Articles Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20">
-        <div className="container max-w-6xl mx-auto">
           {/* Category Filter */}
           {categories.length > 1 && (
             <div className="flex flex-wrap gap-3 mb-12 justify-center">
@@ -66,7 +43,7 @@ export default function Blog() {
                   className={`px-6 py-2 rounded-full font-semibold transition-all ${
                     selectedCategory === category
                       ? "bg-primary text-white shadow-lg"
-                      : "bg-secondary/30 border border-border/40 text-foreground hover:bg-secondary/50"
+                      : "bg-white border border-border/40 text-foreground hover:bg-secondary/20"
                   }`}
                 >
                   {category}
@@ -81,15 +58,23 @@ export default function Blog() {
               {filteredArticles.map((article) => (
                 <article
                   key={article.id}
-                  className="bg-white rounded-2xl border border-border/40 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+                  className="bg-white rounded-lg border border-border/40 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
                 >
-                  {article.imagen && (
+                  {article.imagen ? (
                     <div className="w-full h-48 overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5">
                       <img
                         src={article.imagen}
                         alt={article.titulo}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
+                    </div>
+                  ) : (
+                    <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                      <div className="text-primary/40">
+                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
                     </div>
                   )}
 
@@ -100,23 +85,23 @@ export default function Blog() {
                       </span>
                     )}
 
-                    <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2">
+                    <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2">
                       {article.titulo}
                     </h3>
 
                     {article.resumen && (
-                      <p className="text-foreground/70 mb-4 line-clamp-2">
+                      <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
                         {article.resumen}
                       </p>
                     )}
 
-                    <div className="flex items-center gap-4 text-sm text-foreground/60 mb-4 mt-auto">
+                    <div className="flex items-center gap-4 text-xs text-foreground/60 mb-4 mt-auto">
                       <div className="flex items-center gap-1">
-                        <User className="w-4 h-4" />
+                        <User className="w-3 h-3" />
                         <span>{article.autor}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
+                        <Calendar className="w-3 h-3" />
                         <span>
                           {new Date(article.fechaCreacion).toLocaleDateString("es-ES")}
                         </span>
@@ -125,7 +110,7 @@ export default function Blog() {
 
                     <a
                       href={`/nosotros/blog/${article.id}`}
-                      className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all font-semibold"
+                      className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all font-semibold text-sm"
                     >
                       Leer más
                       <ArrowRight className="w-4 h-4" />
@@ -142,7 +127,7 @@ export default function Blog() {
             </div>
           )}
         </div>
-      </section>
+      </div>
     </Layout>
   );
 }
