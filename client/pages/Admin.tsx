@@ -231,7 +231,6 @@ export default function Admin() {
       case "waitlist":
       case "mensajes":
       case "empleos":
-      case "equipo":
       case "socios":
         return (
           <div className="space-y-6">
