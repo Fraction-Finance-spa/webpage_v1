@@ -42,6 +42,55 @@ export default function Admin() {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState<AdminSection>("dashboard");
   const [searchTerm, setSearchTerm] = useState("");
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [editingTeamMember, setEditingTeamMember] = useState<TeamMember | null>(null);
+  const [teamForm, setTeamForm] = useState({
+    nombre: "",
+    rol: "",
+    departamento: "",
+    bio: "",
+  });
+
+  useEffect(() => {
+    setTeamMembers(getTeamMembers());
+  }, []);
+
+  const handleTeamFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTeamForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleTeamFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (editingTeamMember) {
+      updateTeamMember(editingTeamMember.id, teamForm);
+    } else {
+      addTeamMember(teamForm);
+    }
+    setTeamMembers(getTeamMembers());
+    setTeamForm({ nombre: "", rol: "", departamento: "", bio: "" });
+    setEditingTeamMember(null);
+  };
+
+  const handleEditTeamMember = (member: TeamMember) => {
+    setEditingTeamMember(member);
+    setTeamForm({
+      nombre: member.nombre,
+      rol: member.rol,
+      departamento: member.departamento,
+      bio: member.bio || "",
+    });
+  };
+
+  const handleDeleteTeamMember = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar este miembro del equipo?")) {
+      deleteTeamMember(id);
+      setTeamMembers(getTeamMembers());
+    }
+  };
 
   const menuItems = [
     { id: "dashboard", label: "Panel", icon: <LayoutDashboard className="w-5 h-5" /> },
