@@ -19,7 +19,7 @@ export default function AboutCompany() {
             <div className="flex justify-center" style={{ margin: "40px 0 24px" }}>
               <Lightbulb className="w-16 h-16 text-primary" />
             </div>
-            <h1 className="text-5xl sm:text-6xl font-bold text-foreground mb-6">
+            <h1 className="font-bold text-foreground mb-6" style={{ fontSize: "48px", fontWeight: "700", letterSpacing: "normal", lineHeight: "48px" }}>
               Nuestra Visión
             </h1>
             <p className="text-2xl font-semibold text-primary mb-4">
