@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
-import { Calendar, User, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import { getPublishedArticles, type BlogArticle } from "@/lib/blogManager";
 
 export default function Blog() {
@@ -97,13 +97,9 @@ export default function Blog() {
 
                     <div className="flex items-center gap-4 text-xs text-foreground/60 mb-4 mt-auto">
                       <div className="flex items-center gap-1">
-                        <User className="w-3 h-3" />
-                        <span>{article.autor}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         <span>
-                          {new Date(article.fechaCreacion).toLocaleDateString("es-ES")}
+                          {new Date(article.fechaPublicacion || article.fechaCreacion).toLocaleDateString("es-ES")}
                         </span>
                       </div>
                     </div>
