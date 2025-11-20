@@ -73,6 +73,8 @@ export default function App() {
             <Route path="/nosotros/blog/:id" element={<ArticleDetail />} />
             <Route path="/nosotros/careers" element={<Careers />} />
             <Route path="/nosotros/contacto" element={<Contact />} />
+            <Route path="/canal-denuncias" element={<DenunciasChannel />} />
+            <Route path="/canal-reclamos" element={<ReclamosChannel />} />
 
             {/* Admin */}
             <Route path="/admin" element={<Admin />} />
