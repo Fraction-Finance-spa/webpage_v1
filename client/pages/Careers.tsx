@@ -40,17 +40,8 @@ export default function Careers() {
       </section>
 
       {/* Jobs Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-secondary/20">
+      <section className="px-4 sm:px-6 lg:px-8 bg-secondary/20" style={{ padding: "10px 32px 80px" }}>
         <div className="container max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Posiciones Abiertas
-            </h2>
-            <p className="text-xl text-foreground/70">
-              {filteredJobs.length} oportunidad{filteredJobs.length !== 1 ? "s" : ""} disponible{filteredJobs.length !== 1 ? "s" : ""}
-            </p>
-          </div>
-
           {/* Department Filter */}
           <div className="flex flex-wrap gap-3 mb-12 justify-center">
             {departments.map((dept) => (
