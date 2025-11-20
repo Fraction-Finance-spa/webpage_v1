@@ -122,6 +122,38 @@ export default function Admin() {
     }
   };
 
+  const handleUpdateDenunciaStatus = (id: string, nuevoEstado: string) => {
+    const updated = denuncias.map((d) =>
+      d.id === id ? { ...d, estado: nuevoEstado } : d
+    );
+    setDenuncias(updated);
+    localStorage.setItem("denuncias", JSON.stringify(updated));
+  };
+
+  const handleDeleteDenuncia = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar esta denuncia?")) {
+      const updated = denuncias.filter((d) => d.id !== id);
+      setDenuncias(updated);
+      localStorage.setItem("denuncias", JSON.stringify(updated));
+    }
+  };
+
+  const handleUpdateReclamoStatus = (id: string, nuevoEstado: string) => {
+    const updated = reclamos.map((r) =>
+      r.id === id ? { ...r, estado: nuevoEstado } : r
+    );
+    setReclamos(updated);
+    localStorage.setItem("reclamos", JSON.stringify(updated));
+  };
+
+  const handleDeleteReclamo = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar este reclamo?")) {
+      const updated = reclamos.filter((r) => r.id !== id);
+      setReclamos(updated);
+      localStorage.setItem("reclamos", JSON.stringify(updated));
+    }
+  };
+
   const [jobs, setJobs] = useState<Job[]>([]);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
   const [jobForm, setJobForm] = useState({
