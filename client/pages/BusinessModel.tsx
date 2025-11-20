@@ -119,12 +119,11 @@ export default function BusinessModel() {
                     <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="relative p-8">
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0">
-                          <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10">
+                        <div className="flex-shrink-0" />
+                        <div className="flex flex-col">
+                          <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 mx-auto">
                             <CheckCircle2 className="h-6 w-6 text-primary" />
                           </div>
-                        </div>
-                        <div>
                           <h4 className="text-lg font-bold text-foreground mb-2">
                             {instrument.title}
                           </h4>
