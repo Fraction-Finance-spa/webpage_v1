@@ -365,7 +365,7 @@ export default function Layout({ children }: LayoutProps) {
               <ul className="space-y-3 text-sm">
                 <li>
                   <Link
-                    to="/nosotros"
+                    to="/nosotros/empresa"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Nosotros
