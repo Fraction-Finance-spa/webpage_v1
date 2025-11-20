@@ -75,7 +75,7 @@ export default function ReclamosChannel() {
       <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-blue-50">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" style={{ paddingTop: "50px" }}>
             <div className="inline-block mb-4 p-3 bg-blue-100 rounded-lg">
               <MessageSquare className="w-8 h-8 text-primary" />
             </div>
