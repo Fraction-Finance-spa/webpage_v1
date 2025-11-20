@@ -25,6 +25,7 @@ import {
   Plus,
   Search,
   LogOut,
+  MessageSquare,
 } from "lucide-react";
 
 type AdminSection =
