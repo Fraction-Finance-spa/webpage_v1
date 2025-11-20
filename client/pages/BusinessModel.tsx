@@ -71,6 +71,29 @@ export default function BusinessModel() {
     },
   ];
 
+  const processSteps = [
+    {
+      number: 1,
+      title: "Solicitud de Financiamiento",
+      description: "La empresa presenta su necesidad de capital y carga la información requerida para evaluar y estructurar la oportunidad.",
+    },
+    {
+      number: 2,
+      title: "Creación de la Oferta",
+      description: "Una vez validado el caso, se genera una oferta tokenizada con sus condiciones: monto, plazo, tasa y estructura del instrumento.",
+    },
+    {
+      number: 3,
+      title: "Aportantes Financian la Oferta",
+      description: "Inversionistas retail e institucionales participan aportando capital de forma fraccionada mediante activos digitales.",
+    },
+    {
+      number: 4,
+      title: "Transferencia del Financiamiento",
+      description: "Al completarse el fondeo, los recursos se liberan automáticamente a la empresa y comienza el ciclo de pago según las reglas del activo.",
+    },
+  ];
+
   return (
     <Layout>
       <div className="min-h-screen bg-blue-50" style={{ paddingTop: "80px" }}>
