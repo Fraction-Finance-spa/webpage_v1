@@ -443,20 +443,20 @@ export default function Layout({ children }: LayoutProps) {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/canal-denuncias"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Canal de Denuncias
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/canal-reclamos"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Canal de Reclamos
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
