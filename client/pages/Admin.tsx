@@ -35,7 +35,6 @@ type AdminSection =
   | "blog"
   | "educacion"
   | "usuarios"
-  | "waitlist"
   | "mensajes"
   | "empleos"
   | "equipo"
