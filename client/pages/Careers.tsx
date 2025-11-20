@@ -25,38 +25,8 @@ export default function Careers() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section
-        className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
-        style={{
-          backgroundImage:
-            "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fc2c24d2c61be44c58d8307f0bb9149f7)",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          minHeight: "600px",
-          padding: "120px 32px 80px 32px",
-        }}
-      >
-        <div className="absolute inset-0 -z-10" style={{ backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F6167da881eab41e9aebafce58dbb6d51)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover" }}>
-          <div className="absolute top-10 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-gradient-to-tl from-primary/15 to-transparent rounded-full filter blur-3xl opacity-25 animate-pulse" style={{ animationDelay: "1s" }}></div>
-        </div>
-
-        <div className="container max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight mb-6">
-            <span style={{ color: "rgba(255, 255, 255, 1)", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)" }}>
-              Trabaja con Nosotros
-            </span>
-          </h1>
-          <p className="text-xl sm:text-2xl text-foreground/80 max-w-3xl mx-auto" style={{ color: "rgba(255, 255, 255, 0.95)", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)" }}>
-            Únete a un equipo apasionado por revolucionar el mundo de las finanzas digitales
-          </p>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20">
+      {/* Main Section */}
+      <section className="px-4 sm:px-6 lg:px-8" style={{ padding: "80px 32px 0" }}>
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-6">
