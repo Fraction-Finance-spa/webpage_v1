@@ -81,7 +81,7 @@ export default function AboutCompany() {
               <div className="relative p-8">
                 <div className="flex items-center gap-4 mb-4">
                   <Eye className="w-8 h-8 text-primary flex-shrink-0" />
-                  <h3 className="text-2xl font-bold text-foreground">Democratizar el Acceso</h3>
+                  <h3 className="text-2xl font-bold text-foreground">Fácil acceso</h3>
                 </div>
                 <p className="text-foreground/70">
                   Rompemos barreras para que los mercados de capitales sean accesibles para todos, en todas partes.
