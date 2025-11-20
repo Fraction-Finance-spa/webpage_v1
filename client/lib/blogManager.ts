@@ -1,7 +1,6 @@
 export interface BlogArticle {
   id: string;
   titulo: string;
-  autor: string;
   contenido: string;
   imagen?: string;
   imagenFileName?: string;
@@ -9,6 +8,7 @@ export interface BlogArticle {
   estado: "Publicado" | "Borrador";
   fechaCreacion: string;
   fechaActualizacion: string;
+  fechaPublicacion?: string;
   categoria?: string;
 }
 
@@ -18,23 +18,23 @@ const defaultArticles: BlogArticle[] = [
   {
     id: "1",
     titulo: "Cómo invertir en STOs",
-    autor: "Admin",
     contenido: "Los STOs (Security Token Offerings) representan una nueva forma de invertir en activos digitales. En este artículo explicamos cómo funcionan y cómo empezar a invertir.",
     resumen: "Guía completa sobre STOs y cómo comenzar a invertir en ellos.",
     estado: "Publicado",
     fechaCreacion: new Date().toISOString(),
     fechaActualizacion: new Date().toISOString(),
+    fechaPublicacion: new Date().toISOString(),
     categoria: "Inversión",
   },
   {
     id: "2",
     titulo: "Guía de Activos Digitales",
-    autor: "Admin",
     contenido: "Los activos digitales son la revolución del mercado financiero moderno. Aprende qué son, cómo funcionan y por qué deberías considerarlos en tu cartera de inversión.",
     resumen: "Todo lo que necesitas saber sobre activos digitales y su impacto en las finanzas.",
     estado: "Publicado",
     fechaCreacion: new Date().toISOString(),
     fechaActualizacion: new Date().toISOString(),
+    fechaPublicacion: new Date().toISOString(),
     categoria: "Educación",
   },
 ];
@@ -66,6 +66,7 @@ export function addArticle(article: Omit<BlogArticle, "id" | "fechaCreacion" | "
     id: Date.now().toString(),
     fechaCreacion: new Date().toISOString(),
     fechaActualizacion: new Date().toISOString(),
+    fechaPublicacion: article.fechaPublicacion || new Date().toISOString(),
   };
   articles.push(newArticle);
   saveArticles(articles);
