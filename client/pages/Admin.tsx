@@ -196,12 +196,12 @@ export default function Admin() {
   const [editingArticle, setEditingArticle] = useState<BlogArticle | null>(null);
   const [articleForm, setArticleForm] = useState({
     titulo: "",
-    autor: "",
     contenido: "",
     resumen: "",
     categoria: "",
     estado: "Borrador" as const,
     imagen: "",
+    fechaPublicacion: new Date().toISOString().split('T')[0],
   });
   const [articleImage, setArticleImage] = useState<File | null>(null);
 
@@ -238,25 +238,30 @@ export default function Admin() {
 
   const handleArticleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!articleForm.titulo || !articleForm.autor || !articleForm.contenido) {
+    if (!articleForm.titulo || !articleForm.contenido) {
       alert("Por favor completa todos los campos requeridos.");
       return;
     }
 
+    const articleData = {
+      ...articleForm,
+      fechaPublicacion: articleForm.fechaPublicacion ? new Date(articleForm.fechaPublicacion).toISOString() : new Date().toISOString(),
+    };
+
     if (editingArticle) {
-      updateArticle(editingArticle.id, articleForm);
+      updateArticle(editingArticle.id, articleData);
     } else {
-      addArticle(articleForm);
+      addArticle(articleData);
     }
     setArticles(getArticles());
     setArticleForm({
       titulo: "",
-      autor: "",
       contenido: "",
       resumen: "",
       categoria: "",
       estado: "Borrador",
       imagen: "",
+      fechaPublicacion: new Date().toISOString().split('T')[0],
     });
     setArticleImage(null);
     setEditingArticle(null);
@@ -266,12 +271,12 @@ export default function Admin() {
     setEditingArticle(article);
     setArticleForm({
       titulo: article.titulo,
-      autor: article.autor,
       contenido: article.contenido,
       resumen: article.resumen || "",
       categoria: article.categoria || "",
       estado: article.estado,
       imagen: article.imagen || "",
+      fechaPublicacion: article.fechaPublicacion ? article.fechaPublicacion.split('T')[0] : new Date().toISOString().split('T')[0],
     });
   };
 
