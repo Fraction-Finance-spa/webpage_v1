@@ -26,21 +26,29 @@ export default function AboutCompany() {
         {/* Mission Section */}
         <div className="max-w-6xl mx-auto mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="bg-white rounded-lg border border-border/40 p-8 shadow-lg">
-              <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
-                <div>
-                  Nuestra Misión
-                </div>
-              </h2>
-              <p className="text-foreground/70 leading-relaxed">
-                Cambiar la forma de invertir en activos financieros, simple, segura y accesible para todos
-              </p>
+            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8 h-full flex flex-col justify-center">
+                <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
+                  <div>
+                    Nuestra Misión
+                  </div>
+                </h2>
+                <p className="text-foreground/70 leading-relaxed">
+                  Cambiar la forma de invertir en activos financieros, simple, segura y accesible para todos
+                </p>
+              </div>
             </div>
-            <div className="bg-white rounded-lg border border-border/40 p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Nuestra Visión Futura</h3>
-              <p className="text-foreground/70 leading-relaxed">
-                Convertirnos en la plataforma referente de tokenización y finanzas descentralizadas, facilitando inversiones seguras y accesibles.
-              </p>
+            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8 h-full flex flex-col justify-center">
+                <h3 className="text-2xl font-bold text-foreground mb-4">Nuestra Visión Futura</h3>
+                <p className="text-foreground/70 leading-relaxed">
+                  Convertirnos en la plataforma referente de tokenización y finanzas descentralizadas, facilitando inversiones seguras y accesibles.
+                </p>
+              </div>
             </div>
           </div>
         </div>
