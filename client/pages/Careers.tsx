@@ -27,59 +27,14 @@ export default function Careers() {
     <Layout>
       {/* Main Section */}
       <section className="px-4 sm:px-6 lg:px-8" style={{ padding: "80px 32px 0" }}>
-        <div className="container max-w-6xl mx-auto">
+        <div className="container max-w-6xl mx-auto" style={{ margin: "40px auto 0" }}>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-6">
-              ¿Por qué unirse a Fraction Finance?
+              <p>Trabaja con nosotros</p>
             </h2>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
               Somos una empresa en crecimiento comprometida con la innovación, la inclusión y el impacto positivo en el ecosistema de activos digitales.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Cultura de Innovación",
-                description:
-                  "Trabajamos con tecnologías de punta y fomentamos la creatividad y el pensamiento innovador.",
-              },
-              {
-                title: "Equipo Talentoso",
-                description:
-                  "Te rodearás de profesionales expertos en finanzas, tecnología y regulaciones de activos digitales.",
-              },
-              {
-                title: "Crecimiento Profesional",
-                description:
-                  "Ofrecemos oportunidades de capacitación continua y desarrollo de carrera.",
-              },
-              {
-                title: "Impacto Real",
-                description:
-                  "Tu trabajo contribuye a democratizar el acceso a mercados financieros globales.",
-              },
-              {
-                title: "Beneficios Competitivos",
-                description:
-                  "Paquetes de compensación atractivos, flexibilidad laboral y beneficios integrales.",
-              },
-              {
-                title: "Ambiente Colaborativo",
-                description:
-                  "Fomentamos una cultura de colaboración, diversidad e inclusión.",
-              },
-            ].map((benefit, index) => (
-              <div
-                key={index}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300"
-              >
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-foreground/70">{benefit.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
