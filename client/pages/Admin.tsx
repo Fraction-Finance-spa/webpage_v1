@@ -620,11 +620,11 @@ export default function Admin() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-foreground mb-2">Autor</label>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Fecha de Publicación</label>
                     <input
-                      type="text"
-                      name="autor"
-                      value={articleForm.autor}
+                      type="date"
+                      name="fechaPublicacion"
+                      value={articleForm.fechaPublicacion}
                       onChange={handleArticleFormChange}
                       className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                       required
