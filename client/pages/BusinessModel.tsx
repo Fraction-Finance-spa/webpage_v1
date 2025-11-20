@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { CheckCircle2, Users, TrendingUp, Lock, Clock } from "lucide-react";
+import { CheckCircle2, Users, TrendingUp, Lock, Clock, Zap, Wallet } from "lucide-react";
 
 export default function BusinessModel() {
   const enterpriseBenefits = [
@@ -18,29 +18,34 @@ export default function BusinessModel() {
 
   const competitiveAdvantages = [
     {
-      title: "Acceso 24/7",
-      description: "A oportunidades de inversión sin límites horarios",
+      title: "Acceso 24/7 a oportunidades de financiamiento e inversión",
+      description: "Los activos tokenizados permiten operar sin restricciones de horarios ni intermediarios tradicionales.",
       icon: Clock,
     },
     {
-      title: "Mayor Liquidez",
-      description: "En activos históricamente ilíquidos",
+      title: "Mayor liquidez para instrumentos históricamente ilíquidos",
+      description: "La fraccionalización y los mercados digitales facilitan la compra, venta y transferencia de activos.",
       icon: TrendingUp,
     },
     {
-      title: "Costos Operativos Bajos",
-      description: "Gracias a la automatización y smart contracts",
-      icon: Users,
+      title: "Costos operativos reducidos mediante automatización",
+      description: "Los smart contracts eliminan procesos manuales y disminuyen costos de originación, gestión y liquidación.",
+      icon: Zap,
     },
     {
-      title: "Transparencia Total",
-      description: "En cada transacción y operación",
+      title: "Transparencia total y trazabilidad on-chain",
+      description: "Cada operación queda registrada en blockchain, permitiendo auditoría en tiempo real.",
       icon: CheckCircle2,
     },
     {
-      title: "Seguridad Integrada",
-      description: "Criptográfica y cumplimiento regulatorio",
+      title: "Seguridad criptográfica y cumplimiento regulatorio integrado",
+      description: "Infraestructura compatible con KYC, AML y normas financieras, reforzada por estándares de seguridad blockchain.",
       icon: Lock,
+    },
+    {
+      title: "Portafolios diversificados con exposición a activos reales",
+      description: "Los inversionistas pueden construir carteras más estables y resilientes al acceder a instrumentos de financiamiento respaldados por activos reales tokenizados.",
+      icon: Wallet,
     },
   ];
 
