@@ -32,7 +32,7 @@ export default function Careers() {
         <div className="container max-w-6xl mx-auto" style={{ margin: "40px auto 0" }}>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-6">
-              <p>Trabaja con nosotros</p>
+              <p style={{ fontWeight: "700", fontSize: "48px", lineHeight: "48px" }}>Trabaja con nosotros</p>
             </h2>
             <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
               Somos una empresa en crecimiento comprometida con la innovación, la inclusión y el impacto positivo en el ecosistema de activos digitales.
