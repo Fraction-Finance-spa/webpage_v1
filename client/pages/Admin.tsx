@@ -1269,19 +1269,30 @@ export default function Admin() {
                 </button>
               </div>
               <div className="bg-white rounded-lg border border-border/40 p-6 space-y-4">
-                <textarea
-                  value={policyContent}
-                  onChange={(e) => setPolicyContent(e.target.value)}
-                  rows={20}
-                  className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 font-mono text-sm"
-                  placeholder="Ingresa el contenido de la política en HTML..."
-                />
-                <button
-                  onClick={handleSavePolicy}
-                  className="w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
-                >
-                  Guardar Cambios
-                </button>
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Contenido de la Política
+                  </label>
+                  <PolicyRichTextEditor
+                    value={policyContent}
+                    onChange={setPolicyContent}
+                    placeholder={`Ingresa el contenido de la política de ${editingPolicy === "privacidad" ? "privacidad" : editingPolicy === "terminos" ? "términos" : "cookies"}...`}
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={handleSavePolicy}
+                    className="flex-1 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+                  >
+                    Guardar Cambios
+                  </button>
+                  <button
+                    onClick={() => setEditingPolicy(null)}
+                    className="flex-1 px-6 py-3 border border-border/40 text-foreground rounded-lg hover:bg-secondary transition-colors font-semibold"
+                  >
+                    Cancelar
+                  </button>
+                </div>
               </div>
             </div>
           );
