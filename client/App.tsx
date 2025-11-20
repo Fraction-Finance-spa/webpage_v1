@@ -65,7 +65,8 @@ export default function App() {
             <Route path="/nosotros/empresa" element={<AboutCompany />} />
             <Route path="/nosotros/modelo" element={<Placeholder />} />
             <Route path="/nosotros/educacion" element={<Placeholder />} />
-            <Route path="/nosotros/blog" element={<Placeholder />} />
+            <Route path="/nosotros/blog" element={<Blog />} />
+            <Route path="/nosotros/blog/:id" element={<Placeholder />} />
             <Route path="/nosotros/careers" element={<Careers />} />
             <Route path="/nosotros/contacto" element={<Contact />} />
 
