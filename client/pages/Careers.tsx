@@ -195,14 +195,19 @@ export default function Careers() {
           <p className="text-xl text-foreground/70 mb-8">
             Estamos siempre en busca de talento. Envíanos tu CV y nos pondremos en contacto si existe una oportunidad adecuada.
           </p>
-          <a
-            href="mailto:careers@fractionfinance.com"
+          <button
+            onClick={() => setShowCandidaturaForm(true)}
             className="inline-block px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg"
           >
             Enviar Candidatura
-          </a>
+          </button>
         </div>
       </section>
+
+      <CandidaturaForm
+        isOpen={showCandidaturaForm}
+        onClose={() => setShowCandidaturaForm(false)}
+      />
     </Layout>
   );
 }
