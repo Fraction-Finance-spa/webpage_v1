@@ -104,25 +104,29 @@ export default function BusinessModel() {
               <h3 className="text-2xl font-bold text-foreground mb-8">
                 Instrumentos que Tokenizamos
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {tokenizedInstruments.map((instrument, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-lg border border-border/40 p-6 hover:shadow-lg transition-shadow"
+                    className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10">
-                          <CheckCircle2 className="h-6 w-6 text-primary" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="relative p-8">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10">
+                            <CheckCircle2 className="h-6 w-6 text-primary" />
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-bold text-foreground mb-2">
-                          {instrument.title}
-                        </h4>
-                        <p className="text-foreground/70 leading-relaxed">
-                          {instrument.description}
-                        </p>
+                        <div>
+                          <h4 className="text-lg font-bold text-foreground mb-2">
+                            {instrument.title}
+                          </h4>
+                          <p className="text-foreground/70 leading-relaxed">
+                            {instrument.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -190,25 +194,29 @@ export default function BusinessModel() {
               financieros tradicionales, permitiendo:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {competitiveAdvantages.map((advantage, index) => {
                 const IconComponent = advantage.icon;
                 return (
                   <div
                     key={index}
-                    className="bg-white rounded-lg border border-border/40 p-6 hover:shadow-lg transition-shadow"
+                    className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
                   >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10">
-                        <IconComponent className="h-6 w-6 text-primary" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="relative p-8">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10">
+                          <IconComponent className="h-6 w-6 text-primary" />
+                        </div>
+                        <h3 className="font-bold text-foreground">
+                          {advantage.title}
+                        </h3>
                       </div>
-                      <h3 className="font-bold text-foreground">
-                        {advantage.title}
-                      </h3>
+                      <p className="text-foreground/70 leading-relaxed">
+                        {advantage.description}
+                      </p>
                     </div>
-                    <p className="text-foreground/70 leading-relaxed">
-                      {advantage.description}
-                    </p>
                   </div>
                 );
               })}
