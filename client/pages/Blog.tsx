@@ -27,7 +27,7 @@ export default function Blog() {
         <div className="max-w-6xl mx-auto" style={{ paddingTop: "40px" }}>
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold text-foreground mb-4">Blog</h1>
+            <h1 className="text-5xl text-foreground mb-4">Nuestros Artículos y Noticias</h1>
             <p className="text-xl text-foreground/70">
               Artículos y análisis sobre finanzas digitales, inversión y activos tokenizados
             </p>
