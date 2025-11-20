@@ -352,6 +352,7 @@ export default function Profile() {
   const displayName = userProfileType === "persona" ? personaData.nombre : empresaData.nombreEmpresa;
 
   const menuItems = [
+    { id: "portafolio", label: "Portafolio de Inversión", icon: <BarChart3 className="w-5 h-5" /> },
     { id: "cuenta", label: "Información de la Cuenta", icon: <User className="w-5 h-5" /> },
     { id: "inversion", label: "Perfil de Inversión", icon: <TrendingUp className="w-5 h-5" /> },
     { id: "verificacion", label: "Verificación de Usuario", icon: <CheckCircle className="w-5 h-5" /> },
