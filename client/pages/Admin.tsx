@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { RichTextEditor } from "@/components/RichTextEditor";
 import { getTeamMembers, addTeamMember, updateTeamMember, deleteTeamMember, type TeamMember } from "@/lib/teamManager";
 import { getJobs, addJob, updateJob, deleteJob, type Job } from "@/lib/jobsManager";
 import { type Candidatura } from "@/components/CandidaturaForm";
@@ -672,13 +673,10 @@ export default function Admin() {
 
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">Contenido</label>
-                  <textarea
-                    name="contenido"
+                  <RichTextEditor
                     value={articleForm.contenido}
-                    onChange={handleArticleFormChange}
-                    rows={8}
-                    className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
-                    required
+                    onChange={(value) => setArticleForm((prev) => ({ ...prev, contenido: value }))}
+                    placeholder="Ingresa el contenido del artículo..."
                   />
                 </div>
 
