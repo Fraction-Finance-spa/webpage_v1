@@ -27,20 +27,41 @@ import {
   LogOut,
 } from "lucide-react";
 
-type AdminSection = 
-  | "dashboard" 
-  | "activos" 
-  | "sto" 
-  | "blog" 
-  | "educacion" 
-  | "usuarios" 
-  | "waitlist" 
-  | "mensajes" 
-  | "empleos" 
-  | "equipo" 
-  | "socios" 
-  | "politicas" 
-  | "denuncias";
+type AdminSection =
+  | "dashboard"
+  | "activos"
+  | "sto"
+  | "blog"
+  | "educacion"
+  | "usuarios"
+  | "waitlist"
+  | "mensajes"
+  | "empleos"
+  | "equipo"
+  | "socios"
+  | "politicas"
+  | "denuncias"
+  | "reclamos";
+
+interface Denuncia {
+  id: string;
+  nombre: string;
+  email: string;
+  detalles: string;
+  anonimo: boolean;
+  fecha: string;
+  estado: string;
+}
+
+interface Reclamo {
+  id: string;
+  nombre: string;
+  email: string;
+  detalles: string;
+  anonimo: boolean;
+  fecha: string;
+  estado: string;
+}
 
 export default function Admin() {
   const navigate = useNavigate();
