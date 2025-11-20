@@ -144,12 +144,14 @@ export default function Layout({ children }: LayoutProps) {
                             idx === item.submenu.length - 1 && "rounded-b-lg"
                           )}
                         >
-                          <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2">
-                            {subitem.icon}
-                            {subitem.label}
+                          <div className="flex items-center gap-2 mb-1">
+                            <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2 flex-1">
+                              {subitem.icon}
+                              {subitem.label}
+                            </div>
                           </div>
                           {subitem.description && (
-                            <div className="text-foreground/50 text-xs mt-1">
+                            <div className="text-foreground/60 text-sm">
                               {subitem.description}
                             </div>
                           )}
