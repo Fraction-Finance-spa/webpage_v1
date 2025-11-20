@@ -124,7 +124,7 @@ export default function BusinessModel() {
                           <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 mx-auto">
                             <CheckCircle2 className="h-6 w-6 text-primary" />
                           </div>
-                          <h4 className="text-lg font-bold text-foreground mb-2">
+                          <h4 className="text-lg font-bold text-foreground mb-2 pt-2.5">
                             {instrument.title}
                           </h4>
                           <p className="text-foreground/70 leading-relaxed">
@@ -222,9 +222,6 @@ export default function BusinessModel() {
                           {advantage.title}
                         </h3>
                       </div>
-                      <p className="text-foreground/70 leading-relaxed text-sm">
-                        {advantage.description}
-                      </p>
                     </div>
                   </div>
                 );
