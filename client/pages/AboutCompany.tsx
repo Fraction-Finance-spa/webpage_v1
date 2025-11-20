@@ -125,11 +125,15 @@ export default function AboutCompany() {
 
         {/* Innovative Approach Section */}
         <div className="max-w-6xl mx-auto mb-20">
-          <div className="bg-white rounded-lg border border-border/40 p-12">
-            <h2 className="text-4xl font-bold text-foreground mb-6 text-center">Nuestro Enfoque Innovador</h2>
-            <p className="text-xl text-foreground/70 leading-relaxed">
-              Hemos diseñado un modelo de negocio transparente y sostenible que alinea nuestro éxito con el de nuestros clientes. Descubre cómo estamos creando valor en el ecosistema de activos digitales.
-            </p>
+          <div className="relative group overflow-hidden rounded-2xl transition-all duration-500">
+            <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative p-12">
+              <h2 className="text-4xl font-bold text-foreground mb-6 text-center">Nuestro Enfoque Innovador</h2>
+              <p className="text-xl text-foreground/70 leading-relaxed">
+                Hemos diseñado un modelo de negocio transparente y sostenible que alinea nuestro éxito con el de nuestros clientes. Descubre cómo estamos creando valor en el ecosistema de activos digitales.
+              </p>
+            </div>
           </div>
         </div>
 
