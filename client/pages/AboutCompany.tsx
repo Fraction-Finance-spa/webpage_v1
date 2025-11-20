@@ -51,11 +51,13 @@ export default function AboutCompany() {
             <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative p-8 h-full flex flex-col justify-center">
+              <div className="relative h-full flex flex-col justify-center" style={{ padding: "29px 32px 11px" }}>
                 <h3 className="text-2xl font-bold text-foreground mb-4">Nuestra Visión Futura</h3>
-                <p className="text-foreground/70 leading-relaxed">
-                  Convertirnos en la plataforma referente de tokenización y finanzas descentralizadas, facilitando inversiones seguras y accesibles.
-                </p>
+                <div className="text-foreground/70 leading-relaxed">
+                  <p>
+                    Convertirnos en la plataforma referente de tokenización y finanzas descentralizadas, facilitando el acceso a financiamiento e inversiones seguras.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
