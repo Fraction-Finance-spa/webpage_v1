@@ -289,20 +289,6 @@ export default function BusinessModel() {
               })}
             </div>
           </section>
-
-          {/* Closing Section */}
-          <section className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl text-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative p-8 md:p-12">
-              <p className="text-lg text-foreground leading-relaxed">
-                <strong>Fraction Finance</strong> crea un nuevo estándar para la
-                inversión y el financiamiento, llevando a las empresas a obtener
-                capital de manera más eficiente y a los inversionistas a acceder a
-                activos reales con mayor confianza y flexibilidad.
-              </p>
-            </div>
-          </section>
         </div>
       </div>
     </Layout>
