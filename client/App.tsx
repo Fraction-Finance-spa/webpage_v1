@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import FinancingForm from "./pages/FinancingForm";
 import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
+import AboutCompany from "./pages/AboutCompany";
 import Placeholder from "./pages/Placeholder";
 
 const queryClient = new QueryClient();
@@ -59,7 +60,7 @@ export default function App() {
             <Route path="/ecosistema" element={<Placeholder />} />
 
             {/* Nosotros */}
-            <Route path="/nosotros/empresa" element={<Placeholder />} />
+            <Route path="/nosotros/empresa" element={<AboutCompany />} />
             <Route path="/nosotros/modelo" element={<Placeholder />} />
             <Route path="/nosotros/educacion" element={<Placeholder />} />
             <Route path="/nosotros/blog" element={<Placeholder />} />
