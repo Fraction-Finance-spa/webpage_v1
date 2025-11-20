@@ -21,6 +21,9 @@ import ArticleDetail from "./pages/ArticleDetail";
 import Placeholder from "./pages/Placeholder";
 import DenunciasChannel from "./pages/DenunciasChannel";
 import ReclamosChannel from "./pages/ReclamosChannel";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiePolicy from "./pages/CookiePolicy";
 
 const queryClient = new QueryClient();
 
