@@ -93,6 +93,79 @@ export default function Admin() {
     }
   };
 
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [editingJob, setEditingJob] = useState<Job | null>(null);
+  const [jobForm, setJobForm] = useState({
+    titulo: "",
+    departamento: "",
+    ubicacion: "",
+    tipo: "",
+    descripcion: "",
+    requisitos: "",
+    beneficios: "",
+    estado: "Abierto" as const,
+  });
+
+  useEffect(() => {
+    setJobs(getJobs());
+  }, []);
+
+  const handleJobFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setJobForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleJobFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newJob = {
+      ...jobForm,
+      requisitos: jobForm.requisitos.split("\n").filter((r) => r.trim()),
+      beneficios: jobForm.beneficios.split("\n").filter((b) => b.trim()),
+    };
+
+    if (editingJob) {
+      updateJob(editingJob.id, newJob);
+    } else {
+      addJob(newJob);
+    }
+    setJobs(getJobs());
+    setJobForm({
+      titulo: "",
+      departamento: "",
+      ubicacion: "",
+      tipo: "",
+      descripcion: "",
+      requisitos: "",
+      beneficios: "",
+      estado: "Abierto",
+    });
+    setEditingJob(null);
+  };
+
+  const handleEditJob = (job: Job) => {
+    setEditingJob(job);
+    setJobForm({
+      titulo: job.titulo,
+      departamento: job.departamento,
+      ubicacion: job.ubicacion,
+      tipo: job.tipo,
+      descripcion: job.descripcion,
+      requisitos: job.requisitos?.join("\n") || "",
+      beneficios: job.beneficios?.join("\n") || "",
+      estado: job.estado,
+    });
+  };
+
+  const handleDeleteJob = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar esta posición?")) {
+      deleteJob(id);
+      setJobs(getJobs());
+    }
+  };
+
   const menuItems = [
     { id: "dashboard", label: "Panel", icon: <LayoutDashboard className="w-5 h-5" /> },
     { id: "activos", label: "Activos Digitales", icon: <Coins className="w-5 h-5" /> },
