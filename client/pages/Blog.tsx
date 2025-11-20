@@ -16,10 +16,15 @@ export default function Blog() {
     ...Array.from(new Set(articles.map((a) => a.categoria).filter((c) => c))),
   ];
 
-  const filteredArticles =
+  const filteredArticles = (
     selectedCategory === "Todos"
       ? articles
-      : articles.filter((a) => a.categoria === selectedCategory);
+      : articles.filter((a) => a.categoria === selectedCategory)
+  ).sort((a, b) => {
+    const dateA = new Date(a.fechaPublicacion || a.fechaCreacion).getTime();
+    const dateB = new Date(b.fechaPublicacion || b.fechaCreacion).getTime();
+    return dateB - dateA;
+  });
 
   return (
     <Layout>
