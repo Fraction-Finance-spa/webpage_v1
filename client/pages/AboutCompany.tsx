@@ -5,6 +5,11 @@ import { getTeamMembers, type TeamMember } from "@/lib/teamManager";
 
 export default function AboutCompany() {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+
+  useEffect(() => {
+    setTeamMembers(getTeamMembers());
+  }, []);
+
   return (
     <Layout>
       <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-blue-50" style={{ paddingTop: "80px" }}>
