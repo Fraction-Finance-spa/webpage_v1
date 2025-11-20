@@ -16,6 +16,7 @@ import Contact from "./pages/Contact";
 import AboutCompany from "./pages/AboutCompany";
 import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
+import ArticleDetail from "./pages/ArticleDetail";
 import Placeholder from "./pages/Placeholder";
 
 const queryClient = new QueryClient();
@@ -66,7 +67,7 @@ export default function App() {
             <Route path="/nosotros/modelo" element={<Placeholder />} />
             <Route path="/nosotros/educacion" element={<Placeholder />} />
             <Route path="/nosotros/blog" element={<Blog />} />
-            <Route path="/nosotros/blog/:id" element={<Placeholder />} />
+            <Route path="/nosotros/blog/:id" element={<ArticleDetail />} />
             <Route path="/nosotros/careers" element={<Careers />} />
             <Route path="/nosotros/contacto" element={<Contact />} />
 
