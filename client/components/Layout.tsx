@@ -419,28 +419,28 @@ export default function Layout({ children }: LayoutProps) {
               <h4 className="font-semibold text-lg mb-6 text-white">Legal</h4>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/politica-privacidad"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Política de Privacidad
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/terminos-servicio"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Términos de Servicio
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/politica-cookies"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Política de Cookies
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link
