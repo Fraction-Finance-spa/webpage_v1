@@ -737,12 +737,12 @@ export default function Admin() {
                         setEditingArticle(null);
                         setArticleForm({
                           titulo: "",
-                          autor: "",
                           contenido: "",
                           resumen: "",
                           categoria: "",
                           estado: "Borrador",
                           imagen: "",
+                          fechaPublicacion: new Date().toISOString().split('T')[0],
                         });
                         setArticleImage(null);
                       }}
