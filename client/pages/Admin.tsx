@@ -157,6 +157,22 @@ export default function Admin() {
     }
   };
 
+  const handleUpdateMensajeStatus = (id: string, nuevoEstado: string) => {
+    const updated = mensajesContacto.map((m) =>
+      m.id === id ? { ...m, estado: nuevoEstado } : m
+    );
+    setMensajesContacto(updated);
+    localStorage.setItem("mensajesContacto", JSON.stringify(updated));
+  };
+
+  const handleDeleteMensaje = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar este mensaje?")) {
+      const updated = mensajesContacto.filter((m) => m.id !== id);
+      setMensajesContacto(updated);
+      localStorage.setItem("mensajesContacto", JSON.stringify(updated));
+    }
+  };
+
   const [jobs, setJobs] = useState<Job[]>([]);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
   const [jobForm, setJobForm] = useState({
