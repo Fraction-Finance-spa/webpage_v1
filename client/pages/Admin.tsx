@@ -192,6 +192,96 @@ export default function Admin() {
     }
   };
 
+  const [articles, setArticles] = useState<BlogArticle[]>([]);
+  const [editingArticle, setEditingArticle] = useState<BlogArticle | null>(null);
+  const [articleForm, setArticleForm] = useState({
+    titulo: "",
+    autor: "",
+    contenido: "",
+    resumen: "",
+    categoria: "",
+    estado: "Borrador" as const,
+    imagen: "",
+  });
+  const [articleImage, setArticleImage] = useState<File | null>(null);
+
+  useEffect(() => {
+    setArticles(getArticles());
+  }, []);
+
+  const handleArticleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setArticleForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleArticleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert("La imagen es demasiado grande. Máximo 5MB.");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setArticleForm((prev) => ({
+          ...prev,
+          imagen: event.target?.result as string,
+        }));
+        setArticleImage(file);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleArticleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!articleForm.titulo || !articleForm.autor || !articleForm.contenido) {
+      alert("Por favor completa todos los campos requeridos.");
+      return;
+    }
+
+    if (editingArticle) {
+      updateArticle(editingArticle.id, articleForm);
+    } else {
+      addArticle(articleForm);
+    }
+    setArticles(getArticles());
+    setArticleForm({
+      titulo: "",
+      autor: "",
+      contenido: "",
+      resumen: "",
+      categoria: "",
+      estado: "Borrador",
+      imagen: "",
+    });
+    setArticleImage(null);
+    setEditingArticle(null);
+  };
+
+  const handleEditArticle = (article: BlogArticle) => {
+    setEditingArticle(article);
+    setArticleForm({
+      titulo: article.titulo,
+      autor: article.autor,
+      contenido: article.contenido,
+      resumen: article.resumen || "",
+      categoria: article.categoria || "",
+      estado: article.estado,
+      imagen: article.imagen || "",
+    });
+  };
+
+  const handleDeleteArticle = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar este artículo?")) {
+      deleteArticle(id);
+      setArticles(getArticles());
+    }
+  };
+
   const menuItems = [
     { id: "dashboard", label: "Panel", icon: <LayoutDashboard className="w-5 h-5" /> },
     { id: "activos", label: "Activos Digitales", icon: <Coins className="w-5 h-5" /> },
