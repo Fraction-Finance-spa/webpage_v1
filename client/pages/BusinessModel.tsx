@@ -162,6 +162,44 @@ export default function BusinessModel() {
             </div>
           </section>
 
+          {/* How It Works Section */}
+          <section className="mb-20">
+            <div className="mb-12">
+              <h2 className="text-4xl font-bold text-foreground mb-6 text-center">
+                ¿Cómo Funciona?
+              </h2>
+            </div>
+
+            <div className="flex flex-col gap-8">
+              {processSteps.map((step, index) => (
+                <div
+                  key={index}
+                  className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-8">
+                    <div className="flex gap-6">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center h-14 w-14 rounded-full bg-primary text-white font-bold text-lg">
+                          {step.number}
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-foreground mb-3">
+                          {step.title}
+                        </h3>
+                        <p className="text-foreground/70 leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
           {/* Ecosystem Section */}
           <section className="mb-20 relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
