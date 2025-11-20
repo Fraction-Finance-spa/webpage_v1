@@ -1254,29 +1254,63 @@ export default function Admin() {
         );
 
       case "politicas":
+        if (editingPolicy) {
+          return (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-3xl font-bold text-foreground">
+                  Editar Política de {editingPolicy === "privacidad" ? "Privacidad" : editingPolicy === "terminos" ? "Términos" : "Cookies"}
+                </h2>
+                <button
+                  onClick={() => setEditingPolicy(null)}
+                  className="px-6 py-2 border border-border/40 text-foreground rounded-lg hover:bg-secondary transition-colors font-semibold"
+                >
+                  Cancelar
+                </button>
+              </div>
+              <div className="bg-white rounded-lg border border-border/40 p-6 space-y-4">
+                <textarea
+                  value={policyContent}
+                  onChange={(e) => setPolicyContent(e.target.value)}
+                  rows={20}
+                  className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 font-mono text-sm"
+                  placeholder="Ingresa el contenido de la política en HTML..."
+                />
+                <button
+                  onClick={handleSavePolicy}
+                  className="w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+                >
+                  Guardar Cambios
+                </button>
+              </div>
+            </div>
+          );
+        }
+
         return (
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-foreground">Políticas</h2>
-            <button className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2">
-              <Plus className="w-5 h-5" />
-              Agregar Política
-            </button>
             <div className="space-y-4">
               {[
-                { titulo: "Términos de Servicio", ultima: "2024-01-10", estado: "Vigente" },
-                { titulo: "Política de Privacidad", ultima: "2024-01-05", estado: "Vigente" },
-                { titulo: "Código de Conducta", ultima: "2023-12-20", estado: "Vigente" },
-              ].map((policy, idx) => (
-                <div key={idx} className="bg-white rounded-lg border border-border/40 p-6 flex items-center justify-between">
+                { key: "privacidad", titulo: "Política de Privacidad", estado: "Vigente" },
+                { key: "terminos", titulo: "Términos de Servicio", estado: "Vigente" },
+                { key: "cookies", titulo: "Política de Cookies", estado: "Vigente" },
+              ].map((policy) => (
+                <div key={policy.key} className="bg-white rounded-lg border border-border/40 p-6 flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold text-foreground">{policy.titulo}</h3>
-                    <p className="text-sm text-foreground/60">Última actualización: {policy.ultima}</p>
+                    <p className="text-sm text-foreground/60">Última actualización: {new Date().toLocaleDateString('es-CL')}</p>
                   </div>
                   <div className="flex items-center gap-4">
                     <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">
                       {policy.estado}
                     </span>
-                    <Edit className="w-5 h-5 cursor-pointer hover:text-primary transition-colors" />
+                    <button
+                      onClick={() => handleEditPolicy(policy.key)}
+                      className="p-2 hover:bg-primary/10 rounded transition-colors"
+                    >
+                      <Edit className="w-5 h-5 cursor-pointer hover:text-primary transition-colors" />
+                    </button>
                   </div>
                 </div>
               ))}
