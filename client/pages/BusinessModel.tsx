@@ -203,7 +203,7 @@ export default function BusinessModel() {
               financieros tradicionales, permitiendo:
             </p>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               {competitiveAdvantages.map((advantage, index) => {
                 const IconComponent = advantage.icon;
                 return (
@@ -213,7 +213,7 @@ export default function BusinessModel() {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative p-8">
+                    <div className="relative p-6">
                       <div className="flex items-start gap-3 mb-4">
                         <div className="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10">
                           <IconComponent className="h-6 w-6 text-primary" />
