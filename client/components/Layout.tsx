@@ -345,49 +345,51 @@ export default function Layout({ children }: LayoutProps) {
 
       {/* Footer */}
       <footer className="bg-foreground text-white mt-20">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Footer Content Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+            {/* Logo Section */}
             <div>
-              <h3 className="font-bold text-lg mb-4">Fraction Finance</h3>
-              <p className="text-white/70 text-sm">
-                Impulsando el financiamiento colaborativo para empresas
+              <div className="mb-4">
+                <h3 className="font-bold text-2xl mb-2">Fraction Finance</h3>
+                <div className="w-12 h-1 bg-primary rounded-full"></div>
+              </div>
+              <p className="text-white/70 text-sm leading-relaxed">
+                Facilitamos las inversiones en fondos tokenizados.
               </p>
             </div>
+
+            {/* Empresa Section */}
             <div>
-              <h4 className="font-semibold mb-4">Productos</h4>
-              <ul className="space-y-2 text-sm">
+              <h4 className="font-semibold text-lg mb-6 text-white">Empresa</h4>
+              <ul className="space-y-3 text-sm">
                 <li>
                   <Link
-                    to="/productos/financiamiento"
+                    to="/nosotros"
                     className="text-white/70 hover:text-white transition-colors"
                   >
-                    Financiamiento
+                    Nosotros
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/productos/inversiones"
+                    to="/modelo-negocio"
                     className="text-white/70 hover:text-white transition-colors"
                   >
-                    Inversiones
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Nosotros</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    to="/nosotros/empresa"
-                    className="text-white/70 hover:text-white transition-colors"
-                  >
-                    Nuestra Empresa
+                    Modelo de Negocio
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/nosotros/blog"
+                    to="/educacion"
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    Educación Financiera
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/blog"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Blog
@@ -395,7 +397,15 @@ export default function Layout({ children }: LayoutProps) {
                 </li>
                 <li>
                   <Link
-                    to="/nosotros/contacto"
+                    to="/empleos"
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    Empleos
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contacto"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Contacto
@@ -403,15 +413,17 @@ export default function Layout({ children }: LayoutProps) {
                 </li>
               </ul>
             </div>
+
+            {/* Legal Section */}
             <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2 text-sm">
+              <h4 className="font-semibold text-lg mb-6 text-white">Legal</h4>
+              <ul className="space-y-3 text-sm">
                 <li>
                   <a
                     href="#"
                     className="text-white/70 hover:text-white transition-colors"
                   >
-                    Términos
+                    Política de Privacidad
                   </a>
                 </li>
                 <li>
@@ -419,21 +431,68 @@ export default function Layout({ children }: LayoutProps) {
                     href="#"
                     className="text-white/70 hover:text-white transition-colors"
                   >
-                    Privacidad
+                    Términos de Servicio
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    Política de Cookies
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    Canal de Denuncias
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    Canal de Reclamos
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contacto Section */}
+            <div>
+              <h4 className="font-semibold text-lg mb-6 text-white">Contacto</h4>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <a
+                    href="mailto:contacto@fractionfinance.cl"
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    contacto@fractionfinance.cl
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Administración Section */}
+            <div>
+              <h4 className="font-semibold text-lg mb-6 text-white">Administración</h4>
+              <ul className="space-y-3 text-sm">
                 <li>
                   <Link
                     to="/admin"
-                    className="text-white/70 hover:text-white transition-colors text-xs opacity-60 hover:opacity-100"
+                    className="text-white/70 hover:text-white transition-colors"
                   >
-                    Admin
+                    Panel de Administración
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
 
+          {/* Footer Bottom */}
           <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/60">
             <p>&copy; 2024 Fraction Finance. Todos los derechos reservados.</p>
             <div className="flex gap-6">
