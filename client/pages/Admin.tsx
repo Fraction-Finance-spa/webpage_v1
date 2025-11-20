@@ -498,6 +498,189 @@ export default function Admin() {
           </div>
         );
 
+      case "empleos":
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <h2 className="text-3xl font-bold text-foreground">Empleos</h2>
+            </div>
+
+            <div className="bg-white rounded-lg border border-border/40 p-8">
+              <h3 className="text-xl font-bold text-foreground mb-6">
+                {editingJob ? "Editar Posición" : "Crear Nueva Posición"}
+              </h3>
+              <form onSubmit={handleJobFormSubmit} className="space-y-4 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Título del Puesto</label>
+                    <input
+                      type="text"
+                      name="titulo"
+                      value={jobForm.titulo}
+                      onChange={handleJobFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Departamento</label>
+                    <input
+                      type="text"
+                      name="departamento"
+                      value={jobForm.departamento}
+                      onChange={handleJobFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Ubicación</label>
+                    <input
+                      type="text"
+                      name="ubicacion"
+                      value={jobForm.ubicacion}
+                      onChange={handleJobFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Tipo de Contrato</label>
+                    <input
+                      type="text"
+                      name="tipo"
+                      value={jobForm.tipo}
+                      onChange={handleJobFormChange}
+                      placeholder="Ej: Tiempo Completo"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Estado</label>
+                    <select
+                      name="estado"
+                      value={jobForm.estado}
+                      onChange={handleJobFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    >
+                      <option value="Abierto">Abierto</option>
+                      <option value="Cerrado">Cerrado</option>
+                      <option value="En Revisión">En Revisión</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Descripción</label>
+                  <textarea
+                    name="descripcion"
+                    value={jobForm.descripcion}
+                    onChange={handleJobFormChange}
+                    rows={5}
+                    className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Requisitos (uno por línea)</label>
+                  <textarea
+                    name="requisitos"
+                    value={jobForm.requisitos}
+                    onChange={handleJobFormChange}
+                    rows={4}
+                    placeholder="Ej:&#10;5+ años de experiencia&#10;Conocimiento de React&#10;Inglés fluido"
+                    className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Beneficios (uno por línea)</label>
+                  <textarea
+                    name="beneficios"
+                    value={jobForm.beneficios}
+                    onChange={handleJobFormChange}
+                    rows={4}
+                    placeholder="Ej:&#10;Salario competitivo&#10;Opciones de acciones&#10;Trabajo remoto"
+                    className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
+                  >
+                    {editingJob ? "Actualizar" : "Crear"}
+                  </button>
+                  {editingJob && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingJob(null);
+                        setJobForm({
+                          titulo: "",
+                          departamento: "",
+                          ubicacion: "",
+                          tipo: "",
+                          descripcion: "",
+                          requisitos: "",
+                          beneficios: "",
+                          estado: "Abierto",
+                        });
+                      }}
+                      className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
+                    >
+                      Cancelar
+                    </button>
+                  )}
+                </div>
+              </form>
+
+              <div className="border-t border-border/40 pt-6">
+                <h3 className="text-lg font-bold text-foreground mb-4">Posiciones Actuales</h3>
+                <div className="space-y-3">
+                  {jobs.map((job) => (
+                    <div
+                      key={job.id}
+                      className="flex items-center justify-between bg-secondary/30 p-4 rounded-lg hover:bg-secondary/50 transition-colors"
+                    >
+                      <div>
+                        <h4 className="font-semibold text-foreground">{job.titulo}</h4>
+                        <p className="text-sm text-foreground/60">{job.departamento} • {job.ubicacion}</p>
+                        <div className="mt-1 flex gap-2">
+                          <span className={`text-xs px-2 py-1 rounded-full ${
+                            job.estado === "Abierto"
+                              ? "bg-green-100 text-green-700"
+                              : job.estado === "Cerrado"
+                              ? "bg-red-100 text-red-700"
+                              : "bg-yellow-100 text-yellow-700"
+                          }`}>
+                            {job.estado}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleEditJob(job)}
+                          className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                        >
+                          <Edit className="w-4 h-4 text-foreground/60 hover:text-primary" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteJob(job.id)}
+                          className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
       case "politicas":
         return (
           <div className="space-y-6">
