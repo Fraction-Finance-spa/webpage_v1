@@ -136,50 +136,54 @@ export default function BusinessModel() {
           </section>
 
           {/* Ecosystem Section */}
-          <section className="mb-20 bg-white rounded-lg border border-border/40 p-8 md:p-12">
-            <h2 className="text-4xl font-bold text-foreground mb-6">
-              Creando un Ecosistema de Valor
-            </h2>
-            <p className="text-lg text-foreground/70 leading-relaxed mb-12">
-              Diseñamos una infraestructura que beneficia tanto a empresas como a
-              inversionistas, integrando emisión, custodia, inversión, cumplimiento
-              y liquidez en un solo entorno.
-            </p>
+          <section className="mb-20 relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative p-8 md:p-12">
+              <h2 className="text-4xl font-bold text-foreground mb-6">
+                Creando un Ecosistema de Valor
+              </h2>
+              <p className="text-lg text-foreground/70 leading-relaxed mb-12">
+                Diseñamos una infraestructura que beneficia tanto a empresas como a
+                inversionistas, integrando emisión, custodia, inversión, cumplimiento
+                y liquidez en un solo entorno.
+              </p>
 
-            {/* Two Column Benefits */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* For Enterprises */}
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Para Empresas
-                </h3>
-                <ul className="space-y-4">
-                  {enterpriseBenefits.map((benefit, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground/70 leading-relaxed">
-                        {benefit}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {/* Two Column Benefits */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {/* For Enterprises */}
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground mb-6">
+                    Para Empresas
+                  </h3>
+                  <ul className="space-y-4">
+                    {enterpriseBenefits.map((benefit, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground/70 leading-relaxed">
+                          {benefit}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* For Investors */}
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Para Inversionistas
-                </h3>
-                <ul className="space-y-4">
-                  {investorBenefits.map((benefit, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground/70 leading-relaxed">
-                        {benefit}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                {/* For Investors */}
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground mb-6">
+                    Para Inversionistas
+                  </h3>
+                  <ul className="space-y-4">
+                    {investorBenefits.map((benefit, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground/70 leading-relaxed">
+                          {benefit}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </section>
@@ -224,13 +228,17 @@ export default function BusinessModel() {
           </section>
 
           {/* Closing Section */}
-          <section className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border border-primary/20 p-8 md:p-12 text-center">
-            <p className="text-lg text-foreground leading-relaxed">
-              <strong>Fraction Finance</strong> crea un nuevo estándar para la
-              inversión y el financiamiento, llevando a las empresas a obtener
-              capital de manera más eficiente y a los inversionistas a acceder a
-              activos reales con mayor confianza y flexibilidad.
-            </p>
+          <section className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="relative p-8 md:p-12">
+              <p className="text-lg text-foreground leading-relaxed">
+                <strong>Fraction Finance</strong> crea un nuevo estándar para la
+                inversión y el financiamiento, llevando a las empresas a obtener
+                capital de manera más eficiente y a los inversionistas a acceder a
+                activos reales con mayor confianza y flexibilidad.
+              </p>
+            </div>
           </section>
         </div>
       </div>
