@@ -74,10 +74,20 @@ export default function Contact() {
 
     setLoading(true);
     setTimeout(() => {
+      // Save to localStorage
+      const mensajes = JSON.parse(localStorage.getItem("mensajesContacto") || "[]");
+      mensajes.push({
+        id: Date.now().toString(),
+        ...formData,
+        fecha: new Date().toISOString(),
+        estado: "Nuevo",
+      });
+      localStorage.setItem("mensajesContacto", JSON.stringify(mensajes));
+
       setLoading(false);
       setSubmitted(true);
       setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
-      
+
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
