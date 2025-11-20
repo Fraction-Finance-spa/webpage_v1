@@ -129,28 +129,36 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="lg:col-span-1">
               <div className="space-y-6">
-                <div className="bg-white rounded-lg border border-border/40 p-6">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <Mail className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-foreground/70 text-sm">contacto@fractionfinance.cl</p>
+                <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-6">
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0">
+                        <Mail className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                        <p className="text-foreground/70 text-sm">contacto@fractionfinance.cl</p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg border border-border/40 p-6">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Dirección</h3>
-                      <p className="text-foreground/70 text-sm">
-                        Antonio Bellet N° 130, Oficina 1201, Providencia, Santiago, Chile
-                      </p>
+                <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-6">
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0">
+                        <MapPin className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-foreground mb-1">Dirección</h3>
+                        <p className="text-foreground/70 text-sm">
+                          Antonio Bellet N° 130, Oficina 1201, Providencia, Santiago, Chile
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -159,106 +167,110 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg border border-border/40 p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative p-8">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-semibold text-foreground mb-2">
+                          Nombre *
+                        </label>
+                        <input
+                          type="text"
+                          name="nombre"
+                          value={formData.nombre}
+                          onChange={handleChange}
+                          placeholder="Tu nombre"
+                          className={`w-full px-4 py-3 border ${
+                            errors.nombre ? "border-red-500" : "border-border/40"
+                          } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                        />
+                        {errors.nombre && (
+                          <p className="text-red-600 text-sm mt-1">{errors.nombre}</p>
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-foreground mb-2">
+                          Email *
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="tu@email.com"
+                          className={`w-full px-4 py-3 border ${
+                            errors.email ? "border-red-500" : "border-border/40"
+                          } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                        />
+                        {errors.email && (
+                          <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+                        )}
+                      </div>
+                    </div>
+
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">
-                        Nombre *
+                        Asunto *
                       </label>
-                      <input
-                        type="text"
-                        name="nombre"
-                        value={formData.nombre}
+                      <select
+                        name="asunto"
+                        value={formData.asunto}
                         onChange={handleChange}
-                        placeholder="Tu nombre"
                         className={`w-full px-4 py-3 border ${
-                          errors.nombre ? "border-red-500" : "border-border/40"
+                          errors.asunto ? "border-red-500" : "border-border/40"
                         } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
-                      />
-                      {errors.nombre && (
-                        <p className="text-red-600 text-sm mt-1">{errors.nombre}</p>
+                      >
+                        <option value="">Selecciona un asunto</option>
+                        {asuntoOptions.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                      {errors.asunto && (
+                        <p className="text-red-600 text-sm mt-1">{errors.asunto}</p>
                       )}
                     </div>
 
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">
-                        Email *
+                        Mensaje *
                       </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
+                      <textarea
+                        name="mensaje"
+                        value={formData.mensaje}
                         onChange={handleChange}
-                        placeholder="tu@email.com"
+                        placeholder="Cuéntanos tu consulta o mensaje"
+                        rows={6}
                         className={`w-full px-4 py-3 border ${
-                          errors.email ? "border-red-500" : "border-border/40"
-                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                          errors.mensaje ? "border-red-500" : "border-border/40"
+                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none`}
                       />
-                      {errors.email && (
-                        <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+                      {errors.mensaje && (
+                        <p className="text-red-600 text-sm mt-1">{errors.mensaje}</p>
                       )}
                     </div>
-                  </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-foreground mb-2">
-                      Asunto *
-                    </label>
-                    <select
-                      name="asunto"
-                      value={formData.asunto}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 border ${
-                        errors.asunto ? "border-red-500" : "border-border/40"
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-bold text-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <option value="">Selecciona un asunto</option>
-                      {asuntoOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.asunto && (
-                      <p className="text-red-600 text-sm mt-1">{errors.asunto}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-foreground mb-2">
-                      Mensaje *
-                    </label>
-                    <textarea
-                      name="mensaje"
-                      value={formData.mensaje}
-                      onChange={handleChange}
-                      placeholder="Cuéntanos tu consulta o mensaje"
-                      rows={6}
-                      className={`w-full px-4 py-3 border ${
-                        errors.mensaje ? "border-red-500" : "border-border/40"
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none`}
-                    />
-                    {errors.mensaje && (
-                      <p className="text-red-600 text-sm mt-1">{errors.mensaje}</p>
-                    )}
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-bold text-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {loading ? (
-                      "Enviando..."
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5" />
-                        Enviar Mensaje
-                      </>
-                    )}
-                  </button>
-                </form>
+                      {loading ? (
+                        "Enviando..."
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5" />
+                          Enviar Mensaje
+                        </>
+                      )}
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
