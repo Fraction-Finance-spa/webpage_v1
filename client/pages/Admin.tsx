@@ -406,10 +406,6 @@ export default function Admin() {
       { id: 1, nombre: "Juan Pérez", email: "juan@example.com", tipo: "Persona", estado: "Activo" },
       { id: 2, nombre: "Tech Corp", email: "contact@techcorp.com", tipo: "Empresa", estado: "Activo" },
     ],
-    waitlist: [
-      { id: 1, email: "waiting1@example.com", fecha: "2024-01-15", interes: "Financiamiento" },
-      { id: 2, email: "waiting2@example.com", fecha: "2024-01-14", interes: "Inversiones" },
-    ],
     mensajes: [
       { id: 1, nombre: "Carlos", email: "carlos@example.com", asunto: "Consulta sobre STOs", leido: false },
       { id: 2, nombre: "Ana", email: "ana@example.com", asunto: "Solicitud de Información", leido: true },
