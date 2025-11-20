@@ -9,6 +9,7 @@ export default function Careers() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [selectedDepartment, setSelectedDepartment] = useState<string>("Todos");
   const [expandedJobId, setExpandedJobId] = useState<string | null>(null);
+  const [showCandidaturaForm, setShowCandidaturaForm] = useState(false);
 
   useEffect(() => {
     setJobs(getOpenJobs());
