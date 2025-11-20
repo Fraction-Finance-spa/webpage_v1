@@ -1194,48 +1194,124 @@ export default function Admin() {
 
       case "denuncias":
         return (
-          <div className="space-y-6">
+          <div className="space-y-8">
             <h2 className="text-3xl font-bold text-foreground">Denuncias y Reclamos</h2>
-            <div className="bg-white rounded-lg border border-border/40 p-6">
-              <div className="mb-6 flex gap-4">
-                <div className="flex-1 relative">
-                  <Search className="absolute left-4 top-3 w-5 h-5 text-foreground/40" />
-                  <input
-                    type="text"
-                    placeholder="Buscar denuncias..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-12 pr-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  />
-                </div>
-              </div>
-              <div className="space-y-4">
-                {[
-                  { id: 1, titulo: "Denuncia de Fraude", usuario: "User123", fecha: "2024-01-15", prioridad: "Alta", estado: "Pendiente" },
-                  { id: 2, titulo: "Comportamiento Inapropiado", usuario: "User456", fecha: "2024-01-14", prioridad: "Media", estado: "En Revisión" },
-                  { id: 3, titulo: "Error en Transacción", usuario: "User789", fecha: "2024-01-13", prioridad: "Alta", estado: "Resuelto" },
-                ].map((denuncia) => (
-                  <div key={denuncia.id} className="bg-white rounded-lg border border-border/40 p-4 flex items-center justify-between hover:bg-secondary/30 transition-colors">
-                    <div>
-                      <h3 className="font-semibold text-foreground">{denuncia.titulo}</h3>
-                      <p className="text-sm text-foreground/60">
-                        Usuario: {denuncia.usuario} • {denuncia.fecha}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        denuncia.prioridad === "Alta" ? "bg-red-100 text-red-700" : "bg-yellow-100 text-yellow-700"
-                      }`}>
-                        {denuncia.prioridad}
-                      </span>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        denuncia.estado === "Resuelto" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
-                      }`}>
-                        {denuncia.estado}
-                      </span>
-                    </div>
+
+            {/* Denuncias Section */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                <AlertCircle className="w-6 h-6 text-red-500" />
+                Denuncias ({denuncias.length})
+              </h3>
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                {denuncias.length === 0 ? (
+                  <p className="text-foreground/60">No hay denuncias registradas</p>
+                ) : (
+                  <div className="space-y-4">
+                    {denuncias.map((denuncia) => (
+                      <div key={denuncia.id} className="border border-border/40 rounded-lg p-4 hover:bg-secondary/30 transition-colors">
+                        <div className="flex items-start justify-between mb-3">
+                          <div>
+                            <h4 className="font-semibold text-foreground">
+                              {denuncia.anonimo ? "Denuncia Anónima" : denuncia.nombre || "Sin nombre"}
+                            </h4>
+                            <p className="text-sm text-foreground/60">
+                              Email: {denuncia.email || "No proporcionado"} • {new Date(denuncia.fecha).toLocaleDateString('es-CL')}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <select
+                              value={denuncia.estado}
+                              onChange={(e) => handleUpdateDenunciaStatus(denuncia.id, e.target.value)}
+                              className="px-3 py-1 border border-border/40 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="Nuevo">Nuevo</option>
+                              <option value="En Revisión">En Revisión</option>
+                              <option value="Resuelto">Resuelto</option>
+                              <option value="Cerrado">Cerrado</option>
+                            </select>
+                            <button
+                              onClick={() => handleDeleteDenuncia(denuncia.id)}
+                              className="p-2 hover:bg-red-100 rounded transition-colors"
+                            >
+                              <Trash2 className="w-4 h-4 text-red-500" />
+                            </button>
+                          </div>
+                        </div>
+                        <div className="bg-blue-50 rounded p-3 border-l-4 border-blue-500">
+                          <p className="text-sm text-foreground">{denuncia.detalles}</p>
+                        </div>
+                        <span className={`inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold ${
+                          denuncia.estado === "Nuevo" ? "bg-red-100 text-red-700" :
+                          denuncia.estado === "En Revisión" ? "bg-yellow-100 text-yellow-700" :
+                          denuncia.estado === "Resuelto" ? "bg-green-100 text-green-700" :
+                          "bg-gray-100 text-gray-700"
+                        }`}>
+                          {denuncia.estado}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                )}
+              </div>
+            </div>
+
+            {/* Reclamos Section */}
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                <MessageSquare className="w-6 h-6 text-blue-500" />
+                Reclamos ({reclamos.length})
+              </h3>
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                {reclamos.length === 0 ? (
+                  <p className="text-foreground/60">No hay reclamos registrados</p>
+                ) : (
+                  <div className="space-y-4">
+                    {reclamos.map((reclamo) => (
+                      <div key={reclamo.id} className="border border-border/40 rounded-lg p-4 hover:bg-secondary/30 transition-colors">
+                        <div className="flex items-start justify-between mb-3">
+                          <div>
+                            <h4 className="font-semibold text-foreground">
+                              {reclamo.anonimo ? "Reclamo Anónimo" : reclamo.nombre || "Sin nombre"}
+                            </h4>
+                            <p className="text-sm text-foreground/60">
+                              Email: {reclamo.email || "No proporcionado"} • {new Date(reclamo.fecha).toLocaleDateString('es-CL')}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <select
+                              value={reclamo.estado}
+                              onChange={(e) => handleUpdateReclamoStatus(reclamo.id, e.target.value)}
+                              className="px-3 py-1 border border-border/40 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="Nuevo">Nuevo</option>
+                              <option value="En Revisión">En Revisión</option>
+                              <option value="Resuelto">Resuelto</option>
+                              <option value="Cerrado">Cerrado</option>
+                            </select>
+                            <button
+                              onClick={() => handleDeleteReclamo(reclamo.id)}
+                              className="p-2 hover:bg-red-100 rounded transition-colors"
+                            >
+                              <Trash2 className="w-4 h-4 text-red-500" />
+                            </button>
+                          </div>
+                        </div>
+                        <div className="bg-blue-50 rounded p-3 border-l-4 border-blue-500">
+                          <p className="text-sm text-foreground">{reclamo.detalles}</p>
+                        </div>
+                        <span className={`inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold ${
+                          reclamo.estado === "Nuevo" ? "bg-blue-100 text-blue-700" :
+                          reclamo.estado === "En Revisión" ? "bg-yellow-100 text-yellow-700" :
+                          reclamo.estado === "Resuelto" ? "bg-green-100 text-green-700" :
+                          "bg-gray-100 text-gray-700"
+                        }`}>
+                          {reclamo.estado}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
