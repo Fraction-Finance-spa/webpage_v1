@@ -79,6 +79,13 @@ export default function Admin() {
   const [denuncias, setDenuncias] = useState<Denuncia[]>([]);
   const [reclamos, setReclamos] = useState<Reclamo[]>([]);
   const [mensajesContacto, setMensajesContacto] = useState<any[]>([]);
+  const [policies, setPolicies] = useState({
+    privacidad: localStorage.getItem("politica_privacidad") || "",
+    terminos: localStorage.getItem("politica_terminos") || "",
+    cookies: localStorage.getItem("politica_cookies") || "",
+  });
+  const [editingPolicy, setEditingPolicy] = useState<string | null>(null);
+  const [policyContent, setPolicyContent] = useState("");
 
   useEffect(() => {
     setTeamMembers(getTeamMembers());
