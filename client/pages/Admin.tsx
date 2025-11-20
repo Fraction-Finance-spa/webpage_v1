@@ -765,7 +765,7 @@ export default function Admin() {
                       <div className="flex-1">
                         <h4 className="font-semibold text-foreground">{article.titulo}</h4>
                         <p className="text-sm text-foreground/60">
-                          {article.autor} ��� {new Date(article.fechaCreacion).toLocaleDateString("es-ES")}
+                          {new Date(article.fechaPublicacion || article.fechaCreacion).toLocaleDateString("es-ES")}
                         </p>
                         <div className="mt-1 flex gap-2">
                           {article.categoria && (
