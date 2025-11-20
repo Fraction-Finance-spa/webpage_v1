@@ -448,6 +448,118 @@ export default function Profile() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative p-8 space-y-6">
+                  {/* Portafolio de Inversión */}
+                  {activeSection === "portafolio" && (
+                    <>
+                      <h2 className="text-2xl font-bold text-foreground mb-8">Portafolio de Inversión</h2>
+
+                      {/* Summary Cards */}
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                        <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+                          <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          <div className="relative p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-sm font-semibold text-foreground/70">Saldo Total</h3>
+                              <Wallet className="w-5 h-5 text-primary" />
+                            </div>
+                            <p className="text-3xl font-bold text-foreground">
+                              ${portfolio.inversiones.reduce((sum, inv) => sum + inv.monto, 0).toLocaleString()}
+                            </p>
+                            <p className="text-xs text-foreground/60 mt-2">USD</p>
+                          </div>
+                        </div>
+
+                        <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+                          <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          <div className="relative p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-sm font-semibold text-foreground/70">Inversiones Activas</h3>
+                              <TrendingUp className="w-5 h-5 text-primary" />
+                            </div>
+                            <p className="text-3xl font-bold text-foreground">{portfolio.inversiones.length}</p>
+                            <p className="text-xs text-foreground/60 mt-2">Instrumentos activos</p>
+                          </div>
+                        </div>
+
+                        <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+                          <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          <div className="relative p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-sm font-semibold text-foreground/70">Rentabilidad Promedio</h3>
+                              <BarChart3 className="w-5 h-5 text-primary" />
+                            </div>
+                            <p className="text-3xl font-bold text-foreground">
+                              {(portfolio.inversiones.reduce((sum, inv) => sum + inv.rentabilidadActual, 0) / portfolio.inversiones.length).toFixed(2)}%
+                            </p>
+                            <p className="text-xs text-foreground/60 mt-2">YTD</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Investment List */}
+                      <h3 className="text-xl font-bold text-foreground mb-4">Tus Inversiones</h3>
+                      <div className="space-y-4">
+                        {portfolio.inversiones.map((inversion) => (
+                          <div key={inversion.id} className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="relative p-6">
+                              <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                                <div className="lg:col-span-2">
+                                  <div className="flex items-start gap-4">
+                                    <div className="p-3 bg-primary/10 rounded-lg">
+                                      <CreditCard className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                      <h4 className="font-bold text-foreground mb-1">{inversion.nombre}</h4>
+                                      <p className="text-sm text-foreground/60">{inversion.tipo}</p>
+                                      <div className="mt-2 inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                                        {inversion.estado}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div>
+                                  <p className="text-sm text-foreground/60 mb-1">Monto Invertido</p>
+                                  <p className="text-lg font-bold text-foreground">${inversion.monto.toLocaleString()}</p>
+                                </div>
+
+                                <div>
+                                  <p className="text-sm text-foreground/60 mb-1">Plazo</p>
+                                  <p className="text-lg font-bold text-foreground">{inversion.plazo}</p>
+                                </div>
+
+                                <div>
+                                  <p className="text-sm text-foreground/60 mb-1">Rentabilidad</p>
+                                  <div>
+                                    <p className="text-lg font-bold text-primary">{inversion.rentabilidadActual.toFixed(2)}%</p>
+                                    <p className="text-xs text-foreground/60">/ {inversion.tasaEsperada.toFixed(2)}% esperado</p>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Progress Bar */}
+                              <div className="mt-4 pt-4 border-t border-border/20">
+                                <p className="text-sm text-foreground/60 mb-2">Progreso del período</p>
+                                <div className="w-full bg-foreground/10 rounded-full h-2">
+                                  <div
+                                    className="bg-gradient-to-r from-primary to-blue-400 h-2 rounded-full transition-all duration-300"
+                                    style={{ width: `${inversion.progreso}%` }}
+                                  ></div>
+                                </div>
+                                <p className="text-xs text-foreground/60 mt-1">{inversion.progreso}% completado</p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
+
                   {/* Información de la Cuenta */}
                   {activeSection === "cuenta" && !showTest && (
                     <>
