@@ -109,7 +109,7 @@ export default function BusinessModel() {
 
             {/* Instruments Grid */}
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {tokenizedInstruments.slice(0, 3).map((instrument, index) => (
                   <div
                     key={index}
