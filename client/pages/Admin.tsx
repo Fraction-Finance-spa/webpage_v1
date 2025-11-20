@@ -76,8 +76,13 @@ export default function Admin() {
     bio: "",
   });
 
+  const [denuncias, setDenuncias] = useState<Denuncia[]>([]);
+  const [reclamos, setReclamos] = useState<Reclamo[]>([]);
+
   useEffect(() => {
     setTeamMembers(getTeamMembers());
+    setDenuncias(JSON.parse(localStorage.getItem("denuncias") || "[]"));
+    setReclamos(JSON.parse(localStorage.getItem("reclamos") || "[]"));
   }, []);
 
   const handleTeamFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
