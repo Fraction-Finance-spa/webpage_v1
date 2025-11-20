@@ -114,9 +114,11 @@ export default function Index() {
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
               Financia e invierte en Activos Digitales
             </h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Transformamos instrumentos financieros en activos digitales accesibles.
-            </p>
+            <div className="text-xl text-foreground/70 mx-auto" style={{ maxWidth: "855px" }}>
+              <p>
+                Accede a oportunidades de financiamiento empresarial mediante activos digitales, con procesos ágiles y alternativas diseñadas para ofrecer rendimientos estables y confiables.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
