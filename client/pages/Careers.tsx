@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Briefcase, MapPin, Clock, ChevronRight } from "lucide-react";
 import { getOpenJobs, type Job } from "@/lib/jobsManager";
+import CandidaturaForm from "@/components/CandidaturaForm";
 
 export default function Careers() {
   const [jobs, setJobs] = useState<Job[]>([]);
