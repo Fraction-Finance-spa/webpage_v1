@@ -381,7 +381,7 @@ export default function Layout({ children }: LayoutProps) {
                 </li>
                 <li>
                   <Link
-                    to="/educacion"
+                    to="/nosotros/educacion"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Educación Financiera
