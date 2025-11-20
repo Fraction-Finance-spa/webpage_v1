@@ -499,6 +499,61 @@ export default function Admin() {
       case "usuarios":
       case "waitlist":
       case "mensajes":
+        return (
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-foreground">Mensajes de Contacto ({mensajesContacto.length})</h2>
+            <div className="bg-white rounded-lg border border-border/40 p-6">
+              {mensajesContacto.length === 0 ? (
+                <p className="text-foreground/60">No hay mensajes registrados</p>
+              ) : (
+                <div className="space-y-4">
+                  {mensajesContacto.map((mensaje) => (
+                    <div key={mensaje.id} className="border border-border/40 rounded-lg p-4 hover:bg-secondary/30 transition-colors">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h4 className="font-semibold text-foreground">{mensaje.nombre}</h4>
+                          <p className="text-sm text-foreground/60">
+                            Email: {mensaje.email} • Asunto: {mensaje.asunto} • {new Date(mensaje.fecha).toLocaleDateString('es-CL')}
+                          </p>
+                        </div>
+                        <div className="flex gap-2">
+                          <select
+                            value={mensaje.estado}
+                            onChange={(e) => handleUpdateMensajeStatus(mensaje.id, e.target.value)}
+                            className="px-3 py-1 border border-border/40 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                          >
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="Leído">Leído</option>
+                            <option value="Respondido">Respondido</option>
+                            <option value="Cerrado">Cerrado</option>
+                          </select>
+                          <button
+                            onClick={() => handleDeleteMensaje(mensaje.id)}
+                            className="p-2 hover:bg-red-100 rounded transition-colors"
+                          >
+                            <Trash2 className="w-4 h-4 text-red-500" />
+                          </button>
+                        </div>
+                      </div>
+                      <div className="bg-blue-50 rounded p-3 border-l-4 border-blue-500">
+                        <p className="text-sm text-foreground">{mensaje.mensaje}</p>
+                      </div>
+                      <span className={`inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold ${
+                        mensaje.estado === "Nuevo" ? "bg-red-100 text-red-700" :
+                        mensaje.estado === "Leído" ? "bg-yellow-100 text-yellow-700" :
+                        mensaje.estado === "Respondido" ? "bg-green-100 text-green-700" :
+                        "bg-gray-100 text-gray-700"
+                      }`}>
+                        {mensaje.estado}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+
       case "socios":
         return (
           <div className="space-y-6">
