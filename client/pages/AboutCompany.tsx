@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Lightbulb, Target, Users, Zap, TrendingUp, Eye, Lock } from "lucide-react";
+import { getTeamMembers, type TeamMember } from "@/lib/teamManager";
 
 export default function AboutCompany() {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   return (
     <Layout>
       <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-blue-50" style={{ paddingTop: "80px" }}>
