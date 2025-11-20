@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { getTeamMembers, addTeamMember, updateTeamMember, deleteTeamMember, type TeamMember } from "@/lib/teamManager";
+import { getJobs, addJob, updateJob, deleteJob, type Job } from "@/lib/jobsManager";
 import {
   LayoutDashboard,
   Coins,
