@@ -8,7 +8,7 @@ export default function AboutCompany() {
         {/* Hero Section */}
         <div className="max-w-6xl mx-auto mb-20">
           <div className="text-center mb-12">
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center" style={{ margin: "40px 0 24px" }}>
               <Lightbulb className="w-16 h-16 text-primary" />
             </div>
             <h1 className="text-5xl sm:text-6xl font-bold text-foreground mb-6">
@@ -28,8 +28,9 @@ export default function AboutCompany() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="bg-white rounded-lg border border-border/40 p-8 shadow-lg">
               <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
-                <Target className="w-6 h-6 text-primary" />
-                Nuestra Misión
+                <div>
+                  Nuestra Misión
+                </div>
               </h2>
               <p className="text-foreground/70 leading-relaxed">
                 Cambiar la forma de invertir en activos financieros, simple, segura y accesible para todos
@@ -38,7 +39,7 @@ export default function AboutCompany() {
             <div className="bg-white rounded-lg border border-border/40 p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-foreground mb-4">Nuestra Visión Futura</h3>
               <p className="text-foreground/70 leading-relaxed">
-                Convertirnos en la plataforma referente de tokenización y finanzas descentralizadas, facilitando inversiones seguras, accesibles y globales.
+                Convertirnos en la plataforma referente de tokenización y finanzas descentralizadas, facilitando inversiones seguras y accesibles.
               </p>
             </div>
           </div>
@@ -101,7 +102,7 @@ export default function AboutCompany() {
         {/* Innovative Approach Section */}
         <div className="max-w-6xl mx-auto mb-20">
           <div className="bg-white rounded-lg border border-border/40 p-12">
-            <h2 className="text-4xl font-bold text-foreground mb-6">Nuestro Enfoque Innovador</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-6 text-center">Nuestro Enfoque Innovador</h2>
             <p className="text-xl text-foreground/70 leading-relaxed">
               Hemos diseñado un modelo de negocio transparente y sostenible que alinea nuestro éxito con el de nuestros clientes. Descubre cómo estamos creando valor en el ecosistema de activos digitales.
             </p>
