@@ -14,6 +14,7 @@ import FinancingForm from "./pages/FinancingForm";
 import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
 import AboutCompany from "./pages/AboutCompany";
+import BusinessModel from "./pages/BusinessModel";
 import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
 import ArticleDetail from "./pages/ArticleDetail";
@@ -64,7 +65,7 @@ export default function App() {
 
             {/* Nosotros */}
             <Route path="/nosotros/empresa" element={<AboutCompany />} />
-            <Route path="/nosotros/modelo" element={<Placeholder />} />
+            <Route path="/nosotros/modelo" element={<BusinessModel />} />
             <Route path="/nosotros/educacion" element={<Placeholder />} />
             <Route path="/nosotros/blog" element={<Blog />} />
             <Route path="/nosotros/blog/:id" element={<ArticleDetail />} />
