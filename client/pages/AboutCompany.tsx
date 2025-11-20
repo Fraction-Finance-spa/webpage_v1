@@ -65,44 +65,60 @@ export default function AboutCompany() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg border border-border/40 p-8 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <Eye className="w-8 h-8 text-primary flex-shrink-0" />
-                <h3 className="text-2xl font-bold text-foreground">Democratizar el Acceso</h3>
+            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <Eye className="w-8 h-8 text-primary flex-shrink-0" />
+                  <h3 className="text-2xl font-bold text-foreground">Democratizar el Acceso</h3>
+                </div>
+                <p className="text-foreground/70">
+                  Rompemos barreras para que los mercados de capitales sean accesibles para todos, en todas partes.
+                </p>
               </div>
-              <p className="text-foreground/70">
-                Rompemos barreras para que los mercados de capitales sean accesibles para todos, en todas partes.
-              </p>
             </div>
 
-            <div className="bg-white rounded-lg border border-border/40 p-8 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <Zap className="w-8 h-8 text-primary flex-shrink-0" />
-                <h3 className="text-2xl font-bold text-foreground">Impulsar la Innovación</h3>
+            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <Zap className="w-8 h-8 text-primary flex-shrink-0" />
+                  <h3 className="text-2xl font-bold text-foreground">Impulsar la Innovación</h3>
+                </div>
+                <p className="text-foreground/70">
+                  Somos pioneros, aprovechando la tecnología de vanguardia para redefinir los servicios financieros.
+                </p>
               </div>
-              <p className="text-foreground/70">
-                Somos pioneros, aprovechando la tecnología de vanguardia para redefinir los servicios financieros.
-              </p>
             </div>
 
-            <div className="bg-white rounded-lg border border-border/40 p-8 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <TrendingUp className="w-8 h-8 text-primary flex-shrink-0" />
-                <h3 className="text-2xl font-bold text-foreground">Potenciar el Crecimiento</h3>
+            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <TrendingUp className="w-8 h-8 text-primary flex-shrink-0" />
+                  <h3 className="text-2xl font-bold text-foreground">Potenciar el Crecimiento</h3>
+                </div>
+                <p className="text-foreground/70">
+                  Proporcionamos las herramientas e infraestructura para que las empresas y los inversores prosperen.
+                </p>
               </div>
-              <p className="text-foreground/70">
-                Proporcionamos las herramientas e infraestructura para que las empresas y los inversores prosperen.
-              </p>
             </div>
 
-            <div className="bg-white rounded-lg border border-border/40 p-8 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <Lock className="w-8 h-8 text-primary flex-shrink-0" />
-                <h3 className="text-2xl font-bold text-foreground">Fomentar la Transparencia</h3>
+            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <Lock className="w-8 h-8 text-primary flex-shrink-0" />
+                  <h3 className="text-2xl font-bold text-foreground">Fomentar la Transparencia</h3>
+                </div>
+                <p className="text-foreground/70">
+                  Creemos en el poder de los mercados abiertos y transparentes, construidos sobre la confianza y la integridad.
+                </p>
               </div>
-              <p className="text-foreground/70">
-                Creemos en el poder de los mercados abiertos y transparentes, construidos sobre la confianza y la integridad.
-              </p>
             </div>
           </div>
         </div>
