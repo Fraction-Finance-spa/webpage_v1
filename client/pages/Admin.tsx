@@ -590,6 +590,217 @@ export default function Admin() {
           </div>
         );
 
+      case "blog":
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <h2 className="text-3xl font-bold text-foreground">Blog</h2>
+            </div>
+
+            <div className="bg-white rounded-lg border border-border/40 p-8">
+              <h3 className="text-xl font-bold text-foreground mb-6">
+                {editingArticle ? "Editar Artículo" : "Crear Nuevo Artículo"}
+              </h3>
+              <form onSubmit={handleArticleFormSubmit} className="space-y-4 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Título</label>
+                    <input
+                      type="text"
+                      name="titulo"
+                      value={articleForm.titulo}
+                      onChange={handleArticleFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Autor</label>
+                    <input
+                      type="text"
+                      name="autor"
+                      value={articleForm.autor}
+                      onChange={handleArticleFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Categoría</label>
+                    <input
+                      type="text"
+                      name="categoria"
+                      value={articleForm.categoria}
+                      onChange={handleArticleFormChange}
+                      placeholder="Ej: Inversión, Educación"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Estado</label>
+                    <select
+                      name="estado"
+                      value={articleForm.estado}
+                      onChange={handleArticleFormChange}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    >
+                      <option value="Borrador">Borrador</option>
+                      <option value="Publicado">Publicado</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Resumen</label>
+                  <textarea
+                    name="resumen"
+                    value={articleForm.resumen}
+                    onChange={handleArticleFormChange}
+                    rows={2}
+                    placeholder="Resumen breve del artículo"
+                    className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Contenido</label>
+                  <textarea
+                    name="contenido"
+                    value={articleForm.contenido}
+                    onChange={handleArticleFormChange}
+                    rows={8}
+                    className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Imagen (opcional)</label>
+                  <div className="border-2 border-dashed border-border/40 rounded-lg p-6 text-center hover:border-primary/50 transition-colors cursor-pointer">
+                    <input
+                      type="file"
+                      onChange={handleArticleImageChange}
+                      accept="image/*"
+                      className="hidden"
+                      id="article-image-input"
+                    />
+                    <label htmlFor="article-image-input" className="cursor-pointer block">
+                      {articleForm.imagen ? (
+                        <div className="space-y-2">
+                          <img
+                            src={articleForm.imagen}
+                            alt="Preview"
+                            className="w-32 h-32 object-cover mx-auto rounded-lg"
+                          />
+                          <p className="text-sm text-foreground/60">Haz clic para cambiar imagen</p>
+                        </div>
+                      ) : (
+                        <div className="space-y-2">
+                          <svg
+                            className="w-8 h-8 text-primary mx-auto"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 4v16m8-8H4"
+                            />
+                          </svg>
+                          <p className="text-foreground font-semibold">Haz clic para cargar imagen</p>
+                          <p className="text-sm text-foreground/60">JPG, PNG, WebP (máx. 5MB)</p>
+                        </div>
+                      )}
+                    </label>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    type="submit"
+                    className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
+                  >
+                    {editingArticle ? "Actualizar" : "Crear"}
+                  </button>
+                  {editingArticle && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingArticle(null);
+                        setArticleForm({
+                          titulo: "",
+                          autor: "",
+                          contenido: "",
+                          resumen: "",
+                          categoria: "",
+                          estado: "Borrador",
+                          imagen: "",
+                        });
+                        setArticleImage(null);
+                      }}
+                      className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
+                    >
+                      Cancelar
+                    </button>
+                  )}
+                </div>
+              </form>
+
+              <div className="border-t border-border/40 pt-6">
+                <h3 className="text-lg font-bold text-foreground mb-4">Artículos</h3>
+                <div className="space-y-3">
+                  {articles.map((article) => (
+                    <div
+                      key={article.id}
+                      className="flex items-center justify-between bg-secondary/30 p-4 rounded-lg hover:bg-secondary/50 transition-colors"
+                    >
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-foreground">{article.titulo}</h4>
+                        <p className="text-sm text-foreground/60">
+                          {article.autor} • {new Date(article.fechaCreacion).toLocaleDateString("es-ES")}
+                        </p>
+                        <div className="mt-1 flex gap-2">
+                          {article.categoria && (
+                            <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full font-semibold">
+                              {article.categoria}
+                            </span>
+                          )}
+                          <span className={`text-xs px-2 py-1 rounded-full ${
+                            article.estado === "Publicado"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-yellow-100 text-yellow-700"
+                          }`}>
+                            {article.estado}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleEditArticle(article)}
+                          className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                        >
+                          <Edit className="w-4 h-4 text-foreground/60 hover:text-primary" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteArticle(article.id)}
+                          className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
       case "equipo":
         return (
           <div className="space-y-6">
