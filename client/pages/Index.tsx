@@ -20,7 +20,7 @@ export default function Index() {
     <Layout>
       {/* Hero Section */}
       <section className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden" style={{
-        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fc2c24d2c61be44c58d8307f0bb9149f7)",
+        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F6167da881eab41e9aebafce58dbb6d51)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -79,7 +79,7 @@ export default function Index() {
       </section>
 
       {/* Assets Section */}
-      <section className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", fontFamily: "Inter, sans-serif", padding: "128px 32px 110px", marginBottom: "-3px" }}>
+      <section className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", fontFamily: "Inter, sans-serif", padding: "100px 32px" }}>
         <div className="absolute inset-0 -z-10">
           {/* Section background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/3 to-white/5"></div>
@@ -138,7 +138,7 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px 128px", marginTop: "-1px" }}>
+      <section id="features" className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px", marginTop: "-1px" }}>
         <div className="absolute inset-0 -z-10">
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/5 to-white/0"></div>
@@ -237,7 +237,7 @@ export default function Index() {
                   Tokeniza con Fraction
                 </h2>
                 <p className="text-xl text-foreground/70">
-                  La forma más simple y segura de convertir activos
+                  La forma más simple y segura de convertir activos en
                   financieros
                 </p>
               </div>
