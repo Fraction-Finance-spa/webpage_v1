@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { getTeamMembers, addTeamMember, updateTeamMember, deleteTeamMember, type TeamMember } from "@/lib/teamManager";
 import { getJobs, addJob, updateJob, deleteJob, type Job } from "@/lib/jobsManager";
 import { type Candidatura } from "@/components/CandidaturaForm";
+import { getArticles, addArticle, updateArticle, deleteArticle, type BlogArticle } from "@/lib/blogManager";
 import {
   LayoutDashboard,
   Coins,
