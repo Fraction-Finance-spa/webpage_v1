@@ -160,9 +160,68 @@ export default function ArticleDetail() {
                     })}
                   </time>
                 </div>
-                <button className="ml-auto p-2 hover:bg-secondary rounded-lg transition-colors" title="Compartir">
-                  <Share2 className="w-5 h-5 text-foreground/60 hover:text-primary" />
-                </button>
+                <div className="ml-auto flex items-center gap-2">
+                  {/* Copy Link Button */}
+                  <button
+                    onClick={copyLinkToClipboard}
+                    className="p-2 hover:bg-secondary rounded-lg transition-colors flex items-center gap-2"
+                    title="Copiar link"
+                  >
+                    {linkCopied ? (
+                      <>
+                        <Check className="w-5 h-5 text-green-600" />
+                        <span className="text-xs text-green-600 font-semibold">¡Copiado!</span>
+                      </>
+                    ) : (
+                      <Link2 className="w-5 h-5 text-foreground/60 hover:text-primary" />
+                    )}
+                  </button>
+
+                  {/* Share Menu Button */}
+                  <div className="relative">
+                    <button
+                      onClick={() => setShowShareMenu(!showShareMenu)}
+                      className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                      title="Compartir"
+                    >
+                      <Share2 className="w-5 h-5 text-foreground/60 hover:text-primary" />
+                    </button>
+
+                    {/* Share Menu */}
+                    {showShareMenu && (
+                      <div className="absolute top-full right-0 mt-2 bg-white border border-border/40 rounded-lg shadow-lg z-10 p-2 min-w-max">
+                        <button
+                          onClick={() => shareOnSocial("facebook")}
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-secondary rounded transition-colors text-sm font-semibold text-foreground w-full text-left"
+                        >
+                          <Facebook className="w-4 h-4" />
+                          Facebook
+                        </button>
+                        <button
+                          onClick={() => shareOnSocial("twitter")}
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-secondary rounded transition-colors text-sm font-semibold text-foreground w-full text-left"
+                        >
+                          <Twitter className="w-4 h-4" />
+                          Twitter
+                        </button>
+                        <button
+                          onClick={() => shareOnSocial("linkedin")}
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-secondary rounded transition-colors text-sm font-semibold text-foreground w-full text-left"
+                        >
+                          <Linkedin className="w-4 h-4" />
+                          LinkedIn
+                        </button>
+                        <button
+                          onClick={() => shareOnSocial("whatsapp")}
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-secondary rounded transition-colors text-sm font-semibold text-foreground w-full text-left"
+                        >
+                          <MessageCircle className="w-4 h-4" />
+                          WhatsApp
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
 
               {/* Title */}
