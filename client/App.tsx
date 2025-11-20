@@ -19,6 +19,8 @@ import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
 import ArticleDetail from "./pages/ArticleDetail";
 import Placeholder from "./pages/Placeholder";
+import DenunciasChannel from "./pages/DenunciasChannel";
+import ReclamosChannel from "./pages/ReclamosChannel";
 
 const queryClient = new QueryClient();
 
