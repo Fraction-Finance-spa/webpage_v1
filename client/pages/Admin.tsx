@@ -167,6 +167,30 @@ export default function Admin() {
     }
   };
 
+  const [candidaturas, setCandidaturas] = useState<Candidatura[]>([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("candidaturas");
+    if (stored) {
+      setCandidaturas(JSON.parse(stored));
+    }
+  }, []);
+
+  const handleDownloadCV = (candidatura: Candidatura) => {
+    const link = document.createElement("a");
+    link.href = candidatura.cvData;
+    link.download = candidatura.cvFileName;
+    link.click();
+  };
+
+  const handleDeleteCandidatura = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar esta candidatura?")) {
+      const filtered = candidaturas.filter((c) => c.id !== id);
+      setCandidaturas(filtered);
+      localStorage.setItem("candidaturas", JSON.stringify(filtered));
+    }
+  };
+
   const menuItems = [
     { id: "dashboard", label: "Panel", icon: <LayoutDashboard className="w-5 h-5" /> },
     { id: "activos", label: "Activos Digitales", icon: <Coins className="w-5 h-5" /> },
