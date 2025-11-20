@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { getArticles, type BlogArticle } from "@/lib/blogManager";
-import { Calendar, ArrowLeft, Share2 } from "lucide-react";
+import { Calendar, ArrowLeft, Share2, Facebook, Twitter, Linkedin, MessageCircle, Link2, Check } from "lucide-react";
 
 export default function ArticleDetail() {
   const { id } = useParams<{ id: string }>();
