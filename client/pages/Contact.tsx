@@ -116,7 +116,7 @@ export default function Contact() {
   return (
     <Layout>
       <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-blue-50" style={{ paddingTop: "80px" }}>
-        <div className="max-w-6xl mx-auto" style={{ paddingTop: "60px" }}>
+        <div className="max-w-6xl mx-auto" style={{ paddingTop: "40px" }}>
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-5xl font-bold text-foreground mb-4">Contacto</h1>
