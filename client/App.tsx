@@ -15,6 +15,7 @@ import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
 import AboutCompany from "./pages/AboutCompany";
 import Careers from "./pages/Careers";
+import Blog from "./pages/Blog";
 import Placeholder from "./pages/Placeholder";
 
 const queryClient = new QueryClient();
