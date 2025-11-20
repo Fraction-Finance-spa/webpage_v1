@@ -201,6 +201,7 @@ export default function Admin() {
     { id: "waitlist", label: "Lista de Espera", icon: <Clock className="w-5 h-5" /> },
     { id: "mensajes", label: "Mensajes de Contacto", icon: <Mail className="w-5 h-5" /> },
     { id: "empleos", label: "Empleos", icon: <Briefcase className="w-5 h-5" /> },
+    { id: "candidaturas", label: "Candidaturas", icon: <FileText className="w-5 h-5" /> },
     { id: "equipo", label: "Equipo", icon: <Users2 className="w-5 h-5" /> },
     { id: "socios", label: "Socios del Ecosistema", icon: <Building2 className="w-5 h-5" /> },
     { id: "politicas", label: "Políticas", icon: <Shield className="w-5 h-5" /> },
