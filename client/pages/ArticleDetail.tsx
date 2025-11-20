@@ -9,6 +9,8 @@ export default function ArticleDetail() {
   const navigate = useNavigate();
   const [article, setArticle] = useState<BlogArticle | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showShareMenu, setShowShareMenu] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -18,6 +20,46 @@ export default function ArticleDetail() {
       setLoading(false);
     }
   }, [id]);
+
+  const getArticleUrl = () => {
+    return `${window.location.origin}/nosotros/blog/${id}`;
+  };
+
+  const copyLinkToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(getArticleUrl());
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    } catch (err) {
+      console.error("Error al copiar link:", err);
+    }
+  };
+
+  const shareOnSocial = (platform: string) => {
+    const url = getArticleUrl();
+    const text = article?.titulo || "Mira este artículo";
+    let shareUrl = "";
+
+    switch (platform) {
+      case "facebook":
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        break;
+      case "twitter":
+        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+        break;
+      case "linkedin":
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        break;
+      case "whatsapp":
+        shareUrl = `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`;
+        break;
+    }
+
+    if (shareUrl) {
+      window.open(shareUrl, "_blank", "width=600,height=400");
+      setShowShareMenu(false);
+    }
+  };
 
   if (loading) {
     return (
