@@ -179,6 +179,24 @@ export default function Admin() {
     }
   };
 
+  const handleEditPolicy = (policyKey: string) => {
+    setEditingPolicy(policyKey);
+    setPolicyContent(policies[policyKey as keyof typeof policies]);
+  };
+
+  const handleSavePolicy = () => {
+    if (!editingPolicy) return;
+
+    const key = `politica_${editingPolicy === "privacidad" ? "privacidad" : editingPolicy === "terminos" ? "terminos" : "cookies"}`;
+    localStorage.setItem(key, policyContent);
+    setPolicies((prev) => ({
+      ...prev,
+      [editingPolicy]: policyContent,
+    }));
+    setEditingPolicy(null);
+    setPolicyContent("");
+  };
+
   const [jobs, setJobs] = useState<Job[]>([]);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
   const [jobForm, setJobForm] = useState({
@@ -513,7 +531,7 @@ export default function Admin() {
                         <div>
                           <h4 className="font-semibold text-foreground">{mensaje.nombre}</h4>
                           <p className="text-sm text-foreground/60">
-                            Email: {mensaje.email} • Asunto: {mensaje.asunto} • {new Date(mensaje.fecha).toLocaleDateString('es-CL')}
+                            Email: {mensaje.email} • Asunto: {mensaje.asunto} ��� {new Date(mensaje.fecha).toLocaleDateString('es-CL')}
                           </p>
                         </div>
                         <div className="flex gap-2">
