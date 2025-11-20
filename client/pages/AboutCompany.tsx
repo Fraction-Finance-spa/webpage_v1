@@ -158,37 +158,26 @@ export default function AboutCompany() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-            {/* Exequiel Aravena */}
-            <div className="bg-white rounded-lg border border-border/40 overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-64 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users className="w-16 h-16 text-primary" />
+            {teamMembers.map((member) => (
+              <div key={member.id} className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative overflow-hidden">
+                  <div className="h-64 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                    <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center">
+                      <Users className="w-16 h-16 text-primary" />
+                    </div>
+                  </div>
+                  <div className="p-8 text-center">
+                    <h3 className="text-2xl font-bold text-foreground mb-2">{member.nombre}</h3>
+                    <p className="text-primary font-semibold mb-4">{member.rol}</p>
+                    <p className="text-foreground/70">
+                      {member.bio}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="p-8 text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Exequiel Aravena</h3>
-                <p className="text-primary font-semibold mb-4">Cofundador</p>
-                <p className="text-foreground/70">
-                  Líder estratégico con visión en tecnología financiera y mercados de capitales.
-                </p>
-              </div>
-            </div>
-
-            {/* Ricardo Cañas */}
-            <div className="bg-white rounded-lg border border-border/40 overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-64 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users className="w-16 h-16 text-primary" />
-                </div>
-              </div>
-              <div className="p-8 text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Ricardo Cañas</h3>
-                <p className="text-primary font-semibold mb-4">Cofundador</p>
-                <p className="text-foreground/70">
-                  Especialista en desarrollo tecnológico y arquitectura de soluciones blockchain.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* CTA Section */}
