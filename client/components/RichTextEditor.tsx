@@ -97,23 +97,25 @@ export function RichTextEditor({ value, onChange, placeholder = "Ingresa el cont
           ↷
         </button>
       </div>
-      <div
-        ref={setEditorRef}
-        contentEditable
-        suppressContentEditableWarning
-        onInput={handleInput}
-        onPaste={handlePaste}
-        dangerouslySetInnerHTML={{ __html: value }}
-        className="w-full min-h-64 px-4 py-2 focus:outline-none focus:ring-0 prose-sm max-w-none"
-        style={{
-          outline: "none",
-        }}
-      />
-      {!value && (
-        <div className="absolute px-4 py-2 text-foreground/40 pointer-events-none">
-          {placeholder}
-        </div>
-      )}
+      <div className="relative">
+        <div
+          ref={setEditorRef}
+          contentEditable
+          suppressContentEditableWarning
+          onInput={handleInput}
+          onPaste={handlePaste}
+          dangerouslySetInnerHTML={{ __html: value }}
+          className="w-full min-h-64 px-4 py-2 focus:outline-none focus:ring-0 prose-sm max-w-none"
+          style={{
+            outline: "none",
+          }}
+        />
+        {!value && (
+          <div className="absolute top-2 left-4 text-foreground/40 pointer-events-none">
+            {placeholder}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
