@@ -30,26 +30,6 @@ export default function Index() {
         marginTop: "0",
         opacity: "0.92",
       }}>
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 -z-10" style={{ backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F6167da881eab41e9aebafce58dbb6d51)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover", marginBottom: "50px" }}>
-          {/* Primary animated blob */}
-          <div className="absolute top-10 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
-
-          {/* Secondary animated blob */}
-          <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-gradient-to-tl from-primary/15 to-transparent rounded-full filter blur-3xl opacity-25 animate-pulse" style={{ animationDelay: '1s' }}></div>
-
-          {/* Accent blob */}
-          <div className="absolute -bottom-32 left-1/2 w-96 h-96 bg-gradient-to-t from-blue-400/8 to-transparent rounded-full filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
-
-          {/* Subtle grid overlay */}
-          <div className="absolute inset-0 opacity-[0.02]" style={{
-            backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 70, 255, 0.05) 25%, rgba(0, 70, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 70, 255, 0.05) 75%, rgba(0, 70, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 70, 255, 0.05) 25%, rgba(0, 70, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 70, 255, 0.05) 75%, rgba(0, 70, 255, 0.05) 76%, transparent 77%, transparent)`,
-            backgroundSize: '60px 60px',
-            width: '1157px',
-            top: '23px'
-          }}></div>
-        </div>
-
         <div className="container max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 z-10">
