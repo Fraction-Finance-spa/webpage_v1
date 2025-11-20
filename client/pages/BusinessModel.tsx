@@ -112,7 +112,7 @@ export default function BusinessModel() {
         </section>
 
         {/* Main Content */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16" style={{ margin: "0 auto -5px", padding: "64px 32px 0" }}>
           {/* Tokenización Section */}
           <section className="mb-20">
             <div className="mb-12">
