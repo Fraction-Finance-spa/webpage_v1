@@ -45,8 +45,8 @@ export default function Index() {
           <div className="absolute inset-0 opacity-[0.02]" style={{
             backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(0, 70, 255, 0.05) 25%, rgba(0, 70, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 70, 255, 0.05) 75%, rgba(0, 70, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 70, 255, 0.05) 25%, rgba(0, 70, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 70, 255, 0.05) 75%, rgba(0, 70, 255, 0.05) 76%, transparent 77%, transparent)`,
             backgroundSize: '60px 60px',
-            width: '1169px',
-            top: '1px'
+            width: '1157px',
+            top: '23px'
           }}></div>
         </div>
 
