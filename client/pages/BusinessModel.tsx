@@ -6,7 +6,7 @@ export default function BusinessModel() {
     "Acceso rápido a capital",
     "Costos de originación más bajos",
     "Procesos digitales y verificación automatizada",
-    "Transparencia en uso de fondos y flujos de pago",
+    "Transparencia de fondos y flujos de pago",
   ];
 
   const investorBenefits = [
