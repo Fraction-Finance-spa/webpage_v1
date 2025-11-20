@@ -238,7 +238,7 @@ export default function Index() {
                 </h2>
                 <p className="text-xl text-foreground/70">
                   La forma más simple y segura de convertir activos en
-                  financieros
+                  financiamiento.
                 </p>
               </div>
 
