@@ -36,7 +36,7 @@ export default function Profile() {
   const userProfileType = (localStorage.getItem("userProfileType") || "persona") as "persona" | "empresa";
 
   const [isEditing, setIsEditing] = useState(false);
-  const [activeSection, setActiveSection] = useState<"cuenta" | "inversion" | "verificacion" | "bancaria">("cuenta");
+  const [activeSection, setActiveSection] = useState<"portafolio" | "cuenta" | "inversion" | "verificacion" | "bancaria">("portafolio");
   const [showTest, setShowTest] = useState(false);
   const [testAnswers, setTestAnswers] = useState<TestAnswers>({});
   const [testResult, setTestResult] = useState<ProfileResult | null>(null);
