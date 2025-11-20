@@ -79,6 +79,11 @@ export default function App() {
             <Route path="/canal-denuncias" element={<DenunciasChannel />} />
             <Route path="/canal-reclamos" element={<ReclamosChannel />} />
 
+            {/* Policies */}
+            <Route path="/politica-privacidad" element={<PrivacyPolicy />} />
+            <Route path="/terminos-servicio" element={<TermsOfService />} />
+            <Route path="/politica-cookies" element={<CookiePolicy />} />
+
             {/* Admin */}
             <Route path="/admin" element={<Admin />} />
 
