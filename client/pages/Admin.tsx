@@ -762,7 +762,7 @@ export default function Admin() {
                       <div className="flex-1">
                         <h4 className="font-semibold text-foreground">{article.titulo}</h4>
                         <p className="text-sm text-foreground/60">
-                          {article.autor} • {new Date(article.fechaCreacion).toLocaleDateString("es-ES")}
+                          {article.autor} ��� {new Date(article.fechaCreacion).toLocaleDateString("es-ES")}
                         </p>
                         <div className="mt-1 flex gap-2">
                           {article.categoria && (
@@ -1187,7 +1187,7 @@ export default function Admin() {
 
   return (
     <Layout>
-      <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-blue-50">
+      <div className="min-h-screen px-4 sm:px-6 lg:px-8 bg-blue-50" style={{ padding: "94px 32px 32px" }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Sidebar */}
