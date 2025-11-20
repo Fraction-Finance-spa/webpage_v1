@@ -405,7 +405,7 @@ export default function Layout({ children }: LayoutProps) {
                 </li>
                 <li>
                   <Link
-                    to="/contacto"
+                    to="/nosotros/contacto"
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     Contacto
