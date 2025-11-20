@@ -88,24 +88,24 @@ export default function BusinessModel() {
           {/* Tokenización Section */}
           <section className="mb-20">
             <div className="mb-12">
-              <h2 className="text-4xl font-bold text-foreground mb-6">
-                Tokenización de Activos
+              <h2 className="text-4xl font-bold text-foreground mb-6 text-center">
+                Instrumentos financieros tokenizados
               </h2>
               <p className="text-lg text-foreground/70 leading-relaxed mb-6">
-                Digitalizamos instrumentos financieros para crear un sistema moderno
-                de emisión, inversión y liquidez. La tokenización permite transformar
-                activos de financiamiento en instrumentos digitales fraccionables,
-                negociables y gestionados de forma programable.
+                Digitalizamos instrumentos financieros para crear un
+                sistema moderno de emisión, inversión y liquidez, donde
+                múltiples inversionistas pueden participar en la
+                originación y fondeo de activos mediante tokens
+                fraccionados. La tokenización transforma los instrumentos
+                de financiamiento en activos digitales programables,
+                negociables y accesibles para todos.
               </p>
             </div>
 
             {/* Instruments Grid */}
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-8">
-                Instrumentos que Tokenizamos
-              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {tokenizedInstruments.map((instrument, index) => (
+                {tokenizedInstruments.slice(0, 3).map((instrument, index) => (
                   <div
                     key={index}
                     className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
@@ -140,22 +140,23 @@ export default function BusinessModel() {
             <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative p-8 md:p-12">
-              <h2 className="text-4xl font-bold text-foreground mb-6">
+              <h2 className="text-4xl font-bold text-foreground mb-6 text-center">
                 Creando un Ecosistema de Valor
               </h2>
-              <p className="text-lg text-foreground/70 leading-relaxed mb-12">
-                Diseñamos una infraestructura que beneficia tanto a empresas como a
-                inversionistas, integrando emisión, custodia, inversión, cumplimiento
-                y liquidez en un solo entorno.
+              <p className="text-lg text-foreground/70 leading-relaxed mb-12 text-center">
+                Diseñamos una infraestructura que beneficia tanto a
+                empresas como a inversionistas, integrando emisión,
+                custodia, inversión, cumplimiento y liquidez en un solo
+                entorno.
               </p>
 
               {/* Two Column Benefits */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* For Enterprises */}
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-6">
-                    Para Empresas
-                  </h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
+                  Para Empresas
+                </h3>
                   <ul className="space-y-4">
                     {enterpriseBenefits.map((benefit, index) => (
                       <li key={index} className="flex items-start gap-3">
@@ -170,9 +171,9 @@ export default function BusinessModel() {
 
                 {/* For Investors */}
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-6">
-                    Para Inversionistas
-                  </h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
+                  Para Inversionistas
+                </h3>
                   <ul className="space-y-4">
                     {investorBenefits.map((benefit, index) => (
                       <li key={index} className="flex items-start gap-3">
