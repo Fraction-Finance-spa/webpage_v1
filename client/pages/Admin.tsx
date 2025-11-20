@@ -79,11 +79,13 @@ export default function Admin() {
 
   const [denuncias, setDenuncias] = useState<Denuncia[]>([]);
   const [reclamos, setReclamos] = useState<Reclamo[]>([]);
+  const [mensajesContacto, setMensajesContacto] = useState<any[]>([]);
 
   useEffect(() => {
     setTeamMembers(getTeamMembers());
     setDenuncias(JSON.parse(localStorage.getItem("denuncias") || "[]"));
     setReclamos(JSON.parse(localStorage.getItem("reclamos") || "[]"));
+    setMensajesContacto(JSON.parse(localStorage.getItem("mensajesContacto") || "[]"));
   }, []);
 
   const handleTeamFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
