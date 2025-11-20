@@ -96,7 +96,7 @@ export default function BusinessModel() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-blue-50" style={{ paddingTop: "80px" }}>
+      <div className="min-h-screen bg-blue-50" style={{ padding: "80px 0 5px" }}>
         {/* Hero Section */}
         <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-border/40">
           <div className="max-w-4xl mx-auto text-center">
