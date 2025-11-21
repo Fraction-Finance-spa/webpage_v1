@@ -320,7 +320,7 @@ export default function MercadoSecundario() {
                     </p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {allListings.map((listing) => {
                       const details = getListingDetails(listing);
                       const categoryColors: Record<string, { bg: string; text: string }> = {
