@@ -457,9 +457,9 @@ export default function Profile() {
                               <Wallet className="w-5 h-5 text-primary" />
                             </div>
                             <p className="text-3xl font-bold text-foreground">
-                              ${portfolio.inversiones.reduce((sum, inv) => sum + inv.monto, 0).toLocaleString()}
+                              {formatCLP(portfolio.inversiones.reduce((sum, inv) => sum + inv.montoInvertido, 0))}
                             </p>
-                            <p className="text-xs text-foreground/60 mt-2">USD</p>
+                            <p className="text-xs text-foreground/60 mt-2">CLP</p>
                           </div>
                         </div>
 
