@@ -361,6 +361,58 @@ export default function FinancingRequestCard({
             />
           </div>
 
+          {/* Financing Cost Breakdown Section */}
+          {currentEval && rates && (
+            <div className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 border-t border-blue-200">
+              <p className="text-xs font-semibold text-foreground mb-4 uppercase text-primary">Detalle de Costos y Financiamiento Aprobado</p>
+
+              <div className="space-y-3 text-sm">
+                {/* Monto a financiar */}
+                <div className="flex justify-between items-center">
+                  <span className="text-foreground/70">Monto a Financiar</span>
+                  <span className="font-bold text-foreground">{formatCLP(parseFloat(request.financingAmount))}</span>
+                </div>
+
+                {/* Comisión por interés */}
+                <div className="flex justify-between items-center border-t border-indigo-200 pt-3">
+                  <span className="text-foreground/70">Comisión por Interés ({rates.commissionRate.toFixed(2)}%)</span>
+                  <span className="font-semibold text-foreground">{formatCLP(parseFloat(request.financingAmount) * rates.commissionRate / 100)}</span>
+                </div>
+
+                {/* Tasa beneficio aportantes */}
+                <div className="flex justify-between items-center">
+                  <span className="text-foreground/70">Tasa Beneficio Aportantes ({rates.benefitRate.toFixed(2)}%)</span>
+                  <span className="font-semibold text-foreground">{formatCLP(parseFloat(request.financingAmount) * rates.benefitRate / 100)}</span>
+                </div>
+
+                {/* Subtotal */}
+                <div className="flex justify-between items-center border-t border-indigo-200 pt-3 bg-indigo-100/40 px-3 py-2 rounded">
+                  <span className="text-foreground font-semibold">Subtotal a Financiar</span>
+                  <span className="font-bold text-indigo-700">{formatCLP(parseFloat(request.financingAmount) + (parseFloat(request.financingAmount) * rates.commissionRate / 100) + (parseFloat(request.financingAmount) * rates.benefitRate / 100))}</span>
+                </div>
+
+                {/* Financing tier calculation */}
+                <div className="flex justify-between items-center text-xs">
+                  <span className="text-foreground/60">× Porcentaje Total a Financiar</span>
+                  <span className="font-bold text-foreground">{calculateScoring(currentEval).financingTier}</span>
+                </div>
+
+                {/* Final amount */}
+                <div className="flex justify-between items-center border-t border-green-300 pt-3 bg-green-100/50 px-3 py-2 rounded">
+                  <span className="text-foreground font-bold">Monto Total a Financiar</span>
+                  <span className="text-lg font-bold text-green-700">
+                    {formatCLP(
+                      (parseFloat(request.financingAmount) +
+                       parseFloat(request.financingAmount) * rates.commissionRate / 100 +
+                       parseFloat(request.financingAmount) * rates.benefitRate / 100) *
+                      (calculateScoring(currentEval).financingTier === "100%" ? 1.0 : 0.7)
+                    )}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Action Buttons */}
           <div className="p-4 bg-gray-50 border-t border-border/40 flex gap-2 flex-wrap">
             <button
