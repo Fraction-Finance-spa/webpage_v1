@@ -1630,13 +1630,24 @@ export default function Admin() {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
               <h2 className="text-3xl font-bold text-foreground">Equipo</h2>
+              {!showTeamForm && !editingTeamMember && (
+                <button
+                  onClick={() => setShowTeamForm(true)}
+                  className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
+                >
+                  <Plus className="w-5 h-5" />
+                  Agregar Miembro
+                </button>
+              )}
             </div>
 
             <div className="bg-white rounded-lg border border-border/40 p-8">
-              <h3 className="text-xl font-bold text-foreground mb-6">
-                {editingTeamMember ? "Editar Miembro del Equipo" : "Agregar Miembro del Equipo"}
-              </h3>
-              <form onSubmit={handleTeamFormSubmit} className="space-y-4 mb-8">
+              {(showTeamForm || editingTeamMember) && (
+                <>
+                  <h3 className="text-xl font-bold text-foreground mb-6">
+                    {editingTeamMember ? "Editar Miembro del Equipo" : "Agregar Miembro del Equipo"}
+                  </h3>
+                  <form onSubmit={handleTeamFormSubmit} className="space-y-4 mb-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">Nombre</label>
@@ -1684,6 +1695,48 @@ export default function Admin() {
                     className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                 </div>
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Foto del Miembro (opcional)</label>
+                  <div className="border-2 border-dashed border-border/40 rounded-lg p-6 text-center hover:border-primary/50 transition-colors cursor-pointer">
+                    <input
+                      type="file"
+                      onChange={handleTeamPhotoChange}
+                      accept="image/*"
+                      className="hidden"
+                      id="team-photo-input"
+                    />
+                    <label htmlFor="team-photo-input" className="cursor-pointer block">
+                      {teamForm.foto ? (
+                        <div className="space-y-2">
+                          <img
+                            src={teamForm.foto}
+                            alt="Preview"
+                            className="w-32 h-32 object-cover mx-auto rounded-lg"
+                          />
+                          <p className="text-sm text-foreground/60">Haz clic para cambiar foto</p>
+                        </div>
+                      ) : (
+                        <div className="space-y-2">
+                          <svg
+                            className="w-8 h-8 text-primary mx-auto"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 4v16m8-8H4"
+                            />
+                          </svg>
+                          <p className="text-foreground font-semibold">Haz clic para cargar foto</p>
+                          <p className="text-sm text-foreground/60">JPG, PNG, WebP (máx. 5MB)</p>
+                        </div>
+                      )}
+                    </label>
+                  </div>
+                </div>
                 <div className="flex gap-3">
                   <button
                     type="submit"
@@ -1696,7 +1749,22 @@ export default function Admin() {
                       type="button"
                       onClick={() => {
                         setEditingTeamMember(null);
-                        setTeamForm({ nombre: "", rol: "", departamento: "", bio: "" });
+                        setTeamForm({ nombre: "", rol: "", departamento: "", bio: "", foto: "" });
+                        setTeamPhoto(null);
+                        setShowTeamForm(false);
+                      }}
+                      className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
+                    >
+                      Cancelar
+                    </button>
+                  )}
+                  {!editingTeamMember && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowTeamForm(false);
+                        setTeamForm({ nombre: "", rol: "", departamento: "", bio: "", foto: "" });
+                        setTeamPhoto(null);
                       }}
                       className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
                     >
@@ -1705,6 +1773,8 @@ export default function Admin() {
                   )}
                 </div>
               </form>
+                </>
+              )}
 
               <div className="border-t border-border/40 pt-6">
                 <h3 className="text-lg font-bold text-foreground mb-4">Miembros Actuales</h3>
