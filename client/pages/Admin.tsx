@@ -1236,9 +1236,9 @@ export default function Admin() {
                             >
                               <option value="">Seleccionar...</option>
                               <option value="Excelente">Excelente (100%)</option>
-                              <option value="Buena">Buena (85%)</option>
-                              <option value="Regular">Regular (65%)</option>
-                              <option value="Deficiente">Deficiente (30%)</option>
+                              <option value="Buena">Buena (75%)</option>
+                              <option value="Regular">Regular (50%)</option>
+                              <option value="Deficiente">Deficiente (25%)</option>
                             </select>
                           </div>
                           <div>
@@ -1258,9 +1258,9 @@ export default function Admin() {
                             >
                               <option value="">Seleccionar...</option>
                               <option value="Excelente">Excelente (100%)</option>
-                              <option value="Buena">Buena (85%)</option>
-                              <option value="Regular">Regular (65%)</option>
-                              <option value="Deficiente">Deficiente (30%)</option>
+                              <option value="Buena">Buena (75%)</option>
+                              <option value="Regular">Regular (50%)</option>
+                              <option value="Deficiente">Deficiente (25%)</option>
                             </select>
                           </div>
                           <div>
@@ -1280,9 +1280,9 @@ export default function Admin() {
                             >
                               <option value="">Seleccionar...</option>
                               <option value="Excelente">Excelente (100%)</option>
-                              <option value="Buena">Buena (85%)</option>
-                              <option value="Regular">Regular (65%)</option>
-                              <option value="Deficiente">Deficiente (30%)</option>
+                              <option value="Buena">Buena (75%)</option>
+                              <option value="Regular">Regular (50%)</option>
+                              <option value="Deficiente">Deficiente (25%)</option>
                             </select>
                           </div>
                           <div>
@@ -1302,8 +1302,8 @@ export default function Admin() {
                             >
                               <option value="">Seleccionar...</option>
                               <option value="Creciente">Creciente (100%)</option>
-                              <option value="Estable">Estable (85%)</option>
-                              <option value="Decreciente">Decreciente (50%)</option>
+                              <option value="Estable">Estable (75%)</option>
+                              <option value="Decreciente">Decreciente (25%)</option>
                             </select>
                           </div>
                           <div>
@@ -1323,9 +1323,9 @@ export default function Admin() {
                             >
                               <option value="">Seleccionar...</option>
                               <option value="Excepcional">Excepcional (100%)</option>
-                              <option value="Fuerte">Fuerte (85%)</option>
-                              <option value="Adecuada">Adecuada (70%)</option>
-                              <option value="Débil">Débil (40%)</option>
+                              <option value="Fuerte">Fuerte (75%)</option>
+                              <option value="Adecuada">Adecuada (50%)</option>
+                              <option value="Débil">Débil (25%)</option>
                             </select>
                           </div>
                           <div>
@@ -1345,9 +1345,9 @@ export default function Admin() {
                             >
                               <option value="">Seleccionar...</option>
                               <option value="Excelente">Excelente (100%)</option>
-                              <option value="Buena">Buena (85%)</option>
-                              <option value="Regular">Regular (65%)</option>
-                              <option value="Deficiente">Deficiente (30%)</option>
+                              <option value="Buena">Buena (75%)</option>
+                              <option value="Regular">Regular (50%)</option>
+                              <option value="Deficiente">Deficiente (25%)</option>
                             </select>
                           </div>
                         </div>
