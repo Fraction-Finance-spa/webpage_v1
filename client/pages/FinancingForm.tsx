@@ -459,57 +459,70 @@ export default function FinancingForm() {
                   Resumen de Financiamiento
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <p className="text-xs text-foreground/60 mb-1 font-semibold">Monto a Financiar</p>
-                    <p className="text-2xl font-bold text-foreground">
-                      ${simulationResults.clpAmount.toLocaleString()}
-                    </p>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                  {/* Left Column: Financing Breakdown */}
+                  <div className="lg:col-span-2 space-y-3">
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                      <p className="text-xs text-foreground/60 mb-1 font-semibold">Monto a Financiar</p>
+                      <p className="text-2xl font-bold text-foreground">
+                        ${simulationResults.clpAmount.toLocaleString()}
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                      <p className="text-xs text-foreground/60 mb-1">Menos: Monto de Comisión</p>
+                      <p className="text-2xl font-bold text-red-700">
+                        -${simulationResults.commissionAmount.toLocaleString()}
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                      <p className="text-xs text-foreground/60 mb-1">
+                        Menos: Tasas Beneficio Aportante ({simulationResults.benefitRate.toFixed(2)}%)
+                      </p>
+                      <p className="text-2xl font-bold text-red-700">
+                        -${simulationResults.benefitRateAmount.toLocaleString()}
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
+                      <p className="text-xs text-foreground/60 mb-1 font-semibold">
+                        Total a Financiar
+                      </p>
+                      <p className="text-2xl font-bold text-green-700">
+                        ${simulationResults.totalFinancingAmount.toLocaleString()}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                    <p className="text-xs text-foreground/60 mb-1">Menos: Monto de Comisión</p>
-                    <p className="text-2xl font-bold text-red-700">
-                      -${simulationResults.commissionAmount.toLocaleString()}
-                    </p>
-                  </div>
+                  {/* Right Column: Risk, Term, and APY */}
+                  <div className="lg:col-span-1 space-y-3">
+                    <div className="p-4 bg-white rounded-lg border border-border/40 text-right">
+                      <p className="text-xs text-foreground/60 mb-1">Nivel de Riesgo</p>
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
+                        simulationResults.riskLevel === "Bajo"
+                          ? "bg-green-100 text-green-700"
+                          : simulationResults.riskLevel === "Medio"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : "bg-red-100 text-red-700"
+                      }`}>
+                        {simulationResults.riskLevel}
+                      </span>
+                    </div>
 
-                  <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                    <p className="text-xs text-foreground/60 mb-1">
-                      Menos: Tasas Beneficio Aportante
-                    </p>
-                    <p className="text-2xl font-bold text-red-700">
-                      -${simulationResults.benefitRateAmount.toLocaleString()}
-                    </p>
-                  </div>
+                    <div className="p-4 bg-white rounded-lg border border-border/40 text-right">
+                      <p className="text-xs text-foreground/60 mb-1">Plazo</p>
+                      <p className="text-2xl font-bold text-foreground">
+                        {simulationResults.plazo} días
+                      </p>
+                    </div>
 
-                  <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
-                    <p className="text-xs text-foreground/60 mb-1 font-semibold">
-                      Total a Financiar
-                    </p>
-                    <p className="text-2xl font-bold text-green-700">
-                      ${simulationResults.totalFinancingAmount.toLocaleString()}
-                    </p>
-                  </div>
-
-                  <div className="p-4 bg-white rounded-lg border border-border/40">
-                    <p className="text-xs text-foreground/60 mb-1">Plazo</p>
-                    <p className="text-2xl font-bold text-foreground">
-                      {simulationResults.plazo} días
-                    </p>
-                  </div>
-
-                  <div className="p-4 bg-white rounded-lg border border-border/40">
-                    <p className="text-xs text-foreground/60 mb-1">Nivel de Riesgo</p>
-                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
-                      simulationResults.riskLevel === "Bajo"
-                        ? "bg-green-100 text-green-700"
-                        : simulationResults.riskLevel === "Medio"
-                          ? "bg-yellow-100 text-yellow-700"
-                          : "bg-red-100 text-red-700"
-                    }`}>
-                      {simulationResults.riskLevel}
-                    </span>
+                    <div className="p-4 bg-white rounded-lg border border-border/40 text-right">
+                      <p className="text-xs text-foreground/60 mb-1">Tasa APY</p>
+                      <p className="text-2xl font-bold text-foreground">
+                        {simulationResults.interestRate}%
+                      </p>
+                    </div>
                   </div>
                 </div>
 
