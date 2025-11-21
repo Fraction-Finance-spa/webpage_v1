@@ -29,6 +29,12 @@ interface SimulationResults {
   interestRate: number;
   riskLevel: string;
   recommendation: string;
+  monthlyInterestRate: number;
+  plazo: number;
+  clpAmount: number;
+  financingCostPercentage: number;
+  benefitCostPercentage: number;
+  financedAmount: number;
 }
 
 export default function FinancingForm() {
