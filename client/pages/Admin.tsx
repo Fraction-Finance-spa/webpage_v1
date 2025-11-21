@@ -869,22 +869,7 @@ export default function Admin() {
                             <button
                               onClick={() => {
                                 setEditingSTO(sto);
-                                setStoForm({
-                                  activoDigitalId: sto.activoDigitalId,
-                                  nombreActivo: sto.nombreActivo,
-                                  simboloActivo: sto.simboloActivo,
-                                  estado: sto.estado,
-                                  tipoSTO: sto.tipoSTO,
-                                  numerosTokensVenta: sto.numerosTokensVenta,
-                                  precioPorToken: sto.precioPorToken,
-                                  fechaInicio: sto.fechaInicio.split("T")[0],
-                                  fechaFin: sto.fechaFin.split("T")[0],
-                                  montoMinimoRecaudacion: sto.montoMinimoRecaudacion,
-                                  montoMaximoRecaudacion: sto.montoMaximoRecaudacion,
-                                  montoMinimoInversion: sto.montoMinimoInversion,
-                                  montoMaximoInversion: sto.montoMaximoInversion,
-                                  descripcion: sto.descripcion || "",
-                                });
+                                setActiveSection("sto-wizard");
                               }}
                               className="p-2 hover:bg-white rounded transition-colors"
                             >
