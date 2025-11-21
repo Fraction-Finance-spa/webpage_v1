@@ -541,7 +541,7 @@ export default function FinancingForm() {
                   <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
                     <div className="flex items-center gap-3 mb-2">
                       <Zap className="w-5 h-5 text-green-600" />
-                      <p className="text-sm text-foreground/60">Monto Sugerido</p>
+                      <p className="text-sm text-foreground/60">Monto Sugerido (80%)</p>
                     </div>
                     <p className="text-3xl font-bold text-green-700">
                       ${simulationResults.suggestedAmount.toLocaleString()}
