@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { X, FileText, Download, Calendar, DollarSign, TrendingUp, Users } from "lucide-react";
 import { type STO } from "@/lib/stoManager";
 import { type SmartContract } from "@/lib/smartContractManager";
+import { addInvestment } from "@/lib/investmentManager";
 
 interface STODetailModalProps {
   sto: STO;
@@ -9,10 +11,61 @@ interface STODetailModalProps {
 }
 
 export default function STODetailModal({ sto, contract, onClose }: STODetailModalProps) {
+  const [investmentAmount, setInvestmentAmount] = useState<string>("");
+  const [isInvesting, setIsInvesting] = useState(false);
+  const [investmentSuccess, setInvestmentSuccess] = useState(false);
+
   const isActive = new Date() >= new Date(sto.fechaInicio) && new Date() <= new Date(sto.fechaFin);
   const daysRemaining = Math.ceil(
     (new Date(sto.fechaFin).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
   );
+
+  const handleInvest = () => {
+    const amount = parseFloat(investmentAmount);
+    const minInvestment = parseFloat(sto.montoMinimoInversion);
+    const maxInvestment = parseFloat(sto.montoMaximoInversion);
+
+    if (!amount || amount < minInvestment || amount > maxInvestment) {
+      alert(`La inversión debe estar entre $${minInvestment} y $${maxInvestment} USDC`);
+      return;
+    }
+
+    setIsInvesting(true);
+
+    try {
+      const userEmail = localStorage.getItem("userEmail") || "";
+      const tasaEsperada = parseFloat(sto.porcentajeRendimiento || "0");
+
+      // Calculate investment term in months (for demo purposes, using months from end date)
+      const monthsUntilEnd = Math.max(1, Math.round(daysRemaining / 30));
+      const plazo = `${monthsUntilEnd} meses`;
+
+      // For demo purposes, assume 0% current return (will increase over time in real scenario)
+      addInvestment(userEmail, {
+        stoId: sto.id,
+        stoNombre: sto.nombreActivo,
+        tipo: sto.tipoSTO,
+        montoInvertido: amount,
+        tasaEsperada: tasaEsperada,
+        plazo: plazo,
+        estado: "Activo",
+        progreso: 0,
+        fechaInversion: new Date().toISOString(),
+        fechaVencimiento: sto.fechaFin,
+        rentabilidadActual: 0,
+      });
+
+      setInvestmentSuccess(true);
+      setInvestmentAmount("");
+      setTimeout(() => {
+        onClose();
+      }, 2000);
+    } catch (error) {
+      alert("Error al realizar la inversión. Intenta de nuevo.");
+    } finally {
+      setIsInvesting(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={onClose}>
