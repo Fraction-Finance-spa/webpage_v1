@@ -484,7 +484,7 @@ export default function Profile() {
                               <BarChart3 className="w-5 h-5 text-primary" />
                             </div>
                             <p className="text-3xl font-bold text-foreground">
-                              {(portfolio.inversiones.reduce((sum, inv) => sum + inv.rentabilidadActual, 0) / portfolio.inversiones.length).toFixed(2)}%
+                              {portfolio.rentabilidadPromedio.toFixed(2)}%
                             </p>
                             <p className="text-xs text-foreground/60 mt-2">YTD</p>
                           </div>
