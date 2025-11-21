@@ -639,41 +639,66 @@ export default function Admin() {
                 </div>
               </div>
 
-              {items.activos && items.activos.length > 0 ? (
+              {smartContracts && smartContracts.length > 0 ? (
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-border/40">
-                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Nombre</th>
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Nombre / Símbolo</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Dirección del Contrato</th>
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Blockchain</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Estado</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {items.activos.map((item: any) => (
-                        <tr key={item.id} className="border-b border-border/40 hover:bg-secondary/30 transition-colors">
-                          <td className="px-4 py-3 text-sm text-foreground">{item.nombre}</td>
-                          <td className="px-4 py-3 text-sm text-foreground/60 font-mono text-xs">
-                            {item.direccion || "No desplegado"}
+                      {smartContracts.map((contract) => (
+                        <tr key={contract.id} className="border-b border-border/40 hover:bg-secondary/30 transition-colors">
+                          <td className="px-4 py-3">
+                            <div>
+                              <p className="text-sm font-semibold text-foreground">{contract.nombre}</p>
+                              <p className="text-xs text-foreground/60">{contract.simbolo}</p>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3 text-sm text-foreground/60 font-mono text-xs max-w-xs overflow-hidden text-ellipsis">
+                            {contract.direccion}
+                          </td>
+                          <td className="px-4 py-3 text-sm text-foreground">
+                            {contract.blockchain}
                           </td>
                           <td className="px-4 py-3">
                             <span
                               className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                                item.estado === "Activo"
+                                contract.estado === "Activo"
                                   ? "bg-green-100 text-green-700"
-                                  : "bg-yellow-100 text-yellow-700"
+                                  : contract.estado === "Pausado"
+                                    ? "bg-yellow-100 text-yellow-700"
+                                    : "bg-red-100 text-red-700"
                               }`}
                             >
-                              {item.estado}
+                              {contract.estado}
                             </span>
                           </td>
                           <td className="px-4 py-3">
                             <div className="flex gap-2">
-                              <button className="p-2 hover:bg-secondary rounded transition-colors">
+                              <button
+                                onClick={() => {
+                                  const contractInfo = `Nombre: ${contract.nombre}\nSímbolo: ${contract.simbolo}\nDirección: ${contract.direccion}\nBlockchain: ${contract.blockchain}\nEstado: ${contract.estado}\nFecha: ${new Date(contract.fechaCreacion).toLocaleDateString("es-ES")}`;
+                                  alert(contractInfo);
+                                }}
+                                className="p-2 hover:bg-secondary rounded transition-colors"
+                                title="Ver detalles">
                                 <Eye className="w-4 h-4 text-foreground/60 hover:text-primary" />
                               </button>
-                              <button className="p-2 hover:bg-secondary rounded transition-colors">
+                              <button
+                                onClick={() => {
+                                  if (confirm(`¿Estás seguro de que deseas eliminar ${contract.nombre}?`)) {
+                                    deleteSmartContract(contract.id);
+                                    setSmartContracts(getSmartContracts());
+                                  }
+                                }}
+                                className="p-2 hover:bg-secondary rounded transition-colors"
+                                title="Eliminar contrato">
                                 <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
                               </button>
                             </div>
@@ -687,13 +712,13 @@ export default function Admin() {
                 <div className="text-center py-12">
                   <Coins className="w-12 h-12 text-primary/20 mx-auto mb-4" />
                   <p className="text-foreground/60 mb-4">No hay activos digitales creados aún.</p>
-                  <a
-                    href="/smart-contract-wizard"
+                  <button
+                    onClick={() => setActiveSection("smart-contract-wizard")}
                     className="inline-flex items-center gap-2 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
                   >
                     <Zap className="w-4 h-4" />
                     Crear tu primer activo
-                  </a>
+                  </button>
                 </div>
               )}
             </div>
@@ -1717,7 +1742,7 @@ export default function Admin() {
             <h2 className="text-3xl font-bold text-foreground">Políticas</h2>
             <div className="space-y-4">
               {[
-                { key: "privacidad", titulo: "Política de Privacidad", estado: "Vigente" },
+                { key: "privacidad", titulo: "Pol��tica de Privacidad", estado: "Vigente" },
                 { key: "terminos", titulo: "Términos de Servicio", estado: "Vigente" },
                 { key: "cookies", titulo: "Política de Cookies", estado: "Vigente" },
               ].map((policy) => (
