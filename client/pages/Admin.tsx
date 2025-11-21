@@ -616,7 +616,7 @@ export default function Admin() {
       { id: 2, nombre: "María López", rol: "CTO", departamento: "Tech" },
     ],
     socios: [
-      { id: 1, nombre: "Blockchain Partners", categoria: "Tecnología", estado: "Activo" },
+      { id: 1, nombre: "Blockchain Partners", categoria: "Tecnolog��a", estado: "Activo" },
       { id: 2, nombre: "Finance Solutions", categoria: "Finanzas", estado: "Activo" },
     ],
   });
@@ -1354,11 +1354,17 @@ export default function Admin() {
 
                         {evaluacionComercial[request.id] && (
                           <div className="mb-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                               <div>
                                 <p className="text-xs text-foreground/60 mb-1">Scoring General</p>
                                 <p className="text-2xl font-bold text-primary">
                                   {calculateScoring(evaluacionComercial[request.id]).scoring}%
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-xs text-foreground/60 mb-1">Financiamiento</p>
+                                <p className="text-xl font-bold text-green-600">
+                                  {calculateScoring(evaluacionComercial[request.id]).financingTier}
                                 </p>
                               </div>
                               <div className="flex items-center justify-end">
@@ -1372,14 +1378,14 @@ export default function Admin() {
                                     }`}
                                   >
                                     {calculateScoring(evaluacionComercial[request.id]).aprobado
-                                      ? "APROBADO"
+                                      ? "APROBABLE"
                                       : "RECHAZADO"}
                                   </span>
                                 </div>
                               </div>
                             </div>
                             <p className="text-xs text-foreground/60 mt-2">
-                              Umbral de aprobación: ≥ 80%
+                              Financiamiento completo: ≥ 80% | Financiamiento reducido (70%): 60-80%
                             </p>
                           </div>
                         )}
