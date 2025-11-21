@@ -406,6 +406,23 @@ export default function FinancingRequestCard({
                       return newEval;
                     });
 
+                    // Prepare smart contract data from the financing request
+                    const smartContractData = {
+                      tokenName: `${request.companyName} - ${request.financingPurpose}`,
+                      tokenSymbol: request.companyName.substring(0, 4).toUpperCase(),
+                      maxSupply: stoResult.data.numerosTokensVenta,
+                      contractDescription: `Financiamiento para ${request.companyName}. ${request.financingPurpose}`,
+                      contractCategory: request.financingType,
+                    };
+
+                    // Navigate to smart contract wizard with pre-filled data
+                    if (setPreFilledSmartContractData) {
+                      setPreFilledSmartContractData(smartContractData);
+                    }
+                    if (setActiveSection) {
+                      setActiveSection("smart-contract-wizard");
+                    }
+
                     alert(`STO creado exitosamente (${stoResult.financingTier} del monto solicitado). Comisión: ${stoResult.rates?.commissionRate.toFixed(2)}%, Beneficio: ${stoResult.rates?.benefitRate.toFixed(2)}%`);
                   } catch (error) {
                     alert(`Error al crear STO: ${(error as any).message}`);
