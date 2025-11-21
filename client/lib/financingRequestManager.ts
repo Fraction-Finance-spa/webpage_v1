@@ -187,3 +187,50 @@ export function updateEvaluacionComercial(
     },
   });
 }
+
+export function createSTOFromFinancingRequest(request: FinancingRequest): { success: boolean; message: string; stoId?: string } {
+  try {
+    if (!request.evaluacionComercial || request.evaluacionComercial.scoring === undefined) {
+      return { success: false, message: "La solicitud no tiene evaluación comercial completada" };
+    }
+
+    const { scoring, financingTier } = calculateScoring(request.evaluacionComercial);
+
+    if (scoring < 60) {
+      return { success: false, message: "La evaluación no cumple el puntaje mínimo para tokenizar (60%)" };
+    }
+
+    const { addSTO } = await import("./stoManager");
+
+    // Calculate amounts based on financing tier
+    const requestedAmount = parseFloat(request.financingAmount);
+    const financingPercentage = financingTier === "100%" ? 1.0 : 0.7;
+    const approvedAmount = Math.floor(requestedAmount * financingPercentage);
+
+    const newSTO = addSTO({
+      activoDigitalId: `debt-${request.id}`,
+      nombreActivo: `${request.companyName} - ${request.financingPurpose}`,
+      simboloActivo: request.companyName.substring(0, 4).toUpperCase(),
+      estado: "Activo",
+      tipoSTO: "Debt",
+      numerosTokensVenta: Math.floor(approvedAmount / 1000).toString(),
+      precioPorToken: "1000",
+      fechaInicio: new Date().toISOString(),
+      fechaFin: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+      montoMinimoRecaudacion: (approvedAmount * 0.8).toString(),
+      montoMaximoRecaudacion: approvedAmount.toString(),
+      montoMinimoInversion: "1000",
+      montoMaximoInversion: approvedAmount.toString(),
+      descripcion: `Financiamiento para ${request.companyName}. ${request.financingPurpose}`,
+      porcentajeRendimiento: "8",
+    });
+
+    // Update financing request status
+    updateRequestStatus(request.id, "Aprobado", `Tokenizado como STO ${newSTO.id}`);
+
+    return { success: true, message: `STO creado exitosamente (${financingTier} del monto solicitado)`, stoId: newSTO.id };
+  } catch (error) {
+    console.error("Error creating STO:", error);
+    return { success: false, message: "Error al crear el STO: " + (error as any).message };
+  }
+}
