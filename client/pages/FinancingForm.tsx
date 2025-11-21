@@ -56,6 +56,7 @@ export default function FinancingForm() {
     financingPurpose: "",
     businessStage: "",
     financingType: "",
+    financingSubtype: "",
     firstName: "",
     lastName: "",
     email: userEmail,
