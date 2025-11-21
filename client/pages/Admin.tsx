@@ -1340,7 +1340,7 @@ export default function Admin() {
                                 },
                               }))
                             }
-                            placeholder="Detalles adicionales de la evaluaci��n comercial..."
+                            placeholder="Detalles adicionales de la evaluación comercial..."
                             className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                             rows={2}
                           />
@@ -1367,11 +1367,19 @@ export default function Admin() {
                         <button
                           onClick={() => {
                             updateRequestStatus(request.id, "Aprobado", financingNotes[request.id] || "");
+                            if (evaluacionComercial[request.id]) {
+                              updateEvaluacionComercial(request.id, evaluacionComercial[request.id]);
+                            }
                             setFinancingRequests(getFinancingRequests());
                             setFinancingNotes((prev) => {
                               const newNotes = { ...prev };
                               delete newNotes[request.id];
                               return newNotes;
+                            });
+                            setEvaluacionComercial((prev) => {
+                              const newEval = { ...prev };
+                              delete newEval[request.id];
+                              return newEval;
                             });
                           }}
                           className="px-4 py-2 bg-green-500 text-white rounded text-sm font-semibold hover:bg-green-600 transition-colors"
@@ -1381,11 +1389,19 @@ export default function Admin() {
                         <button
                           onClick={() => {
                             updateRequestStatus(request.id, "Rechazado", financingNotes[request.id] || "");
+                            if (evaluacionComercial[request.id]) {
+                              updateEvaluacionComercial(request.id, evaluacionComercial[request.id]);
+                            }
                             setFinancingRequests(getFinancingRequests());
                             setFinancingNotes((prev) => {
                               const newNotes = { ...prev };
                               delete newNotes[request.id];
                               return newNotes;
+                            });
+                            setEvaluacionComercial((prev) => {
+                              const newEval = { ...prev };
+                              delete newEval[request.id];
+                              return newEval;
                             });
                           }}
                           className="px-4 py-2 bg-red-500 text-white rounded text-sm font-semibold hover:bg-red-600 transition-colors"
