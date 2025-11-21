@@ -68,6 +68,7 @@ export default function Inversiones() {
                   (new Date(sto.fechaFin).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
                 );
                 const isActive = new Date() >= new Date(sto.fechaInicio) && new Date() <= new Date(sto.fechaFin);
+                const relatedContract = contracts.find((c) => c.id === sto.activoDigitalId);
 
                 return (
                   <div
