@@ -680,6 +680,9 @@ export default function MercadoSecundario() {
                   onClick={() => {
                     setShowCreateModal(false);
                     setError("");
+                    setSellingPrice("");
+                    setTokenQuantity("");
+                    setSelectedAsset(null);
                   }}
                   className="flex-1 px-6 py-3 border border-border/40 text-foreground rounded-lg hover:bg-gray-50 transition-colors font-semibold"
                 >
