@@ -332,15 +332,22 @@ export default function Layout({ children }: LayoutProps) {
                                       openNestedSubmenu === subitem.label ? null : subitem.label
                                     )
                                   }
-                                  className="w-full text-left px-4 py-3 text-foreground/60 hover:text-primary transition-colors font-medium text-sm flex justify-between items-center"
+                                  className="w-full text-left px-4 py-3 text-foreground/60 hover:text-primary transition-colors font-medium text-sm flex justify-between items-start"
                                 >
-                                  <div className="flex items-center gap-2">
-                                    {subitem.icon}
-                                    {subitem.label}
+                                  <div className="flex-1">
+                                    <div className="flex items-center gap-2">
+                                      {subitem.icon}
+                                      {subitem.label}
+                                    </div>
+                                    {subitem.description && (
+                                      <div className="text-xs text-foreground/60 font-normal mt-1">
+                                        {subitem.description}
+                                      </div>
+                                    )}
                                   </div>
                                   <span
                                     className={cn(
-                                      "transition-transform text-xs",
+                                      "transition-transform text-xs ml-2 flex-shrink-0",
                                       openNestedSubmenu === subitem.label && "rotate-180"
                                     )}
                                   >
