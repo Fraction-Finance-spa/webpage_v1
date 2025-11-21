@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
-import { ArrowRight, AlertCircle, CheckCircle } from "lucide-react";
+import { ArrowRight, AlertCircle, CheckCircle, TrendingUp, Zap, Target } from "lucide-react";
 import { addFinancingRequest } from "@/lib/financingRequestManager";
 
 interface FormData {
