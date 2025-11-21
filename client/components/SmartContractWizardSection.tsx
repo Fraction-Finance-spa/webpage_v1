@@ -764,15 +764,26 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
         )}
 
         {state.step === 9 && state.deploymentAddress && (
-          <button
-            onClick={() => {
-              setActiveSection("activos");
-            }}
-            className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold text-sm"
-          >
-            Ir a Activos Digitales
-            <ChevronRight className="w-4 h-4" />
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => {
+                setActiveSection("sto");
+              }}
+              className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold text-sm"
+            >
+              Crear STO
+              <ChevronRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => {
+                setActiveSection("activos");
+              }}
+              className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold text-sm"
+            >
+              Ir a Activos Digitales
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         )}
       </div>
     </div>
