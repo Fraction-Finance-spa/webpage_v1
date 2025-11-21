@@ -938,6 +938,22 @@ export default function Admin() {
                                 {sto.descripcion}
                               </p>
                             )}
+
+                            {/* Tokens Sold Progress */}
+                            <div className="mt-3 p-2 bg-white/50 rounded">
+                              <div className="flex items-center justify-between mb-1">
+                                <p className="text-xs font-semibold text-foreground">Tokens Vendidos</p>
+                                <p className="text-xs text-foreground/60">
+                                  {Math.round((parseFloat(sto.tokenosVendidos || "0") / parseFloat(sto.numerosTokensVenta || "1")) * 100)}% ({sto.tokenosVendidos || "0"} / {sto.numerosTokensVenta})
+                                </p>
+                              </div>
+                              <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                <div
+                                  className="h-full bg-gradient-to-r from-green-500 to-emerald-600"
+                                  style={{ width: `${Math.min((parseFloat(sto.tokenosVendidos || "0") / parseFloat(sto.numerosTokensVenta || "1")) * 100, 100)}%` }}
+                                />
+                              </div>
+                            </div>
                           </div>
 
                           {contract && contract.documentos && contract.documentos.length > 0 && (
