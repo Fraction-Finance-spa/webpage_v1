@@ -372,6 +372,7 @@ export default function Admin() {
   const [smartContracts, setSmartContracts] = useState<SmartContract[]>([]);
   const [stos, setSTOs] = useState<STO[]>([]);
   const [selectedSTOCategory, setSelectedSTOCategory] = useState<string>("Todas");
+  const [selectedActivoCategory, setSelectedActivoCategory] = useState<string>("Todas");
   const [editingSTO, setEditingSTO] = useState<STO | null>(null);
   const [stoForm, setStoForm] = useState({
     activoDigitalId: "",
@@ -743,6 +744,10 @@ export default function Admin() {
         return <SmartContractWizardSection setActiveSection={setActiveSection} onContractCreated={() => setSmartContracts(getSmartContracts())} />;
 
       case "activos":
+        const filteredSmartContracts = selectedActivoCategory === "Todas"
+          ? smartContracts
+          : smartContracts.filter((contract) => contract.categoria === selectedActivoCategory);
+
         return (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
@@ -770,6 +775,22 @@ export default function Admin() {
                 </div>
               </div>
 
+              <div className="mb-6 flex flex-wrap gap-2">
+                {["Todas", "Capital de trabajo", "Bonos Corporativos", "Deuda Privada"].map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedActivoCategory(category)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                      selectedActivoCategory === category
+                        ? "bg-primary text-white"
+                        : "bg-gray-100 text-foreground hover:bg-gray-200"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+
               {smartContracts && smartContracts.length > 0 ? (
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -778,12 +799,13 @@ export default function Admin() {
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Nombre / Símbolo</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Dirección del Contrato</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Blockchain</th>
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Categoría</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Estado</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {smartContracts.map((contract) => (
+                      {filteredSmartContracts.map((contract) => (
                         <tr key={contract.id} className="border-b border-border/40 hover:bg-secondary/30 transition-colors">
                           <td className="px-4 py-3">
                             <div>
@@ -796,6 +818,11 @@ export default function Admin() {
                           </td>
                           <td className="px-4 py-3 text-sm text-foreground">
                             {contract.blockchain}
+                          </td>
+                          <td className="px-4 py-3">
+                            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
+                              {contract.categoria}
+                            </span>
                           </td>
                           <td className="px-4 py-3">
                             <span
@@ -814,7 +841,7 @@ export default function Admin() {
                             <div className="flex gap-2">
                               <button
                                 onClick={() => {
-                                  const contractInfo = `Nombre: ${contract.nombre}\nSímbolo: ${contract.simbolo}\nDirección: ${contract.direccion}\nBlockchain: ${contract.blockchain}\nEstado: ${contract.estado}\nFecha: ${new Date(contract.fechaCreacion).toLocaleDateString("es-ES")}`;
+                                  const contractInfo = `Nombre: ${contract.nombre}\nSímbolo: ${contract.simbolo}\nDirección: ${contract.direccion}\nBlockchain: ${contract.blockchain}\nCategoría: ${contract.categoria}\nEstado: ${contract.estado}\nFecha: ${new Date(contract.fechaCreacion).toLocaleDateString("es-ES")}`;
                                   alert(contractInfo);
                                 }}
                                 className="p-2 hover:bg-secondary rounded transition-colors"
