@@ -95,42 +95,22 @@ export default function Profile() {
     saldoTotal: 0,
     inversionesActivas: 0,
     rentabilidadPromedio: 0,
-    inversiones: [
-      {
-        id: 1,
-        nombre: "Capital de Trabajo - Empresa XYZ",
-        tipo: "Capital de Trabajo",
-        monto: 10000,
-        tasaEsperada: 12.5,
-        rentabilidadActual: 8.75,
-        plazo: "24 meses",
-        estado: "Activo",
-        progreso: 45,
-      },
-      {
-        id: 2,
-        nombre: "Bonos Corporativos - ABC Corp",
-        tipo: "Bonos Corporativos",
-        monto: 25000,
-        tasaEsperada: 10.0,
-        rentabilidadActual: 10.0,
-        plazo: "36 meses",
-        estado: "Activo",
-        progreso: 25,
-      },
-      {
-        id: 3,
-        nombre: "Deuda Privada - Startup Tech",
-        tipo: "Deuda Privada",
-        monto: 15000,
-        tasaEsperada: 15.0,
-        rentabilidadActual: 6.5,
-        plazo: "18 meses",
-        estado: "Activo",
-        progreso: 67,
-      },
-    ],
+    inversiones: [] as any[],
   });
+
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail") || "";
+    const investments = getUserInvestments(userEmail);
+    const totalAmount = getTotalInvestedAmount(userEmail);
+    const avgYield = getAverageYield(userEmail);
+
+    setPortfolio({
+      saldoTotal: totalAmount,
+      inversionesActivas: investments.filter(inv => inv.estado === "Activo").length,
+      rentabilidadPromedio: avgYield,
+      inversiones: investments,
+    });
+  }, []);
 
   const testQuestions = [
     {
