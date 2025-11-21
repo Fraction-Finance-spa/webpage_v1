@@ -437,6 +437,7 @@ export default function Admin() {
     });
     setArticleImage(null);
     setEditingArticle(null);
+    setShowArticleForm(false);
   };
 
   const handleEditArticle = (article: BlogArticle) => {
