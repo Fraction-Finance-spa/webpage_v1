@@ -106,6 +106,7 @@ export default function Admin() {
   const [policyContent, setPolicyContent] = useState("");
   const [editingTokensSoldId, setEditingTokensSoldId] = useState<string | null>(null);
   const [editingTokensSoldValue, setEditingTokensSoldValue] = useState("");
+  const [preFilledSmartContractData, setPreFilledSmartContractData] = useState<any>(null);
 
   useEffect(() => {
     setTeamMembers(getTeamMembers());
