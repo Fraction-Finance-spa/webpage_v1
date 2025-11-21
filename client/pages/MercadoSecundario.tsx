@@ -94,18 +94,26 @@ export default function MercadoSecundario() {
       return;
     }
 
+    if (!tokenQuantity || parseInt(tokenQuantity) <= 0) {
+      setError("Por favor ingresa una cantidad de tokens válida");
+      return;
+    }
+
     const price = parseFloat(sellingPrice);
     if (price > selectedAsset.montoInvertido) {
       setError("El precio de venta no puede ser mayor al precio de compra");
       return;
     }
 
+    const quantity = parseInt(tokenQuantity);
+
     try {
       createListing(
         userEmail,
         userFirstName,
         selectedAsset,
-        price
+        price,
+        quantity
       );
 
       setSuccess("¡Activo listado para venta exitosamente!");
@@ -113,6 +121,7 @@ export default function MercadoSecundario() {
         setShowCreateModal(false);
         setSelectedAsset(null);
         setSellingPrice("");
+        setTokenQuantity("");
         setSuccess("");
         loadData();
       }, 1500);
