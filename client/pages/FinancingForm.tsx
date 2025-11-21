@@ -295,7 +295,7 @@ export default function FinancingForm() {
               <CheckCircle className="w-12 h-12 text-green-600" />
             </div>
             <h1 className="text-4xl font-bold text-foreground mb-4">
-              ¡Solicitud Enviada!
+              ��Solicitud Enviada!
             </h1>
             <p className="text-lg text-foreground/70 mb-4">
               Gracias por tu solicitud de financiamiento. Nos pondremos en contacto en las próximas 48 horas.
@@ -809,11 +809,13 @@ export default function FinancingForm() {
                     } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
                   >
                     <option value="">Selecciona rango</option>
-                    <option value="0-10k">$0 - $10K</option>
-                    <option value="10k-50k">$10K - $50K</option>
-                    <option value="50k-100k">$50K - $100K</option>
-                    <option value="100k-500k">$100K - $500K</option>
-                    <option value="500k+">$500K+</option>
+                    <option value="0-10k">CLP $0 - CLP $10.000.000</option>
+                    <option value="10k-50k">CLP $10.000.000 - CLP $50.000.000</option>
+                    <option value="50k-100k">CLP $50.000.000 - CLP $100.000.000</option>
+                    <option value="100k-500k">CLP $100.000.000 - CLP $500.000.000</option>
+                    <option value="500k-1000k">CLP $500.000.000 - CLP $1.000.000.000</option>
+                    <option value="1000k-5000k">CLP $1.000.000.000 - CLP $5.000.000.000</option>
+                    <option value="5000k+">CLP $5.000.000.000+</option>
                   </select>
                   {errors.monthlyRevenue && (
                     <p className="text-red-600 text-sm mt-1">{errors.monthlyRevenue}</p>
