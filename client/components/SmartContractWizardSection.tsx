@@ -106,6 +106,9 @@ export default function SmartContractWizardSection({ setActiveSection, onContrac
     contractCode: "",
     deploymentAddress: "",
     isDeploying: false,
+    contractDescription: "",
+    contractPurpose: "",
+    contractCategory: "",
   });
 
   const [documentos, setDocumentos] = useState<Array<{ nombre: string; archivo: string; tipo: string }>>([]);
