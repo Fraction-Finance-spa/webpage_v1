@@ -151,6 +151,7 @@ export default function FinancingForm() {
       "growth": 0.8,
       "established": 0.95,
       "scale": 1.0,
+      "large": 1.0,
     };
     const stageScore = stageScores[formData.businessStage] || 0.7;
 
@@ -597,7 +598,7 @@ export default function FinancingForm() {
               {/* Recommendation Section */}
               <div className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
                 <h3 className="text-lg font-bold text-foreground mb-2">
-                  Recomendación
+                  Recomendaci��n
                 </h3>
                 <p className="text-foreground/70">
                   {simulationResults.recommendation}
