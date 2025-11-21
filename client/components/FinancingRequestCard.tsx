@@ -383,14 +383,11 @@ export default function FinancingRequestCard({
 
                 if (stoResult.success && stoResult.data) {
                   try {
-                    // Create the STO
-                    const newSTO = addSTO(stoResult.data);
-
-                    // Update financing request status with STO reference and rates
+                    // Update financing request status with approval and rates
                     updateRequestStatus(
                       request.id,
                       "Aprobado",
-                      `Tokenizado exitosamente. STO creado con financiamiento al ${stoResult.financingTier}. Comisión: ${stoResult.rates?.commissionRate.toFixed(2)}%, Beneficio Aportante: ${stoResult.rates?.benefitRate.toFixed(2)}%. ${financingNotes[request.id] || ""}`
+                      `Aprobado para Smart Contract. Financiamiento al ${stoResult.financingTier}. Comisión: ${stoResult.rates?.commissionRate.toFixed(2)}%, Beneficio Aportante: ${stoResult.rates?.benefitRate.toFixed(2)}%, Tasa Mensual: ${stoResult.rates?.monthlyInterestRate.toFixed(2)}%. ${financingNotes[request.id] || ""}`
                     );
 
                     // Refresh and clear state
@@ -423,9 +420,9 @@ export default function FinancingRequestCard({
                       setActiveSection("smart-contract-wizard");
                     }
 
-                    alert(`STO creado exitosamente (${stoResult.financingTier} del monto solicitado). Comisión: ${stoResult.rates?.commissionRate.toFixed(2)}%, Beneficio: ${stoResult.rates?.benefitRate.toFixed(2)}%`);
+                    alert(`Financiamiento aprobado. Abriendo asistente de Smart Contract (${stoResult.financingTier} del monto solicitado). Comisión: ${stoResult.rates?.commissionRate.toFixed(2)}%, Beneficio: ${stoResult.rates?.benefitRate.toFixed(2)}%, Tasa Mensual: ${stoResult.rates?.monthlyInterestRate.toFixed(2)}%`);
                   } catch (error) {
-                    alert(`Error al crear STO: ${(error as any).message}`);
+                    alert(`Error al procesar la aprobación: ${(error as any).message}`);
                   }
                 } else {
                   alert(stoResult.message);
