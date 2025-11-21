@@ -8,6 +8,7 @@ import { type Candidatura } from "@/components/CandidaturaForm";
 import { getArticles, addArticle, updateArticle, deleteArticle, type BlogArticle } from "@/lib/blogManager";
 import { getEducacionCards, addEducacionCard, updateEducacionCard, deleteEducacionCard, type EducacionCard } from "@/lib/educacionManager";
 import { getSmartContracts, deleteSmartContract, type SmartContract } from "@/lib/smartContractManager";
+import SmartContractWizardSection from "@/components/SmartContractWizardSection";
 import {
   LayoutDashboard,
   Coins,
