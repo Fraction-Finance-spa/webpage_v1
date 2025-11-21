@@ -832,6 +832,9 @@ export default function Admin() {
                               {contract.categoria}
                             </span>
                           </td>
+                          <td className="px-4 py-3 text-sm text-foreground/60">
+                            {new Date(contract.fechaCreacion).toLocaleDateString("es-ES")}
+                          </td>
                           <td className="px-4 py-3">
                             <span
                               className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
