@@ -196,13 +196,13 @@ export default function Signup() {
             <div style={{ color: "rgba(255, 255, 255, 1)" }}>
               Al registrarte aceptas nuestros
             </div>
-            <div className="text-primary hover:text-primary/80 font-semibold">
+            <a href="/terminos-servicio" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold block">
               Términos de Servicio
-            </div>
+            </a>
             <span>y</span>
-            <div className="text-primary hover:text-primary/80 font-semibold">
+            <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold block">
               Política de Privacidad
-            </div>
+            </a>
           </div>
         </div>
       </div>
