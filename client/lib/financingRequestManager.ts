@@ -195,29 +195,41 @@ export function calculateRatesByScoring(scoring: number): { commissionRate: numb
   let monthlyInterestRate: number;
   let riskCategory: string;
 
-  if (scoring >= 80) {
-    // Low risk - best rates
+  if (scoring >= 90) {
+    // Excellent - best rates
+    commissionRate = 2.0;
+    benefitRate = 2.0;
+    monthlyInterestRate = 1.0;
+    riskCategory = "Muy Bajo";
+  } else if (scoring >= 80) {
+    // Low risk
     commissionRate = 2.5;
     benefitRate = 2.5;
-    monthlyInterestRate = 1.0;
+    monthlyInterestRate = 1.5;
     riskCategory = "Bajo";
   } else if (scoring >= 70) {
     // Medium-Low risk
     commissionRate = 3.5;
     benefitRate = 3.5;
-    monthlyInterestRate = 1.5;
+    monthlyInterestRate = 2.0;
     riskCategory = "Medio-Bajo";
   } else if (scoring >= 60) {
     // Medium risk
     commissionRate = 4.5;
     benefitRate = 4.5;
-    monthlyInterestRate = 2.0;
+    monthlyInterestRate = 2.5;
     riskCategory = "Medio";
+  } else if (scoring >= 50) {
+    // Medium-High risk
+    commissionRate = 5.5;
+    benefitRate = 5.0;
+    monthlyInterestRate = 3.0;
+    riskCategory = "Medio-Alto";
   } else {
     // High risk (non-approvable)
-    commissionRate = 6.0;
-    benefitRate = 5.5;
-    monthlyInterestRate = 3.0;
+    commissionRate = 6.5;
+    benefitRate = 6.0;
+    monthlyInterestRate = 3.5;
     riskCategory = "Alto";
   }
 
