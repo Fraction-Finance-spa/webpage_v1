@@ -751,20 +751,34 @@ export default function Admin() {
           </div>
         );
 
+      case "sto-wizard":
+        return (
+          <STOWizardSection
+            setActiveSection={setActiveSection}
+            onSTOCreated={() => setSTOs(getSTOs())}
+            smartContracts={smartContracts}
+            editingSTO={editingSTO}
+          />
+        );
+
       case "sto":
         return (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
               <h2 className="text-3xl font-bold text-foreground">Oferta de Financiamiento (STOs)</h2>
+              <button
+                onClick={() => {
+                  setEditingSTO(null);
+                  setActiveSection("sto-wizard");
+                }}
+                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2 whitespace-nowrap"
+              >
+                <Plus className="w-5 h-5" />
+                Crear Nuevo STO
+              </button>
             </div>
 
             <div className="bg-white rounded-lg border border-border/40 p-8">
-              <h3 className="text-xl font-bold text-foreground mb-6">
-                {editingSTO ? "Editar Oferta" : "Crear Nuevo STO"}
-              </h3>
-              <p className="text-sm text-foreground/70 mb-6">
-                Define los parámetros para una nueva oferta pública de tokens.
-              </p>
 
               <form
                 onSubmit={(e) => {
