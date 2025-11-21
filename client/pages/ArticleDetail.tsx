@@ -85,7 +85,7 @@ export default function ArticleDetail() {
               className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all font-semibold mb-8"
             >
               <ArrowLeft className="w-4 h-4" />
-              Volver al Blog
+              Volver a Artículos y Noticias
             </button>
             <div className="bg-white rounded-lg border border-border/40 p-12 text-center">
               <p className="text-lg text-foreground/70 mb-4">
