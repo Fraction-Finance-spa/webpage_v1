@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import { useNavigate } from "react-router-dom";
 import { ChevronRight, ChevronLeft, CheckCircle, Code, Zap, DollarSign, Wallet, FileText, Server } from "lucide-react";
+import { addSmartContract } from "@/lib/smartContractManager";
 
 type AssetClass = "equity" | "rwa" | null;
 type BlockchainNetwork = "ethereum-mainnet" | "sepolia-testnet" | "polygon-mainnet" | "polygon-amoy" | "bnb-mainnet" | "base-mainnet" | null;
