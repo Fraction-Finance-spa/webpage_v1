@@ -8,7 +8,6 @@ import STODetailModal from "@/components/STODetailModal";
 export default function Inversiones() {
   const [stos, setSTOs] = useState<STO[]>([]);
   const [contracts, setContracts] = useState<SmartContract[]>([]);
-  const [selectedType, setSelectedType] = useState<string>("Todos");
   const [selectedCategory, setSelectedCategory] = useState<string>("Todas");
   const [selectedSTO, setSelectedSTO] = useState<STO | null>(null);
 
@@ -17,23 +16,22 @@ export default function Inversiones() {
     setContracts(getSmartContracts());
   }, []);
 
-  const stoTypes = ["Todos", "Equity", "Debt", "Hybrid", "Utility"];
   const categories = ["Todas", "Capital de trabajo", "Bonos Corporativos", "Deuda Privada"];
 
   const filteredSTOs = (
-    selectedType === "Todos" && selectedCategory === "Todas"
+    selectedCategory === "Todas"
       ? stos
       : stos.filter((sto) => {
-          const matchType = selectedType === "Todos" || sto.tipoSTO === selectedType;
           const matchCategory = selectedCategory === "Todas" ||
             contracts.find((c) => c.id === sto.activoDigitalId)?.categoria === selectedCategory;
-          return matchType && matchCategory;
+          return matchCategory;
         })
   ).sort((a, b) => new Date(a.fechaInicio).getTime() - new Date(b.fechaInicio).getTime());
 
   const calculateProgress = (sto: STO) => {
-    const minAmount = parseFloat(sto.montoMinimoRecaudacion);
-    const raised = parseFloat(sto.montoRecaudadoActual || "0");
+    const minAmount = parseFloat(sto.montoMinimoRecaudacion) || 0;
+    const raised = parseFloat(sto.montoRecaudadoActual || "0") || 0;
+    if (!minAmount || minAmount <= 0) return 0;
     return Math.min((raised / minAmount) * 100, 100);
   };
 
