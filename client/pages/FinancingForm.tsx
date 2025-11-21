@@ -419,7 +419,7 @@ export default function FinancingForm() {
           )}
 
           <form
-            onSubmit={handleSubmit}
+            onSubmit={handleSimulate}
             className="bg-white rounded-lg p-8 sm:p-12 border border-border/40"
           >
             {/* Información de la Empresa */}
