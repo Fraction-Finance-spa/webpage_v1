@@ -309,27 +309,81 @@ export default function Layout({ children }: LayoutProps) {
                       {openSubmenu === item.label && (
                         <div className="pl-4 space-y-2 border-l border-border/40">
                           {item.submenu.map((subitem) => (
-                            <Link
-                              key={subitem.label}
-                              to={subitem.path || "#"}
-                              className="block px-4 py-3 text-foreground/60 hover:text-primary transition-colors"
-                              onClick={(e) => {
-                                setMobileMenuOpen(false);
-                                if (subitem.label === "Financiamiento") {
-                                  handleFinanciamientoClick(e);
-                                }
-                              }}
-                            >
-                              <div className="flex items-center gap-2 mb-1 font-medium text-sm">
-                                {subitem.icon}
-                                {subitem.label}
+                            subitem.submenu ? (
+                              <div key={subitem.label}>
+                                <button
+                                  onClick={() =>
+                                    setOpenNestedSubmenu(
+                                      openNestedSubmenu === subitem.label ? null : subitem.label
+                                    )
+                                  }
+                                  className="w-full text-left px-4 py-3 text-foreground/60 hover:text-primary transition-colors font-medium text-sm flex justify-between items-center"
+                                >
+                                  <div className="flex items-center gap-2">
+                                    {subitem.icon}
+                                    {subitem.label}
+                                  </div>
+                                  <span
+                                    className={cn(
+                                      "transition-transform text-xs",
+                                      openNestedSubmenu === subitem.label && "rotate-180"
+                                    )}
+                                  >
+                                    ▼
+                                  </span>
+                                </button>
+                                {openNestedSubmenu === subitem.label && (
+                                  <div className="pl-4 space-y-2 border-l border-border/40">
+                                    {subitem.submenu.map((nestedItem) => (
+                                      <Link
+                                        key={nestedItem.label}
+                                        to={nestedItem.path || "#"}
+                                        className="block px-4 py-3 text-foreground/60 hover:text-primary transition-colors"
+                                        onClick={(e) => {
+                                          setMobileMenuOpen(false);
+                                          setOpenNestedSubmenu(null);
+                                          if (nestedItem.label === "Financiamiento") {
+                                            handleFinanciamientoClick(e);
+                                          }
+                                        }}
+                                      >
+                                        <div className="flex items-center gap-2 mb-1 font-medium text-sm">
+                                          {nestedItem.icon}
+                                          {nestedItem.label}
+                                        </div>
+                                        {nestedItem.description && (
+                                          <div className="text-foreground/50 text-xs ml-7">
+                                            {nestedItem.description}
+                                          </div>
+                                        )}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
                               </div>
-                              {subitem.description && (
-                                <div className="text-foreground/50 text-xs ml-7">
-                                  {subitem.description}
+                            ) : (
+                              <Link
+                                key={subitem.label}
+                                to={subitem.path || "#"}
+                                className="block px-4 py-3 text-foreground/60 hover:text-primary transition-colors"
+                                onClick={(e) => {
+                                  setMobileMenuOpen(false);
+                                  if (subitem.label === "Financiamiento") {
+                                    handleFinanciamientoClick(e);
+                                  }
+                                }}
+                              >
+                                <div className="flex items-center gap-2 mb-1 font-medium text-sm">
+                                  {subitem.icon}
+                                  {subitem.label}
                                 </div>
-                              )}
-                            </Link>
+                                {subitem.description && (
+                                  <div className="text-foreground/50 text-xs ml-7">
+                                    {subitem.description}
+                                  </div>
+                                )}
+                              </Link>
+                            )
                           ))}
                         </div>
                       )}
