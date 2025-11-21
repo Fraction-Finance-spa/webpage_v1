@@ -1052,72 +1052,126 @@ export default function Admin() {
                 {stos.length === 0 ? (
                   <p className="text-foreground/60 text-sm">No hay ofertas creadas aún.</p>
                 ) : (
-                  <div className="space-y-3">
-                    {stos.map((sto) => (
-                      <div key={sto.id} className="flex items-center justify-between bg-secondary/30 p-4 rounded-lg hover:bg-secondary/50 transition-colors">
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-foreground">
-                            {sto.nombreActivo} ({sto.simboloActivo}) - {sto.tipoSTO}
-                          </h4>
-                          <p className="text-sm text-foreground/60">
-                            {new Date(sto.fechaInicio).toLocaleDateString("es-ES")} al{" "}
-                            {new Date(sto.fechaFin).toLocaleDateString("es-ES")} • ${sto.precioPorToken} USDC por token
-                          </p>
-                          <div className="mt-1 flex gap-2">
-                            <span
-                              className={`text-xs px-2 py-1 rounded-full font-semibold ${
-                                sto.estado === "Activo"
-                                  ? "bg-green-100 text-green-700"
-                                  : sto.estado === "Pendiente"
-                                    ? "bg-yellow-100 text-yellow-700"
-                                    : sto.estado === "Cerrado"
-                                      ? "bg-red-100 text-red-700"
-                                      : "bg-gray-100 text-gray-700"
-                              }`}
+                  <div className="space-y-4">
+                    {stos.map((sto) => {
+                      const contract = smartContracts.find((sc) => sc.id === sto.activoDigitalId);
+                      return (
+                        <div key={sto.id} className="bg-white border border-border/40 rounded-lg overflow-hidden hover:shadow-md transition-all">
+                          <div className="p-4 bg-gradient-to-r from-primary/5 to-blue-50/50">
+                            <div className="flex items-start justify-between mb-3">
+                              <div className="flex-1">
+                                <h4 className="font-bold text-foreground">
+                                  {sto.nombreActivo} ({sto.simboloActivo})
+                                </h4>
+                                <p className="text-xs text-foreground/60 mt-1">
+                                  Tipo: {sto.tipoSTO} • Tokens: {sto.numerosTokensVenta} • Precio: ${sto.precioPorToken} USDC
+                                </p>
+                              </div>
+                              <span
+                                className={`text-xs px-3 py-1 rounded-full font-semibold whitespace-nowrap ${
+                                  sto.estado === "Activo"
+                                    ? "bg-green-100 text-green-700"
+                                    : sto.estado === "Pendiente"
+                                      ? "bg-yellow-100 text-yellow-700"
+                                      : sto.estado === "Cerrado"
+                                        ? "bg-red-100 text-red-700"
+                                        : "bg-gray-100 text-gray-700"
+                                }`}
+                              >
+                                {sto.estado}
+                              </span>
+                            </div>
+
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs mb-3">
+                              <div>
+                                <p className="text-foreground/60">Período</p>
+                                <p className="font-semibold text-foreground">
+                                  {new Date(sto.fechaInicio).toLocaleDateString("es-ES")} - {new Date(sto.fechaFin).toLocaleDateString("es-ES")}
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-foreground/60">Meta Mínima</p>
+                                <p className="font-semibold text-foreground">${sto.montoMinimoRecaudacion} USDC</p>
+                              </div>
+                              <div>
+                                <p className="text-foreground/60">Meta Máxima</p>
+                                <p className="font-semibold text-foreground">${sto.montoMaximoRecaudacion} USDC</p>
+                              </div>
+                              <div>
+                                <p className="text-foreground/60">Rango de Inversión</p>
+                                <p className="font-semibold text-foreground">
+                                  ${sto.montoMinimoInversion} - ${sto.montoMaximoInversion}
+                                </p>
+                              </div>
+                            </div>
+
+                            {sto.descripcion && (
+                              <p className="text-xs text-foreground/70 mb-3 p-2 bg-white/50 rounded">
+                                {sto.descripcion}
+                              </p>
+                            )}
+                          </div>
+
+                          {contract && contract.documentos && contract.documentos.length > 0 && (
+                            <div className="px-4 py-3 bg-blue-50/50 border-t border-border/40">
+                              <p className="text-xs font-semibold text-foreground mb-2">Documentos Adjuntos:</p>
+                              <div className="flex flex-wrap gap-2">
+                                {contract.documentos.map((doc) => (
+                                  <a
+                                    key={doc.id}
+                                    href={doc.url}
+                                    download={doc.nombre}
+                                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-border/40 rounded text-xs text-primary hover:bg-primary/5 transition-colors"
+                                    title={doc.nombre}
+                                  >
+                                    <FileText className="w-3 h-3" />
+                                    {doc.nombre.substring(0, 20)}...
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          <div className="px-4 py-3 bg-gray-50 border-t border-border/40 flex gap-2">
+                            <button
+                              onClick={() => {
+                                setEditingSTO(sto);
+                                setStoForm({
+                                  activoDigitalId: sto.activoDigitalId,
+                                  nombreActivo: sto.nombreActivo,
+                                  simboloActivo: sto.simboloActivo,
+                                  estado: sto.estado,
+                                  tipoSTO: sto.tipoSTO,
+                                  numerosTokensVenta: sto.numerosTokensVenta,
+                                  precioPorToken: sto.precioPorToken,
+                                  fechaInicio: sto.fechaInicio.split("T")[0],
+                                  fechaFin: sto.fechaFin.split("T")[0],
+                                  montoMinimoRecaudacion: sto.montoMinimoRecaudacion,
+                                  montoMaximoRecaudacion: sto.montoMaximoRecaudacion,
+                                  montoMinimoInversion: sto.montoMinimoInversion,
+                                  montoMaximoInversion: sto.montoMaximoInversion,
+                                  descripcion: sto.descripcion || "",
+                                });
+                              }}
+                              className="p-2 hover:bg-white rounded transition-colors"
                             >
-                              {sto.estado}
-                            </span>
+                              <Edit className="w-4 h-4 text-foreground/60 hover:text-primary" />
+                            </button>
+                            <button
+                              onClick={() => {
+                                if (confirm(`¿Está seguro de que desea eliminar esta oferta de ${sto.nombreActivo}?`)) {
+                                  deleteSTO(sto.id);
+                                  setSTOs(getSTOs());
+                                }
+                              }}
+                              className="p-2 hover:bg-white rounded transition-colors"
+                            >
+                              <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
+                            </button>
                           </div>
                         </div>
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => {
-                              setEditingSTO(sto);
-                              setStoForm({
-                                activoDigitalId: sto.activoDigitalId,
-                                nombreActivo: sto.nombreActivo,
-                                simboloActivo: sto.simboloActivo,
-                                estado: sto.estado,
-                                tipoSTO: sto.tipoSTO,
-                                numerosTokensVenta: sto.numerosTokensVenta,
-                                precioPorToken: sto.precioPorToken,
-                                fechaInicio: sto.fechaInicio.split("T")[0],
-                                fechaFin: sto.fechaFin.split("T")[0],
-                                montoMinimoRecaudacion: sto.montoMinimoRecaudacion,
-                                montoMaximoRecaudacion: sto.montoMaximoRecaudacion,
-                                montoMinimoInversion: sto.montoMinimoInversion,
-                                montoMaximoInversion: sto.montoMaximoInversion,
-                                descripcion: sto.descripcion || "",
-                              });
-                            }}
-                            className="p-2 hover:bg-secondary rounded-lg transition-colors"
-                          >
-                            <Edit className="w-4 h-4 text-foreground/60 hover:text-primary" />
-                          </button>
-                          <button
-                            onClick={() => {
-                              if (confirm(`¿Está seguro de que desea eliminar esta oferta de ${sto.nombreActivo}?`)) {
-                                deleteSTO(sto.id);
-                                setSTOs(getSTOs());
-                              }
-                            }}
-                            className="p-2 hover:bg-secondary rounded-lg transition-colors"
-                          >
-                            <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
-                          </button>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </div>
