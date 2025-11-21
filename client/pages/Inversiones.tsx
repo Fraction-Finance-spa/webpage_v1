@@ -144,7 +144,7 @@ export default function Inversiones() {
                         </div>
                       </div>
 
-                      {/* Progress Bar */}
+                      {/* Progress Bar - Recaudación */}
                       <div className="mb-6">
                         <div className="flex items-center justify-between mb-2">
                           <p className="text-xs font-semibold text-foreground">Meta de Recaudación</p>
@@ -156,6 +156,22 @@ export default function Inversiones() {
                           <div
                             className="h-full bg-gradient-to-r from-primary to-blue-600 transition-all duration-300"
                             style={{ width: `${progress}%` }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Progress Bar - Tokens Vendidos */}
+                      <div className="mb-6">
+                        <div className="flex items-center justify-between mb-2">
+                          <p className="text-xs font-semibold text-foreground">Tokens Vendidos</p>
+                          <p className="text-xs text-foreground/60">
+                            {Math.round((parseFloat(sto.tokenosVendidos || "0") / parseFloat(sto.numerosTokensVenta || "1")) * 100)}% ({sto.tokenosVendidos || "0"} / {sto.numerosTokensVenta})
+                          </p>
+                        </div>
+                        <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-gradient-to-r from-green-500 to-emerald-600 transition-all duration-300"
+                            style={{ width: `${Math.min((parseFloat(sto.tokenosVendidos || "0") / parseFloat(sto.numerosTokensVenta || "1")) * 100, 100)}%` }}
                           />
                         </div>
                       </div>
