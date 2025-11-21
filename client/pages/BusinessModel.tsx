@@ -141,16 +141,26 @@ export default function BusinessModel() {
                     <div className="relative p-8">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0" />
-                        <div className="flex flex-col">
+                        <div className="flex flex-col" style={{ margin: "0 6px 0 -2px" }}>
                           <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 mx-auto">
                             <CheckCircle2 className="h-6 w-6 text-primary" />
                           </div>
                           <h4 className="text-lg font-bold text-foreground mb-2 pt-2.5">
                             {instrument.title}
                           </h4>
-                          <p className="text-foreground/70 leading-relaxed">
-                            {instrument.description}
-                          </p>
+                          <div className="text-foreground/70 leading-relaxed mb-4.5">
+                            {Array.isArray(instrument.description) ? (
+                              <>
+                                {instrument.description.map((item, idx) => (
+                                  <p key={idx} className="mb-0">
+                                    {item}
+                                  </p>
+                                ))}
+                              </>
+                            ) : (
+                              <p>{instrument.description}</p>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
