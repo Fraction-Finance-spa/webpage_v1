@@ -101,6 +101,8 @@ export default function Admin() {
   });
   const [editingPolicy, setEditingPolicy] = useState<string | null>(null);
   const [policyContent, setPolicyContent] = useState("");
+  const [editingTokensSoldId, setEditingTokensSoldId] = useState<string | null>(null);
+  const [editingTokensSoldValue, setEditingTokensSoldValue] = useState("");
 
   useEffect(() => {
     setTeamMembers(getTeamMembers());
