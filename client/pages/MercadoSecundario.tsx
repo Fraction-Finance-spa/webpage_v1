@@ -570,6 +570,9 @@ export default function MercadoSecundario() {
                 onClick={() => {
                   setShowCreateModal(false);
                   setError("");
+                  setSellingPrice("");
+                  setTokenQuantity("");
+                  setSelectedAsset(null);
                 }}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
