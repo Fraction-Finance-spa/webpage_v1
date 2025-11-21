@@ -329,11 +329,30 @@ export default function Admin() {
   const [educacionImage, setEducacionImage] = useState<File | null>(null);
 
   const [smartContracts, setSmartContracts] = useState<SmartContract[]>([]);
+  const [stos, setSTOs] = useState<STO[]>([]);
+  const [editingSTO, setEditingSTO] = useState<STO | null>(null);
+  const [stoForm, setStoForm] = useState({
+    activoDigitalId: "",
+    nombreActivo: "",
+    simboloActivo: "",
+    estado: "Pendiente" as const,
+    tipoSTO: "Equity" as const,
+    numerosTokensVenta: "",
+    precioPorToken: "",
+    fechaInicio: "",
+    fechaFin: "",
+    montoMinimoRecaudacion: "",
+    montoMaximoRecaudacion: "",
+    montoMinimoInversion: "",
+    montoMaximoInversion: "",
+    descripcion: "",
+  });
 
   useEffect(() => {
     setArticles(getArticles());
     setEducacionCards(getEducacionCards());
     setSmartContracts(getSmartContracts());
+    setSTOs(getSTOs());
   }, []);
 
   const handleArticleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
