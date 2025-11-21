@@ -9,6 +9,7 @@ export default function Inversiones() {
   const [stos, setSTOs] = useState<STO[]>([]);
   const [contracts, setContracts] = useState<SmartContract[]>([]);
   const [selectedType, setSelectedType] = useState<string>("Todos");
+  const [selectedCategory, setSelectedCategory] = useState<string>("Todas");
   const [selectedSTO, setSelectedSTO] = useState<STO | null>(null);
 
   useEffect(() => {
@@ -17,11 +18,17 @@ export default function Inversiones() {
   }, []);
 
   const stoTypes = ["Todos", "Equity", "Debt", "Hybrid", "Utility"];
-  
+  const categories = ["Todas", "Capital de trabajo", "Bonos Corporativos", "Deuda Privada"];
+
   const filteredSTOs = (
-    selectedType === "Todos"
+    selectedType === "Todos" && selectedCategory === "Todas"
       ? stos
-      : stos.filter((sto) => sto.tipoSTO === selectedType)
+      : stos.filter((sto) => {
+          const matchType = selectedType === "Todos" || sto.tipoSTO === selectedType;
+          const matchCategory = selectedCategory === "Todas" ||
+            contracts.find((c) => c.id === sto.activoDigitalId)?.categoria === selectedCategory;
+          return matchType && matchCategory;
+        })
   ).sort((a, b) => new Date(a.fechaInicio).getTime() - new Date(b.fechaInicio).getTime());
 
   const calculateProgress = (sto: STO) => {
