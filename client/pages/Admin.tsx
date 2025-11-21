@@ -1216,6 +1216,138 @@ export default function Admin() {
                       </div>
 
                       <div className="p-4 bg-white border-t border-border/40">
+                        <p className="text-xs font-semibold text-foreground mb-3">Evaluación Comercial</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                          <div>
+                            <label className="text-xs text-foreground/60 mb-1 block">Viabilidad Financiera</label>
+                            <select
+                              value={evaluacionComercial[request.id]?.viabilidadFinanciera || ""}
+                              onChange={(e) =>
+                                setEvaluacionComercial((prev) => ({
+                                  ...prev,
+                                  [request.id]: {
+                                    ...prev[request.id],
+                                    viabilidadFinanciera: e.target.value as any,
+                                  },
+                                }))
+                              }
+                              className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="">Seleccionar...</option>
+                              <option value="Excelente">Excelente</option>
+                              <option value="Buena">Buena</option>
+                              <option value="Regular">Regular</option>
+                              <option value="Deficiente">Deficiente</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="text-xs text-foreground/60 mb-1 block">Potencial de Mercado</label>
+                            <select
+                              value={evaluacionComercial[request.id]?.potencialMercado || ""}
+                              onChange={(e) =>
+                                setEvaluacionComercial((prev) => ({
+                                  ...prev,
+                                  [request.id]: {
+                                    ...prev[request.id],
+                                    potencialMercado: e.target.value as any,
+                                  },
+                                }))
+                              }
+                              className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="">Seleccionar...</option>
+                              <option value="Alto">Alto</option>
+                              <option value="Medio">Medio</option>
+                              <option value="Bajo">Bajo</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="text-xs text-foreground/60 mb-1 block">Calidad del Equipo</label>
+                            <select
+                              value={evaluacionComercial[request.id]?.calidadEquipo || ""}
+                              onChange={(e) =>
+                                setEvaluacionComercial((prev) => ({
+                                  ...prev,
+                                  [request.id]: {
+                                    ...prev[request.id],
+                                    calidadEquipo: e.target.value as any,
+                                  },
+                                }))
+                              }
+                              className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="">Seleccionar...</option>
+                              <option value="Excepcional">Excepcional</option>
+                              <option value="Fuerte">Fuerte</option>
+                              <option value="Adecuada">Adecuada</option>
+                              <option value="Débil">Débil</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="text-xs text-foreground/60 mb-1 block">Riesgo Político</label>
+                            <select
+                              value={evaluacionComercial[request.id]?.riesgoPolitico || ""}
+                              onChange={(e) =>
+                                setEvaluacionComercial((prev) => ({
+                                  ...prev,
+                                  [request.id]: {
+                                    ...prev[request.id],
+                                    riesgoPolitico: e.target.value as any,
+                                  },
+                                }))
+                              }
+                              className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="">Seleccionar...</option>
+                              <option value="Bajo">Bajo</option>
+                              <option value="Medio">Medio</option>
+                              <option value="Alto">Alto</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="text-xs text-foreground/60 mb-1 block">Reputación de la Empresa</label>
+                            <select
+                              value={evaluacionComercial[request.id]?.reputacionEmpresa || ""}
+                              onChange={(e) =>
+                                setEvaluacionComercial((prev) => ({
+                                  ...prev,
+                                  [request.id]: {
+                                    ...prev[request.id],
+                                    reputacionEmpresa: e.target.value as any,
+                                  },
+                                }))
+                              }
+                              className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="">Seleccionar...</option>
+                              <option value="Excelente">Excelente</option>
+                              <option value="Buena">Buena</option>
+                              <option value="Regular">Regular</option>
+                              <option value="Deficiente">Deficiente</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div>
+                          <label className="text-xs text-foreground/60 mb-1 block">Observaciones de Evaluación</label>
+                          <textarea
+                            value={evaluacionComercial[request.id]?.observaciones || ""}
+                            onChange={(e) =>
+                              setEvaluacionComercial((prev) => ({
+                                ...prev,
+                                [request.id]: {
+                                  ...prev[request.id],
+                                  observaciones: e.target.value,
+                                },
+                              }))
+                            }
+                            placeholder="Detalles adicionales de la evaluaci��n comercial..."
+                            className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            rows={2}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-white border-t border-border/40">
                         <p className="text-xs font-semibold text-foreground mb-2">Notas / Comentarios</p>
                         <textarea
                           value={financingNotes[request.id] || request.notes || ""}
