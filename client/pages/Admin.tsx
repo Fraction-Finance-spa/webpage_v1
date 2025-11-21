@@ -53,7 +53,8 @@ type AdminSection =
   | "socios"
   | "politicas"
   | "denuncias"
-  | "reclamos";
+  | "reclamos"
+  | "solicitudes-financiamiento";
 
 interface Denuncia {
   id: string;
