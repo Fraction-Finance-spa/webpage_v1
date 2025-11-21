@@ -103,11 +103,16 @@ export default function Inversiones() {
 
                     {/* Content */}
                     <div className="p-6 flex-1">
-                      {/* Type Badge */}
-                      <div className="mb-4">
+                      {/* Type & Rendimiento Badges */}
+                      <div className="mb-4 flex flex-wrap gap-2">
                         <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
                           {sto.tipoSTO}
                         </span>
+                        {sto.porcentajeRendimiento && (
+                          <span className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">
+                            {sto.porcentajeRendimiento}% APY
+                          </span>
+                        )}
                       </div>
 
                       {/* Key Info */}
