@@ -109,6 +109,77 @@ export default function FinancingForm() {
     }
   };
 
+  const calculateSimulation = (): SimulationResults => {
+    const requestedAmount = parseFloat(formData.financingAmount);
+
+    // Factor de viabilidad basado en edad de la empresa
+    const yearsInBusiness = new Date().getFullYear() - parseInt(formData.foundedYear);
+    const ageScore = Math.min(yearsInBusiness / 10, 1);
+
+    // Factor de ingresos mensuales
+    const revenueMap: Record<string, number> = {
+      "0-10k": 2000,
+      "10k-50k": 30000,
+      "50k-100k": 75000,
+      "100k-500k": 300000,
+      "500k+": 1000000,
+    };
+    const monthlyRevenue = revenueMap[formData.monthlyRevenue] || 30000;
+    const debtRatio = requestedAmount / (monthlyRevenue * 12);
+    const debtScore = Math.max(1 - debtRatio / 2, 0);
+
+    // Factor de etapa del negocio
+    const stageScores: Record<string, number> = {
+      "startup": 0.6,
+      "growth": 0.8,
+      "established": 0.95,
+      "scale": 1.0,
+    };
+    const stageScore = stageScores[formData.businessStage] || 0.7;
+
+    // Factor de empleados
+    const employeeMap: Record<string, number> = {
+      "1-5": 0.6,
+      "6-20": 0.75,
+      "21-50": 0.85,
+      "51-100": 0.93,
+      "100+": 1.0,
+    };
+    const employeeScore = employeeMap[formData.employeeCount] || 0.6;
+
+    // Cálculo de probabilidad de aprobación
+    const approvalChance = Math.round((ageScore * 0.2 + debtScore * 0.3 + stageScore * 0.25 + employeeScore * 0.25) * 100);
+
+    // Monto sugerido
+    const suggestedAmount = Math.round(requestedAmount * (approvalChance / 100));
+
+    // Tasa de interés basada en riesgo
+    let interestRate = 8;
+    if (approvalChance >= 80) interestRate = 5;
+    else if (approvalChance >= 60) interestRate = 7;
+    else if (approvalChance >= 40) interestRate = 10;
+
+    // Nivel de riesgo
+    let riskLevel = "Alto";
+    if (approvalChance >= 80) riskLevel = "Bajo";
+    else if (approvalChance >= 60) riskLevel = "Medio";
+
+    // Recomendación
+    let recommendation = "Necesitas fortalecer tu solicitud. Considera aumentar ingresos o reducir el monto.";
+    if (approvalChance >= 80) recommendation = "Excelente perfil. Tu solicitud tiene alta probabilidad de aprobación.";
+    else if (approvalChance >= 60) recommendation = "Buen perfil. Tu solicitud puede ser aprobada con condiciones ajustadas.";
+
+    return {
+      requestedAmount,
+      estimatedApprovalChance: approvalChance,
+      suggestedAmount,
+      estimatedDuration: "5-7 días hábiles",
+      interestRate,
+      riskLevel,
+      recommendation,
+    };
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
