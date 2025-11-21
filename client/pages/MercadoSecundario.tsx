@@ -569,7 +569,7 @@ export default function MercadoSecundario() {
 
           {/* History View */}
           {viewMode === "history" && (
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Mis Compras</h2>
                 {purchases.length === 0 ? (
