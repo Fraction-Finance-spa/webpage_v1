@@ -508,35 +508,67 @@ export default function MercadoSecundario() {
                 <div className="mt-12">
                   <h3 className="text-xl font-bold text-foreground mb-6">Mis Ventas Activas</h3>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {getUserListings(userEmail).map((listing) => (
-                      <div key={listing.id} className="bg-white rounded-lg border border-primary/20 p-6">
-                        <div className="mb-4">
-                          <h4 className="text-lg font-bold text-foreground mb-1">{listing.assetName}</h4>
-                          <p className="text-sm text-foreground/60">{listing.assetType}</p>
-                        </div>
+                    {getUserListings(userEmail).map((listing) => {
+                      const details = getListingDetails(listing);
+                      const categoryColors: Record<string, { bg: string; text: string }> = {
+                        "Capital de trabajo": { bg: "bg-blue-100", text: "text-blue-700" },
+                        "Bonos Corporativos": { bg: "bg-green-100", text: "text-green-700" },
+                        "Deuda Privada": { bg: "bg-purple-100", text: "text-purple-700" },
+                        "Sin Categoría": { bg: "bg-gray-100", text: "text-gray-700" },
+                      };
+                      const colors = categoryColors[details.category] || categoryColors["Sin Categoría"];
 
-                        <div className="bg-blue-50 rounded-lg p-3 mb-4 space-y-2">
-                          <div className="flex justify-between">
-                            <span className="text-sm text-foreground/60">Precio Listado:</span>
-                            <span className="text-lg font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
+                      return (
+                        <div key={listing.id} className="bg-white rounded-lg border border-primary/20 p-6 hover:shadow-lg transition-all">
+                          <div className="mb-4">
+                            <h4 className="text-lg font-bold text-foreground mb-1">{listing.assetName}</h4>
+                            <p className="text-sm text-foreground/60">{listing.assetType}</p>
                           </div>
-                          <div className="flex justify-between">
-                            <span className="text-sm text-foreground/60">Descuento:</span>
-                            <span className="text-sm font-semibold text-green-600">
-                              {calculateDiscount(listing.originalPrice, listing.sellingPrice)}%
+
+                          {/* Category Badge */}
+                          <div className="mb-4">
+                            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}>
+                              <Tag className="w-3 h-3" />
+                              {details.category}
                             </span>
                           </div>
-                        </div>
 
-                        <button
-                          onClick={() => handleCancelListing(listing.id)}
-                          className="w-full px-4 py-2 border border-red-500 text-red-600 rounded-lg hover:bg-red-50 transition-colors font-semibold text-sm flex items-center justify-center gap-2"
-                        >
-                          <X className="w-4 h-4" />
-                          Cancelar Venta
-                        </button>
-                      </div>
-                    ))}
+                          {/* Token Information */}
+                          <div className="bg-gradient-to-r from-primary/5 to-blue-50 rounded-lg p-3 mb-4 border border-primary/20">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="text-sm font-semibold text-foreground">Tokens Listados</span>
+                              <span className="text-lg font-bold text-primary">{details.listedTokens}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-foreground/60">% del Total</span>
+                              <span className="text-sm font-semibold text-primary">{details.tokenPercentage}%</span>
+                            </div>
+                          </div>
+
+                          {/* Price Information */}
+                          <div className="bg-blue-50 rounded-lg p-3 mb-4 space-y-2">
+                            <div className="flex justify-between">
+                              <span className="text-sm text-foreground/60">Precio Listado:</span>
+                              <span className="text-lg font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-sm text-foreground/60">Descuento:</span>
+                              <span className="text-sm font-semibold text-green-600">
+                                {calculateDiscount(listing.originalPrice, listing.sellingPrice)}%
+                              </span>
+                            </div>
+                          </div>
+
+                          <button
+                            onClick={() => handleCancelListing(listing.id)}
+                            className="w-full px-4 py-2 border border-red-500 text-red-600 rounded-lg hover:bg-red-50 transition-colors font-semibold text-sm flex items-center justify-center gap-2"
+                          >
+                            <X className="w-4 h-4" />
+                            Cancelar Venta
+                          </button>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
