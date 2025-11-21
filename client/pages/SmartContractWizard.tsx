@@ -88,6 +88,7 @@ const BLOCKCHAIN_NETWORKS = [
 ];
 
 export default function SmartContractWizard() {
+  const navigate = useNavigate();
   const [state, setState] = useState<WizardState>({
     step: 1,
     assetClass: null,
