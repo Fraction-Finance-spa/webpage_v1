@@ -400,25 +400,36 @@ export default function Profile() {
               <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl sticky top-24">
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative p-6 space-y-2">
-                  <h3 className="text-lg font-bold text-foreground mb-6">Menú</h3>
-                  {menuItems.map((item) => (
+                <div className="relative p-6 space-y-2 flex flex-col h-full">
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-6">Menú</h3>
+                    {menuItems.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          setActiveSection(item.id as any);
+                          setShowTest(false);
+                        }}
+                        className={`w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 font-medium text-sm ${
+                          activeSection === item.id && !showTest
+                            ? "bg-primary text-white"
+                            : "text-foreground/70 hover:bg-secondary"
+                        }`}
+                      >
+                        {item.icon}
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="mt-auto pt-6 border-t border-border/20">
                     <button
-                      key={item.id}
-                      onClick={() => {
-                        setActiveSection(item.id as any);
-                        setShowTest(false);
-                      }}
-                      className={`w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 font-medium text-sm ${
-                        activeSection === item.id && !showTest
-                          ? "bg-primary text-white"
-                          : "text-foreground/70 hover:bg-secondary"
-                      }`}
+                      onClick={handleLogout}
+                      className="w-full px-4 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold flex items-center gap-2 justify-center text-sm"
                     >
-                      {item.icon}
-                      {item.label}
+                      <LogOut className="w-4 h-4" />
+                      Cerrar Sesión
                     </button>
-                  ))}
+                  </div>
                 </div>
               </div>
             </div>
