@@ -159,24 +159,30 @@ export default function AboutCompany() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {teamMembers.map((member) => (
-              <div key={member.id} className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div key={member.id} className="group rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg">
                 <div className="relative overflow-hidden">
-                  <div className="h-64 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                    <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Users className="w-16 h-16 text-primary" />
+                  {member.foto ? (
+                    <img
+                      src={member.foto}
+                      alt={member.nombre}
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-64 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                      <Users className="w-16 h-16 text-primary/50" />
                     </div>
-                  </div>
-                  <div className="p-8 text-center">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">{member.nombre}</h3>
-                    <p className="text-primary font-semibold mb-4">{member.rol}</p>
-                    <p className="text-foreground/70">
+                  )}
+                </div>
+                <div className="bg-white p-6 text-center">
+                  <h3 className="text-xl font-bold text-foreground mb-1">{member.nombre}</h3>
+                  <p className="text-sm text-primary font-semibold">{member.rol}</p>
+                  {member.bio && (
+                    <p className="text-sm text-foreground/60 mt-3 line-clamp-2">
                       {member.bio}
                     </p>
-                  </div>
+                  )}
                 </div>
               </div>
             ))}
