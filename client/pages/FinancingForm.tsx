@@ -877,6 +877,48 @@ export default function FinancingForm() {
                   )}
                 </div>
 
+                {formData.financingType && (
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">
+                      Subtipo de Financiamiento *
+                    </label>
+                    <select
+                      name="financingSubtype"
+                      value={formData.financingSubtype}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-3 border ${
+                        errors.financingSubtype ? "border-red-500" : "border-border/40"
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                    >
+                      <option value="">Selecciona subtipo</option>
+                      {formData.financingType === "capital-trabajo" && (
+                        <>
+                          <option value="anticipo-factura">Anticipo de Factura (Factoring)</option>
+                          <option value="anticipo-proveedor">Anticipo a Proveedor (Confirming)</option>
+                        </>
+                      )}
+                      {formData.financingType === "bonos-corporativos" && (
+                        <>
+                          <option value="bonos-privados">Bonos Privados Empresas</option>
+                          <option value="bonos-verdes">Bonos Verdes Privados</option>
+                        </>
+                      )}
+                      {formData.financingType === "deuda-privada" && (
+                        <>
+                          <option value="credito-corto">Crédito Corto Plazo</option>
+                          <option value="credito-largo">Crédito Largo Plazo</option>
+                          <option value="credito-garantia">Créditos con Garantía</option>
+                        </>
+                      )}
+                    </select>
+                    {errors.financingSubtype && (
+                      <p className="text-red-600 text-sm mt-1">{errors.financingSubtype}</p>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
                     Monto de Financiamiento Solicitado ($) *
