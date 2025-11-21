@@ -310,12 +310,12 @@ export default function FinancingForm() {
             <p className="text-foreground/60 mb-8">
               Se envió una confirmación a <strong>{formData.email}</strong>
             </p>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="inline-block px-8 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-bold"
             >
               Volver al Inicio
-            </a>
+            </Link>
           </div>
         </div>
       </Layout>
