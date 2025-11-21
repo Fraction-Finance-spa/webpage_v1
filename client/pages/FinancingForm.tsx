@@ -120,7 +120,8 @@ export default function FinancingForm() {
     }
   };
 
-  const calculateSimulation = (): SimulationResults => {
+  const calculateSimulation = (inputs?: typeof simulationInputs): SimulationResults => {
+    const currentInputs = inputs || simulationInputs;
     const requestedAmount = parseFloat(formData.financingAmount);
 
     const yearsInBusiness = new Date().getFullYear() - parseInt(formData.foundedYear);
@@ -172,15 +173,16 @@ export default function FinancingForm() {
     else if (approvalChance >= 60) recommendation = "Buen perfil. Tu solicitud puede ser aprobada con condiciones ajustadas.";
 
     // Calculate financing cost based on monthly interest rate
-    const financingCostPercentage = simulationInputs.monthlyInterestRate;
+    const financingCostPercentage = currentInputs.monthlyInterestRate;
 
     // Calculate benefit cost based on risk level (3-5%)
     let benefitCostPercentage = 3;
     if (riskLevel === "Medio") benefitCostPercentage = 4;
     else if (riskLevel === "Alto") benefitCostPercentage = 5;
 
-    // Financed amount is the same as requested for simulation
-    const financedAmount = simulationInputs.clpAmount || requestedAmount;
+    // Financed amount uses the CLP amount from simulation inputs, or defaults to the requested amount
+    const clpAmountValue = currentInputs.clpAmount > 0 ? currentInputs.clpAmount : requestedAmount;
+    const financedAmount = clpAmountValue;
 
     return {
       requestedAmount,
@@ -190,9 +192,9 @@ export default function FinancingForm() {
       interestRate,
       riskLevel,
       recommendation,
-      monthlyInterestRate: simulationInputs.monthlyInterestRate,
-      plazo: simulationInputs.plazo,
-      clpAmount: simulationInputs.clpAmount || requestedAmount,
+      monthlyInterestRate: currentInputs.monthlyInterestRate,
+      plazo: currentInputs.plazo,
+      clpAmount: clpAmountValue,
       financingCostPercentage,
       benefitCostPercentage,
       financedAmount,
