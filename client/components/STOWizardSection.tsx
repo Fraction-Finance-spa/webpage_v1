@@ -259,7 +259,7 @@ export default function STOWizardSection({
 
               <div>
                 <label className="text-xs font-semibold text-foreground mb-1 block">
-                  <p>Porcentaje de Rendimiento (%)</p>
+                  Porcentaje de Rendimiento (%)
                 </label>
                 <div className="relative">
                   <input
@@ -273,10 +273,7 @@ export default function STOWizardSection({
                   <span className="absolute right-4 top-2 text-foreground/60 font-semibold">%</span>
                 </div>
                 <p className="text-xs text-foreground/60 mt-1">
-                  <p>
-                    Tasa de rendimiento esperado para los
-                    inversores
-                  </p>
+                  Tasa de rendimiento esperado para los inversores
                 </p>
               </div>
 
