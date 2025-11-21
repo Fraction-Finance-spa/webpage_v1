@@ -14,6 +14,7 @@ export interface STO {
   montoMinimoInversion: string;
   montoMaximoInversion: string;
   descripcion?: string;
+  porcentajeRendimiento?: string;
   fechaCreacion: string;
   fechaActualizacion: string;
   montoRecaudadoActual?: string;
