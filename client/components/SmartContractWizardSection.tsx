@@ -222,6 +222,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
         suministroMaximo: state.maxSupply,
         administrador: state.adminAddress,
         estado: "Activo",
+        categoria: state.contractCategory as "Capital de trabajo" | "Bonos Corporativos" | "Deuda Privada",
         codigoContrato: state.contractCode,
         documentos: documentos.map((doc) => ({
           id: Date.now().toString() + Math.random(),
