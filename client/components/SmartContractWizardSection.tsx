@@ -114,7 +114,7 @@ export default function SmartContractWizardSection({ setActiveSection, onContrac
   const [documentos, setDocumentos] = useState<Array<{ nombre: string; archivo: string; tipo: string }>>([]);
 
   const handleNext = () => {
-    if (state.step < 8) {
+    if (state.step < 9) {
       if (state.step === 1 && !state.assetClass) {
         alert("Por favor selecciona una clase de activo");
         return;
@@ -133,6 +133,12 @@ export default function SmartContractWizardSection({ setActiveSection, onContrac
           return;
         }
         generateContractCode();
+      }
+      if (state.step === 5) {
+        if (!state.contractDescription || !state.contractPurpose || !state.contractCategory) {
+          alert("Por favor completa todos los campos requeridos");
+          return;
+        }
       }
       setState((prev) => ({ ...prev, step: prev.step + 1 }));
     }
