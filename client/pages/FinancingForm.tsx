@@ -34,7 +34,11 @@ interface SimulationResults {
   clpAmount: number;
   financingCostPercentage: number;
   benefitCostPercentage: number;
+  benefitRate: number;
   financedAmount: number;
+  commissionAmount: number;
+  benefitRateAmount: number;
+  totalFinancingAmount: number;
 }
 
 export default function FinancingForm() {
