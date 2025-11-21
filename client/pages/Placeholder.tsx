@@ -13,7 +13,7 @@ export default function Placeholder() {
     empresa: "Nuestra Empresa",
     modelo: "Modelo de Negocio",
     educacion: "Educación Financiera",
-    blog: "Blog",
+    blog: "Artículos y Noticias",
     careers: "Trabaja con Nosotros",
     contacto: "Contacto",
   };
