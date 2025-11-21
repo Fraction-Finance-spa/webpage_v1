@@ -211,6 +211,13 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
         administrador: state.adminAddress,
         estado: "Activo",
         codigoContrato: state.contractCode,
+        documentos: documentos.map((doc) => ({
+          id: Date.now().toString() + Math.random(),
+          nombre: doc.nombre,
+          tipo: doc.tipo,
+          url: doc.archivo,
+          fechaCarga: new Date().toISOString(),
+        })),
       });
       
       setState((prev) => ({
