@@ -640,6 +640,27 @@ export default function MercadoSecundario() {
                 )}
               </div>
 
+              {/* Token Quantity Input */}
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-3">
+                  Cantidad de Tokens a Vender
+                </label>
+                <input
+                  type="number"
+                  value={tokenQuantity}
+                  onChange={(e) => setTokenQuantity(e.target.value)}
+                  placeholder="Ingresa la cantidad de tokens"
+                  className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  min="1"
+                  step="1"
+                />
+                {selectedAsset && tokenQuantity && (
+                  <p className="mt-2 text-sm text-foreground/60">
+                    Precio total: ${(parseFloat(sellingPrice || "0") * parseInt(tokenQuantity)).toLocaleString()}
+                  </p>
+                )}
+              </div>
+
               {/* Error Message */}
               {error && (
                 <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex gap-2">
