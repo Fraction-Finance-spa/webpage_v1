@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { ArrowRight, AlertCircle, CheckCircle, TrendingUp, Zap } from "lucide-react";
 import { addFinancingRequest } from "@/lib/financingRequestManager";
