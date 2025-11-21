@@ -34,6 +34,7 @@ import {
 type AdminSection =
   | "dashboard"
   | "activos"
+  | "smart-contract-wizard"
   | "sto"
   | "blog"
   | "educacion"
