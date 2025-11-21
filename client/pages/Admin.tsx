@@ -6,6 +6,7 @@ import { getTeamMembers, addTeamMember, updateTeamMember, deleteTeamMember, type
 import { getJobs, addJob, updateJob, deleteJob, type Job } from "@/lib/jobsManager";
 import { type Candidatura } from "@/components/CandidaturaForm";
 import { getArticles, addArticle, updateArticle, deleteArticle, type BlogArticle } from "@/lib/blogManager";
+import { getEducacionCards, addEducacionCard, updateEducacionCard, deleteEducacionCard, type EducacionCard } from "@/lib/educacionManager";
 import {
   LayoutDashboard,
   Coins,
