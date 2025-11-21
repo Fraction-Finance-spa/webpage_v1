@@ -134,11 +134,13 @@ export default function FinancingForm() {
     const ageScore = Math.min(yearsInBusiness / 10, 1);
 
     const revenueMap: Record<string, number> = {
-      "0-10k": 2000,
-      "10k-50k": 30000,
-      "50k-100k": 75000,
-      "100k-500k": 300000,
-      "500k+": 1000000,
+      "0-10k": 5000000,
+      "10k-50k": 30000000,
+      "50k-100k": 75000000,
+      "100k-500k": 300000000,
+      "500k-1000k": 750000000,
+      "1000k-5000k": 3000000000,
+      "5000k+": 7500000000,
     };
     const monthlyRevenue = revenueMap[formData.monthlyRevenue] || 30000;
     const debtRatio = requestedAmount / (monthlyRevenue * 12);
