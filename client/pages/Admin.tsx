@@ -378,6 +378,7 @@ export default function Admin() {
   const [financingRequests, setFinancingRequests] = useState<FinancingRequest[]>([]);
   const [selectedFinancingStatus, setSelectedFinancingStatus] = useState<string>("Pendiente");
   const [financingNotes, setFinancingNotes] = useState<Record<string, string>>({});
+  const [evaluacionComercial, setEvaluacionComercial] = useState<Record<string, EvaluacionComercial>>({});
   const [editingSTO, setEditingSTO] = useState<STO | null>(null);
   const [stoForm, setStoForm] = useState({
     activoDigitalId: "",
