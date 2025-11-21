@@ -449,31 +449,31 @@ export default function MercadoSecundario() {
                   </p>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {portfolio.map((asset) => (
-                    <div key={asset.id} className="bg-white rounded-lg border border-border/40 p-6 hover:shadow-lg transition-all">
-                      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-4">
-                        <div className="lg:col-span-2">
-                          <h3 className="text-lg font-bold text-foreground mb-1">{asset.stoNombre}</h3>
-                          <p className="text-sm text-foreground/60 mb-2">{asset.tipo}</p>
-                          <div className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                    <div key={asset.id} className="bg-white rounded-lg border border-border/40 p-4 hover:shadow-lg transition-all">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-3">
+                        <div>
+                          <h3 className="text-sm font-bold text-foreground mb-0.5">{asset.stoNombre}</h3>
+                          <p className="text-xs text-foreground/60 mb-1">{asset.tipo}</p>
+                          <div className="inline-block px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
                             {asset.estado}
                           </div>
                         </div>
 
                         <div>
-                          <p className="text-sm text-foreground/60 mb-1">Monto Invertido</p>
-                          <p className="text-lg font-bold text-foreground">${asset.montoInvertido.toLocaleString()}</p>
+                          <p className="text-xs text-foreground/60 mb-0.5">Invertido</p>
+                          <p className="text-sm font-bold text-foreground">${asset.montoInvertido.toLocaleString()}</p>
                         </div>
 
                         <div>
-                          <p className="text-sm text-foreground/60 mb-1">Disponible para Vender</p>
-                          <p className="text-lg font-bold text-primary">${asset.availableForSale.toLocaleString()}</p>
+                          <p className="text-xs text-foreground/60 mb-0.5">Disponible</p>
+                          <p className="text-sm font-bold text-primary">${asset.availableForSale.toLocaleString()}</p>
                         </div>
 
-                        <div>
-                          <p className="text-sm text-foreground/60 mb-1">Ya Listado</p>
-                          <p className="text-lg font-bold text-orange-600">${asset.listedForSale.toLocaleString()}</p>
+                        <div className="hidden sm:block">
+                          <p className="text-xs text-foreground/60 mb-0.5">Listado</p>
+                          <p className="text-sm font-bold text-orange-600">${asset.listedForSale.toLocaleString()}</p>
                         </div>
                       </div>
 
