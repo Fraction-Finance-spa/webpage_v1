@@ -509,88 +509,89 @@ export default function Profile() {
                       ) : (
                         <div className="space-y-4">
                           {portfolio.inversiones.map((inversion) => (
-                            <div key={inversion.id} className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl">
-                              <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
-                              <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                              <div className="relative p-6">
-                                {/* Header with Offer Name and Status */}
-                                <div className="flex items-start justify-between mb-6 pb-4 border-b border-border/20">
-                                  <div className="flex items-start gap-4 flex-1">
-                                    <div className="p-3 bg-primary/10 rounded-lg flex-shrink-0">
-                                      <CreditCard className="w-6 h-6 text-primary" />
+                            <div key={inversion.id} className="relative group overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg border border-border/40 bg-white">
+                              <div className="relative p-4">
+                                {/* Header Row - Offer Name, Status, Category */}
+                                <div className="flex items-center justify-between gap-4 mb-4 pb-3 border-b border-border/20">
+                                  <div className="flex items-center gap-3 min-w-0 flex-1">
+                                    <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
+                                      <CreditCard className="w-4 h-4 text-primary" />
                                     </div>
-                                    <div>
-                                      <h4 className="font-bold text-lg text-foreground mb-2">{inversion.stoNombre}</h4>
-                                      <div className="flex items-center gap-3">
-                                        <div className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
-                                          {inversion.estado}
-                                        </div>
-                                        {inversion.categoria && (
-                                          <span className="text-xs text-foreground/60 font-medium">
-                                            {inversion.categoria} {inversion.subcategoria && `• ${inversion.subcategoria}`}
-                                          </span>
-                                        )}
-                                      </div>
+                                    <div className="min-w-0 flex-1">
+                                      <h4 className="font-bold text-sm text-foreground truncate">{inversion.stoNombre}</h4>
+                                      {inversion.categoria && (
+                                        <p className="text-xs text-foreground/60 truncate">
+                                          {inversion.categoria} {inversion.subcategoria && `• ${inversion.subcategoria}`}
+                                        </p>
+                                      )}
                                     </div>
+                                  </div>
+                                  <div className="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-md flex-shrink-0">
+                                    {inversion.estado}
                                   </div>
                                 </div>
 
-                                {/* Investment Details Grid */}
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                                {/* Key Metrics Row 1 */}
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
                                   {/* Monto Invertido */}
-                                  <div className="p-4 bg-blue-50 rounded-lg border border-blue-200/50">
-                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Monto Invertido</p>
-                                    <p className="text-xl font-bold text-foreground">{formatCLP(inversion.montoInvertido)}</p>
+                                  <div>
+                                    <p className="text-xs font-semibold text-foreground/60 mb-1">Monto</p>
+                                    <p className="text-sm font-bold text-foreground">{formatCLP(inversion.montoInvertido)}</p>
                                   </div>
 
                                   {/* Cantidad de Tokens */}
                                   {inversion.cantidadToken !== undefined && (
-                                    <div className="p-4 bg-purple-50 rounded-lg border border-purple-200/50">
-                                      <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Cantidad de Tokens</p>
-                                      <p className="text-xl font-bold text-foreground">{(inversion.cantidadToken || 0).toLocaleString()}</p>
+                                    <div>
+                                      <p className="text-xs font-semibold text-foreground/60 mb-1">Tokens</p>
+                                      <p className="text-sm font-bold text-foreground">{(inversion.cantidadToken || 0).toLocaleString()}</p>
                                     </div>
                                   )}
 
                                   {/* Valor por Token */}
                                   {inversion.valorPorToken !== undefined && (
-                                    <div className="p-4 bg-cyan-50 rounded-lg border border-cyan-200/50">
-                                      <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Valor por Token</p>
-                                      <p className="text-xl font-bold text-foreground">{formatCLP(inversion.valorPorToken || 0)}</p>
+                                    <div>
+                                      <p className="text-xs font-semibold text-foreground/60 mb-1">Valor/Token</p>
+                                      <p className="text-sm font-bold text-foreground">{formatCLP(inversion.valorPorToken || 0)}</p>
                                     </div>
                                   )}
 
                                   {/* Plazo */}
-                                  <div className="p-4 bg-orange-50 rounded-lg border border-orange-200/50">
-                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Plazo</p>
-                                    <p className="text-xl font-bold text-foreground">{inversion.plazo}</p>
+                                  <div>
+                                    <p className="text-xs font-semibold text-foreground/60 mb-1">Plazo</p>
+                                    <p className="text-sm font-bold text-foreground">{inversion.plazo}</p>
                                   </div>
+                                </div>
 
+                                {/* Key Metrics Row 2 */}
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3 pb-3 border-b border-border/20">
                                   {/* Rentabilidad */}
-                                  <div className="p-4 bg-green-50 rounded-lg border border-green-200/50">
-                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Rentabilidad</p>
-                                    <div>
-                                      <p className="text-xl font-bold text-green-600">{inversion.rentabilidadActual.toFixed(2)}%</p>
-                                      <p className="text-xs text-foreground/60 mt-1">de {inversion.tasaEsperada.toFixed(2)}% esperado</p>
+                                  <div>
+                                    <p className="text-xs font-semibold text-foreground/60 mb-1">Rentabilidad</p>
+                                    <div className="flex items-baseline gap-1">
+                                      <p className="text-sm font-bold text-green-600">{inversion.rentabilidadActual.toFixed(2)}%</p>
+                                      <p className="text-xs text-foreground/50">/{inversion.tasaEsperada.toFixed(2)}%</p>
                                     </div>
                                   </div>
 
                                   {/* Tipo */}
-                                  <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200/50">
-                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Tipo de Activo</p>
-                                    <p className="text-xl font-bold text-foreground">{inversion.tipo}</p>
+                                  <div>
+                                    <p className="text-xs font-semibold text-foreground/60 mb-1">Tipo</p>
+                                    <p className="text-sm font-bold text-foreground">{inversion.tipo}</p>
+                                  </div>
+
+                                  {/* Progress */}
+                                  <div>
+                                    <p className="text-xs font-semibold text-foreground/60 mb-1">Progreso</p>
+                                    <p className="text-sm font-bold text-foreground">{inversion.progreso}%</p>
                                   </div>
                                 </div>
 
                                 {/* Progress Bar */}
-                                <div className="pt-4 border-t border-border/20">
-                                  <p className="text-sm text-foreground/60 mb-2">Progreso del período</p>
-                                  <div className="w-full bg-foreground/10 rounded-full h-2">
-                                    <div
-                                      className="bg-gradient-to-r from-primary to-blue-400 h-2 rounded-full transition-all duration-300"
-                                      style={{ width: `${inversion.progreso}%` }}
-                                    ></div>
-                                  </div>
-                                  <p className="text-xs text-foreground/60 mt-1">{inversion.progreso}% completado</p>
+                                <div className="w-full bg-foreground/10 rounded-full h-1.5">
+                                  <div
+                                    className="bg-gradient-to-r from-primary to-blue-400 h-1.5 rounded-full transition-all duration-300"
+                                    style={{ width: `${inversion.progreso}%` }}
+                                  ></div>
                                 </div>
                               </div>
                             </div>
