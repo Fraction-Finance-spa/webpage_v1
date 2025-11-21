@@ -40,6 +40,7 @@ export default function MercadoSecundario() {
 
   const [selectedAsset, setSelectedAsset] = useState<any>(null);
   const [sellingPrice, setSellingPrice] = useState("");
+  const [tokenQuantity, setTokenQuantity] = useState("");
   const [selectedListing, setSelectedListing] = useState<SecondaryMarketListing | null>(null);
   const [showBuyModal, setShowBuyModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
