@@ -20,6 +20,10 @@ export interface SmartContract {
   codigoContrato: string;
   categoria: "Capital de trabajo" | "Bonos Corporativos" | "Deuda Privada";
   documentos?: Documento[];
+  nombreEmpresa?: string;
+  razonSocial?: string;
+  rut?: string;
+  giro?: string;
 }
 
 const STORAGE_KEY = "smart_contracts";
