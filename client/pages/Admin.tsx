@@ -230,6 +230,7 @@ export default function Admin() {
 
   const [jobs, setJobs] = useState<Job[]>([]);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
+  const [showJobForm, setShowJobForm] = useState(false);
   const [jobForm, setJobForm] = useState({
     titulo: "",
     departamento: "",
