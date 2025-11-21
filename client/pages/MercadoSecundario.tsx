@@ -312,7 +312,7 @@ export default function MercadoSecundario() {
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-6">Activos Disponibles para Compra</h2>
                 {allListings.length === 0 ? (
-                  <div className="bg-white rounded-lg border border-border/40 p-12 text-center">
+                  <div className="bg-white rounded-lg border border-border/40 p-8 text-center">
                     <TrendingUp className="w-16 h-16 text-foreground/20 mx-auto mb-4" />
                     <p className="text-foreground/70 mb-2">No hay activos disponibles en el mercado</p>
                     <p className="text-sm text-foreground/60">
