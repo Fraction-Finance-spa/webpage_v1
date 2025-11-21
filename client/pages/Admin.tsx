@@ -1855,13 +1855,24 @@ export default function Admin() {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
               <h2 className="text-3xl font-bold text-foreground">Empleos</h2>
+              {!showJobForm && !editingJob && (
+                <button
+                  onClick={() => setShowJobForm(true)}
+                  className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
+                >
+                  <Plus className="w-5 h-5" />
+                  Crear Nueva Posición
+                </button>
+              )}
             </div>
 
             <div className="bg-white rounded-lg border border-border/40 p-8">
-              <h3 className="text-xl font-bold text-foreground mb-6">
-                {editingJob ? "Editar Posición" : "Crear Nueva Posición"}
-              </h3>
-              <form onSubmit={handleJobFormSubmit} className="space-y-4 mb-8">
+              {(showJobForm || editingJob) && (
+                <>
+                  <h3 className="text-xl font-bold text-foreground mb-6">
+                    {editingJob ? "Editar Posición" : "Crear Nueva Posición"}
+                  </h3>
+                  <form onSubmit={handleJobFormSubmit} className="space-y-4 mb-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">Título del Puesto</label>
@@ -1979,6 +1990,28 @@ export default function Admin() {
                           beneficios: "",
                           estado: "Abierto",
                         });
+                        setShowJobForm(false);
+                      }}
+                      className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
+                    >
+                      Cancelar
+                    </button>
+                  )}
+                  {!editingJob && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowJobForm(false);
+                        setJobForm({
+                          titulo: "",
+                          departamento: "",
+                          ubicacion: "",
+                          tipo: "",
+                          descripcion: "",
+                          requisitos: "",
+                          beneficios: "",
+                          estado: "Abierto",
+                        });
                       }}
                       className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
                     >
@@ -1987,6 +2020,8 @@ export default function Admin() {
                   )}
                 </div>
               </form>
+                </>
+              )}
 
               <div className="border-t border-border/40 pt-6">
                 <h3 className="text-lg font-bold text-foreground mb-4">Posiciones Actuales</h3>
