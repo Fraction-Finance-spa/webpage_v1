@@ -105,6 +105,8 @@ export default function SmartContractWizardSection({ setActiveSection, onContrac
     isDeploying: false,
   });
 
+  const [documentos, setDocumentos] = useState<Array<{ nombre: string; archivo: string; tipo: string }>>([]);
+
   const handleNext = () => {
     if (state.step < 8) {
       if (state.step === 1 && !state.assetClass) {
