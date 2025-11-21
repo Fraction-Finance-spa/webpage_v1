@@ -92,6 +92,7 @@ export default function App() {
 
             {/* Admin */}
             <Route path="/admin" element={<Admin />} />
+            <Route path="/smart-contract-wizard" element={<ProtectedRoute element={<SmartContractWizard />} />} />
 
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
