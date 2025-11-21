@@ -615,9 +615,9 @@ export default function MercadoSecundario() {
                     <p className="text-foreground/70">No has vendido activos aún</p>
                   </div>
                 ) : (
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {sales.map((sale) => (
-                      <div key={sale.id} className="bg-white rounded-lg border border-border/40 p-6">
+                      <div key={sale.id} className="bg-white rounded-lg border border-border/40 p-4">
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                           <div>
                             <p className="text-sm text-foreground/60 mb-1">Activo</p>
