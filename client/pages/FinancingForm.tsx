@@ -14,6 +14,7 @@ interface FormData {
   financingPurpose: string;
   businessStage: string;
   financingType: string;
+  financingSubtype: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -1035,7 +1036,7 @@ export default function FinancingForm() {
 
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
-                    Teléfono *
+                    Tel��fono *
                   </label>
                   <input
                     type="tel"
