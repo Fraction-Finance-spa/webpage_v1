@@ -135,7 +135,7 @@ export function calculateScoring(evaluacion: EvaluacionComercial): { scoring: nu
     "Estable": 50,
     "Buena": 75,
     "Fuerte": 75,
-    "Creciente": 75,
+    "Creciente": 100,
     "Excelente": 100,
     "Excepcional": 100,
   };
