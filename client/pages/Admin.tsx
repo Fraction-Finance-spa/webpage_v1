@@ -405,6 +405,82 @@ export default function Admin() {
     }
   };
 
+  const handleEducacionFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setEducacionForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleEducacionImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setEducacionForm((prev) => ({
+          ...prev,
+          imagen: event.target?.result as string,
+        }));
+      };
+      reader.readAsDataURL(file);
+      setEducacionImage(file);
+    }
+  };
+
+  const handleEducacionFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!educacionForm.titulo || !educacionForm.descripcion || !educacionForm.contenido || !educacionForm.instructor) {
+      alert("Por favor completa todos los campos requeridos.");
+      return;
+    }
+
+    const educacionData = {
+      ...educacionForm,
+      nivel: educacionForm.nivel as "Básico" | "Intermedio" | "Avanzado",
+    };
+
+    if (editingEducacionCard) {
+      updateEducacionCard(editingEducacionCard.id, educacionData);
+    } else {
+      addEducacionCard(educacionData);
+    }
+    setEducacionCards(getEducacionCards());
+    setEducacionForm({
+      titulo: "",
+      descripcion: "",
+      contenido: "",
+      instructor: "",
+      duracion: "",
+      nivel: "Básico",
+      estado: "Borrador",
+      imagen: "",
+    });
+    setEducacionImage(null);
+    setEditingEducacionCard(null);
+  };
+
+  const handleEditEducacionCard = (card: EducacionCard) => {
+    setEditingEducacionCard(card);
+    setEducacionForm({
+      titulo: card.titulo,
+      descripcion: card.descripcion,
+      contenido: card.contenido,
+      instructor: card.instructor,
+      duracion: card.duracion || "",
+      nivel: card.nivel || "Básico",
+      estado: card.estado,
+      imagen: card.imagen || "",
+    });
+  };
+
+  const handleDeleteEducacionCard = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar este curso?")) {
+      deleteEducacionCard(id);
+      setEducacionCards(getEducacionCards());
+    }
+  };
+
   const menuItems = [
     { id: "dashboard", label: "Panel", icon: <LayoutDashboard className="w-5 h-5" /> },
     { id: "activos", label: "Activos Digitales", icon: <Coins className="w-5 h-5" /> },
