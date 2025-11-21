@@ -321,30 +321,67 @@ export default function MercadoSecundario() {
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {allListings.map((listing) => (
-                      <div key={listing.id} className="bg-white rounded-lg border border-border/40 p-6 hover:shadow-lg transition-all">
-                        <div className="mb-4">
-                          <div className="flex items-start justify-between mb-3">
-                            <div>
-                              <h3 className="text-lg font-bold text-foreground">{listing.assetName}</h3>
-                              <p className="text-sm text-foreground/60">{listing.assetType}</p>
+                    {allListings.map((listing) => {
+                      const details = getListingDetails(listing);
+                      const categoryColors: Record<string, { bg: string; text: string }> = {
+                        "Capital de trabajo": { bg: "bg-blue-100", text: "text-blue-700" },
+                        "Bonos Corporativos": { bg: "bg-green-100", text: "text-green-700" },
+                        "Deuda Privada": { bg: "bg-purple-100", text: "text-purple-700" },
+                        "Sin Categoría": { bg: "bg-gray-100", text: "text-gray-700" },
+                      };
+                      const colors = categoryColors[details.category] || categoryColors["Sin Categoría"];
+
+                      return (
+                        <div key={listing.id} className="bg-white rounded-lg border border-border/40 p-6 hover:shadow-lg transition-all overflow-hidden">
+                          {/* Header with Category */}
+                          <div className="mb-4">
+                            <div className="flex items-start justify-between mb-3">
+                              <div className="flex-1">
+                                <h3 className="text-lg font-bold text-foreground mb-1">{listing.assetName}</h3>
+                                <p className="text-sm text-foreground/60">{listing.assetType}</p>
+                              </div>
                             </div>
-                            <div className="text-right">
-                              <p className="text-sm text-foreground/60">Vendedor</p>
-                              <p className="text-sm font-semibold text-foreground">{listing.sellerName}</p>
+
+                            {/* Category Badge */}
+                            <div className="mb-4">
+                              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}>
+                                <Tag className="w-3 h-3" />
+                                {details.category}
+                              </span>
                             </div>
                           </div>
 
-                          <div className="bg-gray-50 rounded-lg p-3 mb-3 space-y-2">
+                          {/* Token Information */}
+                          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 mb-4 border border-blue-100">
+                            <div className="space-y-2">
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm font-semibold text-foreground">Tokens en Venta</span>
+                                <span className="text-lg font-bold text-primary">{details.listedTokens}</span>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-sm text-foreground/60">% del Total</span>
+                                <span className="text-sm font-semibold text-primary">{details.tokenPercentage}%</span>
+                              </div>
+                              <div className="w-full bg-blue-200 rounded-full h-2 mt-3">
+                                <div
+                                  className="bg-primary rounded-full h-2 transition-all"
+                                  style={{ width: `${Math.min(parseFloat(details.tokenPercentage), 100)}%` }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Price Information */}
+                          <div className="bg-gray-50 rounded-lg p-4 mb-4 space-y-3">
                             <div className="flex justify-between">
-                              <span className="text-sm text-foreground/60">Precio de Compra Original:</span>
+                              <span className="text-sm text-foreground/60">Precio Original:</span>
                               <span className="text-sm font-semibold text-foreground">${listing.originalPrice.toLocaleString()}</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-sm text-foreground/60">Precio de Venta Actual:</span>
+                              <span className="text-sm text-foreground/60">Precio Actual:</span>
                               <span className="text-lg font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
                             </div>
-                            <div className="flex justify-between">
+                            <div className="border-t border-gray-200 pt-3 flex justify-between">
                               <span className="text-sm text-foreground/60">Descuento:</span>
                               <span className={`text-sm font-semibold ${calculateDiscount(listing.originalPrice, listing.sellingPrice) > 0 ? "text-green-600" : "text-orange-600"}`}>
                                 {calculateDiscount(listing.originalPrice, listing.sellingPrice)}%
@@ -352,34 +389,35 @@ export default function MercadoSecundario() {
                             </div>
                           </div>
 
+                          {/* Asset Details */}
                           <div className="grid grid-cols-2 gap-3 mb-4">
-                            <div className="bg-blue-50 rounded p-2">
-                              <p className="text-xs text-foreground/60">Plazo</p>
+                            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                              <p className="text-xs text-foreground/60 mb-1">Plazo</p>
                               <p className="text-sm font-semibold text-foreground">{listing.assetDetails.plazo}</p>
                             </div>
-                            <div className="bg-blue-50 rounded p-2">
-                              <p className="text-xs text-foreground/60">Rentabilidad Esperada</p>
+                            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                              <p className="text-xs text-foreground/60 mb-1">Rentabilidad</p>
                               <p className="text-sm font-semibold text-foreground">{listing.assetDetails.tasaEsperada}%</p>
                             </div>
                           </div>
 
                           <p className="text-xs text-foreground/50 mb-4">
-                            Listado el {new Date(listing.listedDate).toLocaleDateString("es-ES")}
+                            Vendedor: {listing.sellerName} • Listado el {new Date(listing.listedDate).toLocaleDateString("es-ES")}
                           </p>
-                        </div>
 
-                        <button
-                          onClick={() => {
-                            setSelectedListing(listing);
-                            setShowBuyModal(true);
-                          }}
-                          className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center justify-center gap-2"
-                        >
-                          <ShoppingCart className="w-4 h-4" />
-                          Comprar Ahora
-                        </button>
-                      </div>
-                    ))}
+                          <button
+                            onClick={() => {
+                              setSelectedListing(listing);
+                              setShowBuyModal(true);
+                            }}
+                            className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center justify-center gap-2"
+                          >
+                            <ShoppingCart className="w-4 h-4" />
+                            Comprar Ahora
+                          </button>
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
