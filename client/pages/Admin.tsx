@@ -566,6 +566,7 @@ export default function Admin() {
     { id: "dashboard", label: "Panel", icon: <LayoutDashboard className="w-5 h-5" /> },
     { id: "activos", label: "Activos Digitales", icon: <Coins className="w-5 h-5" /> },
     { id: "sto", label: "STOs", icon: <FileText className="w-5 h-5" /> },
+    { id: "solicitudes-financiamiento", label: "Solicitudes de Financiamiento", icon: <DollarSign className="w-5 h-5" /> },
     { id: "blog", label: "Artículos y Noticias", icon: <Briefcase className="w-5 h-5" /> },
     { id: "educacion", label: "Educación", icon: <BookOpen className="w-5 h-5" /> },
     { id: "usuarios", label: "Usuarios", icon: <Users className="w-5 h-5" /> },
