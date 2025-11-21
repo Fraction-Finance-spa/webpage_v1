@@ -21,6 +21,7 @@ import Blog from "./pages/Blog";
 import ArticleDetail from "./pages/ArticleDetail";
 import Placeholder from "./pages/Placeholder";
 import Education from "./pages/Education";
+import EducationDetail from "./pages/EducationDetail";
 import DenunciasChannel from "./pages/DenunciasChannel";
 import ReclamosChannel from "./pages/ReclamosChannel";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
