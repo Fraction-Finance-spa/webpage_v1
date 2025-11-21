@@ -887,11 +887,35 @@ export default function Admin() {
 
               <div className="border-t border-border/40 pt-6 mt-8">
                 <h3 className="text-lg font-bold text-foreground mb-4">Ofertas Creadas</h3>
+
+                {/* Category Filter */}
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {["Todas", "Capital de trabajo", "Bonos Corporativos", "Deuda Privada"].map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedSTOCategory(category)}
+                      className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                        selectedSTOCategory === category
+                          ? "bg-primary text-white"
+                          : "bg-gray-100 text-foreground hover:bg-gray-200"
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+
                 {stos.length === 0 ? (
                   <p className="text-foreground/60 text-sm">No hay ofertas creadas aún.</p>
                 ) : (
                   <div className="space-y-4">
-                    {stos.map((sto) => {
+                    {stos
+                      .filter(
+                        (sto) =>
+                          selectedSTOCategory === "Todas" ||
+                          smartContracts.find((c) => c.id === sto.activoDigitalId)?.categoria === selectedSTOCategory
+                      )
+                      .map((sto) => {
                       const contract = smartContracts.find((sc) => sc.id === sto.activoDigitalId);
                       return (
                         <div key={sto.id} className="bg-white border border-border/40 rounded-lg overflow-hidden hover:shadow-md transition-all">
