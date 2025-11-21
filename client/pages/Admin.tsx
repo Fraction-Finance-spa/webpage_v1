@@ -611,6 +611,9 @@ export default function Admin() {
           </div>
         );
 
+      case "smart-contract-wizard":
+        return <SmartContractWizardSection setActiveSection={setActiveSection} onContractCreated={() => setSmartContracts(getSmartContracts())} />;
+
       case "activos":
         return (
           <div className="space-y-6">
@@ -1742,7 +1745,7 @@ export default function Admin() {
             <h2 className="text-3xl font-bold text-foreground">Políticas</h2>
             <div className="space-y-4">
               {[
-                { key: "privacidad", titulo: "Pol��tica de Privacidad", estado: "Vigente" },
+                { key: "privacidad", titulo: "Política de Privacidad", estado: "Vigente" },
                 { key: "terminos", titulo: "Términos de Servicio", estado: "Vigente" },
                 { key: "cookies", titulo: "Política de Cookies", estado: "Vigente" },
               ].map((policy) => (
