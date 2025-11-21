@@ -21,6 +21,16 @@ interface FormData {
   terms: boolean;
 }
 
+interface SimulationResults {
+  requestedAmount: number;
+  estimatedApprovalChance: number;
+  suggestedAmount: number;
+  estimatedDuration: string;
+  interestRate: number;
+  riskLevel: string;
+  recommendation: string;
+}
+
 export default function FinancingForm() {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const userEmail = localStorage.getItem("userEmail") || "";
