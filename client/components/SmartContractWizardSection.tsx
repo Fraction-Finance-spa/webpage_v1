@@ -22,6 +22,9 @@ interface WizardState {
   contractCode: string;
   deploymentAddress: string;
   isDeploying: boolean;
+  contractDescription: string;
+  contractPurpose: string;
+  contractCategory: string;
 }
 
 const ASSET_CLASSES = [
