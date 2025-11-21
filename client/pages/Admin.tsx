@@ -442,6 +442,7 @@ export default function Admin() {
 
   const handleEditArticle = (article: BlogArticle) => {
     setEditingArticle(article);
+    setShowArticleForm(true);
     setArticleForm({
       titulo: article.titulo,
       contenido: article.contenido,
