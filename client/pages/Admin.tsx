@@ -371,6 +371,7 @@ export default function Admin() {
 
   const [smartContracts, setSmartContracts] = useState<SmartContract[]>([]);
   const [stos, setSTOs] = useState<STO[]>([]);
+  const [selectedSTOCategory, setSelectedSTOCategory] = useState<string>("Todas");
   const [editingSTO, setEditingSTO] = useState<STO | null>(null);
   const [stoForm, setStoForm] = useState({
     activoDigitalId: "",
