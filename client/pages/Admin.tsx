@@ -814,7 +814,7 @@ export default function Admin() {
         return (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-              <h2 className="text-3xl font-bold text-foreground">Oferta de Financiamiento (STOs)</h2>
+              <h2 className="text-3xl font-bold text-foreground">STOs</h2>
               <button
                 onClick={() => {
                   setEditingSTO(null);
