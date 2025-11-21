@@ -1418,6 +1418,11 @@ export default function Admin() {
                                 delete newNotes[request.id];
                                 return newNotes;
                               });
+                              setEvaluacionComercial((prev) => {
+                                const newEval = { ...prev };
+                                delete newEval[request.id];
+                                return newEval;
+                              });
                             }}
                             className="px-4 py-2 bg-gray-400 text-white rounded text-sm font-semibold hover:bg-gray-500 transition-colors"
                           >
