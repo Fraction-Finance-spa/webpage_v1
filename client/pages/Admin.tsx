@@ -9,7 +9,7 @@ import { getArticles, addArticle, updateArticle, deleteArticle, type BlogArticle
 import { getEducacionCards, addEducacionCard, updateEducacionCard, deleteEducacionCard, type EducacionCard } from "@/lib/educacionManager";
 import { getSmartContracts, deleteSmartContract, type SmartContract } from "@/lib/smartContractManager";
 import { getSTOs, addSTO, updateSTO, deleteSTO, checkSTOAvailableForAsset, type STO } from "@/lib/stoManager";
-import { getMarketStats } from "@/lib/mercadoSecundarioManager";
+import { getMarketStats, getTotalPendingAssetsValue } from "@/lib/mercadoSecundarioManager";
 import SmartContractWizardSection from "@/components/SmartContractWizardSection";
 import STOWizardSection from "@/components/STOWizardSection";
 import {
