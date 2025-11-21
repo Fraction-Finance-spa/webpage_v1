@@ -295,7 +295,7 @@ export default function FinancingForm() {
               <CheckCircle className="w-12 h-12 text-green-600" />
             </div>
             <h1 className="text-4xl font-bold text-foreground mb-4">
-              ��Solicitud Enviada!
+              ¡Solicitud Enviada!
             </h1>
             <p className="text-lg text-foreground/70 mb-4">
               Gracias por tu solicitud de financiamiento. Nos pondremos en contacto en las próximas 48 horas.
@@ -839,6 +839,7 @@ export default function FinancingForm() {
                     <option value="growth">En Crecimiento</option>
                     <option value="established">Establecida</option>
                     <option value="scale">Escalando</option>
+                    <option value="large">Gran Empresa</option>
                   </select>
                   {errors.businessStage && (
                     <p className="text-red-600 text-sm mt-1">{errors.businessStage}</p>
