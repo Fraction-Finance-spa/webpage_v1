@@ -374,7 +374,7 @@ export default function FinancingForm() {
                   <label className="block text-sm font-semibold text-foreground mb-3">
                     Plazo de Pago
                   </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-3 gap-3">
                     {[
                       { value: 30, label: "30 días" },
                       { value: 60, label: "60 días" },
@@ -394,24 +394,6 @@ export default function FinancingForm() {
                         {option.label}
                       </button>
                     ))}
-                  </div>
-                  <div className="mt-3">
-                    <label className="block text-sm text-foreground/60 mb-2">
-                      Otro plazo (días):
-                    </label>
-                    <input
-                      type="number"
-                      min="0"
-                      max="365"
-                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
-                      placeholder="Ingresa número de días"
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value);
-                        if (value > 0) {
-                          handleSimulationInputChange("plazo", value);
-                        }
-                      }}
-                    />
                   </div>
                 </div>
 
