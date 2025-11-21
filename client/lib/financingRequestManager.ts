@@ -1,3 +1,14 @@
+export interface EvaluacionComercial {
+  viabilidadFinanciera: "Excelente" | "Buena" | "Regular" | "Deficiente" | "";
+  potencialMercado: "Alto" | "Medio" | "Bajo" | "";
+  calidadEquipo: "Excepcional" | "Fuerte" | "Adecuada" | "Débil" | "";
+  riesgoPolitico: "Bajo" | "Medio" | "Alto" | "";
+  reputacionEmpresa: "Excelente" | "Buena" | "Regular" | "Deficiente" | "";
+  observaciones: string;
+  evaluador?: string;
+  fechaEvaluacion?: string;
+}
+
 export interface FinancingRequest {
   id: string;
   companyName: string;
@@ -17,6 +28,7 @@ export interface FinancingRequest {
   status: "Pendiente" | "Aprobado" | "Rechazado";
   createdAt: string;
   notes: string;
+  evaluacionComercial?: EvaluacionComercial;
 }
 
 const STORAGE_KEY = "financing_requests";
