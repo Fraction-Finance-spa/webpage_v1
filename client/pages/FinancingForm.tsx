@@ -56,6 +56,8 @@ export default function FinancingForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showSimulation, setShowSimulation] = useState(false);
+  const [simulationResults, setSimulationResults] = useState<SimulationResults | null>(null);
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
