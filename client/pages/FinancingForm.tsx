@@ -422,6 +422,32 @@ export default function FinancingForm() {
                     <span>3%</span>
                   </div>
                 </div>
+
+                {/* Benefit Rate Slider */}
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Tasa de Beneficio Aportante: {simulationInputs.benefitRate.toFixed(2)}%
+                  </label>
+                  <p className="text-xs text-foreground/60 mb-3">Rango: 2.5% a 5%</p>
+                  <input
+                    type="range"
+                    min="2.5"
+                    max="5"
+                    step="0.1"
+                    value={simulationInputs.benefitRate}
+                    onChange={(e) =>
+                      handleSimulationInputChange(
+                        "benefitRate",
+                        parseFloat(e.target.value)
+                      )
+                    }
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                  />
+                  <div className="flex justify-between text-xs text-foreground/60 mt-2">
+                    <span>2.5%</span>
+                    <span>5%</span>
+                  </div>
+                </div>
               </div>
 
               {/* Summary Section */}
