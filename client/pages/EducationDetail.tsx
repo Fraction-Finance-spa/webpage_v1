@@ -94,7 +94,7 @@ export default function EducationDetail() {
 
           {/* Course Content */}
           <div className="bg-white rounded-lg border border-border/40 p-8">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Contenido del Curso</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Contenido</h2>
 
             <div className="prose prose-sm max-w-none">
               {/* Parse and render HTML content */}
