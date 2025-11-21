@@ -10,7 +10,7 @@ import { getEducacionCards, addEducacionCard, updateEducacionCard, deleteEducaci
 import { getSmartContracts, deleteSmartContract, type SmartContract } from "@/lib/smartContractManager";
 import { getSTOs, addSTO, updateSTO, deleteSTO, checkSTOAvailableForAsset, updateTokenosSoldCount, type STO } from "@/lib/stoManager";
 import { getMarketStats, getTotalPendingAssetsValue, getPendingListingsCount } from "@/lib/mercadoSecundarioManager";
-import { getFinancingRequests, updateRequestStatus, deleteFinancingRequest, type FinancingRequest } from "@/lib/financingRequestManager";
+import { getFinancingRequests, updateRequestStatus, deleteFinancingRequest, updateEvaluacionComercial, type FinancingRequest, type EvaluacionComercial } from "@/lib/financingRequestManager";
 import SmartContractWizardSection from "@/components/SmartContractWizardSection";
 import STOWizardSection from "@/components/STOWizardSection";
 import {
@@ -335,7 +335,7 @@ export default function Admin() {
   };
 
   const handleDeleteCandidatura = (id: string) => {
-    if (confirm("¿Está seguro que desea eliminar esta candidatura?")) {
+    if (confirm("��Está seguro que desea eliminar esta candidatura?")) {
       const filtered = candidaturas.filter((c) => c.id !== id);
       setCandidaturas(filtered);
       localStorage.setItem("candidaturas", JSON.stringify(filtered));
