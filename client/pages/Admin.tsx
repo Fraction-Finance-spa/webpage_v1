@@ -145,11 +145,13 @@ export default function Admin() {
 
   const handleEditTeamMember = (member: TeamMember) => {
     setEditingTeamMember(member);
+    setShowTeamForm(true);
     setTeamForm({
       nombre: member.nombre,
       rol: member.rol,
       departamento: member.departamento,
       bio: member.bio || "",
+      foto: member.foto || "",
     });
   };
 
