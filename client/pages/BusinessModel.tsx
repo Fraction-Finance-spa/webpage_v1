@@ -52,17 +52,15 @@ export default function BusinessModel() {
   const tokenizedInstruments = [
     {
       title: "Capital de Trabajo",
-      description:
-        "Financiamiento directo para operaciones y flujo de caja empresarial.",
+      description: ["Facturas (Factoring)", "Proveedores(Confirming)"],
     },
     {
       title: "Bonos Corporativos",
-      description: "Emisiones digitales con pagos automatizados y trazabilidad total.",
+      description: ["Bonos privados.", "Bonos verdes."],
     },
     {
       title: "Deuda Privada",
-      description:
-        "Estructuras eficientes para préstamos privados con reglas programadas en smart contracts.",
+      description: ["Crédito corto plazo", "Crédito largo plazo", "Crédito con garantía"],
     },
     {
       title: "Financiamiento Colaborativo",
