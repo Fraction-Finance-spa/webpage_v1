@@ -159,31 +159,26 @@ export default function AboutCompany() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
             {teamMembers.map((member) => (
-              <div key={member.id} className="group rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg">
-                <div className="relative overflow-hidden">
-                  {member.foto ? (
-                    <img
-                      src={member.foto}
-                      alt={member.nombre}
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-64 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                      <Users className="w-16 h-16 text-primary/50" />
-                    </div>
-                  )}
+              <div key={member.id} className="group text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="relative w-20 h-20 rounded-full overflow-hidden group-hover:shadow-lg transition-shadow duration-300">
+                    {member.foto ? (
+                      <img
+                        src={member.foto}
+                        alt={member.nombre}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                        <Users className="w-8 h-8 text-primary/50" />
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <div className="bg-white p-6 text-center">
-                  <h3 className="text-xl font-bold text-foreground mb-1">{member.nombre}</h3>
-                  <p className="text-sm text-primary font-semibold">{member.rol}</p>
-                  {member.bio && (
-                    <p className="text-sm text-foreground/60 mt-3 line-clamp-2">
-                      {member.bio}
-                    </p>
-                  )}
-                </div>
+                <h3 className="text-sm font-bold text-foreground mb-1 line-clamp-1">{member.nombre}</h3>
+                <p className="text-xs text-primary font-semibold line-clamp-1">{member.rol}</p>
               </div>
             ))}
           </div>
