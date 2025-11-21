@@ -98,7 +98,7 @@ export default function ArticleDetail() {
                 onClick={() => navigate("/nosotros/blog")}
                 className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
               >
-                Ir al Blog
+                Ir a Artículos y Noticias
               </button>
             </div>
           </div>
