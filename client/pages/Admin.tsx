@@ -825,6 +825,7 @@ export default function Admin() {
                           activoDigitalId: e.target.value,
                           nombreActivo: selected?.nombre || "",
                           simboloActivo: selected?.simbolo || "",
+                          numerosTokensVenta: selected?.suministroMaximo || "",
                         }));
                       }}
                       className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
@@ -837,7 +838,7 @@ export default function Admin() {
                           value={contract.id}
                           disabled={!checkSTOAvailableForAsset(contract.id) && editingSTO?.activoDigitalId !== contract.id}
                         >
-                          {contract.nombre} ({contract.simbolo})
+                          {contract.nombre} ({contract.simbolo}) - {contract.suministroMaximo} tokens
                           {!checkSTOAvailableForAsset(contract.id) && editingSTO?.activoDigitalId !== contract.id
                             ? " - Oferta existente"
                             : ""}
@@ -845,7 +846,7 @@ export default function Admin() {
                       ))}
                     </select>
                     <p className="text-xs text-foreground/60 mt-1">
-                      Selecciona un activo digital que no tenga oferta activa
+                      Selecciona un activo digital que no tenga oferta activa. El número de tokens se auto-completará.
                     </p>
                   </div>
 
