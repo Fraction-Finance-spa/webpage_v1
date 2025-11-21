@@ -26,6 +26,7 @@ interface WizardState {
   montoMinimoInversion: string;
   montoMaximoInversion: string;
   descripcion: string;
+  porcentajeRendimiento: string;
 }
 
 const STO_TYPES = [
