@@ -392,7 +392,7 @@ export default function Layout({ children }: LayoutProps) {
                     to="/nosotros/blog"
                     className="text-white/70 hover:text-white transition-colors"
                   >
-                    Blog
+                    Artículos y Noticias
                   </Link>
                 </li>
                 <li>
