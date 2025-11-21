@@ -25,6 +25,7 @@ export default function FinancingRequestCard({
   setPreFilledSmartContractData,
 }: FinancingRequestCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [financingPercentages, setFinancingPercentages] = useState<Record<string, string>>({});
   const currentEval = evaluacionComercial[request.id];
   const scoring = currentEval ? calculateScoring(currentEval).scoring : null;
   const rates = scoring ? calculateRatesByScoring(scoring) : null;
