@@ -4,6 +4,8 @@ export interface UserInvestment {
   stoNombre: string;
   tipo: string;
   montoInvertido: number;
+  cantidadToken: number;
+  valorPorToken: number;
   tasaEsperada: number;
   plazo: string;
   estado: "Activo" | "Completado" | "Cancelado";
@@ -11,6 +13,8 @@ export interface UserInvestment {
   fechaInversion: string;
   fechaVencimiento: string;
   rentabilidadActual: number;
+  categoria?: string;
+  subcategoria?: string;
 }
 
 const STORAGE_KEY = "userInvestments";
