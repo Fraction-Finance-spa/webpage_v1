@@ -129,7 +129,7 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto" style={{ paddingTop: "40px" }}>
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold text-foreground mb-4">Contacto</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-4">Contacto</h1>
             <p className="text-xl text-foreground/70">
               Estamos aquí para ayudarte. Envíanos tu mensaje y te responderemos lo antes posible.
             </p>
