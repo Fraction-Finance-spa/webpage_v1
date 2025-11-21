@@ -295,7 +295,7 @@ export default function MercadoSecundario() {
                   <p className="text-2xl font-bold text-foreground">
                     ${marketStats.totalVolumeTraded.toLocaleString()}
                   </p>
-                  <p className="text-xs text-foreground/60 mt-0.5">USD</p>
+                  <p className="text-xs text-foreground/60 mt-0.5">CLP</p>
                 </div>
 
                 <div className="bg-white rounded-lg border border-border/40 p-4">
@@ -369,11 +369,11 @@ export default function MercadoSecundario() {
                           <div className="bg-gray-50 rounded-lg p-3 mb-3 space-y-2">
                             <div className="flex justify-between text-xs">
                               <span className="text-foreground/60">Original:</span>
-                              <span className="font-semibold text-foreground">${listing.originalPrice.toLocaleString()}</span>
+                              <span className="font-semibold text-foreground">${listing.originalPrice.toLocaleString()} CLP</span>
                             </div>
                             <div className="flex justify-between text-xs">
                               <span className="text-foreground/60">Actual:</span>
-                              <span className="font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
+                              <span className="font-bold text-primary">${listing.sellingPrice.toLocaleString()} CLP</span>
                             </div>
                             <div className="border-t border-gray-200 pt-2 flex justify-between text-xs">
                               <span className="text-foreground/60">Desc.:</span>
@@ -463,17 +463,17 @@ export default function MercadoSecundario() {
 
                         <div>
                           <p className="text-xs text-foreground/60 mb-0.5">Invertido</p>
-                          <p className="text-sm font-bold text-foreground">${asset.montoInvertido.toLocaleString()}</p>
+                          <p className="text-sm font-bold text-foreground">${asset.montoInvertido.toLocaleString()} CLP</p>
                         </div>
 
                         <div>
                           <p className="text-xs text-foreground/60 mb-0.5">Disponible</p>
-                          <p className="text-sm font-bold text-primary">${asset.availableForSale.toLocaleString()}</p>
+                          <p className="text-sm font-bold text-primary">${asset.availableForSale.toLocaleString()} CLP</p>
                         </div>
 
                         <div className="hidden sm:block">
                           <p className="text-xs text-foreground/60 mb-0.5">Listado</p>
-                          <p className="text-sm font-bold text-orange-600">${asset.listedForSale.toLocaleString()}</p>
+                          <p className="text-sm font-bold text-orange-600">${asset.listedForSale.toLocaleString()} CLP</p>
                         </div>
                       </div>
 
