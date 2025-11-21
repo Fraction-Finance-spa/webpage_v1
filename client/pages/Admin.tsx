@@ -610,6 +610,16 @@ export default function Admin() {
         const pendingMessages = mensajesContacto.length;
         const completedStos = stos.filter((s) => s.estado === "Cerrado").length;
 
+        // Calculate total traded amount from secondary market
+        const marketStats = getMarketStats();
+        const totalTraded = marketStats.totalVolumeTraded;
+
+        // Calculate total value of generated assets from STOs
+        const totalAssetValueGenerated = stos.reduce((sum, sto) => {
+          const amount = parseFloat(sto.montoRecaudadoActual || "0");
+          return sum + amount;
+        }, 0);
+
         return (
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-foreground">Panel de Control</h2>
