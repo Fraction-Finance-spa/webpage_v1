@@ -73,6 +73,13 @@ export default function STODetailModal({ sto, contract, onClose }: STODetailModa
                 </div>
                 <p className="text-xs text-foreground/60 mt-1">({daysRemaining} días)</p>
               </div>
+
+              {sto.porcentajeRendimiento && (
+                <div>
+                  <p className="text-xs text-foreground/60 mb-1">Rendimiento Anual Esperado</p>
+                  <p className="text-lg font-bold text-green-600">{sto.porcentajeRendimiento}% APY</p>
+                </div>
+              )}
             </div>
           </div>
 
