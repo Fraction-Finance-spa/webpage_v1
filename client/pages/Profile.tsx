@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { getUserInvestments, getTotalInvestedAmount, getAverageYield } from "@/lib/investmentManager";
+import { formatCLP } from "@/lib/utils";
 import {
   User,
   Mail,
