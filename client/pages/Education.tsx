@@ -63,23 +63,9 @@ export default function Education() {
               {filteredCards.map((card) => (
                 <div
                   key={card.id}
-                  className="bg-white rounded-lg border border-border/40 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+                  className="bg-white rounded-lg border border-border/40 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col p-6"
                 >
-                  {card.imagen ? (
-                    <div className="w-full h-48 overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5">
-                      <img
-                        src={card.imagen}
-                        alt={card.titulo}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      <BookOpen className="w-12 h-12 text-primary/40" />
-                    </div>
-                  )}
-
-                  <div className="p-6 flex flex-col flex-1">
+                  <div className="flex flex-col flex-1">
                     {card.nivel && (
                       <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3 w-fit ${
                         card.nivel === "Básico" ? "bg-green-100 text-green-700" :
