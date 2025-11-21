@@ -375,6 +375,9 @@ export default function Admin() {
   const [stos, setSTOs] = useState<STO[]>([]);
   const [selectedSTOCategory, setSelectedSTOCategory] = useState<string>("Todas");
   const [selectedActivoCategory, setSelectedActivoCategory] = useState<string>("Todas");
+  const [financingRequests, setFinancingRequests] = useState<FinancingRequest[]>([]);
+  const [selectedFinancingStatus, setSelectedFinancingStatus] = useState<string>("Pendiente");
+  const [financingNotes, setFinancingNotes] = useState<Record<string, string>>({});
   const [editingSTO, setEditingSTO] = useState<STO | null>(null);
   const [stoForm, setStoForm] = useState({
     activoDigitalId: "",
