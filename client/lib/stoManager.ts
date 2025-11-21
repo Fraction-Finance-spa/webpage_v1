@@ -6,6 +6,7 @@ export interface STO {
   estado: "Activo" | "Inactivo" | "Cerrado" | "Pendiente";
   tipoSTO: "Equity" | "Debt" | "Hybrid" | "Utility";
   numerosTokensVenta: string;
+  tokenosVendidos: string;
   precioPorToken: string;
   fechaInicio: string;
   fechaFin: string;
