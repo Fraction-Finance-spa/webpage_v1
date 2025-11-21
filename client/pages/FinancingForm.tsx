@@ -324,12 +324,13 @@ export default function FinancingForm() {
 
   if (showSimulation && simulationResults) {
     const handleSimulationInputChange = (field: string, value: any) => {
-      setSimulationInputs((prev) => ({
-        ...prev,
+      const newInputs = {
+        ...simulationInputs,
         [field]: value,
-      }));
+      };
+      setSimulationInputs(newInputs);
       // Recalculate simulation with new values
-      const newResults = calculateSimulation();
+      const newResults = calculateSimulation(newInputs);
       setSimulationResults(newResults);
     };
 
