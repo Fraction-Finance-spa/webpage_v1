@@ -420,7 +420,7 @@ export default function MercadoSecundario() {
 
           {/* Portfolio View */}
           {viewMode === "portfolio" && (
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-foreground">Mi Portafolio</h2>
                 {getAvailableAssets().length > 0 && (
