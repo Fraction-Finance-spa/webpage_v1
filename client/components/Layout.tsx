@@ -18,6 +18,8 @@ interface NavItem {
 const iconMap: Record<string, React.ReactNode> = {
   "Financiamiento": <DollarSign className="w-4 h-4" />,
   "Inversiones": <TrendingUp className="w-4 h-4" />,
+  "Alternativas de Financiamiento": <DollarSign className="w-4 h-4" />,
+  "Mercado Secundario de Activos": <TrendingUp className="w-4 h-4" />,
   "Nuestra Empresa": <Building2 className="w-4 h-4" />,
   "Modelo de Negocio": <Zap className="w-4 h-4" />,
   "Educación Financiera": <BookOpen className="w-4 h-4" />,
