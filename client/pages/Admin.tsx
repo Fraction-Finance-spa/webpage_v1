@@ -762,7 +762,7 @@ export default function Admin() {
                 {editingSTO ? "Editar Oferta" : "Crear Nuevo STO"}
               </h3>
               <p className="text-sm text-foreground/70 mb-6">
-                Define los parámetros para una nueva oferta pública de tokens.
+                Define los parámetros para una nueva oferta p��blica de tokens.
               </p>
 
               <form
@@ -897,11 +897,14 @@ export default function Admin() {
                     <input
                       type="number"
                       value={stoForm.numerosTokensVenta}
-                      onChange={(e) => setStoForm((prev) => ({ ...prev, numerosTokensVenta: e.target.value }))}
-                      placeholder="Ej: 1000000"
-                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      readOnly
+                      placeholder="Se auto-completará al seleccionar un activo"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary/30 cursor-not-allowed"
                       required
                     />
+                    <p className="text-xs text-foreground/60 mt-1">
+                      Este valor se auto-completa del suministro máximo del smart contract seleccionado
+                    </p>
                   </div>
                 </div>
 
