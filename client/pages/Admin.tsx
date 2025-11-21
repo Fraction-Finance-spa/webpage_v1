@@ -32,7 +32,6 @@ import {
   MessageSquare,
   Eye,
   Zap,
-  FileText,
 } from "lucide-react";
 
 type AdminSection =
@@ -762,7 +761,7 @@ export default function Admin() {
                 {editingSTO ? "Editar Oferta" : "Crear Nuevo STO"}
               </h3>
               <p className="text-sm text-foreground/70 mb-6">
-                Define los parámetros para una nueva oferta p��blica de tokens.
+                Define los parámetros para una nueva oferta pública de tokens.
               </p>
 
               <form
