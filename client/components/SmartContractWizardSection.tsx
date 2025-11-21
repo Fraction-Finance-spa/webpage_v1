@@ -378,7 +378,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
         {/* Step 4: Token Details */}
         {state.step === 4 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground">Paso 4 de 8: Detalles del Token</h3>
+            <h3 className="text-lg font-bold text-foreground">Paso 4 de 9: Detalles del Token</h3>
             <p className="text-sm text-foreground/70">
               Define las propiedades en cadena de tu token.
             </p>
@@ -428,10 +428,129 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
           </div>
         )}
 
-        {/* Step 5: Contract Review */}
+        {/* Step 5: Contract Metadata */}
         {state.step === 5 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground">Paso 5 de 8: Revisar Contrato Inteligente</h3>
+            <h3 className="text-lg font-bold text-foreground">Paso 5 de 9: Información del Contrato</h3>
+            <p className="text-sm text-foreground/70">
+              Define los metadatos y documentación del contrato inteligente.
+            </p>
+            <div className="space-y-3">
+              <div>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Descripción del Contrato</label>
+                <textarea
+                  value={state.contractDescription}
+                  onChange={(e) => setState((prev) => ({ ...prev, contractDescription: e.target.value }))}
+                  placeholder="Describe el propósito y características del contrato..."
+                  rows={3}
+                  className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Propósito del Contrato</label>
+                <input
+                  type="text"
+                  value={state.contractPurpose}
+                  onChange={(e) => setState((prev) => ({ ...prev, contractPurpose: e.target.value }))}
+                  placeholder="Ej: Tokenización de deuda corporativa"
+                  className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Categoría</label>
+                <select
+                  value={state.contractCategory}
+                  onChange={(e) => setState((prev) => ({ ...prev, contractCategory: e.target.value }))}
+                  className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                >
+                  <option value="">Selecciona una categoría</option>
+                  <option value="deuda">Deuda Corporativa</option>
+                  <option value="equity">Participación Accionaria</option>
+                  <option value="activos-reales">Activos Reales</option>
+                  <option value="fondo-inversion">Fondo de Inversión</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div className="mt-6">
+                <h4 className="text-sm font-semibold text-foreground mb-3">Documentos Técnicos y de Respaldo</h4>
+                <div className="border-2 border-dashed border-border/40 rounded-lg p-6 text-center hover:border-primary/50 transition-colors cursor-pointer">
+                  <input
+                    type="file"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          setDocumentos((prev) => [
+                            ...prev,
+                            {
+                              nombre: file.name,
+                              tipo: file.type,
+                              archivo: event.target?.result as string,
+                            },
+                          ]);
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                    className="hidden"
+                    id="metadata-doc-upload"
+                    accept=".pdf,.doc,.docx,.txt,.zip"
+                  />
+                  <label htmlFor="metadata-doc-upload" className="cursor-pointer block">
+                    <svg
+                      className="w-6 h-6 text-primary mx-auto mb-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                    <p className="text-foreground font-semibold text-sm">Haz clic para cargar documentos</p>
+                    <p className="text-xs text-foreground/60 mt-1">PDF, DOC, TXT, ZIP (máx. 10MB)</p>
+                  </label>
+                </div>
+
+                {documentos.length > 0 && (
+                  <div className="space-y-2 mt-4">
+                    <p className="text-xs font-semibold text-foreground">Documentos cargados:</p>
+                    {documentos.map((doc, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="flex items-center gap-2 flex-1">
+                          <FileText className="w-4 h-4 text-green-600" />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-semibold text-foreground truncate">{doc.nombre}</p>
+                            <p className="text-xs text-foreground/60">{doc.tipo}</p>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setDocumentos((prev) => prev.filter((_, i) => i !== idx))}
+                          className="p-1 hover:bg-red-100 rounded transition-colors"
+                        >
+                          <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Step 6: Contract Review */}
+        {state.step === 6 && (
+          <div className="space-y-4">
+            <h3 className="text-lg font-bold text-foreground">Paso 6 de 9: Revisar Contrato Inteligente</h3>
             <p className="text-sm text-foreground/70">
               Basado en OpenZeppelin - Biblioteca de contratos inteligentes seguros.
             </p>
@@ -441,10 +560,10 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
           </div>
         )}
 
-        {/* Step 6: Compilation & Documents */}
-        {state.step === 6 && (
+        {/* Step 7: Compilation & Documents */}
+        {state.step === 7 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground">Paso 6 de 8: Compilar Contrato Inteligente</h3>
+            <h3 className="text-lg font-bold text-foreground">Paso 7 de 9: Compilar Contrato Inteligente</h3>
             <div className="p-4 border-2 border-dashed border-primary/30 rounded-lg bg-primary/5 mb-6">
               <div className="flex items-center gap-3 mb-3">
                 <Code className="w-5 h-5 text-primary" />
@@ -541,10 +660,10 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
           </div>
         )}
 
-        {/* Step 7: Confirmation Review */}
-        {state.step === 7 && (
+        {/* Step 8: Confirmation Review */}
+        {state.step === 8 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground">Paso 7 de 8: Revisar Información</h3>
+            <h3 className="text-lg font-bold text-foreground">Paso 8 de 9: Revisar Información</h3>
             <p className="text-sm text-foreground/70">
               Verifica todos los datos antes de desplegar el contrato.
             </p>
@@ -591,10 +710,10 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
           </div>
         )}
 
-        {/* Step 8: Deployment */}
-        {state.step === 8 && (
+        {/* Step 9: Deployment */}
+        {state.step === 9 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground">Paso 8 de 8: Desplegar Contrato Inteligente</h3>
+            <h3 className="text-lg font-bold text-foreground">Paso 9 de 9: Desplegar Contrato Inteligente</h3>
             {!state.deploymentAddress ? (
               <button
                 onClick={handleDeploy}
@@ -666,7 +785,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
           Cancelar
         </button>
 
-        {state.step < 8 && (
+        {state.step < 9 && (
           <button
             onClick={handleNext}
             className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold text-sm"
@@ -676,7 +795,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
           </button>
         )}
 
-        {state.step === 8 && state.deploymentAddress && (
+        {state.step === 9 && state.deploymentAddress && (
           <button
             onClick={() => {
               setActiveSection("activos");
