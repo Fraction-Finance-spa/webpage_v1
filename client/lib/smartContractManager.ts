@@ -18,6 +18,7 @@ export interface SmartContract {
   fechaCreacion: string;
   estado: "Activo" | "Inactivo" | "Pausado";
   codigoContrato: string;
+  categoria: "Capital de trabajo" | "Bonos Corporativos" | "Deuda Privada";
   documentos?: Documento[];
 }
 
