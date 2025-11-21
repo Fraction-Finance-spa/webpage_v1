@@ -223,7 +223,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
       
       // Save the deployed contract
       const blockchainName = BLOCKCHAIN_NETWORKS.find((n) => n.id === state.blockchain)?.name || state.blockchain;
-      addSmartContract({
+      const newContract = addSmartContract({
         nombre: state.tokenName,
         simbolo: state.tokenSymbol,
         direccion: mockAddress,
@@ -242,13 +242,19 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
           fechaCarga: new Date().toISOString(),
         })),
       });
-      
+
       setState((prev) => ({
         ...prev,
         deploymentAddress: mockAddress,
         isDeploying: false,
       }));
-      
+
+      setCreatedContractId(newContract.id);
+
+      if (onClearPreFilledData) {
+        onClearPreFilledData();
+      }
+
       onContractCreated();
     }, 2000);
   };
