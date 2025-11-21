@@ -750,6 +750,380 @@ export default function Admin() {
         );
 
       case "sto":
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <h2 className="text-3xl font-bold text-foreground">Oferta de Financiamiento (STOs)</h2>
+            </div>
+
+            <div className="bg-white rounded-lg border border-border/40 p-8">
+              <h3 className="text-xl font-bold text-foreground mb-6">
+                {editingSTO ? "Editar Oferta" : "Crear Nuevo STO"}
+              </h3>
+              <p className="text-sm text-foreground/70 mb-6">
+                Define los parámetros para una nueva oferta pública de tokens.
+              </p>
+
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (
+                    !stoForm.activoDigitalId ||
+                    !stoForm.tipoSTO ||
+                    !stoForm.numerosTokensVenta ||
+                    !stoForm.precioPorToken ||
+                    !stoForm.fechaInicio ||
+                    !stoForm.fechaFin ||
+                    !stoForm.montoMinimoRecaudacion ||
+                    !stoForm.montoMaximoRecaudacion ||
+                    !stoForm.montoMinimoInversion ||
+                    !stoForm.montoMaximoInversion
+                  ) {
+                    alert("Por favor completa todos los campos requeridos");
+                    return;
+                  }
+
+                  try {
+                    if (editingSTO) {
+                      updateSTO(editingSTO.id, stoForm);
+                    } else {
+                      addSTO(stoForm as Omit<STO, "id" | "fechaCreacion" | "fechaActualizacion">);
+                    }
+                    setSTOs(getSTOs());
+                    setStoForm({
+                      activoDigitalId: "",
+                      nombreActivo: "",
+                      simboloActivo: "",
+                      estado: "Pendiente",
+                      tipoSTO: "Equity",
+                      numerosTokensVenta: "",
+                      precioPorToken: "",
+                      fechaInicio: "",
+                      fechaFin: "",
+                      montoMinimoRecaudacion: "",
+                      montoMaximoRecaudacion: "",
+                      montoMinimoInversion: "",
+                      montoMaximoInversion: "",
+                      descripcion: "",
+                    });
+                    setEditingSTO(null);
+                  } catch (error) {
+                    alert(error instanceof Error ? error.message : "Error al crear la oferta");
+                  }
+                }}
+                className="space-y-6"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Activo Digital</label>
+                    <select
+                      value={stoForm.activoDigitalId}
+                      onChange={(e) => {
+                        const selected = smartContracts.find((sc) => sc.id === e.target.value);
+                        setStoForm((prev) => ({
+                          ...prev,
+                          activoDigitalId: e.target.value,
+                          nombreActivo: selected?.nombre || "",
+                          simboloActivo: selected?.simbolo || "",
+                        }));
+                      }}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    >
+                      <option value="">Selecciona un activo digital</option>
+                      {smartContracts.map((contract) => (
+                        <option
+                          key={contract.id}
+                          value={contract.id}
+                          disabled={!checkSTOAvailableForAsset(contract.id) && editingSTO?.activoDigitalId !== contract.id}
+                        >
+                          {contract.nombre} ({contract.simbolo})
+                          {!checkSTOAvailableForAsset(contract.id) && editingSTO?.activoDigitalId !== contract.id
+                            ? " - Oferta existente"
+                            : ""}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="text-xs text-foreground/60 mt-1">
+                      Selecciona un activo digital que no tenga oferta activa
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Tipo de STO</label>
+                    <select
+                      value={stoForm.tipoSTO}
+                      onChange={(e) =>
+                        setStoForm((prev) => ({
+                          ...prev,
+                          tipoSTO: e.target.value as "Equity" | "Debt" | "Hybrid" | "Utility",
+                        }))
+                      }
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    >
+                      <option value="Equity">Equity (Acciones)</option>
+                      <option value="Debt">Debt (Deuda)</option>
+                      <option value="Hybrid">Hybrid (Híbrido)</option>
+                      <option value="Utility">Utility (Utilidad)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Estado</label>
+                    <select
+                      value={stoForm.estado}
+                      onChange={(e) =>
+                        setStoForm((prev) => ({
+                          ...prev,
+                          estado: e.target.value as "Activo" | "Inactivo" | "Cerrado" | "Pendiente",
+                        }))
+                      }
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    >
+                      <option value="Pendiente">Pendiente</option>
+                      <option value="Activo">Activo</option>
+                      <option value="Inactivo">Inactivo</option>
+                      <option value="Cerrado">Cerrado</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Número de Tokens a la Venta</label>
+                    <input
+                      type="number"
+                      value={stoForm.numerosTokensVenta}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, numerosTokensVenta: e.target.value }))}
+                      placeholder="Ej: 1000000"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Precio por Token (USDC)</label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={stoForm.precioPorToken}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, precioPorToken: e.target.value }))}
+                      placeholder="Ej: 1.50"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Descripción (Opcional)</label>
+                    <input
+                      type="text"
+                      value={stoForm.descripcion}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, descripcion: e.target.value }))}
+                      placeholder="Descripción breve de la oferta"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Fecha de Inicio de la Oferta</label>
+                    <input
+                      type="date"
+                      value={stoForm.fechaInicio}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, fechaInicio: e.target.value }))}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Fecha de Fin de la Oferta</label>
+                    <input
+                      type="date"
+                      value={stoForm.fechaFin}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, fechaFin: e.target.value }))}
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Monto Mínimo de Recaudación (USDC)</label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={stoForm.montoMinimoRecaudacion}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, montoMinimoRecaudacion: e.target.value }))}
+                      placeholder="Ej: 50000"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Monto Máximo de Recaudación (USDC)</label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={stoForm.montoMaximoRecaudacion}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, montoMaximoRecaudacion: e.target.value }))}
+                      placeholder="Ej: 500000"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Monto Mínimo de Inversión (USDC)</label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={stoForm.montoMinimoInversion}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, montoMinimoInversion: e.target.value }))}
+                      placeholder="Ej: 100"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2">Monto Máximo de Inversión (USDC)</label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={stoForm.montoMaximoInversion}
+                      onChange={(e) => setStoForm((prev) => ({ ...prev, montoMaximoInversion: e.target.value }))}
+                      placeholder="Ej: 50000"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    type="submit"
+                    className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+                  >
+                    {editingSTO ? "Actualizar" : "Crear"}
+                  </button>
+                  {editingSTO && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingSTO(null);
+                        setStoForm({
+                          activoDigitalId: "",
+                          nombreActivo: "",
+                          simboloActivo: "",
+                          estado: "Pendiente",
+                          tipoSTO: "Equity",
+                          numerosTokensVenta: "",
+                          precioPorToken: "",
+                          fechaInicio: "",
+                          fechaFin: "",
+                          montoMinimoRecaudacion: "",
+                          montoMaximoRecaudacion: "",
+                          montoMinimoInversion: "",
+                          montoMaximoInversion: "",
+                          descripcion: "",
+                        });
+                      }}
+                      className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
+                    >
+                      Cancelar
+                    </button>
+                  )}
+                </div>
+              </form>
+
+              <div className="border-t border-border/40 pt-6 mt-8">
+                <h3 className="text-lg font-bold text-foreground mb-4">Ofertas Creadas</h3>
+                {stos.length === 0 ? (
+                  <p className="text-foreground/60 text-sm">No hay ofertas creadas aún.</p>
+                ) : (
+                  <div className="space-y-3">
+                    {stos.map((sto) => (
+                      <div key={sto.id} className="flex items-center justify-between bg-secondary/30 p-4 rounded-lg hover:bg-secondary/50 transition-colors">
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-foreground">
+                            {sto.nombreActivo} ({sto.simboloActivo}) - {sto.tipoSTO}
+                          </h4>
+                          <p className="text-sm text-foreground/60">
+                            {new Date(sto.fechaInicio).toLocaleDateString("es-ES")} al{" "}
+                            {new Date(sto.fechaFin).toLocaleDateString("es-ES")} • ${sto.precioPorToken} USDC por token
+                          </p>
+                          <div className="mt-1 flex gap-2">
+                            <span
+                              className={`text-xs px-2 py-1 rounded-full font-semibold ${
+                                sto.estado === "Activo"
+                                  ? "bg-green-100 text-green-700"
+                                  : sto.estado === "Pendiente"
+                                    ? "bg-yellow-100 text-yellow-700"
+                                    : sto.estado === "Cerrado"
+                                      ? "bg-red-100 text-red-700"
+                                      : "bg-gray-100 text-gray-700"
+                              }`}
+                            >
+                              {sto.estado}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => {
+                              setEditingSTO(sto);
+                              setStoForm({
+                                activoDigitalId: sto.activoDigitalId,
+                                nombreActivo: sto.nombreActivo,
+                                simboloActivo: sto.simboloActivo,
+                                estado: sto.estado,
+                                tipoSTO: sto.tipoSTO,
+                                numerosTokensVenta: sto.numerosTokensVenta,
+                                precioPorToken: sto.precioPorToken,
+                                fechaInicio: sto.fechaInicio.split("T")[0],
+                                fechaFin: sto.fechaFin.split("T")[0],
+                                montoMinimoRecaudacion: sto.montoMinimoRecaudacion,
+                                montoMaximoRecaudacion: sto.montoMaximoRecaudacion,
+                                montoMinimoInversion: sto.montoMinimoInversion,
+                                montoMaximoInversion: sto.montoMaximoInversion,
+                                descripcion: sto.descripcion || "",
+                              });
+                            }}
+                            className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                          >
+                            <Edit className="w-4 h-4 text-foreground/60 hover:text-primary" />
+                          </button>
+                          <button
+                            onClick={() => {
+                              if (confirm(`¿Está seguro de que desea eliminar esta oferta de ${sto.nombreActivo}?`)) {
+                                deleteSTO(sto.id);
+                                setSTOs(getSTOs());
+                              }
+                            }}
+                            className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                          >
+                            <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+
       case "usuarios":
       case "mensajes":
         return (
