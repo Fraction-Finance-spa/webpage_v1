@@ -807,6 +807,7 @@ export default function Admin() {
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Dirección del Contrato</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Blockchain</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Categoría</th>
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Fecha de Creación</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Estado</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Acciones</th>
                       </tr>
