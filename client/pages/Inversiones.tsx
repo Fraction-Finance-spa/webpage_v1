@@ -54,7 +54,7 @@ export default function Inversiones() {
           {categories.length > 1 && (
             <div className="mb-12">
               <p className="text-sm font-semibold text-foreground mb-3">Categoría del Activo:</p>
-              <div className="flex flex-wrap gap-3 justify-center">
+              <div className="flex flex-wrap gap-3 justify-start items-start">
                 {categories.map((category) => (
                   <button
                     key={category}
