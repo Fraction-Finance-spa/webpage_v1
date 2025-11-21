@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
-import { Calendar, DollarSign, TrendingUp, Users, AlertCircle, FileText, Download } from "lucide-react";
+import { Calendar, DollarSign, TrendingUp, Users, AlertCircle } from "lucide-react";
 import { getActiveSTOs, type STO } from "@/lib/stoManager";
 import { getSmartContracts, type SmartContract } from "@/lib/smartContractManager";
+import STODetailModal from "@/components/STODetailModal";
 
 export default function Inversiones() {
   const [stos, setSTOs] = useState<STO[]>([]);
   const [contracts, setContracts] = useState<SmartContract[]>([]);
   const [selectedType, setSelectedType] = useState<string>("Todos");
+  const [selectedSTO, setSelectedSTO] = useState<STO | null>(null);
 
   useEffect(() => {
     setSTOs(getActiveSTOs());
