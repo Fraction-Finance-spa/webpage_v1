@@ -266,7 +266,7 @@ export default function MercadoSecundario() {
 
           {/* Marketplace View */}
           {viewMode === "marketplace" && (
-            <div className="space-y-8">
+            <div className="space-y-6">
               {/* Market Statistics */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-white rounded-lg border border-border/40 p-4">
