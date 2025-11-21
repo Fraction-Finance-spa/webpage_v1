@@ -120,3 +120,16 @@ export function getApprovedRequests(): FinancingRequest[] {
 export function getRejectedRequests(): FinancingRequest[] {
   return getFinancingRequests().filter((r) => r.status === "Rechazado");
 }
+
+export function updateEvaluacionComercial(
+  id: string,
+  evaluacion: EvaluacionComercial
+): FinancingRequest | null {
+  return updateFinancingRequest(id, {
+    evaluacionComercial: {
+      ...evaluacion,
+      evaluador: localStorage.getItem("userName") || "Admin",
+      fechaEvaluacion: new Date().toISOString(),
+    },
+  });
+}
