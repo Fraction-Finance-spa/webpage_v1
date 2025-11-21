@@ -1234,31 +1234,75 @@ export default function Admin() {
                               className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                             >
                               <option value="">Seleccionar...</option>
-                              <option value="Excelente">Excelente</option>
-                              <option value="Buena">Buena</option>
-                              <option value="Regular">Regular</option>
-                              <option value="Deficiente">Deficiente</option>
+                              <option value="Excelente">Excelente (100%)</option>
+                              <option value="Buena">Buena (85%)</option>
+                              <option value="Regular">Regular (65%)</option>
+                              <option value="Deficiente">Deficiente (30%)</option>
                             </select>
                           </div>
                           <div>
-                            <label className="text-xs text-foreground/60 mb-1 block">Potencial de Mercado</label>
+                            <label className="text-xs text-foreground/60 mb-1 block">Viabilidad Tributaria</label>
                             <select
-                              value={evaluacionComercial[request.id]?.potencialMercado || ""}
+                              value={evaluacionComercial[request.id]?.viabilidadTributaria || ""}
                               onChange={(e) =>
                                 setEvaluacionComercial((prev) => ({
                                   ...prev,
                                   [request.id]: {
                                     ...prev[request.id],
-                                    potencialMercado: e.target.value as any,
+                                    viabilidadTributaria: e.target.value as any,
                                   },
                                 }))
                               }
                               className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                             >
                               <option value="">Seleccionar...</option>
-                              <option value="Alto">Alto</option>
-                              <option value="Medio">Medio</option>
-                              <option value="Bajo">Bajo</option>
+                              <option value="Excelente">Excelente (100%)</option>
+                              <option value="Buena">Buena (85%)</option>
+                              <option value="Regular">Regular (65%)</option>
+                              <option value="Deficiente">Deficiente (30%)</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="text-xs text-foreground/60 mb-1 block">Viabilidad Judicial</label>
+                            <select
+                              value={evaluacionComercial[request.id]?.viabilidadJudicial || ""}
+                              onChange={(e) =>
+                                setEvaluacionComercial((prev) => ({
+                                  ...prev,
+                                  [request.id]: {
+                                    ...prev[request.id],
+                                    viabilidadJudicial: e.target.value as any,
+                                  },
+                                }))
+                              }
+                              className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="">Seleccionar...</option>
+                              <option value="Excelente">Excelente (100%)</option>
+                              <option value="Buena">Buena (85%)</option>
+                              <option value="Regular">Regular (65%)</option>
+                              <option value="Deficiente">Deficiente (30%)</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="text-xs text-foreground/60 mb-1 block">Tendencia de Mercado</label>
+                            <select
+                              value={evaluacionComercial[request.id]?.tendenciaMercado || ""}
+                              onChange={(e) =>
+                                setEvaluacionComercial((prev) => ({
+                                  ...prev,
+                                  [request.id]: {
+                                    ...prev[request.id],
+                                    tendenciaMercado: e.target.value as any,
+                                  },
+                                }))
+                              }
+                              className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                            >
+                              <option value="">Seleccionar...</option>
+                              <option value="Creciente">Creciente (100%)</option>
+                              <option value="Estable">Estable (85%)</option>
+                              <option value="Decreciente">Decreciente (50%)</option>
                             </select>
                           </div>
                           <div>
@@ -1277,31 +1321,10 @@ export default function Admin() {
                               className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                             >
                               <option value="">Seleccionar...</option>
-                              <option value="Excepcional">Excepcional</option>
-                              <option value="Fuerte">Fuerte</option>
-                              <option value="Adecuada">Adecuada</option>
-                              <option value="Débil">Débil</option>
-                            </select>
-                          </div>
-                          <div>
-                            <label className="text-xs text-foreground/60 mb-1 block">Riesgo Político</label>
-                            <select
-                              value={evaluacionComercial[request.id]?.riesgoPolitico || ""}
-                              onChange={(e) =>
-                                setEvaluacionComercial((prev) => ({
-                                  ...prev,
-                                  [request.id]: {
-                                    ...prev[request.id],
-                                    riesgoPolitico: e.target.value as any,
-                                  },
-                                }))
-                              }
-                              className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
-                            >
-                              <option value="">Seleccionar...</option>
-                              <option value="Bajo">Bajo</option>
-                              <option value="Medio">Medio</option>
-                              <option value="Alto">Alto</option>
+                              <option value="Excepcional">Excepcional (100%)</option>
+                              <option value="Fuerte">Fuerte (85%)</option>
+                              <option value="Adecuada">Adecuada (70%)</option>
+                              <option value="Débil">Débil (40%)</option>
                             </select>
                           </div>
                           <div>
@@ -1320,13 +1343,46 @@ export default function Admin() {
                               className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                             >
                               <option value="">Seleccionar...</option>
-                              <option value="Excelente">Excelente</option>
-                              <option value="Buena">Buena</option>
-                              <option value="Regular">Regular</option>
-                              <option value="Deficiente">Deficiente</option>
+                              <option value="Excelente">Excelente (100%)</option>
+                              <option value="Buena">Buena (85%)</option>
+                              <option value="Regular">Regular (65%)</option>
+                              <option value="Deficiente">Deficiente (30%)</option>
                             </select>
                           </div>
                         </div>
+
+                        {evaluacionComercial[request.id] && (
+                          <div className="mb-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <div className="grid grid-cols-2 gap-4">
+                              <div>
+                                <p className="text-xs text-foreground/60 mb-1">Scoring General</p>
+                                <p className="text-2xl font-bold text-primary">
+                                  {calculateScoring(evaluacionComercial[request.id]).scoring}%
+                                </p>
+                              </div>
+                              <div className="flex items-center justify-end">
+                                <div className="text-right">
+                                  <p className="text-xs text-foreground/60 mb-1">Estado</p>
+                                  <span
+                                    className={`px-3 py-1 rounded-full text-xs font-bold ${
+                                      calculateScoring(evaluacionComercial[request.id]).aprobado
+                                        ? "bg-green-100 text-green-700"
+                                        : "bg-red-100 text-red-700"
+                                    }`}
+                                  >
+                                    {calculateScoring(evaluacionComercial[request.id]).aprobado
+                                      ? "APROBADO"
+                                      : "RECHAZADO"}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-xs text-foreground/60 mt-2">
+                              Umbral de aprobación: ≥ 80%
+                            </p>
+                          </div>
+                        )}
+
                         <div>
                           <label className="text-xs text-foreground/60 mb-1 block">Observaciones de Evaluación</label>
                           <textarea
