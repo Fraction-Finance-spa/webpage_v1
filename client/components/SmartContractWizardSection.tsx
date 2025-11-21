@@ -102,7 +102,7 @@ const BLOCKCHAIN_NETWORKS = [
   },
 ];
 
-export default function SmartContractWizardSection({ setActiveSection, onContractCreated, preFilledData }: SmartContractWizardSectionProps) {
+export default function SmartContractWizardSection({ setActiveSection, onContractCreated, preFilledData, onClearPreFilledData }: SmartContractWizardSectionProps) {
   const [state, setState] = useState<WizardState>({
     step: 1,
     assetClass: null,
