@@ -614,11 +614,14 @@ export default function Admin() {
         const marketStats = getMarketStats();
         const totalTraded = marketStats.totalVolumeTraded;
 
-        // Calculate total value of generated assets from STOs
-        const totalAssetValueGenerated = stos.reduce((sum, sto) => {
-          const amount = parseFloat(sto.montoRecaudadoActual || "0");
+        // Calculate total target value from all STO financing offers (máximo a conseguir)
+        const totalAssetTarget = stos.reduce((sum, sto) => {
+          const amount = parseFloat(sto.montoMinimoRecaudacion || "0");
           return sum + amount;
         }, 0);
+
+        // Calculate total pending assets value (activos pendientes por vender)
+        const totalPendingAssets = getTotalPendingAssetsValue();
 
         return (
           <div className="space-y-6">
