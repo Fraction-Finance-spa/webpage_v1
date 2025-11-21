@@ -214,12 +214,14 @@ export default function FinancingForm() {
     setLoading(true);
     setTimeout(() => {
       // Initialize simulation inputs with the financing amount if not already set
+      let currentInputs = simulationInputs;
       if (simulationInputs.clpAmount === 0) {
         const initialClpAmount = parseFloat(formData.financingAmount);
-        setSimulationInputs((prev) => ({
-          ...prev,
+        currentInputs = {
+          ...simulationInputs,
           clpAmount: initialClpAmount,
-        }));
+        };
+        setSimulationInputs(currentInputs);
       }
       const results = calculateSimulation();
       setSimulationResults(results);
