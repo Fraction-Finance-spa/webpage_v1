@@ -58,6 +58,7 @@ export default function STOWizardSection({
     montoMinimoInversion: editingSTO?.montoMinimoInversion || "",
     montoMaximoInversion: editingSTO?.montoMaximoInversion || "",
     descripcion: editingSTO?.descripcion || "",
+    porcentajeRendimiento: editingSTO?.porcentajeRendimiento || "",
   });
 
   const handleNext = () => {
