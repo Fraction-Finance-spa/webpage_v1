@@ -302,12 +302,19 @@ export default function Layout({ children }: LayoutProps) {
                             openSubmenu === item.label ? null : item.label
                           )
                         }
-                        className="w-full text-left px-4 py-2 text-foreground/70 hover:text-primary font-medium flex justify-between items-center"
+                        className="w-full text-left px-4 py-2 text-foreground/70 hover:text-primary font-medium flex justify-between items-start"
                       >
-                        {item.label}
+                        <div className="flex-1">
+                          <div>{item.label}</div>
+                          {item.description && (
+                            <div className="text-xs text-foreground/60 font-normal mt-1">
+                              {item.description}
+                            </div>
+                          )}
+                        </div>
                         <span
                           className={cn(
-                            "transition-transform",
+                            "transition-transform ml-2 flex-shrink-0",
                             openSubmenu === item.label && "rotate-180"
                           )}
                         >
