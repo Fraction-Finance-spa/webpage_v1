@@ -519,6 +519,7 @@ export default function Admin() {
 
   const handleEditEducacionCard = (card: EducacionCard) => {
     setEditingEducacionCard(card);
+    setShowEducacionForm(true);
     setEducacionForm({
       titulo: card.titulo,
       descripcion: card.descripcion,
