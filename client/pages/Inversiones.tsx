@@ -6,10 +6,12 @@ import { getSmartContracts, type SmartContract } from "@/lib/smartContractManage
 
 export default function Inversiones() {
   const [stos, setSTOs] = useState<STO[]>([]);
+  const [contracts, setContracts] = useState<SmartContract[]>([]);
   const [selectedType, setSelectedType] = useState<string>("Todos");
 
   useEffect(() => {
     setSTOs(getActiveSTOs());
+    setContracts(getSmartContracts());
   }, []);
 
   const stoTypes = ["Todos", "Equity", "Debt", "Hybrid", "Utility"];
