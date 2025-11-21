@@ -90,26 +90,6 @@ export default function EducationDetail() {
               </p>
             )}
 
-            {/* Course Info */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-secondary/20 rounded-lg p-6">
-              <div className="flex items-start gap-4">
-                <Users className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <p className="text-sm text-foreground/60">Instructor</p>
-                  <p className="text-lg font-semibold text-foreground">{card.instructor}</p>
-                </div>
-              </div>
-
-              {card.duracion && (
-                <div className="flex items-start gap-4">
-                  <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="text-sm text-foreground/60">Duración</p>
-                    <p className="text-lg font-semibold text-foreground">{card.duracion}</p>
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
 
           {/* Course Content */}
