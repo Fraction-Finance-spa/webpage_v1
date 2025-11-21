@@ -1360,7 +1360,7 @@ export default function Admin() {
         return (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-              <h2 className="text-3xl font-bold text-foreground">Blog</h2>
+              <h2 className="text-3xl font-bold text-foreground">Artículos y Noticias</h2>
             </div>
 
             <div className="bg-white rounded-lg border border-border/40 p-8">
