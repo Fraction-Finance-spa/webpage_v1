@@ -32,14 +32,13 @@ const navItems: NavItem[] = [
   {
     label: "Productos",
     submenu: [
-      { label: "Financiamiento", path: "/productos/financiamiento", description: "Obtén financiamiento rápido y accesible para tu negocio", icon: iconMap["Financiamiento"] },
+      { label: "Financiamiento", path: "/productos/financiamiento", icon: iconMap["Financiamiento"] },
       {
         label: "Oportunidades de Inversión",
-        description: "Accede a oportunidades de inversión con alto rendimiento",
         icon: iconMap["Inversiones"],
         submenu: [
-          { label: "Alternativas de Financiamiento", path: "/productos/inversiones", description: "Accede a ofertas de tokens (STOs) con rentabilidad", icon: iconMap["Alternativas de Financiamiento"] },
-          { label: "Mercado Secundario de Activos", path: "/productos/mercado-secundario", description: "Compra y vende activos digitales en el mercado secundario", icon: iconMap["Mercado Secundario de Activos"] },
+          { label: "Alternativas de Financiamiento", path: "/productos/inversiones", icon: iconMap["Alternativas de Financiamiento"] },
+          { label: "Mercado Secundario de Activos", path: "/productos/mercado-secundario", icon: iconMap["Mercado Secundario de Activos"] },
         ],
       },
     ],
@@ -48,12 +47,12 @@ const navItems: NavItem[] = [
   {
     label: "Nosotros",
     submenu: [
-      { label: "Nuestra Empresa", path: "/nosotros/empresa", description: "Conoce nuestra historia y misión", icon: iconMap["Nuestra Empresa"] },
-      { label: "Modelo de Negocio", path: "/nosotros/modelo", description: "Cómo funcionamos y generamos valor", icon: iconMap["Modelo de Negocio"] },
-      { label: "Educación Financiera", path: "/nosotros/educacion", description: "Recursos y herramientas para aprender", icon: iconMap["Educación Financiera"] },
-      { label: "Artículos y Noticias", path: "/nosotros/blog", description: "Artículos y análisis del mercado", icon: iconMap["Artículos y Noticias"] },
-      { label: "Trabaja con Nosotros", path: "/nosotros/careers", description: "Únete a nuestro equipo", icon: iconMap["Trabaja con Nosotros"] },
-      { label: "Contacto", path: "/nosotros/contacto", description: "Ponte en contacto con nosotros", icon: iconMap["Contacto"] },
+      { label: "Nuestra Empresa", path: "/nosotros/empresa", icon: iconMap["Nuestra Empresa"] },
+      { label: "Modelo de Negocio", path: "/nosotros/modelo", icon: iconMap["Modelo de Negocio"] },
+      { label: "Educación Financiera", path: "/nosotros/educacion", icon: iconMap["Educación Financiera"] },
+      { label: "Artículos y Noticias", path: "/nosotros/blog", icon: iconMap["Artículos y Noticias"] },
+      { label: "Trabaja con Nosotros", path: "/nosotros/careers", icon: iconMap["Trabaja con Nosotros"] },
+      { label: "Contacto", path: "/nosotros/contacto", icon: iconMap["Contacto"] },
     ],
   },
 ];
@@ -137,18 +136,11 @@ export default function Layout({ children }: LayoutProps) {
               <div key={item.label} className="relative group">
                 {item.submenu ? (
                   <>
-                    <button className="text-foreground/70 hover:text-primary transition-colors py-2 font-medium flex flex-col items-start gap-0.5">
-                      <div className="flex items-center gap-1">
-                        <div style={{ color: "rgba(0, 0, 0, 1)", fontSize: "16px" }}>
-                          {item.label}
-                        </div>
-                        <ChevronDown className="w-4 h-4" style={{ color: "rgba(0, 0, 0, 1)" }} />
+                    <button className="text-foreground/70 hover:text-primary transition-colors py-2 font-medium flex items-center gap-1">
+                      <div style={{ color: "rgba(0, 0, 0, 1)", fontSize: "16px" }}>
+                        {item.label}
                       </div>
-                      {item.description && (
-                        <div className="text-xs text-foreground/60 font-normal">
-                          {item.description}
-                        </div>
-                      )}
+                      <ChevronDown className="w-4 h-4" style={{ color: "rgba(0, 0, 0, 1)" }} />
                     </button>
                     <div className="absolute left-0 mt-0 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                       {item.submenu.map((subitem, idx) => (
@@ -170,27 +162,22 @@ export default function Layout({ children }: LayoutProps) {
                             <div className="absolute left-full top-0 ml-0 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-200">
                               {subitem.submenu.map((nestedItem, nestedIdx) => (
                                 <Link
-                                  key={nestedItem.label}
-                                  to={nestedItem.path || "#"}
-                                  onClick={nestedItem.label === "Financiamiento" ? handleFinanciamientoClick : undefined}
-                                  className={cn(
-                                    "block px-4 py-3 hover:bg-secondary transition-colors",
-                                    nestedIdx === 0 && "rounded-t-lg",
-                                    nestedIdx === subitem.submenu!.length - 1 && "rounded-b-lg"
-                                  )}
-                                >
-                                  <div className="flex items-center gap-2 mb-1">
-                                    <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2 flex-1">
-                                      {nestedItem.icon}
-                                      {nestedItem.label}
-                                    </div>
-                                  </div>
-                                  {nestedItem.description && (
-                                    <div className="text-foreground/60 text-sm">
-                                      {nestedItem.description}
-                                    </div>
-                                  )}
-                                </Link>
+                            key={nestedItem.label}
+                            to={nestedItem.path || "#"}
+                            onClick={nestedItem.label === "Financiamiento" ? handleFinanciamientoClick : undefined}
+                            className={cn(
+                              "block px-4 py-3 hover:bg-secondary transition-colors",
+                              nestedIdx === 0 && "rounded-t-lg",
+                              nestedIdx === subitem.submenu!.length - 1 && "rounded-b-lg"
+                            )}
+                          >
+                            <div className="flex items-center gap-2">
+                              <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2 flex-1">
+                                {nestedItem.icon}
+                                {nestedItem.label}
+                              </div>
+                            </div>
+                          </Link>
                               ))}
                             </div>
                           </div>
@@ -205,17 +192,12 @@ export default function Layout({ children }: LayoutProps) {
                               idx === item.submenu.length - 1 && "rounded-b-lg"
                             )}
                           >
-                            <div className="flex items-center gap-2 mb-1">
+                            <div className="flex items-center gap-2">
                               <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2 flex-1">
                                 {subitem.icon}
                                 {subitem.label}
                               </div>
                             </div>
-                            {subitem.description && (
-                              <div className="text-foreground/60 text-sm">
-                                {subitem.description}
-                              </div>
-                            )}
                           </Link>
                         )
                       ))}
@@ -302,16 +284,9 @@ export default function Layout({ children }: LayoutProps) {
                             openSubmenu === item.label ? null : item.label
                           )
                         }
-                        className="w-full text-left px-4 py-2 text-foreground/70 hover:text-primary font-medium flex justify-between items-start"
+                        className="w-full text-left px-4 py-2 text-foreground/70 hover:text-primary font-medium flex justify-between items-center"
                       >
-                        <div className="flex-1">
-                          <div>{item.label}</div>
-                          {item.description && (
-                            <div className="text-xs text-foreground/60 font-normal mt-1">
-                              {item.description}
-                            </div>
-                          )}
-                        </div>
+                        <div>{item.label}</div>
                         <span
                           className={cn(
                             "transition-transform ml-2 flex-shrink-0",
@@ -332,18 +307,11 @@ export default function Layout({ children }: LayoutProps) {
                                       openNestedSubmenu === subitem.label ? null : subitem.label
                                     )
                                   }
-                                  className="w-full text-left px-4 py-3 text-foreground/60 hover:text-primary transition-colors font-medium text-sm flex justify-between items-start"
+                                  className="w-full text-left px-4 py-3 text-foreground/60 hover:text-primary transition-colors font-medium text-sm flex justify-between items-center"
                                 >
-                                  <div className="flex-1">
-                                    <div className="flex items-center gap-2">
-                                      {subitem.icon}
-                                      {subitem.label}
-                                    </div>
-                                    {subitem.description && (
-                                      <div className="text-xs text-foreground/60 font-normal mt-1">
-                                        {subitem.description}
-                                      </div>
-                                    )}
+                                  <div className="flex items-center gap-2">
+                                    {subitem.icon}
+                                    {subitem.label}
                                   </div>
                                   <span
                                     className={cn(
@@ -369,15 +337,10 @@ export default function Layout({ children }: LayoutProps) {
                                           }
                                         }}
                                       >
-                                        <div className="flex items-center gap-2 mb-1 font-medium text-sm">
+                                        <div className="flex items-center gap-2 font-medium text-sm">
                                           {nestedItem.icon}
                                           {nestedItem.label}
                                         </div>
-                                        {nestedItem.description && (
-                                          <div className="text-foreground/50 text-xs ml-7">
-                                            {nestedItem.description}
-                                          </div>
-                                        )}
                                       </Link>
                                     ))}
                                   </div>
@@ -395,15 +358,10 @@ export default function Layout({ children }: LayoutProps) {
                                   }
                                 }}
                               >
-                                <div className="flex items-center gap-2 mb-1 font-medium text-sm">
+                                <div className="flex items-center gap-2 font-medium text-sm">
                                   {subitem.icon}
                                   {subitem.label}
                                 </div>
-                                {subitem.description && (
-                                  <div className="text-foreground/50 text-xs ml-7">
-                                    {subitem.description}
-                                  </div>
-                                )}
                               </Link>
                             )
                           ))}
