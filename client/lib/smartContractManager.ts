@@ -1,3 +1,11 @@
+export interface Documento {
+  id: string;
+  nombre: string;
+  tipo: string;
+  url: string;
+  fechaCarga: string;
+}
+
 export interface SmartContract {
   id: string;
   nombre: string;
@@ -10,6 +18,7 @@ export interface SmartContract {
   fechaCreacion: string;
   estado: "Activo" | "Inactivo" | "Pausado";
   codigoContrato: string;
+  documentos?: Documento[];
 }
 
 const STORAGE_KEY = "smart_contracts";
