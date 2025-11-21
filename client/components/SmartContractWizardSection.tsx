@@ -8,6 +8,13 @@ type BlockchainNetwork = "ethereum-mainnet" | "sepolia-testnet" | "polygon-mainn
 interface SmartContractWizardSectionProps {
   setActiveSection: (section: string) => void;
   onContractCreated: () => void;
+  preFilledData?: {
+    tokenName?: string;
+    tokenSymbol?: string;
+    maxSupply?: string;
+    contractDescription?: string;
+    contractCategory?: string;
+  };
 }
 
 interface WizardState {
