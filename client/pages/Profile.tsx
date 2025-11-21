@@ -513,43 +513,72 @@ export default function Profile() {
                               <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                               <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                               <div className="relative p-6">
-                                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                                  <div className="lg:col-span-2">
-                                    <div className="flex items-start gap-4">
-                                      <div className="p-3 bg-primary/10 rounded-lg">
-                                        <CreditCard className="w-6 h-6 text-primary" />
-                                      </div>
-                                      <div>
-                                        <h4 className="font-bold text-foreground mb-1">{inversion.stoNombre}</h4>
-                                        <p className="text-sm text-foreground/60">{inversion.tipo}</p>
-                                        <div className="mt-2 inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                                {/* Header with Offer Name and Status */}
+                                <div className="flex items-start justify-between mb-6 pb-4 border-b border-border/20">
+                                  <div className="flex items-start gap-4 flex-1">
+                                    <div className="p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                                      <CreditCard className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                      <h4 className="font-bold text-lg text-foreground mb-2">{inversion.stoNombre}</h4>
+                                      <div className="flex items-center gap-3">
+                                        <div className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
                                           {inversion.estado}
                                         </div>
+                                        {inversion.categoria && (
+                                          <span className="text-xs text-foreground/60 font-medium">
+                                            {inversion.categoria} {inversion.subcategoria && `• ${inversion.subcategoria}`}
+                                          </span>
+                                        )}
                                       </div>
-                                    </div>
-                                  </div>
-
-                                  <div>
-                                    <p className="text-sm text-foreground/60 mb-1">Monto Invertido</p>
-                                    <p className="text-lg font-bold text-foreground">{formatCLP(inversion.montoInvertido)}</p>
-                                  </div>
-
-                                  <div>
-                                    <p className="text-sm text-foreground/60 mb-1">Plazo</p>
-                                    <p className="text-lg font-bold text-foreground">{inversion.plazo}</p>
-                                  </div>
-
-                                  <div>
-                                    <p className="text-sm text-foreground/60 mb-1">Rentabilidad</p>
-                                    <div>
-                                      <p className="text-lg font-bold text-primary">{inversion.rentabilidadActual.toFixed(2)}%</p>
-                                      <p className="text-xs text-foreground/60">/ {inversion.tasaEsperada.toFixed(2)}% esperado</p>
                                     </div>
                                   </div>
                                 </div>
 
+                                {/* Investment Details Grid */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                                  {/* Monto Invertido */}
+                                  <div className="p-4 bg-blue-50 rounded-lg border border-blue-200/50">
+                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Monto Invertido</p>
+                                    <p className="text-xl font-bold text-foreground">{formatCLP(inversion.montoInvertido)}</p>
+                                  </div>
+
+                                  {/* Cantidad de Tokens */}
+                                  <div className="p-4 bg-purple-50 rounded-lg border border-purple-200/50">
+                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Cantidad de Tokens</p>
+                                    <p className="text-xl font-bold text-foreground">{inversion.cantidadToken.toLocaleString()}</p>
+                                  </div>
+
+                                  {/* Valor por Token */}
+                                  <div className="p-4 bg-cyan-50 rounded-lg border border-cyan-200/50">
+                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Valor por Token</p>
+                                    <p className="text-xl font-bold text-foreground">{formatCLP(inversion.valorPorToken)}</p>
+                                  </div>
+
+                                  {/* Plazo */}
+                                  <div className="p-4 bg-orange-50 rounded-lg border border-orange-200/50">
+                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Plazo</p>
+                                    <p className="text-xl font-bold text-foreground">{inversion.plazo}</p>
+                                  </div>
+
+                                  {/* Rentabilidad */}
+                                  <div className="p-4 bg-green-50 rounded-lg border border-green-200/50">
+                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Rentabilidad</p>
+                                    <div>
+                                      <p className="text-xl font-bold text-green-600">{inversion.rentabilidadActual.toFixed(2)}%</p>
+                                      <p className="text-xs text-foreground/60 mt-1">de {inversion.tasaEsperada.toFixed(2)}% esperado</p>
+                                    </div>
+                                  </div>
+
+                                  {/* Tipo */}
+                                  <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200/50">
+                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Tipo de Activo</p>
+                                    <p className="text-xl font-bold text-foreground">{inversion.tipo}</p>
+                                  </div>
+                                </div>
+
                                 {/* Progress Bar */}
-                                <div className="mt-4 pt-4 border-t border-border/20">
+                                <div className="pt-4 border-t border-border/20">
                                   <p className="text-sm text-foreground/60 mb-2">Progreso del período</p>
                                   <div className="w-full bg-foreground/10 rounded-full h-2">
                                     <div
