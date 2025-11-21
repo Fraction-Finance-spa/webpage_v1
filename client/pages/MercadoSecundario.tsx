@@ -332,39 +332,33 @@ export default function MercadoSecundario() {
                       const colors = categoryColors[details.category] || categoryColors["Sin Categoría"];
 
                       return (
-                        <div key={listing.id} className="bg-white rounded-lg border border-border/40 p-6 hover:shadow-lg transition-all overflow-hidden">
+                        <div key={listing.id} className="bg-white rounded-lg border border-border/40 p-4 hover:shadow-lg transition-all overflow-hidden">
                           {/* Header with Category */}
-                          <div className="mb-4">
-                            <div className="flex items-start justify-between mb-3">
-                              <div className="flex-1">
-                                <h3 className="text-lg font-bold text-foreground mb-1">{listing.assetName}</h3>
-                                <p className="text-sm text-foreground/60">{listing.assetType}</p>
-                              </div>
-                            </div>
+                          <div className="mb-3">
+                            <h3 className="text-base font-bold text-foreground mb-0.5">{listing.assetName}</h3>
+                            <p className="text-xs text-foreground/60 mb-2">{listing.assetType}</p>
 
                             {/* Category Badge */}
-                            <div className="mb-4">
-                              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}>
-                                <Tag className="w-3 h-3" />
-                                {details.category}
-                              </span>
-                            </div>
+                            <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}>
+                              <Tag className="w-3 h-3" />
+                              {details.category}
+                            </span>
                           </div>
 
                           {/* Token Information */}
-                          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 mb-4 border border-blue-100">
-                            <div className="space-y-2">
+                          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 mb-3 border border-blue-100">
+                            <div className="space-y-1.5">
                               <div className="flex justify-between items-center">
-                                <span className="text-sm font-semibold text-foreground">Tokens en Venta</span>
-                                <span className="text-lg font-bold text-primary">{details.listedTokens}</span>
+                                <span className="text-xs font-semibold text-foreground">Tokens</span>
+                                <span className="text-base font-bold text-primary">{details.listedTokens}</span>
                               </div>
                               <div className="flex justify-between items-center">
-                                <span className="text-sm text-foreground/60">% del Total</span>
-                                <span className="text-sm font-semibold text-primary">{details.tokenPercentage}%</span>
+                                <span className="text-xs text-foreground/60">% Total</span>
+                                <span className="text-xs font-semibold text-primary">{details.tokenPercentage}%</span>
                               </div>
-                              <div className="w-full bg-blue-200 rounded-full h-2 mt-3">
+                              <div className="w-full bg-blue-200 rounded-full h-1.5 mt-2">
                                 <div
-                                  className="bg-primary rounded-full h-2 transition-all"
+                                  className="bg-primary rounded-full h-1.5 transition-all"
                                   style={{ width: `${Math.min(parseFloat(details.tokenPercentage), 100)}%` }}
                                 />
                               </div>
@@ -372,37 +366,37 @@ export default function MercadoSecundario() {
                           </div>
 
                           {/* Price Information */}
-                          <div className="bg-gray-50 rounded-lg p-4 mb-4 space-y-3">
-                            <div className="flex justify-between">
-                              <span className="text-sm text-foreground/60">Precio Original:</span>
-                              <span className="text-sm font-semibold text-foreground">${listing.originalPrice.toLocaleString()}</span>
+                          <div className="bg-gray-50 rounded-lg p-3 mb-3 space-y-2">
+                            <div className="flex justify-between text-xs">
+                              <span className="text-foreground/60">Original:</span>
+                              <span className="font-semibold text-foreground">${listing.originalPrice.toLocaleString()}</span>
                             </div>
-                            <div className="flex justify-between">
-                              <span className="text-sm text-foreground/60">Precio Actual:</span>
-                              <span className="text-lg font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
+                            <div className="flex justify-between text-xs">
+                              <span className="text-foreground/60">Actual:</span>
+                              <span className="font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
                             </div>
-                            <div className="border-t border-gray-200 pt-3 flex justify-between">
-                              <span className="text-sm text-foreground/60">Descuento:</span>
-                              <span className={`text-sm font-semibold ${calculateDiscount(listing.originalPrice, listing.sellingPrice) > 0 ? "text-green-600" : "text-orange-600"}`}>
+                            <div className="border-t border-gray-200 pt-2 flex justify-between text-xs">
+                              <span className="text-foreground/60">Desc.:</span>
+                              <span className={`font-semibold ${calculateDiscount(listing.originalPrice, listing.sellingPrice) > 0 ? "text-green-600" : "text-orange-600"}`}>
                                 {calculateDiscount(listing.originalPrice, listing.sellingPrice)}%
                               </span>
                             </div>
                           </div>
 
                           {/* Asset Details */}
-                          <div className="grid grid-cols-2 gap-3 mb-4">
-                            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
-                              <p className="text-xs text-foreground/60 mb-1">Plazo</p>
-                              <p className="text-sm font-semibold text-foreground">{listing.assetDetails.plazo}</p>
+                          <div className="grid grid-cols-2 gap-2 mb-3">
+                            <div className="bg-gray-50 rounded p-2 border border-gray-200">
+                              <p className="text-xs text-foreground/60">Plazo</p>
+                              <p className="text-xs font-semibold text-foreground">{listing.assetDetails.plazo}</p>
                             </div>
-                            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
-                              <p className="text-xs text-foreground/60 mb-1">Rentabilidad</p>
-                              <p className="text-sm font-semibold text-foreground">{listing.assetDetails.tasaEsperada}%</p>
+                            <div className="bg-gray-50 rounded p-2 border border-gray-200">
+                              <p className="text-xs text-foreground/60">Rendimiento</p>
+                              <p className="text-xs font-semibold text-foreground">{listing.assetDetails.tasaEsperada}%</p>
                             </div>
                           </div>
 
-                          <p className="text-xs text-foreground/50 mb-4">
-                            Vendedor: {listing.sellerName} • Listado el {new Date(listing.listedDate).toLocaleDateString("es-ES")}
+                          <p className="text-xs text-foreground/50 mb-3 line-clamp-1">
+                            {listing.sellerName} • {new Date(listing.listedDate).toLocaleDateString("es-ES")}
                           </p>
 
                           <button
@@ -410,10 +404,10 @@ export default function MercadoSecundario() {
                               setSelectedListing(listing);
                               setShowBuyModal(true);
                             }}
-                            className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center justify-center gap-2"
+                            className="w-full px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold text-sm flex items-center justify-center gap-2"
                           >
-                            <ShoppingCart className="w-4 h-4" />
-                            Comprar Ahora
+                            <ShoppingCart className="w-3.5 h-3.5" />
+                            Comprar
                           </button>
                         </div>
                       );
