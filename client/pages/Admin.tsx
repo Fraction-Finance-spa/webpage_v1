@@ -1106,6 +1106,196 @@ export default function Admin() {
           </div>
         );
 
+      case "solicitudes-financiamiento":
+        const filteredFinancingRequests = selectedFinancingStatus === "Todas"
+          ? financingRequests
+          : financingRequests.filter((req) => req.status === selectedFinancingStatus);
+
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <h2 className="text-3xl font-bold text-foreground">Solicitudes de Financiamiento</h2>
+              <span className="px-4 py-2 bg-primary/10 text-primary rounded-full font-semibold text-sm">
+                {financingRequests.length} solicitud{financingRequests.length !== 1 ? "es" : ""}
+              </span>
+            </div>
+
+            <div className="bg-white rounded-lg border border-border/40 p-6">
+              <div className="mb-6 flex flex-wrap gap-2">
+                {["Todas", "Pendiente", "Aprobado", "Rechazado"].map((status) => (
+                  <button
+                    key={status}
+                    onClick={() => setSelectedFinancingStatus(status)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                      selectedFinancingStatus === status
+                        ? "bg-primary text-white"
+                        : "bg-gray-100 text-foreground hover:bg-gray-200"
+                    }`}
+                  >
+                    {status}
+                  </button>
+                ))}
+              </div>
+
+              {financingRequests.length === 0 ? (
+                <div className="text-center py-12">
+                  <DollarSign className="w-12 h-12 text-primary/20 mx-auto mb-4" />
+                  <p className="text-foreground/60">No hay solicitudes de financiamiento registradas.</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {filteredFinancingRequests.map((request) => (
+                    <div key={request.id} className="border border-border/40 rounded-lg overflow-hidden hover:shadow-md transition-all">
+                      <div className="p-4 bg-gradient-to-r from-primary/5 to-blue-50/50">
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="flex-1">
+                            <h4 className="font-bold text-foreground">
+                              {request.companyName}
+                            </h4>
+                            <p className="text-xs text-foreground/60 mt-1">
+                              RUT: {request.rutEmpresa} • Contacto: {request.firstName} {request.lastName}
+                            </p>
+                            <p className="text-xs text-foreground/60 mt-1">
+                              Email: {request.email} • Teléfono: {request.phone}
+                            </p>
+                          </div>
+                          <span
+                            className={`text-xs px-3 py-1 rounded-full font-semibold whitespace-nowrap ml-2 ${
+                              request.status === "Aprobado"
+                                ? "bg-green-100 text-green-700"
+                                : request.status === "Rechazado"
+                                  ? "bg-red-100 text-red-700"
+                                  : "bg-yellow-100 text-yellow-700"
+                            }`}
+                          >
+                            {request.status}
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs mb-3">
+                          <div>
+                            <p className="text-foreground/60">Industria</p>
+                            <p className="font-semibold text-foreground capitalize">{request.industry}</p>
+                          </div>
+                          <div>
+                            <p className="text-foreground/60">Etapa del Negocio</p>
+                            <p className="font-semibold text-foreground capitalize">{request.businessStage}</p>
+                          </div>
+                          <div>
+                            <p className="text-foreground/60">Monto Solicitado</p>
+                            <p className="font-semibold text-foreground">${parseFloat(request.financingAmount).toLocaleString()}</p>
+                          </div>
+                          <div>
+                            <p className="text-foreground/60">Tipo de Financiamiento</p>
+                            <p className="font-semibold text-foreground capitalize">{request.financingType.replace("-", " ")}</p>
+                          </div>
+                          <div>
+                            <p className="text-foreground/60">Propósito</p>
+                            <p className="font-semibold text-foreground capitalize">{request.financingPurpose}</p>
+                          </div>
+                          <div>
+                            <p className="text-foreground/60">Empleados</p>
+                            <p className="font-semibold text-foreground">{request.employeeCount}</p>
+                          </div>
+                          <div>
+                            <p className="text-foreground/60">Ingresos Mensuales</p>
+                            <p className="font-semibold text-foreground">{request.monthlyRevenue}</p>
+                          </div>
+                          <div>
+                            <p className="text-foreground/60">Solicitada</p>
+                            <p className="font-semibold text-foreground text-xs">
+                              {new Date(request.createdAt).toLocaleDateString("es-ES")}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-white border-t border-border/40">
+                        <p className="text-xs font-semibold text-foreground mb-2">Notas / Comentarios</p>
+                        <textarea
+                          value={financingNotes[request.id] || request.notes || ""}
+                          onChange={(e) =>
+                            setFinancingNotes((prev) => ({
+                              ...prev,
+                              [request.id]: e.target.value,
+                            }))
+                          }
+                          placeholder="Añade notas o comentarios sobre esta solicitud..."
+                          className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                          rows={2}
+                        />
+                      </div>
+
+                      <div className="p-4 bg-gray-50 border-t border-border/40 flex gap-2 flex-wrap">
+                        <button
+                          onClick={() => {
+                            updateRequestStatus(request.id, "Aprobado", financingNotes[request.id] || "");
+                            setFinancingRequests(getFinancingRequests());
+                            setFinancingNotes((prev) => {
+                              const newNotes = { ...prev };
+                              delete newNotes[request.id];
+                              return newNotes;
+                            });
+                          }}
+                          className="px-4 py-2 bg-green-500 text-white rounded text-sm font-semibold hover:bg-green-600 transition-colors"
+                        >
+                          Aprobar
+                        </button>
+                        <button
+                          onClick={() => {
+                            updateRequestStatus(request.id, "Rechazado", financingNotes[request.id] || "");
+                            setFinancingRequests(getFinancingRequests());
+                            setFinancingNotes((prev) => {
+                              const newNotes = { ...prev };
+                              delete newNotes[request.id];
+                              return newNotes;
+                            });
+                          }}
+                          className="px-4 py-2 bg-red-500 text-white rounded text-sm font-semibold hover:bg-red-600 transition-colors"
+                        >
+                          Rechazar
+                        </button>
+                        {request.status !== "Pendiente" && (
+                          <button
+                            onClick={() => {
+                              updateRequestStatus(request.id, "Pendiente", "");
+                              setFinancingRequests(getFinancingRequests());
+                              setFinancingNotes((prev) => {
+                                const newNotes = { ...prev };
+                                delete newNotes[request.id];
+                                return newNotes;
+                              });
+                            }}
+                            className="px-4 py-2 bg-gray-400 text-white rounded text-sm font-semibold hover:bg-gray-500 transition-colors"
+                          >
+                            Devolver a Pendiente
+                          </button>
+                        )}
+                        <button
+                          onClick={() => {
+                            if (confirm("¿Estás seguro de que deseas eliminar esta solicitud?")) {
+                              deleteFinancingRequest(request.id);
+                              setFinancingRequests(getFinancingRequests());
+                              setFinancingNotes((prev) => {
+                                const newNotes = { ...prev };
+                                delete newNotes[request.id];
+                                return newNotes;
+                              });
+                            }
+                          }}
+                          className="px-4 py-2 bg-gray-300 text-foreground rounded text-sm font-semibold hover:bg-gray-400 transition-colors ml-auto"
+                        >
+                          Eliminar
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+
       case "usuarios":
       case "mensajes":
         return (
