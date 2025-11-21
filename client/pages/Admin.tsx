@@ -514,6 +514,7 @@ export default function Admin() {
     });
     setEducacionImage(null);
     setEditingEducacionCard(null);
+    setShowEducacionForm(false);
   };
 
   const handleEditEducacionCard = (card: EducacionCard) => {
