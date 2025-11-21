@@ -51,20 +51,45 @@ export default function Inversiones() {
 
           {/* Type Filter */}
           {stoTypes.length > 1 && (
-            <div className="flex flex-wrap gap-3 mb-12 justify-center">
-              {stoTypes.map((type) => (
-                <button
-                  key={type}
-                  onClick={() => setSelectedType(type)}
-                  className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                    selectedType === type
-                      ? "bg-primary text-white shadow-lg"
-                      : "bg-white border border-border/40 text-foreground hover:bg-secondary/20"
-                  }`}
-                >
-                  {type}
-                </button>
-              ))}
+            <div className="mb-6">
+              <p className="text-sm font-semibold text-foreground mb-3">Tipo de STO:</p>
+              <div className="flex flex-wrap gap-3 mb-12 justify-center">
+                {stoTypes.map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => setSelectedType(type)}
+                    className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                      selectedType === type
+                        ? "bg-primary text-white shadow-lg"
+                        : "bg-white border border-border/40 text-foreground hover:bg-secondary/20"
+                    }`}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Category Filter */}
+          {categories.length > 1 && (
+            <div className="mb-12">
+              <p className="text-sm font-semibold text-foreground mb-3">Categoría del Activo:</p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                      selectedCategory === category
+                        ? "bg-primary text-white shadow-lg"
+                        : "bg-white border border-border/40 text-foreground hover:bg-secondary/20"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 
