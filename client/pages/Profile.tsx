@@ -531,7 +531,7 @@ export default function Profile() {
 
                                   <div>
                                     <p className="text-sm text-foreground/60 mb-1">Monto Invertido</p>
-                                    <p className="text-lg font-bold text-foreground">${inversion.montoInvertido.toLocaleString()}</p>
+                                    <p className="text-lg font-bold text-foreground">{formatCLP(inversion.montoInvertido)}</p>
                                   </div>
 
                                   <div>
