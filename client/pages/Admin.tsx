@@ -651,55 +651,49 @@ export default function Admin() {
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-foreground/60 mb-2">STOs Activos</p>
-                    <p className="text-3xl font-bold text-foreground">{activeStos}</p>
+                    <p className="text-base text-foreground/60 mb-2">STOs Activos</p>
+                    <p className="text-2xl font-bold text-foreground">{activeStos}</p>
                   </div>
-                  <FileText className="w-8 h-8 text-primary opacity-50" />
                 </div>
               </div>
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-foreground/60 mb-2">Activos Digitales</p>
-                    <p className="text-3xl font-bold text-foreground">{totalAssets}</p>
+                    <p className="text-base text-foreground/60 mb-2">Activos Digitales</p>
+                    <p className="text-2xl font-bold text-foreground">{totalAssets}</p>
                   </div>
-                  <Coins className="w-8 h-8 text-primary opacity-50" />
                 </div>
               </div>
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-foreground/60 mb-2">Mensajes Pendientes</p>
-                    <p className="text-3xl font-bold text-foreground">{pendingMessages}</p>
+                    <p className="text-base text-foreground/60 mb-2">Mensajes Pendientes</p>
+                    <p className="text-2xl font-bold text-foreground">{pendingMessages}</p>
                   </div>
-                  <Mail className="w-8 h-8 text-primary opacity-50" />
                 </div>
               </div>
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-foreground/60 mb-2">Total Transado</p>
-                    <p className="text-3xl font-bold text-foreground">${totalTraded.toLocaleString()}</p>
+                    <p className="text-base text-foreground/60 mb-2">Total Transado</p>
+                    <div className="text-2xl font-bold text-foreground">${totalTraded.toLocaleString()}</div>
                   </div>
-                  <TrendingUp className="w-8 h-8 text-primary opacity-50" />
                 </div>
               </div>
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-foreground/60 mb-2">Valor Total de Activos</p>
-                    <p className="text-3xl font-bold text-foreground">${totalAssetTarget.toLocaleString()}</p>
+                    <p className="text-base text-foreground/60 mb-2">Valor Total de Activos</p>
+                    <div className="text-2xl font-bold text-foreground">${totalAssetTarget.toLocaleString()}</div>
                   </div>
-                  <DollarSign className="w-8 h-8 text-primary opacity-50" />
                 </div>
               </div>
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-foreground/60 mb-2">Total Activos Pendientes</p>
-                    <p className="text-3xl font-bold text-foreground">{totalPendingAssets}</p>
+                    <p className="text-base text-foreground/60 mb-2">Total Activos Pendientes</p>
+                    <p className="text-2xl font-bold text-foreground">{totalPendingAssets}</p>
                   </div>
-                  <Clock className="w-8 h-8 text-primary opacity-50" />
                 </div>
               </div>
             </div>
@@ -733,7 +727,7 @@ export default function Admin() {
                   <p className="text-foreground/70">Cursos de Educación</p>
                   <p className="font-bold text-foreground">{educacionCards.length}</p>
                 </div>
-                <div className="border-t border-border/20 pt-4 mt-4 flex items-center justify-between">
+                <div className="border-t border-border/20 mt-4 flex items-center justify-between">
                   <p className="text-foreground/70">Total Transado</p>
                   <p className="font-bold text-foreground">${totalTraded.toLocaleString()}</p>
                 </div>
