@@ -99,10 +99,13 @@ export default function Education() {
                     )}
                   </div>
 
-                  <button className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all font-semibold text-sm w-full justify-between px-3 py-2 hover:bg-primary/5 rounded">
+                  <Link
+                    to={`/nosotros/educacion/${card.id}`}
+                    className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all font-semibold text-sm w-full justify-between px-3 py-2 hover:bg-primary/5 rounded"
+                  >
                     Más información
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               ))}
             </div>
