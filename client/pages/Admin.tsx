@@ -27,6 +27,8 @@ import {
   Search,
   LogOut,
   MessageSquare,
+  Eye,
+  Zap,
 } from "lucide-react";
 
 type AdminSection =
