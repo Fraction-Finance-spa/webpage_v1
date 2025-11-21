@@ -467,11 +467,12 @@ export default function FinancingForm() {
                       {/* Base Amount */}
                       <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-200 shadow-sm">
                         <div>
-                          <p className="text-sm font-semibold text-foreground/70">Monto a Financiar</p>
+                          <p className="text-base font-semibold text-foreground/70">Monto a Financiar</p>
                           <p className="text-xs text-foreground/50 mt-1">Cantidad solicitada</p>
                         </div>
                         <p className="text-2xl font-bold text-blue-600">
-                          ${simulationResults.clpAmount.toLocaleString()}
+                          <span className="text-black">$</span>
+                          <span className="text-black">{simulationResults.clpAmount.toLocaleString()}</span>
                         </p>
                       </div>
 
