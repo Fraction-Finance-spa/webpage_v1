@@ -203,8 +203,8 @@ export default function FinancingForm() {
     // Net financing amount: base amount - commission - benefit rate
     const netFinancingAmount = clpAmountValue - commissionAmount - benefitRateAmount;
 
-    // Suggested amount: always 80% of base amount
-    const calculatedSuggestedAmount = Math.round(clpAmountValue * 0.8);
+    // Suggested amount: always 80% of total financing amount (net)
+    const calculatedSuggestedAmount = Math.round(netFinancingAmount * 0.8);
 
     return {
       requestedAmount,
