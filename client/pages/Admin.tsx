@@ -327,6 +327,7 @@ export default function Admin() {
 
   const [articles, setArticles] = useState<BlogArticle[]>([]);
   const [editingArticle, setEditingArticle] = useState<BlogArticle | null>(null);
+  const [showArticleForm, setShowArticleForm] = useState(false);
   const [articleForm, setArticleForm] = useState({
     titulo: "",
     contenido: "",
