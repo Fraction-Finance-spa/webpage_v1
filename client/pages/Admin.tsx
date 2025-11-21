@@ -13,6 +13,7 @@ import { getMarketStats, getTotalPendingAssetsValue, getPendingListingsCount } f
 import { getFinancingRequests, updateRequestStatus, deleteFinancingRequest, updateEvaluacionComercial, calculateScoring, getSTODataFromFinancingRequest, type FinancingRequest, type EvaluacionComercial } from "@/lib/financingRequestManager";
 import SmartContractWizardSection from "@/components/SmartContractWizardSection";
 import STOWizardSection from "@/components/STOWizardSection";
+import FinancingRequestCard from "@/components/FinancingRequestCard";
 import {
   LayoutDashboard,
   Coins,
