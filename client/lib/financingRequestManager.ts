@@ -124,25 +124,20 @@ export function getRejectedRequests(): FinancingRequest[] {
   return getFinancingRequests().filter((r) => r.status === "Rechazado");
 }
 
-export function calculateScoring(evaluacion: EvaluacionComercial): { scoring: number; aprobado: boolean } {
-  const scores: Record<string, number> = {
-    // Viabilidad Financiera
+export function calculateScoring(evaluacion: EvaluacionComercial): { scoring: number; aprobado: boolean; financingTier: string } {
+  const puntajesDirectos: Record<string, number> = {
+    // 25%, 50%, 75%, 100% scale
+    "Deficiente": 25,
+    "Débil": 25,
+    "Decreciente": 25,
+    "Regular": 50,
+    "Adecuada": 50,
+    "Estable": 50,
+    "Buena": 75,
+    "Fuerte": 75,
+    "Creciente": 75,
     "Excelente": 100,
-    "Buena": 85,
-    "Regular": 65,
-    "Deficiente": 30,
-    // Viabilidad Tributaria
-    // Viabilidad Judicial
-    // Calidad del Equipo
     "Excepcional": 100,
-    "Fuerte": 85,
-    "Adecuada": 70,
-    "Débil": 40,
-    // Reputación de Empresa
-    // Tendencia de Mercado
-    "Creciente": 100,
-    "Estable": 85,
-    "Decreciente": 50,
   };
 
   const criterios = [
@@ -154,23 +149,9 @@ export function calculateScoring(evaluacion: EvaluacionComercial): { scoring: nu
     evaluacion.reputacionEmpresa,
   ];
 
-  const puntajesDirectos: Record<string, number> = {
-    "Excelente": 100,
-    "Buena": 85,
-    "Regular": 65,
-    "Deficiente": 30,
-    "Excepcional": 100,
-    "Fuerte": 85,
-    "Adecuada": 70,
-    "Débil": 40,
-    "Creciente": 100,
-    "Estable": 85,
-    "Decreciente": 50,
-  };
-
   const valoresFiltrados = criterios.filter((c) => c !== "");
   if (valoresFiltrados.length === 0) {
-    return { scoring: 0, aprobado: false };
+    return { scoring: 0, aprobado: false, financingTier: "N/A" };
   }
 
   const sumaScores = valoresFiltrados.reduce((sum, criterio) => {
@@ -178,9 +159,16 @@ export function calculateScoring(evaluacion: EvaluacionComercial): { scoring: nu
   }, 0);
 
   const scoring = Math.round((sumaScores / valoresFiltrados.length) * 100) / 100;
-  const aprobado = scoring >= 80;
+  const aprobado = scoring >= 60;
 
-  return { scoring, aprobado };
+  let financingTier = "N/A";
+  if (scoring >= 80) {
+    financingTier = "100%"; // Full financing
+  } else if (scoring >= 60) {
+    financingTier = "70%"; // Reduced financing
+  }
+
+  return { scoring, aprobado, financingTier };
 }
 
 export function updateEvaluacionComercial(
