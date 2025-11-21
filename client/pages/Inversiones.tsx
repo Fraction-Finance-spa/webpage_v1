@@ -82,7 +82,6 @@ export default function Inversiones() {
                 );
                 const isActive = new Date() >= new Date(sto.fechaInicio) && new Date() <= new Date(sto.fechaFin);
                 const relatedContract = contracts.find((c) => c.id === sto.activoDigitalId);
-                const tokensSoldPercentage = Math.min((parseFloat(sto.tokenosVendidos || "0") / parseFloat(sto.numerosTokensVenta || "1")) * 100, 100);
 
                 return (
                   <div
