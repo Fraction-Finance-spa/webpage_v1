@@ -698,10 +698,6 @@ export default function Admin() {
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-foreground/70">Candidaturas</p>
-                  <p className="font-bold text-foreground">{totalUsers}</p>
-                </div>
-                <div className="flex items-center justify-between">
                   <p className="text-foreground/70">STOs Completados</p>
                   <p className="font-bold text-foreground">{completedStos}</p>
                 </div>
@@ -718,6 +714,10 @@ export default function Admin() {
                   <p className="font-bold text-foreground">{jobs.length}</p>
                 </div>
                 <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">Candidaturas</p>
+                  <p className="font-bold text-foreground">{totalUsers}</p>
+                </div>
+                <div className="flex items-center justify-between">
                   <p className="text-foreground/70">Cursos de Educación</p>
                   <p className="font-bold text-foreground">{educacionCards.length}</p>
                 </div>
@@ -727,7 +727,11 @@ export default function Admin() {
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-foreground/70">Valor Total de Activos</p>
-                  <p className="font-bold text-foreground">${totalAssetValueGenerated.toLocaleString()}</p>
+                  <p className="font-bold text-foreground">${totalAssetTarget.toLocaleString()}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">Total Activos Pendientes</p>
+                  <p className="font-bold text-foreground">${totalPendingAssets.toLocaleString()}</p>
                 </div>
               </div>
             </div>
