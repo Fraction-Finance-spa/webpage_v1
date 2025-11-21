@@ -952,9 +952,39 @@ export default function Admin() {
                             <div className="mt-3 p-2 bg-white/50 rounded">
                               <div className="flex items-center justify-between mb-1">
                                 <p className="text-xs font-semibold text-foreground">Tokens Vendidos</p>
-                                <p className="text-xs text-foreground/60">
-                                  {Math.round((parseFloat(sto.tokenosVendidos || "0") / parseFloat(sto.numerosTokensVenta || "1")) * 100)}% ({sto.tokenosVendidos || "0"} / {sto.numerosTokensVenta})
-                                </p>
+                                {editingTokensSoldId === sto.id ? (
+                                  <div className="flex gap-1">
+                                    <input
+                                      type="number"
+                                      value={editingTokensSoldValue}
+                                      onChange={(e) => setEditingTokensSoldValue(e.target.value)}
+                                      max={sto.numerosTokensVenta}
+                                      className="w-16 px-1 py-0.5 text-xs border border-border/40 rounded"
+                                    />
+                                    <button
+                                      onClick={() => handleUpdateTokenosSold(sto.id, editingTokensSoldValue)}
+                                      className="px-2 py-0.5 bg-green-500 text-white text-xs rounded hover:bg-green-600 transition-colors"
+                                    >
+                                      ✓
+                                    </button>
+                                    <button
+                                      onClick={() => setEditingTokensSoldId(null)}
+                                      className="px-2 py-0.5 bg-gray-400 text-white text-xs rounded hover:bg-gray-500 transition-colors"
+                                    >
+                                      ✕
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <button
+                                    onClick={() => {
+                                      setEditingTokensSoldId(sto.id);
+                                      setEditingTokensSoldValue(sto.tokenosVendidos || "0");
+                                    }}
+                                    className="text-xs text-foreground/60 hover:text-primary cursor-pointer"
+                                  >
+                                    {Math.round((parseFloat(sto.tokenosVendidos || "0") / parseFloat(sto.numerosTokensVenta || "1")) * 100)}% ({sto.tokenosVendidos || "0"} / {sto.numerosTokensVenta})
+                                  </button>
+                                )}
                               </div>
                               <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
                                 <div
