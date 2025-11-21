@@ -21,6 +21,8 @@ export default function FinancingRequestCard({
   financingNotes,
   setFinancingNotes,
   setFinancingRequests,
+  setActiveSection,
+  setPreFilledSmartContractData,
 }: FinancingRequestCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const currentEval = evaluacionComercial[request.id];
