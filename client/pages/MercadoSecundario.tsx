@@ -541,7 +541,7 @@ export default function MercadoSecundario() {
                           <div className="bg-blue-50 rounded-lg p-3 mb-3 space-y-1.5">
                             <div className="flex justify-between text-xs">
                               <span className="text-foreground/60">Precio:</span>
-                              <span className="font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
+                              <span className="font-bold text-primary">${listing.sellingPrice.toLocaleString()} CLP</span>
                             </div>
                             <div className="flex justify-between text-xs">
                               <span className="text-foreground/60">Desc.:</span>
@@ -588,7 +588,7 @@ export default function MercadoSecundario() {
                           </div>
                           <div>
                             <p className="text-sm text-foreground/60 mb-1">Precio Pagado</p>
-                            <p className="font-bold text-primary">${purchase.purchasePrice.toLocaleString()}</p>
+                            <p className="font-bold text-primary">${purchase.purchasePrice.toLocaleString()} CLP</p>
                           </div>
                           <div>
                             <p className="text-sm text-foreground/60 mb-1">Vendedor</p>
@@ -625,7 +625,7 @@ export default function MercadoSecundario() {
                           </div>
                           <div>
                             <p className="text-sm text-foreground/60 mb-1">Precio de Venta</p>
-                            <p className="font-bold text-primary">${sale.purchasePrice.toLocaleString()}</p>
+                            <p className="font-bold text-primary">${sale.purchasePrice.toLocaleString()} CLP</p>
                           </div>
                           <div>
                             <p className="text-sm text-foreground/60 mb-1">Comprador</p>
@@ -685,7 +685,7 @@ export default function MercadoSecundario() {
                   <option value="">Elige un activo disponible</option>
                   {getAvailableAssets().map((asset) => (
                     <option key={asset.id} value={asset.id}>
-                      {asset.stoNombre} - ${asset.availableForSale.toLocaleString()}
+                      {asset.stoNombre} - ${asset.availableForSale.toLocaleString()} CLP
                     </option>
                   ))}
                 </select>
@@ -696,11 +696,11 @@ export default function MercadoSecundario() {
                 <div className="bg-blue-50 rounded-lg p-4 space-y-3">
                   <div className="flex justify-between">
                     <span className="text-foreground/60">Precio Original:</span>
-                    <span className="font-semibold text-foreground">${selectedAsset.montoInvertido.toLocaleString()}</span>
+                    <span className="font-semibold text-foreground">${selectedAsset.montoInvertido.toLocaleString()} CLP</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-foreground/60">Disponible para Vender:</span>
-                    <span className="font-semibold text-primary">${selectedAsset.availableForSale.toLocaleString()}</span>
+                    <span className="font-semibold text-primary">${selectedAsset.availableForSale.toLocaleString()} CLP</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-foreground/60">Plazo:</span>
@@ -749,7 +749,7 @@ export default function MercadoSecundario() {
                 />
                 {selectedAsset && tokenQuantity && (
                   <p className="mt-2 text-sm text-foreground/60">
-                    Precio total: ${(parseFloat(sellingPrice || "0") * parseInt(tokenQuantity)).toLocaleString()}
+                    Precio total: ${(parseFloat(sellingPrice || "0") * parseInt(tokenQuantity)).toLocaleString()} CLP
                   </p>
                 )}
               </div>
