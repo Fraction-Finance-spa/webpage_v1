@@ -260,6 +260,9 @@ export default function Layout({ children }: LayoutProps) {
 
             {/* Mobile Menu Button */}
             <button
+              aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
               className="lg:hidden p-2 hover:bg-secondary rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -274,7 +277,7 @@ export default function Layout({ children }: LayoutProps) {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-border/60">
+          <div id="mobile-menu" className="lg:hidden bg-white border-t border-border/60">
             <div className="container max-w-7xl mx-auto px-4 py-4 space-y-3">
               {navItems.map((item) => (
                 <div key={item.label}>
