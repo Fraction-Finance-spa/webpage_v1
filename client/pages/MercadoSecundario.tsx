@@ -371,6 +371,7 @@ export default function MercadoSecundario() {
                       setShowCreateModal(true);
                       setSelectedAsset(null);
                       setSellingPrice("");
+                      setTokenQuantity("");
                       setError("");
                     }}
                     className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
