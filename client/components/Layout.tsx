@@ -33,7 +33,14 @@ const navItems: NavItem[] = [
     label: "Productos",
     submenu: [
       { label: "Financiamiento", path: "/productos/financiamiento", description: "Obtén financiamiento rápido y accesible para tu negocio", icon: iconMap["Financiamiento"] },
-      { label: "Inversiones", path: "/productos/inversiones", description: "Oportunidades de inversión con alto rendimiento", icon: iconMap["Inversiones"] },
+      {
+        label: "Inversiones",
+        icon: iconMap["Inversiones"],
+        submenu: [
+          { label: "Alternativas de Financiamiento", path: "/productos/inversiones", description: "Accede a ofertas de tokens (STOs) con rentabilidad", icon: iconMap["Alternativas de Financiamiento"] },
+          { label: "Mercado Secundario de Activos", path: "/productos/mercado-secundario", description: "Compra y vende activos digitales en el mercado secundario", icon: iconMap["Mercado Secundario de Activos"] },
+        ],
+      },
     ],
   },
   { label: "Ecosistema", path: "/ecosistema" },
