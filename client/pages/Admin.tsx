@@ -616,7 +616,7 @@ export default function Admin() {
       { id: 2, nombre: "María López", rol: "CTO", departamento: "Tech" },
     ],
     socios: [
-      { id: 1, nombre: "Blockchain Partners", categoria: "Tecnolog��a", estado: "Activo" },
+      { id: 1, nombre: "Blockchain Partners", categoria: "Tecnología", estado: "Activo" },
       { id: 2, nombre: "Finance Solutions", categoria: "Finanzas", estado: "Activo" },
     ],
   });
@@ -1429,25 +1429,50 @@ export default function Admin() {
                       <div className="p-4 bg-gray-50 border-t border-border/40 flex gap-2 flex-wrap">
                         <button
                           onClick={() => {
-                            updateRequestStatus(request.id, "Aprobado", financingNotes[request.id] || "");
+                            // Update evaluation first
                             if (evaluacionComercial[request.id]) {
                               updateEvaluacionComercial(request.id, evaluacionComercial[request.id]);
                             }
-                            setFinancingRequests(getFinancingRequests());
-                            setFinancingNotes((prev) => {
-                              const newNotes = { ...prev };
-                              delete newNotes[request.id];
-                              return newNotes;
-                            });
-                            setEvaluacionComercial((prev) => {
-                              const newEval = { ...prev };
-                              delete newEval[request.id];
-                              return newEval;
-                            });
+
+                            // Get STO data from the financing request
+                            const stoResult = getSTODataFromFinancingRequest(request);
+
+                            if (stoResult.success && stoResult.data) {
+                              try {
+                                // Create the STO
+                                const newSTO = addSTO(stoResult.data);
+
+                                // Update financing request status with STO reference
+                                updateRequestStatus(
+                                  request.id,
+                                  "Aprobado",
+                                  `Tokenizado exitosamente. STO creado con financiamiento al ${stoResult.financingTier}. ${financingNotes[request.id] || ""}`
+                                );
+
+                                // Refresh and clear state
+                                setFinancingRequests(getFinancingRequests());
+                                setFinancingNotes((prev) => {
+                                  const newNotes = { ...prev };
+                                  delete newNotes[request.id];
+                                  return newNotes;
+                                });
+                                setEvaluacionComercial((prev) => {
+                                  const newEval = { ...prev };
+                                  delete newEval[request.id];
+                                  return newEval;
+                                });
+
+                                alert(`STO creado exitosamente (${stoResult.financingTier} del monto solicitado)`);
+                              } catch (error) {
+                                alert(`Error al crear STO: ${(error as any).message}`);
+                              }
+                            } else {
+                              alert(stoResult.message);
+                            }
                           }}
                           className="px-4 py-2 bg-green-500 text-white rounded text-sm font-semibold hover:bg-green-600 transition-colors"
                         >
-                          Aprobar
+                          Aprobar y Tokenizar
                         </button>
                         <button
                           onClick={() => {
