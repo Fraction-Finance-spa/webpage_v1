@@ -258,6 +258,24 @@ export default function STOWizardSection({
               </div>
 
               <div>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Porcentaje de Rendimiento Anual (%)</label>
+                <div className="relative">
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={state.porcentajeRendimiento}
+                    onChange={(e) => setState((prev) => ({ ...prev, porcentajeRendimiento: e.target.value }))}
+                    placeholder="Ej: 12.5"
+                    className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                  <span className="absolute right-4 top-2 text-foreground/60 font-semibold">%</span>
+                </div>
+                <p className="text-xs text-foreground/60 mt-1">
+                  Tasa de rendimiento anual esperado para los inversores
+                </p>
+              </div>
+
+              <div>
                 <label className="text-xs font-semibold text-foreground mb-1 block">Descripción (Opcional)</label>
                 <textarea
                   value={state.descripcion}
