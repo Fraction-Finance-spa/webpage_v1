@@ -441,7 +441,7 @@ export default function MercadoSecundario() {
               </div>
 
               {portfolio.length === 0 ? (
-                <div className="bg-white rounded-lg border border-border/40 p-12 text-center">
+                <div className="bg-white rounded-lg border border-border/40 p-8 text-center">
                   <Wallet className="w-16 h-16 text-foreground/20 mx-auto mb-4" />
                   <p className="text-foreground/70 mb-2">No tienes activos en tu portafolio</p>
                   <p className="text-sm text-foreground/60">
