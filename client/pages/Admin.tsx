@@ -39,6 +39,7 @@ type AdminSection =
   | "activos"
   | "smart-contract-wizard"
   | "sto"
+  | "sto-wizard"
   | "blog"
   | "educacion"
   | "usuarios"
