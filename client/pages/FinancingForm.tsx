@@ -171,6 +171,17 @@ export default function FinancingForm() {
     if (approvalChance >= 80) recommendation = "Excelente perfil. Tu solicitud tiene alta probabilidad de aprobación.";
     else if (approvalChance >= 60) recommendation = "Buen perfil. Tu solicitud puede ser aprobada con condiciones ajustadas.";
 
+    // Calculate financing cost based on monthly interest rate
+    const financingCostPercentage = simulationInputs.monthlyInterestRate;
+
+    // Calculate benefit cost based on risk level (3-5%)
+    let benefitCostPercentage = 3;
+    if (riskLevel === "Medio") benefitCostPercentage = 4;
+    else if (riskLevel === "Alto") benefitCostPercentage = 5;
+
+    // Financed amount is the same as requested for simulation
+    const financedAmount = simulationInputs.clpAmount || requestedAmount;
+
     return {
       requestedAmount,
       estimatedApprovalChance: approvalChance,
@@ -179,6 +190,12 @@ export default function FinancingForm() {
       interestRate,
       riskLevel,
       recommendation,
+      monthlyInterestRate: simulationInputs.monthlyInterestRate,
+      plazo: simulationInputs.plazo,
+      clpAmount: simulationInputs.clpAmount || requestedAmount,
+      financingCostPercentage,
+      benefitCostPercentage,
+      financedAmount,
     };
   };
 
