@@ -59,6 +59,7 @@ export function addSTO(sto: Omit<STO, "id" | "fechaCreacion" | "fechaActualizaci
     fechaCreacion: new Date().toISOString(),
     fechaActualizacion: new Date().toISOString(),
     montoRecaudadoActual: "0",
+    tokenosVendidos: "0",
     inversionistas: 0,
   };
   stos.push(newSTO);
