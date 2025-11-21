@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
-import { Calendar, DollarSign, TrendingUp, Users, AlertCircle } from "lucide-react";
+import { Calendar, DollarSign, TrendingUp, Users, AlertCircle, FileText, Download } from "lucide-react";
 import { getActiveSTOs, type STO } from "@/lib/stoManager";
+import { getSmartContracts, type SmartContract } from "@/lib/smartContractManager";
 
 export default function Inversiones() {
   const [stos, setSTOs] = useState<STO[]>([]);
