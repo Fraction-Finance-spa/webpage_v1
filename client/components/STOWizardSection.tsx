@@ -246,13 +246,13 @@ export default function STOWizardSection({
             </p>
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-semibold text-foreground mb-1 block">Precio por Token (USDC)</label>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Precio por Token (CLP)</label>
                 <input
                   type="number"
                   step="0.01"
                   value={state.precioPorToken}
                   onChange={(e) => setState((prev) => ({ ...prev, precioPorToken: e.target.value }))}
-                  placeholder="Ej: 1.50"
+                  placeholder="Ej: 1200"
                   className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
@@ -321,46 +321,46 @@ export default function STOWizardSection({
             </p>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-foreground mb-1 block">Monto Mínimo de Recaudación</label>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Monto Mínimo de Recaudación (CLP)</label>
                 <input
                   type="number"
                   step="0.01"
                   value={state.montoMinimoRecaudacion}
                   onChange={(e) => setState((prev) => ({ ...prev, montoMinimoRecaudacion: e.target.value }))}
-                  placeholder="Ej: 50000"
+                  placeholder="Ej: 50000000"
                   className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-foreground mb-1 block">Monto Máximo de Recaudación</label>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Monto Máximo de Recaudación (CLP)</label>
                 <input
                   type="number"
                   step="0.01"
                   value={state.montoMaximoRecaudacion}
                   onChange={(e) => setState((prev) => ({ ...prev, montoMaximoRecaudacion: e.target.value }))}
-                  placeholder="Ej: 500000"
+                  placeholder="Ej: 500000000"
                   className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-foreground mb-1 block">Monto Mínimo de Inversión</label>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Monto Mínimo de Inversión (CLP)</label>
                 <input
                   type="number"
                   step="0.01"
                   value={state.montoMinimoInversion}
                   onChange={(e) => setState((prev) => ({ ...prev, montoMinimoInversion: e.target.value }))}
-                  placeholder="Ej: 100"
+                  placeholder="Ej: 100000"
                   className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-foreground mb-1 block">Monto Máximo de Inversión</label>
+                <label className="text-xs font-semibold text-foreground mb-1 block">Monto Máximo de Inversión (CLP)</label>
                 <input
                   type="number"
                   step="0.01"
                   value={state.montoMaximoInversion}
                   onChange={(e) => setState((prev) => ({ ...prev, montoMaximoInversion: e.target.value }))}
-                  placeholder="Ej: 50000"
+                  placeholder="Ej: 50000000"
                   className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
@@ -372,10 +372,10 @@ export default function STOWizardSection({
                 <p>• Activo: {state.nombreActivo} ({state.simboloActivo})</p>
                 <p>• Tipo: {state.tipoSTO}</p>
                 <p>• Tokens: {state.numerosTokensVenta}</p>
-                <p>• Precio: ${state.precioPorToken} USDC</p>
+                <p>• Precio: ${parseInt(state.precioPorToken || "0").toLocaleString()} CLP</p>
                 <p>• Rendimiento Anual: {state.porcentajeRendimiento}%</p>
-                <p>• Meta: ${state.montoMinimoRecaudacion} - ${state.montoMaximoRecaudacion}</p>
-                <p>• Inversión: ${state.montoMinimoInversion} - ${state.montoMaximoInversion}</p>
+                <p>• Meta: ${parseInt(state.montoMinimoRecaudacion || "0").toLocaleString()} - ${parseInt(state.montoMaximoRecaudacion || "0").toLocaleString()} CLP</p>
+                <p>• Inversión: ${parseInt(state.montoMinimoInversion || "0").toLocaleString()} - ${parseInt(state.montoMaximoInversion || "0").toLocaleString()} CLP</p>
               </div>
             </div>
           </div>
