@@ -106,3 +106,24 @@ export function checkSTOAvailableForAsset(activoDigitalId: string): boolean {
   const existingSTO = stos.find((s) => s.activoDigitalId === activoDigitalId && s.estado !== "Cerrado");
   return !existingSTO;
 }
+
+export function updateTokenosSoldCount(stoId: string, tokensVendidos: string | number): STO | null {
+  const stos = getSTOs();
+  const index = stos.findIndex((s) => s.id === stoId);
+  if (index !== -1) {
+    const tokensVendidosNum = typeof tokensVendidos === "string" ? parseInt(tokensVendidos) : tokensVendidos;
+    const maxTokens = parseInt(stos[index].numerosTokensVenta);
+
+    // Ensure we don't exceed total tokens available
+    const finalTokens = Math.min(tokensVendidosNum, maxTokens);
+
+    stos[index] = {
+      ...stos[index],
+      tokenosVendidos: finalTokens.toString(),
+      fechaActualizacion: new Date().toISOString(),
+    };
+    saveSTOs(stos);
+    return stos[index];
+  }
+  return null;
+}
