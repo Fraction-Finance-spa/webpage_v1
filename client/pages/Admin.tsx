@@ -401,6 +401,7 @@ export default function Admin() {
     setEducacionCards(getEducacionCards());
     setSmartContracts(getSmartContracts());
     setSTOs(getSTOs());
+    setFinancingRequests(getFinancingRequests());
   }, []);
 
   const handleArticleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
