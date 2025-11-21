@@ -111,6 +111,22 @@ export default function FinancingForm() {
 
     setLoading(true);
     setTimeout(() => {
+      addFinancingRequest({
+        companyName: formData.companyName,
+        rutEmpresa: formData.rutEmpresa,
+        industry: formData.industry,
+        foundedYear: formData.foundedYear,
+        employeeCount: formData.employeeCount,
+        monthlyRevenue: formData.monthlyRevenue,
+        financingAmount: formData.financingAmount,
+        financingPurpose: formData.financingPurpose,
+        businessStage: formData.businessStage,
+        financingType: formData.financingType,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+      });
       setLoading(false);
       setSubmitted(true);
     }, 1500);
