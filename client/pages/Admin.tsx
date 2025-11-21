@@ -605,6 +605,94 @@ export default function Admin() {
         );
 
       case "activos":
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <h2 className="text-3xl font-bold text-foreground">Activos Digitales</h2>
+              <a
+                href="/smart-contract-wizard"
+                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2 whitespace-nowrap"
+              >
+                <Zap className="w-5 h-5" />
+                Crear Smart Contract
+              </a>
+            </div>
+
+            <div className="bg-white rounded-lg border border-border/40 p-6">
+              <div className="mb-6 flex gap-4">
+                <div className="flex-1 relative">
+                  <Search className="absolute left-4 top-3 w-5 h-5 text-foreground/40" />
+                  <input
+                    type="text"
+                    placeholder="Buscar activos..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-12 pr-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+              </div>
+
+              {items.activos && items.activos.length > 0 ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-border/40">
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Nombre</th>
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Dirección del Contrato</th>
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Estado</th>
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {items.activos.map((item: any) => (
+                        <tr key={item.id} className="border-b border-border/40 hover:bg-secondary/30 transition-colors">
+                          <td className="px-4 py-3 text-sm text-foreground">{item.nombre}</td>
+                          <td className="px-4 py-3 text-sm text-foreground/60 font-mono text-xs">
+                            {item.direccion || "No desplegado"}
+                          </td>
+                          <td className="px-4 py-3">
+                            <span
+                              className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                                item.estado === "Activo"
+                                  ? "bg-green-100 text-green-700"
+                                  : "bg-yellow-100 text-yellow-700"
+                              }`}
+                            >
+                              {item.estado}
+                            </span>
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="flex gap-2">
+                              <button className="p-2 hover:bg-secondary rounded transition-colors">
+                                <Eye className="w-4 h-4 text-foreground/60 hover:text-primary" />
+                              </button>
+                              <button className="p-2 hover:bg-secondary rounded transition-colors">
+                                <Trash2 className="w-4 h-4 text-foreground/60 hover:text-red-500" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <Coins className="w-12 h-12 text-primary/20 mx-auto mb-4" />
+                  <p className="text-foreground/60 mb-4">No hay activos digitales creados aún.</p>
+                  <a
+                    href="/smart-contract-wizard"
+                    className="inline-flex items-center gap-2 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+                  >
+                    <Zap className="w-4 h-4" />
+                    Crear tu primer activo
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+
       case "sto":
       case "usuarios":
       case "mensajes":
