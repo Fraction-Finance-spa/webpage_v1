@@ -464,11 +464,9 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
                   className="w-full px-3 py-2 text-sm border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                 >
                   <option value="">Selecciona una categoría</option>
-                  <option value="deuda">Deuda Corporativa</option>
-                  <option value="equity">Participación Accionaria</option>
-                  <option value="activos-reales">Activos Reales</option>
-                  <option value="fondo-inversion">Fondo de Inversión</option>
-                  <option value="otro">Otro</option>
+                  <option value="Capital de trabajo">Capital de trabajo</option>
+                  <option value="Bonos Corporativos">Bonos Corporativos</option>
+                  <option value="Deuda Privada">Deuda Privada</option>
                 </select>
               </div>
 
