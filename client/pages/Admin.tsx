@@ -341,6 +341,7 @@ export default function Admin() {
 
   const [educacionCards, setEducacionCards] = useState<EducacionCard[]>([]);
   const [editingEducacionCard, setEditingEducacionCard] = useState<EducacionCard | null>(null);
+  const [showEducacionForm, setShowEducacionForm] = useState(false);
   const [educacionForm, setEducacionForm] = useState({
     titulo: "",
     descripcion: "",
