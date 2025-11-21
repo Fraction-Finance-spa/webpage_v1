@@ -10,7 +10,8 @@ import { getEducacionCards, addEducacionCard, updateEducacionCard, deleteEducaci
 import { getSmartContracts, deleteSmartContract, type SmartContract } from "@/lib/smartContractManager";
 import { getSTOs, addSTO, updateSTO, deleteSTO, checkSTOAvailableForAsset, updateTokenosSoldCount, type STO } from "@/lib/stoManager";
 import { getMarketStats, getTotalPendingAssetsValue, getPendingListingsCount } from "@/lib/mercadoSecundarioManager";
-import { getFinancingRequests, updateRequestStatus, deleteFinancingRequest, updateEvaluacionComercial, calculateScoring, type FinancingRequest, type EvaluacionComercial } from "@/lib/financingRequestManager";
+import { getFinancingRequests, updateRequestStatus, deleteFinancingRequest, updateEvaluacionComercial, calculateScoring, getSTODataFromFinancingRequest, type FinancingRequest, type EvaluacionComercial } from "@/lib/financingRequestManager";
+import { addSTO } from "@/lib/stoManager";
 import SmartContractWizardSection from "@/components/SmartContractWizardSection";
 import STOWizardSection from "@/components/STOWizardSection";
 import {
