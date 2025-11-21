@@ -36,8 +36,8 @@ export default function Inversiones() {
         <div className="max-w-6xl mx-auto" style={{ paddingTop: "40px" }}>
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl text-foreground mb-4">Alternativas de Financiamiento</h1>
-            <p className="text-xl text-foreground/70">
+            <h1 className="text-5xl text-foreground mb-4 text-left">Alternativas de Financiamiento</h1>
+            <p className="text-xl text-foreground/70 text-left">
               Accede a ofertas de tokens (STOs) con rentabilidad
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function Inversiones() {
                     className="bg-white rounded-lg border border-border/40 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
                   >
                     {/* Header */}
-                    <div className="p-6 border-b border-border/40 bg-gradient-to-r from-primary/5 to-blue-50/50">
+                    <div className="py-2.5 px-6 border-b border-border/40 bg-gradient-to-r from-primary/5 to-blue-50/50">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
                           <h3 className="text-lg font-bold text-foreground mb-1">{sto.nombreActivo}</h3>
