@@ -1160,6 +1160,8 @@ export default function Admin() {
                       financingNotes={financingNotes}
                       setFinancingNotes={setFinancingNotes}
                       setFinancingRequests={setFinancingRequests}
+                      setActiveSection={setActiveSection}
+                      setPreFilledSmartContractData={setPreFilledSmartContractData}
                     />
                   ))}
                 </div>
