@@ -620,8 +620,8 @@ export default function Admin() {
           return sum + amount;
         }, 0);
 
-        // Calculate total pending assets value (activos pendientes por vender)
-        const totalPendingAssets = getTotalPendingAssetsValue();
+        // Calculate total pending assets count (ofertas no vendidas)
+        const totalPendingAssets = getPendingListingsCount();
 
         return (
           <div className="space-y-6">
