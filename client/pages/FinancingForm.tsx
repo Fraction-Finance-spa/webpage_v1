@@ -256,6 +256,133 @@ export default function FinancingForm() {
     );
   }
 
+  if (showSimulation && simulationResults) {
+    return (
+      <Layout>
+        <div className="bg-blue-50 px-8 pb-12" style={{ paddingTop: "120px" }}>
+          <div className="container max-w-4xl mx-auto">
+            <div className="mb-8">
+              <button
+                onClick={() => setShowSimulation(false)}
+                className="text-primary hover:underline text-sm font-semibold mb-4"
+              >
+                ← Volver al formulario
+              </button>
+            </div>
+
+            <div className="bg-white rounded-lg p-8 sm:p-12 border border-border/40">
+              <h1 className="text-4xl font-bold text-foreground mb-2">
+                Simulación de Financiamiento
+              </h1>
+              <p className="text-xl text-foreground/70 mb-8">
+                Resumen de tu evaluación preliminar
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                  <div className="flex items-center gap-3 mb-2">
+                    <TrendingUp className="w-5 h-5 text-blue-600" />
+                    <p className="text-sm text-foreground/60">Probabilidad de Aprobación</p>
+                  </div>
+                  <p className="text-3xl font-bold text-blue-700">
+                    {simulationResults.estimatedApprovalChance}%
+                  </p>
+                </div>
+
+                <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Zap className="w-5 h-5 text-green-600" />
+                    <p className="text-sm text-foreground/60">Monto Sugerido</p>
+                  </div>
+                  <p className="text-3xl font-bold text-green-700">
+                    ${simulationResults.suggestedAmount.toLocaleString()}
+                  </p>
+                </div>
+
+                <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Target className="w-5 h-5 text-purple-600" />
+                    <p className="text-sm text-foreground/60">Tasa de Interés Estimada</p>
+                  </div>
+                  <p className="text-3xl font-bold text-purple-700">
+                    {simulationResults.interestRate}% APY
+                  </p>
+                </div>
+              </div>
+
+              <div className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
+                <h3 className="text-lg font-bold text-foreground mb-2">
+                  Recomendación
+                </h3>
+                <p className="text-foreground/70">
+                  {simulationResults.recommendation}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+                  <p className="text-xs text-foreground/60 mb-1">Monto Solicitado</p>
+                  <p className="text-xl font-bold text-foreground">
+                    ${simulationResults.requestedAmount.toLocaleString()}
+                  </p>
+                </div>
+
+                <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+                  <p className="text-xs text-foreground/60 mb-1">Tiempo Estimado de Respuesta</p>
+                  <p className="text-xl font-bold text-foreground">
+                    {simulationResults.estimatedDuration}
+                  </p>
+                </div>
+
+                <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+                  <p className="text-xs text-foreground/60 mb-1">Nivel de Riesgo</p>
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
+                    simulationResults.riskLevel === "Bajo"
+                      ? "bg-green-100 text-green-700"
+                      : simulationResults.riskLevel === "Medio"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-red-100 text-red-700"
+                  }`}>
+                    {simulationResults.riskLevel}
+                  </span>
+                </div>
+
+                <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+                  <p className="text-xs text-foreground/60 mb-1">Empresa</p>
+                  <p className="text-xl font-bold text-foreground">
+                    {formData.companyName}
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+                <p className="text-sm text-foreground/70">
+                  Esta es una simulación preliminar basada en los datos proporcionados. El resultado final dependerá de una evaluación comercial completa realizada por nuestro equipo de expertos.
+                </p>
+              </div>
+
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setShowSimulation(false)}
+                  className="flex-1 px-6 py-3 border border-border/40 text-foreground rounded-lg hover:bg-secondary/20 transition-colors font-semibold"
+                >
+                  Editar Información
+                </button>
+                <button
+                  onClick={handleConfirmSubmission}
+                  disabled={loading}
+                  className="flex-1 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? "Enviando..." : "Continuar y Enviar Solicitud"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       <div className="bg-blue-50 px-8 pb-12" style={{ paddingTop: "120px" }}>
