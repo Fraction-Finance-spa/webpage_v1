@@ -63,6 +63,7 @@ export default function Layout({ children }: LayoutProps) {
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [openNestedSubmenu, setOpenNestedSubmenu] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const userEmail = localStorage.getItem("userEmail");
   const userProfileType = localStorage.getItem("userProfileType");
@@ -81,13 +82,13 @@ export default function Layout({ children }: LayoutProps) {
     localStorage.removeItem("userLastName");
     localStorage.removeItem("userCompanyName");
     localStorage.removeItem("userProfileType");
-    window.location.href = "/";
+    navigate("/");
   };
 
   const handleFinanciamientoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isLoggedIn) {
       e.preventDefault();
-      window.location.href = "/auth";
+      navigate("/auth");
     }
   };
 
