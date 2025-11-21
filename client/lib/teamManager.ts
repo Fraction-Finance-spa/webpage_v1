@@ -4,6 +4,7 @@ export interface TeamMember {
   rol: string;
   departamento: string;
   bio?: string;
+  foto?: string;
 }
 
 const STORAGE_KEY = "team_members";
