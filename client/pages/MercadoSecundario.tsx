@@ -268,43 +268,43 @@ export default function MercadoSecundario() {
           {viewMode === "marketplace" && (
             <div className="space-y-8">
               {/* Market Statistics */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="bg-white rounded-lg border border-border/40 p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-semibold text-foreground/70">Activos Listados</h3>
-                    <TrendingUp className="w-5 h-5 text-primary" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="bg-white rounded-lg border border-border/40 p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xs font-semibold text-foreground/70">Activos Listados</h3>
+                    <TrendingUp className="w-4 h-4 text-primary" />
                   </div>
-                  <p className="text-3xl font-bold text-foreground">{marketStats.totalListings}</p>
-                  <p className="text-xs text-foreground/60 mt-1">disponibles para compra</p>
+                  <p className="text-2xl font-bold text-foreground">{marketStats.totalListings}</p>
+                  <p className="text-xs text-foreground/60 mt-0.5">disponibles</p>
                 </div>
 
-                <div className="bg-white rounded-lg border border-border/40 p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-semibold text-foreground/70">Transacciones</h3>
-                    <ShoppingCart className="w-5 h-5 text-primary" />
+                <div className="bg-white rounded-lg border border-border/40 p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xs font-semibold text-foreground/70">Transacciones</h3>
+                    <ShoppingCart className="w-4 h-4 text-primary" />
                   </div>
-                  <p className="text-3xl font-bold text-foreground">{marketStats.totalTransactions}</p>
-                  <p className="text-xs text-foreground/60 mt-1">completadas en el mercado</p>
+                  <p className="text-2xl font-bold text-foreground">{marketStats.totalTransactions}</p>
+                  <p className="text-xs text-foreground/60 mt-0.5">completadas</p>
                 </div>
 
-                <div className="bg-white rounded-lg border border-border/40 p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-semibold text-foreground/70">Volumen Negociado</h3>
-                    <DollarSign className="w-5 h-5 text-primary" />
+                <div className="bg-white rounded-lg border border-border/40 p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xs font-semibold text-foreground/70">Volumen Negociado</h3>
+                    <DollarSign className="w-4 h-4 text-primary" />
                   </div>
-                  <p className="text-3xl font-bold text-foreground">
+                  <p className="text-2xl font-bold text-foreground">
                     ${marketStats.totalVolumeTraded.toLocaleString()}
                   </p>
-                  <p className="text-xs text-foreground/60 mt-1">USD</p>
+                  <p className="text-xs text-foreground/60 mt-0.5">USD</p>
                 </div>
 
-                <div className="bg-white rounded-lg border border-border/40 p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-semibold text-foreground/70">Descuento Promedio</h3>
-                    <BarChart3 className="w-5 h-5 text-primary" />
+                <div className="bg-white rounded-lg border border-border/40 p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xs font-semibold text-foreground/70">Desc. Promedio</h3>
+                    <BarChart3 className="w-4 h-4 text-primary" />
                   </div>
-                  <p className="text-3xl font-bold text-foreground">{marketStats.averageDiscount}%</p>
-                  <p className="text-xs text-foreground/60 mt-1">respecto a precio de compra</p>
+                  <p className="text-2xl font-bold text-foreground">{marketStats.averageDiscount}%</p>
+                  <p className="text-xs text-foreground/60 mt-0.5">promedio</p>
                 </div>
               </div>
 
