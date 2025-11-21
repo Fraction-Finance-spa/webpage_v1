@@ -30,7 +30,7 @@ const navItems: NavItem[] = [
   {
     label: "Productos",
     submenu: [
-      { label: "Financiamiento", path: "/productos/financiamiento", description: "Acceso a fondos tokenizados y flexibles", icon: iconMap["Financiamiento"] },
+      { label: "Financiamiento", path: "/productos/financiamiento", description: "Obtén financiamiento rápido y accesible para tu negocio", icon: iconMap["Financiamiento"] },
       { label: "Inversiones", path: "/productos/inversiones", description: "Oportunidades de inversión con alto rendimiento", icon: iconMap["Inversiones"] },
     ],
   },
