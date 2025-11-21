@@ -733,6 +733,17 @@ export default function FinancingForm() {
                     <option value="healthcare">Salud</option>
                     <option value="fintech">Fintech</option>
                     <option value="ecommerce">E-commerce</option>
+                    <option value="manufacturing">Manufactura</option>
+                    <option value="agriculture">Agricultura</option>
+                    <option value="construction">Construcción</option>
+                    <option value="logistics">Logística</option>
+                    <option value="tourism">Turismo</option>
+                    <option value="education">Educación</option>
+                    <option value="real-estate">Inmobiliaria</option>
+                    <option value="finance">Finanzas</option>
+                    <option value="media">Medios y Comunicación</option>
+                    <option value="energy">Energía</option>
+                    <option value="utilities">Utilidades</option>
                     <option value="other">Otra</option>
                   </select>
                   {errors.industry && (
