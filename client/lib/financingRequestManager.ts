@@ -1,12 +1,15 @@
 export interface EvaluacionComercial {
   viabilidadFinanciera: "Excelente" | "Buena" | "Regular" | "Deficiente" | "";
-  potencialMercado: "Alto" | "Medio" | "Bajo" | "";
+  viabilidadTributaria: "Excelente" | "Buena" | "Regular" | "Deficiente" | "";
+  viabilidadJudicial: "Excelente" | "Buena" | "Regular" | "Deficiente" | "";
+  tendenciaMercado: "Creciente" | "Estable" | "Decreciente" | "";
   calidadEquipo: "Excepcional" | "Fuerte" | "Adecuada" | "Débil" | "";
-  riesgoPolitico: "Bajo" | "Medio" | "Alto" | "";
   reputacionEmpresa: "Excelente" | "Buena" | "Regular" | "Deficiente" | "";
   observaciones: string;
   evaluador?: string;
   fechaEvaluacion?: string;
+  scoring?: number;
+  aprobado?: boolean;
 }
 
 export interface FinancingRequest {
