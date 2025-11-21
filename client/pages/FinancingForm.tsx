@@ -200,13 +200,16 @@ export default function FinancingForm() {
       (clpAmountValue * currentInputs.benefitRate) / 100
     );
 
-    // Total financing amount: base amount + commission + benefit rate
-    const totalFinancingAmount = clpAmountValue + commissionAmount + benefitRateAmount;
+    // Net financing amount: base amount - commission - benefit rate
+    const netFinancingAmount = clpAmountValue - commissionAmount - benefitRateAmount;
+
+    // Suggested amount: always 80% of base amount
+    const calculatedSuggestedAmount = Math.round(clpAmountValue * 0.8);
 
     return {
       requestedAmount,
       estimatedApprovalChance: approvalChance,
-      suggestedAmount,
+      suggestedAmount: calculatedSuggestedAmount,
       estimatedDuration: "5-7 días hábiles",
       interestRate,
       riskLevel,
@@ -220,7 +223,7 @@ export default function FinancingForm() {
       financedAmount: clpAmountValue,
       commissionAmount,
       benefitRateAmount,
-      totalFinancingAmount,
+      totalFinancingAmount: netFinancingAmount,
     };
   };
 
