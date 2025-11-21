@@ -210,6 +210,12 @@ export function getMarketStats() {
   };
 }
 
+// Get total value of pending assets for sale
+export function getTotalPendingAssetsValue(): number {
+  const listings = getAllListings();
+  return listings.reduce((sum, listing) => sum + listing.sellingPrice, 0);
+}
+
 // Private helper functions
 function getAllListingsIncludingUnavailable(): SecondaryMarketListing[] {
   try {
