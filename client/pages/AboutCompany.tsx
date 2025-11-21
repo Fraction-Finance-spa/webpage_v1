@@ -159,28 +159,30 @@ export default function AboutCompany() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-            {teamMembers.map((member) => (
-              <div key={member.id} className="group text-center">
-                <div className="flex justify-center mb-3">
-                  <div className="relative w-20 h-20 rounded-full overflow-hidden group-hover:shadow-lg transition-shadow duration-300">
-                    {member.foto ? (
-                      <img
-                        src={member.foto}
-                        alt={member.nombre}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                        <Users className="w-8 h-8 text-primary/50" />
-                      </div>
-                    )}
+          <div className="flex justify-center mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-12 max-w-2xl w-full">
+              {teamMembers.map((member) => (
+                <div key={member.id} className="group text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="relative w-28 h-28 rounded-full overflow-hidden group-hover:shadow-lg transition-shadow duration-300 ring-2 ring-primary/10">
+                      {member.foto ? (
+                        <img
+                          src={member.foto}
+                          alt={member.nombre}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                          <Users className="w-12 h-12 text-primary/50" />
+                        </div>
+                      )}
+                    </div>
                   </div>
+                  <h3 className="text-base font-bold text-foreground mb-1 line-clamp-2">{member.nombre}</h3>
+                  <p className="text-sm text-primary font-semibold line-clamp-1">{member.rol}</p>
                 </div>
-                <h3 className="text-sm font-bold text-foreground mb-1 line-clamp-1">{member.nombre}</h3>
-                <p className="text-xs text-primary font-semibold line-clamp-1">{member.rol}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* CTA Section */}
