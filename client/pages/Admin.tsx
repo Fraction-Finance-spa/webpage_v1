@@ -623,7 +623,7 @@ export default function Admin() {
         return (
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-foreground">Panel de Control</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -658,6 +658,24 @@ export default function Admin() {
                     <p className="text-3xl font-bold text-foreground">{pendingMessages}</p>
                   </div>
                   <Mail className="w-8 h-8 text-primary opacity-50" />
+                </div>
+              </div>
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-foreground/60 mb-2">Total Transado</p>
+                    <p className="text-3xl font-bold text-foreground">${totalTraded.toLocaleString()}</p>
+                  </div>
+                  <TrendingUp className="w-8 h-8 text-primary opacity-50" />
+                </div>
+              </div>
+              <div className="bg-white rounded-lg border border-border/40 p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-foreground/60 mb-2">Valor Total de Activos</p>
+                    <p className="text-3xl font-bold text-foreground">${totalAssetValueGenerated.toLocaleString()}</p>
+                  </div>
+                  <DollarSign className="w-8 h-8 text-primary opacity-50" />
                 </div>
               </div>
             </div>
