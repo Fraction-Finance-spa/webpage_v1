@@ -429,11 +429,11 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
           </div>
         )}
 
-        {/* Step 6: Compilation */}
+        {/* Step 6: Compilation & Documents */}
         {state.step === 6 && (
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-foreground">Paso 6 de 8: Compilar Contrato Inteligente</h3>
-            <div className="p-4 border-2 border-dashed border-primary/30 rounded-lg bg-primary/5">
+            <div className="p-4 border-2 border-dashed border-primary/30 rounded-lg bg-primary/5 mb-6">
               <div className="flex items-center gap-3 mb-3">
                 <Code className="w-5 h-5 text-primary" />
                 <div>
@@ -450,6 +450,80 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
                   <CheckCircle className="w-3 h-3 text-green-500" />
                   <span className="text-foreground">Dependencias verificadas</span>
                 </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mb-3">Documentos Técnicos y de Respaldo (Opcional)</h4>
+              <div className="space-y-3">
+                <div className="border-2 border-dashed border-border/40 rounded-lg p-6 text-center hover:border-primary/50 transition-colors cursor-pointer">
+                  <input
+                    type="file"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          setDocumentos((prev) => [
+                            ...prev,
+                            {
+                              nombre: file.name,
+                              tipo: file.type,
+                              archivo: event.target?.result as string,
+                            },
+                          ]);
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                    className="hidden"
+                    id="doc-upload"
+                    accept=".pdf,.doc,.docx,.txt,.zip"
+                  />
+                  <label htmlFor="doc-upload" className="cursor-pointer block">
+                    <svg
+                      className="w-6 h-6 text-primary mx-auto mb-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                    <p className="text-foreground font-semibold text-sm">Haz clic para cargar documentos</p>
+                    <p className="text-xs text-foreground/60 mt-1">PDF, DOC, TXT, ZIP (máx. 10MB)</p>
+                  </label>
+                </div>
+
+                {documentos.length > 0 && (
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold text-foreground">Documentos cargados:</p>
+                    {documentos.map((doc, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="flex items-center gap-2 flex-1">
+                          <FileText className="w-4 h-4 text-green-600" />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-semibold text-foreground truncate">{doc.nombre}</p>
+                            <p className="text-xs text-foreground/60">{doc.tipo}</p>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setDocumentos((prev) => prev.filter((_, i) => i !== idx))}
+                          className="p-1 hover:bg-red-100 rounded transition-colors"
+                        >
+                          <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
