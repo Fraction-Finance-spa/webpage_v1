@@ -54,14 +54,14 @@ export default function Index() {
                   <>
                     <Link
                       to="/productos/financiamiento"
-                      className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                      className="flex-1 px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                     >
                       Solicita Financiamiento
                       <ArrowRight className="w-5 h-5" />
                     </Link>
                     <Link
                       to="/productos/inversiones"
-                      className="px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                      className="flex-1 px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                     >
                       Oportunidades Inversión
                       <ArrowRight className="w-5 h-5" />
