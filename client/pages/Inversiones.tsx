@@ -210,6 +210,15 @@ export default function Inversiones() {
           )}
         </div>
       </div>
+
+      {/* Detail Modal */}
+      {selectedSTO && (
+        <STODetailModal
+          sto={selectedSTO}
+          contract={contracts.find((c) => c.id === selectedSTO.activoDigitalId)}
+          onClose={() => setSelectedSTO(null)}
+        />
+      )}
     </Layout>
   );
 }
