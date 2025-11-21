@@ -72,6 +72,7 @@ export default function FinancingForm() {
     clpAmount: 0,
     plazo: 30,
     monthlyInterestRate: 1.5,
+    benefitRate: 3.75,
   });
 
   const validateForm = (): boolean => {
