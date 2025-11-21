@@ -498,7 +498,7 @@ export default function FinancingForm() {
 
                       <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200 shadow-sm">
                         <div>
-                          <p className="text-sm font-semibold text-foreground/70">Tasas Beneficio</p>
+                          <p className="text-base font-semibold text-foreground/70">Tasas Beneficio</p>
                           <p className="text-xs text-foreground/50 mt-1">{simulationResults.benefitRate.toFixed(2)}% aportante</p>
                         </div>
                         <p className="text-2xl font-bold text-red-600">
