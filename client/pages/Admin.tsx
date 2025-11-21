@@ -284,6 +284,7 @@ export default function Admin() {
 
   const handleEditJob = (job: Job) => {
     setEditingJob(job);
+    setShowJobForm(true);
     setJobForm({
       titulo: job.titulo,
       departamento: job.departamento,
@@ -700,7 +701,7 @@ export default function Admin() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-border/40">
-                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Nombre / S��mbolo</th>
+                        <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Nombre / Símbolo</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Dirección del Contrato</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Blockchain</th>
                         <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Estado</th>
