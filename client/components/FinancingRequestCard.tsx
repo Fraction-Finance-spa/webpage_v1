@@ -303,26 +303,6 @@ export default function FinancingRequestCard({
               </div>
             )}
 
-            {/* Commission and Rates Based on Evaluation */}
-            {rates && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
-                <div>
-                  <p className="text-xs text-foreground/60 mb-2 font-semibold">Comisión Establecida</p>
-                  <p className="text-2xl font-bold text-green-700">{rates.commissionRate.toFixed(2)}%</p>
-                  <p className="text-xs text-foreground/60 mt-1">Según evaluación comercial</p>
-                </div>
-                <div>
-                  <p className="text-xs text-foreground/60 mb-2 font-semibold">Tasa Beneficio Aportante</p>
-                  <p className="text-2xl font-bold text-green-700">{rates.benefitRate.toFixed(2)}%</p>
-                  <p className="text-xs text-foreground/60 mt-1">Rendimiento anual para inversores</p>
-                </div>
-                <div>
-                  <p className="text-xs text-foreground/60 mb-2 font-semibold">Tasa de Interés Mensual</p>
-                  <p className="text-2xl font-bold text-green-700">{rates.monthlyInterestRate.toFixed(2)}%</p>
-                  <p className="text-xs text-foreground/60 mt-1">Costo del financiamiento</p>
-                </div>
-              </div>
-            )}
 
             {/* Observations */}
             <div>
