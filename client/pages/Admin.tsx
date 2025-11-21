@@ -308,8 +308,23 @@ export default function Admin() {
   });
   const [articleImage, setArticleImage] = useState<File | null>(null);
 
+  const [educacionCards, setEducacionCards] = useState<EducacionCard[]>([]);
+  const [editingEducacionCard, setEditingEducacionCard] = useState<EducacionCard | null>(null);
+  const [educacionForm, setEducacionForm] = useState({
+    titulo: "",
+    descripcion: "",
+    contenido: "",
+    instructor: "",
+    duracion: "",
+    nivel: "Básico" as const,
+    estado: "Borrador" as const,
+    imagen: "",
+  });
+  const [educacionImage, setEducacionImage] = useState<File | null>(null);
+
   useEffect(() => {
     setArticles(getArticles());
+    setEducacionCards(getEducacionCards());
   }, []);
 
   const handleArticleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
