@@ -41,7 +41,7 @@ const navItems: NavItem[] = [
       { label: "Nuestra Empresa", path: "/nosotros/empresa", description: "Conoce nuestra historia y misión", icon: iconMap["Nuestra Empresa"] },
       { label: "Modelo de Negocio", path: "/nosotros/modelo", description: "Cómo funcionamos y generamos valor", icon: iconMap["Modelo de Negocio"] },
       { label: "Educación Financiera", path: "/nosotros/educacion", description: "Recursos y herramientas para aprender", icon: iconMap["Educación Financiera"] },
-      { label: "Blog", path: "/nosotros/blog", description: "Artículos y análisis del mercado", icon: iconMap["Blog"] },
+      { label: "Artículos y Noticias", path: "/nosotros/blog", description: "Artículos y análisis del mercado", icon: iconMap["Artículos y Noticias"] },
       { label: "Trabaja con Nosotros", path: "/nosotros/careers", description: "Únete a nuestro equipo", icon: iconMap["Trabaja con Nosotros"] },
       { label: "Contacto", path: "/nosotros/contacto", description: "Ponte en contacto con nosotros", icon: iconMap["Contacto"] },
     ],
