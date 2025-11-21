@@ -216,6 +216,12 @@ export function getTotalPendingAssetsValue(): number {
   return listings.reduce((sum, listing) => sum + listing.sellingPrice, 0);
 }
 
+// Get count of pending unsold listings
+export function getPendingListingsCount(): number {
+  const listings = getAllListings();
+  return listings.length;
+}
+
 // Private helper functions
 function getAllListingsIncludingUnavailable(): SecondaryMarketListing[] {
   try {
