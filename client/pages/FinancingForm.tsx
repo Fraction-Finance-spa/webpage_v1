@@ -543,11 +543,11 @@ export default function FinancingForm() {
                 />
                 <span className="text-sm text-foreground/70">
                   Acepto los{" "}
-                  <a href="#" className="text-primary hover:underline font-semibold">
+                  <a href="/terminos-servicio" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
                     Términos de Servicio
                   </a>{" "}
                   y la{" "}
-                  <a href="#" className="text-primary hover:underline font-semibold">
+                  <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
                     Política de Privacidad
                   </a>{" "}
                   *
