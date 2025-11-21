@@ -28,6 +28,7 @@ import ReclamosChannel from "./pages/ReclamosChannel";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
+import MercadoSecundario from "./pages/MercadoSecundario";
 
 const queryClient = new QueryClient();
 
