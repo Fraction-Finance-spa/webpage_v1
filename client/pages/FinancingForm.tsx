@@ -454,74 +454,124 @@ export default function FinancingForm() {
               </div>
 
               {/* Summary Section */}
-              <div className="mb-10 p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
-                <h2 className="text-2xl font-bold text-foreground mb-6">
+              <div className="mb-10 p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                <h2 className="text-2xl font-bold text-foreground mb-8">
                   Resumen de Financiamiento
                 </h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                  {/* Left Column: Financing Breakdown */}
-                  <div className="lg:col-span-2 space-y-3">
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <p className="text-xs text-foreground/60 mb-1 font-semibold">Monto a Financiar</p>
-                      <p className="text-2xl font-bold text-foreground">
-                        ${simulationResults.clpAmount.toLocaleString()}
-                      </p>
-                    </div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Left Column: Financing Calculation Breakdown */}
+                  <div className="lg:col-span-2">
+                    {/* Calculation Flow */}
+                    <div className="space-y-4">
+                      {/* Base Amount */}
+                      <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-200 shadow-sm">
+                        <div>
+                          <p className="text-sm font-semibold text-foreground/70">Monto a Financiar</p>
+                          <p className="text-xs text-foreground/50 mt-1">Cantidad solicitada</p>
+                        </div>
+                        <p className="text-2xl font-bold text-blue-600">
+                          ${simulationResults.clpAmount.toLocaleString()}
+                        </p>
+                      </div>
 
-                    <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                      <p className="text-xs text-foreground/60 mb-1">Menos: Monto de Comisión</p>
-                      <p className="text-2xl font-bold text-red-700">
-                        -${simulationResults.commissionAmount.toLocaleString()}
-                      </p>
-                    </div>
+                      {/* Minus Commission */}
+                      <div className="flex items-center justify-center">
+                        <div className="text-2xl font-bold text-foreground/30">−</div>
+                      </div>
 
-                    <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                      <p className="text-xs text-foreground/60 mb-1">
-                        Menos: Tasas Beneficio Aportante ({simulationResults.benefitRate.toFixed(2)}%)
-                      </p>
-                      <p className="text-2xl font-bold text-red-700">
-                        -${simulationResults.benefitRateAmount.toLocaleString()}
-                      </p>
-                    </div>
+                      <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200 shadow-sm">
+                        <div>
+                          <p className="text-sm font-semibold text-foreground/70">Comisión</p>
+                          <p className="text-xs text-foreground/50 mt-1">{simulationResults.monthlyInterestRate.toFixed(2)}% × {simulationResults.plazo} días</p>
+                        </div>
+                        <p className="text-2xl font-bold text-red-600">
+                          ${simulationResults.commissionAmount.toLocaleString()}
+                        </p>
+                      </div>
 
-                    <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
-                      <p className="text-xs text-foreground/60 mb-1 font-semibold">
-                        Total a Financiar
-                      </p>
-                      <p className="text-2xl font-bold text-green-700">
-                        ${simulationResults.totalFinancingAmount.toLocaleString()}
-                      </p>
+                      {/* Minus Benefit Rate */}
+                      <div className="flex items-center justify-center">
+                        <div className="text-2xl font-bold text-foreground/30">−</div>
+                      </div>
+
+                      <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200 shadow-sm">
+                        <div>
+                          <p className="text-sm font-semibold text-foreground/70">Tasas Beneficio</p>
+                          <p className="text-xs text-foreground/50 mt-1">{simulationResults.benefitRate.toFixed(2)}% aportante</p>
+                        </div>
+                        <p className="text-2xl font-bold text-red-600">
+                          ${simulationResults.benefitRateAmount.toLocaleString()}
+                        </p>
+                      </div>
+
+                      {/* Equals Total */}
+                      <div className="flex items-center justify-center pt-2">
+                        <div className="w-full h-0.5 bg-foreground/20"></div>
+                      </div>
+
+                      <div className="flex items-center justify-between p-5 bg-gradient-to-r from-green-50 to-green-100 rounded-lg border-2 border-green-300 shadow-md">
+                        <div>
+                          <p className="text-sm font-bold text-foreground/70">Total a Financiar</p>
+                          <p className="text-xs text-foreground/50 mt-1">Monto neto a desembolsar</p>
+                        </div>
+                        <p className="text-3xl font-bold text-green-700">
+                          ${simulationResults.totalFinancingAmount.toLocaleString()}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Right Column: Risk, Term, and APY */}
-                  <div className="lg:col-span-1 space-y-3">
-                    <div className="p-4 bg-white rounded-lg border border-border/40 text-right">
-                      <p className="text-xs text-foreground/60 mb-1">Nivel de Riesgo</p>
-                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
+                  {/* Right Column: Key Metrics */}
+                  <div className="lg:col-span-1 space-y-4">
+                    <div className="p-5 bg-white rounded-lg border border-border/40 shadow-sm hover:shadow-md transition-shadow">
+                      <p className="text-xs font-semibold text-foreground/60 uppercase mb-3">Nivel de Riesgo</p>
+                      <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-sm ${
                         simulationResults.riskLevel === "Bajo"
                           ? "bg-green-100 text-green-700"
                           : simulationResults.riskLevel === "Medio"
                             ? "bg-yellow-100 text-yellow-700"
                             : "bg-red-100 text-red-700"
                       }`}>
+                        <span className={`w-2 h-2 rounded-full ${
+                          simulationResults.riskLevel === "Bajo"
+                            ? "bg-green-700"
+                            : simulationResults.riskLevel === "Medio"
+                              ? "bg-yellow-700"
+                              : "bg-red-700"
+                        }`}></span>
                         {simulationResults.riskLevel}
                       </span>
                     </div>
 
-                    <div className="p-4 bg-white rounded-lg border border-border/40 text-right">
-                      <p className="text-xs text-foreground/60 mb-1">Plazo</p>
-                      <p className="text-2xl font-bold text-foreground">
-                        {simulationResults.plazo} días
-                      </p>
+                    <div className="p-5 bg-white rounded-lg border border-border/40 shadow-sm hover:shadow-md transition-shadow">
+                      <p className="text-xs font-semibold text-foreground/60 uppercase mb-3">Plazo</p>
+                      <div className="flex items-baseline gap-1">
+                        <p className="text-3xl font-bold text-foreground">
+                          {simulationResults.plazo}
+                        </p>
+                        <p className="text-sm text-foreground/60">días</p>
+                      </div>
                     </div>
 
-                    <div className="p-4 bg-white rounded-lg border border-border/40 text-right">
-                      <p className="text-xs text-foreground/60 mb-1">Tasa APY</p>
-                      <p className="text-2xl font-bold text-foreground">
-                        {simulationResults.interestRate}%
-                      </p>
+                    <div className="p-5 bg-white rounded-lg border border-border/40 shadow-sm hover:shadow-md transition-shadow">
+                      <p className="text-xs font-semibold text-foreground/60 uppercase mb-3">Tasa APY</p>
+                      <div className="flex items-baseline gap-1">
+                        <p className="text-3xl font-bold text-primary">
+                          {simulationResults.interestRate}
+                        </p>
+                        <p className="text-sm text-foreground/60">%</p>
+                      </div>
+                    </div>
+
+                    <div className="p-5 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200 shadow-sm">
+                      <p className="text-xs font-semibold text-foreground/60 uppercase mb-3">Monto Sugerido</p>
+                      <div>
+                        <p className="text-xs text-foreground/60 mb-2">(80% del total)</p>
+                        <p className="text-2xl font-bold text-purple-700">
+                          ${simulationResults.suggestedAmount.toLocaleString()}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
