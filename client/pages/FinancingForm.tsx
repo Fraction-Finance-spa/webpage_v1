@@ -460,26 +460,26 @@ export default function FinancingForm() {
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div className="p-4 bg-white rounded-lg border border-border/40">
-                    <p className="text-xs text-foreground/60 mb-1">Monto a Financiar</p>
+                  <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <p className="text-xs text-foreground/60 mb-1 font-semibold">Monto a Financiar</p>
                     <p className="text-2xl font-bold text-foreground">
                       ${simulationResults.clpAmount.toLocaleString()}
                     </p>
                   </div>
 
-                  <div className="p-4 bg-white rounded-lg border border-border/40">
-                    <p className="text-xs text-foreground/60 mb-1">Monto de Comisión</p>
-                    <p className="text-2xl font-bold text-foreground">
-                      ${simulationResults.commissionAmount.toLocaleString()}
+                  <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                    <p className="text-xs text-foreground/60 mb-1">Menos: Monto de Comisión</p>
+                    <p className="text-2xl font-bold text-red-700">
+                      -${simulationResults.commissionAmount.toLocaleString()}
                     </p>
                   </div>
 
-                  <div className="p-4 bg-white rounded-lg border border-border/40">
+                  <div className="p-4 bg-red-50 rounded-lg border border-red-200">
                     <p className="text-xs text-foreground/60 mb-1">
-                      Monto de Tasas Beneficio Aportante
+                      Menos: Tasas Beneficio Aportante
                     </p>
-                    <p className="text-2xl font-bold text-foreground">
-                      ${simulationResults.benefitRateAmount.toLocaleString()}
+                    <p className="text-2xl font-bold text-red-700">
+                      -${simulationResults.benefitRateAmount.toLocaleString()}
                     </p>
                   </div>
 
