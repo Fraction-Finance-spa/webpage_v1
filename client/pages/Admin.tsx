@@ -630,15 +630,6 @@ export default function Admin() {
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-foreground/60 mb-2">Total Candidaturas</p>
-                    <p className="text-3xl font-bold text-foreground">{totalUsers}</p>
-                  </div>
-                  <Users className="w-8 h-8 text-primary opacity-50" />
-                </div>
-              </div>
-              <div className="bg-white rounded-lg border border-border/40 p-6">
-                <div className="flex items-center justify-between">
-                  <div>
                     <p className="text-sm text-foreground/60 mb-2">STOs Activos</p>
                     <p className="text-3xl font-bold text-foreground">{activeStos}</p>
                   </div>
@@ -685,7 +676,7 @@ export default function Admin() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-foreground/60 mb-2">Total Activos Pendientes</p>
-                    <p className="text-3xl font-bold text-foreground">${totalPendingAssets.toLocaleString()}</p>
+                    <p className="text-3xl font-bold text-foreground">{totalPendingAssets}</p>
                   </div>
                   <Clock className="w-8 h-8 text-primary opacity-50" />
                 </div>
