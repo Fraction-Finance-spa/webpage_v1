@@ -136,6 +136,39 @@ export default function STODetailModal({ sto, contract, onClose }: STODetailModa
             </div>
           </div>
 
+          {/* Company Information */}
+          {contract && (contract.nombreEmpresa || contract.razonSocial || contract.rut || contract.giro) && (
+            <div className="border-t border-border/40 pt-6">
+              <h3 className="text-lg font-bold text-foreground mb-4">Información de la Empresa</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {contract.nombreEmpresa && (
+                  <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">Nombre Empresa</p>
+                    <p className="text-sm font-bold text-foreground">{contract.nombreEmpresa}</p>
+                  </div>
+                )}
+                {contract.razonSocial && (
+                  <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">Razón Social</p>
+                    <p className="text-sm font-bold text-foreground">{contract.razonSocial}</p>
+                  </div>
+                )}
+                {contract.rut && (
+                  <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">RUT</p>
+                    <p className="text-sm font-bold text-foreground">{contract.rut}</p>
+                  </div>
+                )}
+                {contract.giro && (
+                  <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">Giro</p>
+                    <p className="text-sm font-bold text-foreground">{contract.giro}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* Token Details */}
           <div className="border-t border-border/40 pt-6">
             <h3 className="text-lg font-bold text-foreground mb-4">Detalles del Token</h3>
