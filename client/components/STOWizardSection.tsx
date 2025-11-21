@@ -371,6 +371,7 @@ export default function STOWizardSection({
                 <p>• Tipo: {state.tipoSTO}</p>
                 <p>• Tokens: {state.numerosTokensVenta}</p>
                 <p>• Precio: ${state.precioPorToken} USDC</p>
+                <p>• Rendimiento Anual: {state.porcentajeRendimiento}%</p>
                 <p>• Meta: ${state.montoMinimoRecaudacion} - ${state.montoMaximoRecaudacion}</p>
                 <p>• Inversión: ${state.montoMinimoInversion} - ${state.montoMaximoInversion}</p>
               </div>
