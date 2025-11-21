@@ -70,6 +70,7 @@ export default function App() {
             {/* Productos */}
             <Route path="/productos/financiamiento" element={<ProtectedRouteEmpresa element={<FinancingForm />} />} />
             <Route path="/productos/inversiones" element={<Inversiones />} />
+            <Route path="/productos/mercado-secundario" element={<MercadoSecundario />} />
 
             {/* Ecosistema */}
             <Route path="/ecosistema" element={<Placeholder />} />
