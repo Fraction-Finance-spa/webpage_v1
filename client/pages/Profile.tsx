@@ -159,7 +159,7 @@ export default function Profile() {
       options: [
         { text: "Vendería inmediatamente para evitar más pérdidas", weight: 1 },
         { text: "Esperaría hasta que se recupere", weight: 2 },
-        { text: "Mantendría y evaluaría nuevas oportunidades", weight: 3 },
+        { text: "Mantendr��a y evaluaría nuevas oportunidades", weight: 3 },
         { text: "Compraría más porque veo oportunidad", weight: 4 },
       ],
     },
@@ -544,16 +544,20 @@ export default function Profile() {
                                   </div>
 
                                   {/* Cantidad de Tokens */}
-                                  <div className="p-4 bg-purple-50 rounded-lg border border-purple-200/50">
-                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Cantidad de Tokens</p>
-                                    <p className="text-xl font-bold text-foreground">{inversion.cantidadToken.toLocaleString()}</p>
-                                  </div>
+                                  {inversion.cantidadToken !== undefined && (
+                                    <div className="p-4 bg-purple-50 rounded-lg border border-purple-200/50">
+                                      <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Cantidad de Tokens</p>
+                                      <p className="text-xl font-bold text-foreground">{(inversion.cantidadToken || 0).toLocaleString()}</p>
+                                    </div>
+                                  )}
 
                                   {/* Valor por Token */}
-                                  <div className="p-4 bg-cyan-50 rounded-lg border border-cyan-200/50">
-                                    <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Valor por Token</p>
-                                    <p className="text-xl font-bold text-foreground">{formatCLP(inversion.valorPorToken)}</p>
-                                  </div>
+                                  {inversion.valorPorToken !== undefined && (
+                                    <div className="p-4 bg-cyan-50 rounded-lg border border-cyan-200/50">
+                                      <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide mb-2">Valor por Token</p>
+                                      <p className="text-xl font-bold text-foreground">{formatCLP(inversion.valorPorToken || 0)}</p>
+                                    </div>
+                                  )}
 
                                   {/* Plazo */}
                                   <div className="p-4 bg-orange-50 rounded-lg border border-orange-200/50">
