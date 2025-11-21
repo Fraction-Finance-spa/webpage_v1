@@ -1141,17 +1141,6 @@ export default function Profile() {
               </div>
             </div>
           </div>
-
-          {/* Logout Button */}
-          <div className="mt-8 flex justify-center">
-            <button
-              onClick={handleLogout}
-              className="px-8 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold flex items-center gap-2"
-            >
-              <LogOut className="w-5 h-5" />
-              Cerrar Sesión
-            </button>
-          </div>
         </div>
       </div>
     </Layout>
