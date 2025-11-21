@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
-import { Calendar, DollarSign, TrendingUp, Users, AlertCircle, FileText } from "lucide-react";
+import { DollarSign, TrendingUp, Users, AlertCircle } from "lucide-react";
 import { getActiveSTOs, type STO } from "@/lib/stoManager";
 import { getSmartContracts, type SmartContract } from "@/lib/smartContractManager";
 import STODetailModal from "@/components/STODetailModal";

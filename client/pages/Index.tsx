@@ -8,8 +8,6 @@ import {
   Users,
   Leaf,
   ArrowRight,
-  Coins,
-  Lock,
   BarChart3,
 } from "lucide-react";
 
