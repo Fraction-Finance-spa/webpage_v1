@@ -180,7 +180,7 @@ export default function FinancingForm() {
     };
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSimulate = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -191,6 +191,18 @@ export default function FinancingForm() {
       alert("Por favor inicia sesión para continuar");
       return;
     }
+
+    setLoading(true);
+    setTimeout(() => {
+      const results = calculateSimulation();
+      setSimulationResults(results);
+      setShowSimulation(true);
+      setLoading(false);
+    }, 1500);
+  };
+
+  const handleConfirmSubmission = () => {
+    if (!simulationResults) return;
 
     setLoading(true);
     setTimeout(() => {
