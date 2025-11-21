@@ -129,9 +129,10 @@ export default function FinancingForm() {
 
   const calculateSimulation = (inputs?: typeof simulationInputs): SimulationResults => {
     const currentInputs = inputs || simulationInputs;
-    const requestedAmount = parseFloat(formData.financingAmount);
+    const requestedAmount = Number(formData.financingAmount) || 0;
 
-    const yearsInBusiness = new Date().getFullYear() - parseInt(formData.foundedYear);
+    const foundedYear = Number(formData.foundedYear);
+    const yearsInBusiness = isFinite(foundedYear) && foundedYear > 0 ? new Date().getFullYear() - foundedYear : 0;
     const ageScore = Math.min(yearsInBusiness / 10, 1);
 
     const revenueMap: Record<string, number> = {
