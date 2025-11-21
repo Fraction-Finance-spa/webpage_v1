@@ -366,8 +366,16 @@ export default function FinancingRequestCard({
                   updateEvaluacionComercial(request.id, evaluacionComercial[request.id]);
                 }
 
-                // Get STO data from the financing request
-                const stoResult = getSTODataFromFinancingRequest(request);
+                // Get the updated request from localStorage
+                const updatedRequest = getFinancingRequestById(request.id);
+
+                if (!updatedRequest) {
+                  alert("Error: No se pudo cargar la solicitud actualizada");
+                  return;
+                }
+
+                // Get STO data from the updated financing request
+                const stoResult = getSTODataFromFinancingRequest(updatedRequest);
 
                 if (stoResult.success && stoResult.data) {
                   try {
