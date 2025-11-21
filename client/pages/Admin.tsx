@@ -722,7 +722,7 @@ export default function Admin() {
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-foreground/70">Total Activos Pendientes</p>
-                  <p className="font-bold text-foreground">${totalPendingAssets.toLocaleString()}</p>
+                  <p className="font-bold text-foreground">{totalPendingAssets}</p>
                 </div>
               </div>
             </div>
