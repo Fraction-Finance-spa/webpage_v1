@@ -195,6 +195,21 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
     // Simulate deployment
     setTimeout(() => {
       const mockAddress = `0x${Math.random().toString(16).substr(2, 40)}`;
+
+      // Save the deployed contract
+      const blockchainName = BLOCKCHAIN_NETWORKS.find((n) => n.id === state.blockchain)?.name || state.blockchain;
+      addSmartContract({
+        nombre: state.tokenName,
+        simbolo: state.tokenSymbol,
+        direccion: mockAddress,
+        blockchain: blockchainName,
+        assetClass: state.assetClass === "equity" ? "Equity / Fund (Regulated)" : "Simple RWA Token",
+        suministroMaximo: state.maxSupply,
+        administrador: state.adminAddress,
+        estado: "Activo",
+        codigoContrato: state.contractCode,
+      });
+
       setState((prev) => ({
         ...prev,
         deploymentAddress: mockAddress,
