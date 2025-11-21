@@ -15,6 +15,8 @@ interface SmartContractWizardSectionProps {
     contractDescription?: string;
     contractCategory?: string;
   };
+  createdSmartContractId?: string;
+  onClearPreFilledData?: () => void;
 }
 
 interface WizardState {
