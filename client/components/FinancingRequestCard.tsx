@@ -10,6 +10,8 @@ interface FinancingRequestCardProps {
   financingNotes: Record<string, string>;
   setFinancingNotes: (fn: (prev: Record<string, string>) => Record<string, string>) => void;
   setFinancingRequests: (requests: FinancingRequest[]) => void;
+  setActiveSection?: (section: string) => void;
+  setPreFilledSmartContractData?: (data: any) => void;
 }
 
 export default function FinancingRequestCard({
