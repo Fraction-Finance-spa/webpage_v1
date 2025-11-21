@@ -20,6 +20,7 @@ import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
 import ArticleDetail from "./pages/ArticleDetail";
 import Placeholder from "./pages/Placeholder";
+import Education from "./pages/Education";
 import DenunciasChannel from "./pages/DenunciasChannel";
 import ReclamosChannel from "./pages/ReclamosChannel";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
