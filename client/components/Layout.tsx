@@ -21,7 +21,7 @@ const iconMap: Record<string, React.ReactNode> = {
   "Nuestra Empresa": <Building2 className="w-4 h-4" />,
   "Modelo de Negocio": <Zap className="w-4 h-4" />,
   "Educación Financiera": <BookOpen className="w-4 h-4" />,
-  "Blog": <Newspaper className="w-4 h-4" />,
+  "Artículos y Noticias": <Newspaper className="w-4 h-4" />,
   "Trabaja con Nosotros": <Users className="w-4 h-4" />,
   "Contacto": <Mail className="w-4 h-4" />,
 };
