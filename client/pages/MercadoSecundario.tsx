@@ -40,6 +40,8 @@ export default function MercadoSecundario() {
   const [portfolio, setPortfolio] = useState<any[]>([]);
   const [purchases, setPurchases] = useState<any[]>([]);
   const [sales, setSales] = useState<any[]>([]);
+  const [stos, setSTOs] = useState<STO[]>([]);
+  const [smartContracts, setSmartContracts] = useState<SmartContract[]>([]);
 
   const [selectedAsset, setSelectedAsset] = useState<any>(null);
   const [sellingPrice, setSellingPrice] = useState("");
