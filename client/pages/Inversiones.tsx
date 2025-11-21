@@ -162,25 +162,6 @@ export default function Inversiones() {
                             ${parseFloat(sto.montoRecaudadoActual || "0").toLocaleString("es-ES")} / ${parseFloat(sto.montoMinimoRecaudacion).toLocaleString("es-ES")}
                           </p>
                         </div>
-
-                        {/* Tokens Vendidos */}
-                        <div>
-                          <div className="flex items-center justify-between mb-2">
-                            <label className="text-xs font-bold text-foreground">Tokens Vendidos</label>
-                            <span className="text-xs font-semibold text-green-600">
-                              {Math.round(tokensSoldPercentage)}%
-                            </span>
-                          </div>
-                          <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-gradient-to-r from-green-500 to-emerald-600 transition-all duration-300"
-                              style={{ width: `${tokensSoldPercentage}%` }}
-                            />
-                          </div>
-                          <p className="text-xs text-foreground/50 mt-1">
-                            {sto.tokenosVendidos || "0"} / {sto.numerosTokensVenta} tokens
-                          </p>
-                        </div>
                       </div>
 
                       {/* Investment Info */}
