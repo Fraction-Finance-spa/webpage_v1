@@ -751,7 +751,7 @@ export default function Admin() {
         );
 
       case "smart-contract-wizard":
-        return <SmartContractWizardSection setActiveSection={setActiveSection} onContractCreated={() => setSmartContracts(getSmartContracts())} />;
+        return <SmartContractWizardSection setActiveSection={setActiveSection} onContractCreated={() => setSmartContracts(getSmartContracts())} preFilledData={preFilledSmartContractData} />;
 
       case "activos":
         const filteredSmartContracts = selectedActivoCategory === "Todas"
