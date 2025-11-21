@@ -170,7 +170,7 @@ export default function BusinessModel() {
               </h2>
             </div>
 
-            <div className="flex flex-col gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {processSteps.map((step, index) => (
                 <div
                   key={index}
@@ -178,18 +178,18 @@ export default function BusinessModel() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative p-8">
-                    <div className="flex gap-6">
+                  <div className="relative p-6">
+                    <div className="flex flex-col items-center text-center gap-4">
                       <div className="flex-shrink-0">
                         <div className="flex items-center justify-center h-14 w-14 rounded-full bg-primary text-white font-bold text-lg">
                           {step.number}
                         </div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-foreground mb-3">
+                        <h3 className="text-lg font-bold text-foreground mb-3">
                           {step.title}
                         </h3>
-                        <p className="text-foreground/70 leading-relaxed">
+                        <p className="text-sm text-foreground/70 leading-relaxed">
                           {step.description}
                         </p>
                       </div>
