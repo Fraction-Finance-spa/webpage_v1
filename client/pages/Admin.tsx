@@ -606,7 +606,6 @@ export default function Admin() {
 
       case "activos":
       case "sto":
-      case "educacion":
       case "usuarios":
       case "mensajes":
         return (
