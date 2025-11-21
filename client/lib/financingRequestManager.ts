@@ -189,12 +189,48 @@ export function updateEvaluacionComercial(
   });
 }
 
-export function getSTODataFromFinancingRequest(request: FinancingRequest): { success: boolean; message: string; data?: any; financingTier?: string } {
+export function calculateRatesByScoring(scoring: number): { commissionRate: number; benefitRate: number; monthlyInterestRate: number; riskCategory: string } {
+  let commissionRate: number;
+  let benefitRate: number;
+  let monthlyInterestRate: number;
+  let riskCategory: string;
+
+  if (scoring >= 80) {
+    // Low risk - best rates
+    commissionRate = 2.5;
+    benefitRate = 2.5;
+    monthlyInterestRate = 1.0;
+    riskCategory = "Bajo";
+  } else if (scoring >= 70) {
+    // Medium-Low risk
+    commissionRate = 3.5;
+    benefitRate = 3.5;
+    monthlyInterestRate = 1.5;
+    riskCategory = "Medio-Bajo";
+  } else if (scoring >= 60) {
+    // Medium risk
+    commissionRate = 4.5;
+    benefitRate = 4.5;
+    monthlyInterestRate = 2.0;
+    riskCategory = "Medio";
+  } else {
+    // High risk (non-approvable)
+    commissionRate = 6.0;
+    benefitRate = 5.5;
+    monthlyInterestRate = 3.0;
+    riskCategory = "Alto";
+  }
+
+  return { commissionRate, benefitRate, monthlyInterestRate, riskCategory };
+}
+
+export function getSTODataFromFinancingRequest(request: FinancingRequest): { success: boolean; message: string; data?: any; financingTier?: string; rates?: { commissionRate: number; benefitRate: number; monthlyInterestRate: number; riskCategory: string } } {
   if (!request.evaluacionComercial || request.evaluacionComercial.scoring === undefined) {
     return { success: false, message: "La solicitud no tiene evaluación comercial completada" };
   }
 
   const { scoring, financingTier } = calculateScoring(request.evaluacionComercial);
+  const rates = calculateRatesByScoring(scoring);
 
   if (scoring < 60) {
     return { success: false, message: "La evaluación no cumple el puntaje mínimo para tokenizar (60%)" };
@@ -220,8 +256,8 @@ export function getSTODataFromFinancingRequest(request: FinancingRequest): { suc
     montoMinimoInversion: "1000",
     montoMaximoInversion: approvedAmount.toString(),
     descripcion: `Financiamiento para ${request.companyName}. ${request.financingPurpose}`,
-    porcentajeRendimiento: "8",
+    porcentajeRendimiento: `${rates.benefitRate.toFixed(2)}`,
   };
 
-  return { success: true, message: "Datos de STO generados", data: stoData, financingTier };
+  return { success: true, message: "Datos de STO generados", data: stoData, financingTier, rates };
 }
