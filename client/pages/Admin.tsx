@@ -10,6 +10,7 @@ import { getEducacionCards, addEducacionCard, updateEducacionCard, deleteEducaci
 import { getSmartContracts, deleteSmartContract, type SmartContract } from "@/lib/smartContractManager";
 import { getSTOs, addSTO, updateSTO, deleteSTO, checkSTOAvailableForAsset, type STO } from "@/lib/stoManager";
 import SmartContractWizardSection from "@/components/SmartContractWizardSection";
+import STOWizardSection from "@/components/STOWizardSection";
 import {
   LayoutDashboard,
   Coins,
