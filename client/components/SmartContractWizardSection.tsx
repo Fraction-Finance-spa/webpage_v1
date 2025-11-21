@@ -267,7 +267,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
               >
                 {step < state.step ? <CheckCircle className="w-4 h-4" /> : step}
               </div>
-              <p className="text-xs mt-1 text-center text-foreground/60">P {step}</p>
+              <p className="text-xs mt-1 text-center text-foreground/60" />
             </div>
           ))}
         </div>
@@ -285,7 +285,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
         {/* Step 1: Asset Class Selection */}
         {state.step === 1 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground">Paso 1 de 8: Seleccionar Clase de Activo</h3>
+            <h3 className="text-lg font-bold text-foreground"><p>Paso 1 de 9: Seleccionar Clase de Activo</p></h3>
             <p className="text-sm text-foreground/70">
               Esto determina la plantilla del contrato inteligente y características como la lista blanca y los permisos.
             </p>
@@ -319,7 +319,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
         {/* Step 2: Blockchain Network Selection */}
         {state.step === 2 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground">Paso 2 de 8: Seleccionar Red Blockchain</h3>
+            <h3 className="text-lg font-bold text-foreground">Paso 2 de 9: Seleccionar Red Blockchain</h3>
             <p className="text-sm text-foreground/70">
               Elige la red donde se emitirá tu activo. Esto no se puede cambiar más tarde.
             </p>
@@ -354,7 +354,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
         {/* Step 3: Admin Wallet Connection */}
         {state.step === 3 && (
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-foreground">Paso 3 de 8: Conectar Billetera de Administrador</h3>
+            <h3 className="text-lg font-bold text-foreground">Paso 3 de 9: Conectar Billetera de Administrador</h3>
             <p className="text-sm text-foreground/70">
               Conecta la billetera que poseerá y gestionará el contrato inteligente.
             </p>
