@@ -786,7 +786,7 @@ export default function FinancingForm() {
               disabled={loading || !isLoggedIn}
               className="w-full px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-bold text-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Procesando..." : "Enviar Solicitud"}
+              {loading ? "Simulando..." : "Simular Financiamiento"}
               {!loading && <ArrowRight className="w-5 h-5" />}
             </button>
           </form>
