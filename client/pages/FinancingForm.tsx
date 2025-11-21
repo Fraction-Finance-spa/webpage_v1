@@ -187,7 +187,21 @@ export default function FinancingForm() {
 
     // Financed amount uses the CLP amount from simulation inputs, or defaults to the requested amount
     const clpAmountValue = currentInputs.clpAmount > 0 ? currentInputs.clpAmount : requestedAmount;
-    const financedAmount = clpAmountValue;
+
+    // Calculate commission: (amount × monthly interest rate × number of months) / 100
+    // Number of months = plazo / 30
+    const numberOfMonths = currentInputs.plazo / 30;
+    const commissionAmount = Math.round(
+      (clpAmountValue * currentInputs.monthlyInterestRate * numberOfMonths) / 100
+    );
+
+    // Calculate benefit rate amount: amount × benefit rate / 100
+    const benefitRateAmount = Math.round(
+      (clpAmountValue * currentInputs.benefitRate) / 100
+    );
+
+    // Total financing amount: base amount + commission + benefit rate
+    const totalFinancingAmount = clpAmountValue + commissionAmount + benefitRateAmount;
 
     return {
       requestedAmount,
@@ -202,7 +216,11 @@ export default function FinancingForm() {
       clpAmount: clpAmountValue,
       financingCostPercentage,
       benefitCostPercentage,
-      financedAmount,
+      benefitRate: currentInputs.benefitRate,
+      financedAmount: clpAmountValue,
+      commissionAmount,
+      benefitRateAmount,
+      totalFinancingAmount,
     };
   };
 
