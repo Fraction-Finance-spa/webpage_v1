@@ -244,24 +244,85 @@ export default function STODetailModal({ sto, contract, onClose }: STODetailModa
             </div>
           )}
 
+          {/* Investment Form */}
+          {isActive && !investmentSuccess && (
+            <div className="border-t border-border/40 pt-6">
+              <h3 className="text-lg font-bold text-foreground mb-4">Realizar una Inversión</h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Monto a Invertir (USDC)
+                  </label>
+                  <input
+                    type="number"
+                    value={investmentAmount}
+                    onChange={(e) => setInvestmentAmount(e.target.value)}
+                    placeholder={`Entre $${sto.montoMinimoInversion} y $${sto.montoMaximoInversion}`}
+                    min={sto.montoMinimoInversion}
+                    max={sto.montoMaximoInversion}
+                    step="100"
+                    disabled={isInvesting}
+                    className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:bg-blue-50 disabled:text-foreground/60"
+                  />
+                  <p className="text-xs text-foreground/60 mt-2">
+                    Rango permitido: ${sto.montoMinimoInversion} - ${sto.montoMaximoInversion} USDC
+                  </p>
+                </div>
+
+                {investmentAmount && (
+                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-foreground/60">Monto a invertir:</span>
+                        <span className="font-semibold text-foreground">${parseFloat(investmentAmount || "0").toLocaleString()}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-foreground/60">Tasa esperada:</span>
+                        <span className="font-semibold text-green-600">{sto.porcentajeRendimiento || "N/A"}% APY</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-foreground/60">Plazo:</span>
+                        <span className="font-semibold text-foreground">{daysRemaining} días aproximadamente</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Success Message */}
+          {investmentSuccess && (
+            <div className="border-t border-border/40 pt-6">
+              <div className="p-6 bg-green-50 border border-green-200 rounded-lg text-center">
+                <p className="text-lg font-bold text-green-700 mb-2">¡Inversión Realizada!</p>
+                <p className="text-sm text-green-600">Tu inversión ha sido registrada exitosamente. Redirigiendo...</p>
+              </div>
+            </div>
+          )}
+
           {/* Action Buttons */}
           <div className="border-t border-border/40 pt-6 flex gap-3">
             <button
               onClick={onClose}
-              className="flex-1 px-6 py-3 border border-border/40 text-foreground rounded-lg hover:bg-secondary/20 transition-colors font-semibold"
+              disabled={isInvesting}
+              className="flex-1 px-6 py-3 border border-border/40 text-foreground rounded-lg hover:bg-secondary/20 transition-colors font-semibold disabled:bg-gray-100 disabled:text-foreground/40"
             >
               Cerrar
             </button>
-            <button
-              disabled={!isActive}
-              className={`flex-1 px-6 py-3 rounded-lg font-semibold transition-all ${
-                isActive
-                  ? "bg-primary text-white hover:bg-primary/90"
-                  : "bg-gray-200 text-foreground/40 cursor-not-allowed"
-              }`}
-            >
-              {isActive ? "Invertir Ahora" : "Próximamente"}
-            </button>
+            {isActive && !investmentSuccess && (
+              <button
+                onClick={handleInvest}
+                disabled={!investmentAmount || isInvesting}
+                className={`flex-1 px-6 py-3 rounded-lg font-semibold transition-all ${
+                  !investmentAmount || isInvesting
+                    ? "bg-gray-200 text-foreground/40 cursor-not-allowed"
+                    : "bg-primary text-white hover:bg-primary/90"
+                }`}
+              >
+                {isInvesting ? "Procesando..." : "Invertir Ahora"}
+              </button>
+            )}
           </div>
         </div>
       </div>
