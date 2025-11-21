@@ -114,6 +114,21 @@ export default function Admin() {
     }));
   };
 
+  const handleTeamPhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setTeamForm((prev) => ({
+          ...prev,
+          foto: event.target?.result as string,
+        }));
+      };
+      reader.readAsDataURL(file);
+      setTeamPhoto(file);
+    }
+  };
+
   const handleTeamFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (editingTeamMember) {
@@ -122,8 +137,10 @@ export default function Admin() {
       addTeamMember(teamForm);
     }
     setTeamMembers(getTeamMembers());
-    setTeamForm({ nombre: "", rol: "", departamento: "", bio: "" });
+    setTeamForm({ nombre: "", rol: "", departamento: "", bio: "", foto: "" });
+    setTeamPhoto(null);
     setEditingTeamMember(null);
+    setShowTeamForm(false);
   };
 
   const handleEditTeamMember = (member: TeamMember) => {
