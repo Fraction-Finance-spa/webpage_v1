@@ -600,7 +600,7 @@ export default function FinancingForm() {
               {/* Recommendation Section */}
               <div className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
                 <h3 className="text-lg font-bold text-foreground mb-2">
-                  Recomendaci��n
+                  Recomendación
                 </h3>
                 <p className="text-foreground/70">
                   {simulationResults.recommendation}
@@ -1036,7 +1036,7 @@ export default function FinancingForm() {
 
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
-                    Tel��fono *
+                    <p>Teléfono *</p>
                   </label>
                   <input
                     type="tel"
@@ -1064,10 +1064,10 @@ export default function FinancingForm() {
                   onChange={handleChange}
                   className="mt-1 w-5 h-5 rounded border-border/40 focus:ring-2 focus:ring-primary/30"
                 />
-                <span className="text-sm text-foreground/70">
+                <span style={{ display: "flex", flexDirection: "row", overflow: "auto" }} className="text-sm text-foreground/70">
                   Acepto los{" "}
                   <a href="/terminos-servicio" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
-                    T��rminos de Servicio
+                    <p>Términos de Servicio</p>
                   </a>{" "}
                   y la{" "}
                   <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
