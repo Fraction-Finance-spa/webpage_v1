@@ -513,41 +513,39 @@ export default function MercadoSecundario() {
                       const colors = categoryColors[details.category] || categoryColors["Sin Categoría"];
 
                       return (
-                        <div key={listing.id} className="bg-white rounded-lg border border-primary/20 p-6 hover:shadow-lg transition-all">
-                          <div className="mb-4">
-                            <h4 className="text-lg font-bold text-foreground mb-1">{listing.assetName}</h4>
-                            <p className="text-sm text-foreground/60">{listing.assetType}</p>
-                          </div>
+                        <div key={listing.id} className="bg-white rounded-lg border border-primary/20 p-4 hover:shadow-lg transition-all">
+                          <h4 className="text-base font-bold text-foreground mb-0.5">{listing.assetName}</h4>
+                          <p className="text-xs text-foreground/60 mb-2">{listing.assetType}</p>
 
                           {/* Category Badge */}
-                          <div className="mb-4">
-                            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}>
+                          <div className="mb-3">
+                            <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}>
                               <Tag className="w-3 h-3" />
                               {details.category}
                             </span>
                           </div>
 
                           {/* Token Information */}
-                          <div className="bg-gradient-to-r from-primary/5 to-blue-50 rounded-lg p-3 mb-4 border border-primary/20">
-                            <div className="flex justify-between items-center mb-2">
-                              <span className="text-sm font-semibold text-foreground">Tokens Listados</span>
-                              <span className="text-lg font-bold text-primary">{details.listedTokens}</span>
+                          <div className="bg-gradient-to-r from-primary/5 to-blue-50 rounded-lg p-3 mb-3 border border-primary/20">
+                            <div className="flex justify-between items-center mb-1.5">
+                              <span className="text-xs font-semibold text-foreground">Tokens</span>
+                              <span className="text-base font-bold text-primary">{details.listedTokens}</span>
                             </div>
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-foreground/60">% del Total</span>
-                              <span className="text-sm font-semibold text-primary">{details.tokenPercentage}%</span>
+                              <span className="text-xs text-foreground/60">% Total</span>
+                              <span className="text-xs font-semibold text-primary">{details.tokenPercentage}%</span>
                             </div>
                           </div>
 
                           {/* Price Information */}
-                          <div className="bg-blue-50 rounded-lg p-3 mb-4 space-y-2">
-                            <div className="flex justify-between">
-                              <span className="text-sm text-foreground/60">Precio Listado:</span>
-                              <span className="text-lg font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
+                          <div className="bg-blue-50 rounded-lg p-3 mb-3 space-y-1.5">
+                            <div className="flex justify-between text-xs">
+                              <span className="text-foreground/60">Precio:</span>
+                              <span className="font-bold text-primary">${listing.sellingPrice.toLocaleString()}</span>
                             </div>
-                            <div className="flex justify-between">
-                              <span className="text-sm text-foreground/60">Descuento:</span>
-                              <span className="text-sm font-semibold text-green-600">
+                            <div className="flex justify-between text-xs">
+                              <span className="text-foreground/60">Desc.:</span>
+                              <span className="font-semibold text-green-600">
                                 {calculateDiscount(listing.originalPrice, listing.sellingPrice)}%
                               </span>
                             </div>
@@ -555,10 +553,10 @@ export default function MercadoSecundario() {
 
                           <button
                             onClick={() => handleCancelListing(listing.id)}
-                            className="w-full px-4 py-2 border border-red-500 text-red-600 rounded-lg hover:bg-red-50 transition-colors font-semibold text-sm flex items-center justify-center gap-2"
+                            className="w-full px-3 py-2 border border-red-500 text-red-600 rounded-lg hover:bg-red-50 transition-colors font-semibold text-sm flex items-center justify-center gap-2"
                           >
-                            <X className="w-4 h-4" />
-                            Cancelar Venta
+                            <X className="w-3.5 h-3.5" />
+                            Cancelar
                           </button>
                         </div>
                       );
