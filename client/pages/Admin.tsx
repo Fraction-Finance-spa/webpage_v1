@@ -215,6 +215,13 @@ export default function Admin() {
     }
   };
 
+  const handleUpdateTokenosSold = (stoId: string, tokensValue: string) => {
+    updateTokenosSoldCount(stoId, tokensValue);
+    setSTOs(getSTOs());
+    setEditingTokensSoldId(null);
+    setEditingTokensSoldValue("");
+  };
+
   const handleEditPolicy = (policyKey: string) => {
     setEditingPolicy(policyKey);
     setPolicyContent(policies[policyKey as keyof typeof policies]);
