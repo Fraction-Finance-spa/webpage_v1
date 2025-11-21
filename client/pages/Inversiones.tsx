@@ -38,7 +38,7 @@ export default function Inversiones() {
           <div className="text-center mb-12">
             <h1 className="text-5xl text-foreground mb-4">Oportunidades de Inversión</h1>
             <p className="text-xl text-foreground/70">
-              Accede a ofertas de tokens (STOs) con alta rentabilidad potencial
+              Accede a ofertas de tokens (STOs) con rentabilidad
             </p>
           </div>
 
