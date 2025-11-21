@@ -206,7 +206,7 @@ export default function MercadoSecundario() {
         <div className="max-w-7xl mx-auto" style={{ paddingTop: "40px" }}>
           {/* Header */}
           <div className="mb-12">
-            <h1 className="text-5xl font-bold text-foreground mb-4">Mercado Secundario de Activos</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-4">Mercado Secundario de Activos</h1>
             <p className="text-xl text-foreground/70">
               Compra y vende activos digitales en el mercado secundario
             </p>
@@ -396,7 +396,7 @@ export default function MercadoSecundario() {
                           </div>
 
                           <p className="text-xs text-foreground/50 mb-3 line-clamp-1">
-                            {listing.sellerName} • {new Date(listing.listedDate).toLocaleDateString("es-ES")}
+                            {listing.sellerName} �� {new Date(listing.listedDate).toLocaleDateString("es-ES")}
                           </p>
 
                           <button
