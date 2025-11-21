@@ -326,9 +326,12 @@ export default function Admin() {
   });
   const [educacionImage, setEducacionImage] = useState<File | null>(null);
 
+  const [smartContracts, setSmartContracts] = useState<SmartContract[]>([]);
+
   useEffect(() => {
     setArticles(getArticles());
     setEducacionCards(getEducacionCards());
+    setSmartContracts(getSmartContracts());
   }, []);
 
   const handleArticleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
