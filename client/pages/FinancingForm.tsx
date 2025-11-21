@@ -558,20 +558,10 @@ export default function FinancingForm() {
                     <div className="p-5 bg-white rounded-lg border border-border/40 shadow-sm hover:shadow-md transition-shadow">
                       <p className="text-xs font-semibold text-foreground/60 uppercase mb-3">Tasa APY</p>
                       <div className="flex items-baseline gap-1">
-                        <p className="text-3xl font-bold text-primary">
+                        <p className="text-3xl font-bold text-foreground">
                           {simulationResults.interestRate}
                         </p>
                         <p className="text-sm text-foreground/60">%</p>
-                      </div>
-                    </div>
-
-                    <div className="p-5 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200 shadow-sm">
-                      <p className="text-xs font-semibold text-foreground/60 uppercase mb-3">Monto Sugerido</p>
-                      <div>
-                        <p className="text-xs text-foreground/60 mb-2">(80% del total)</p>
-                        <p className="text-2xl font-bold text-purple-700">
-                          ${simulationResults.suggestedAmount.toLocaleString()}
-                        </p>
                       </div>
                     </div>
                   </div>
