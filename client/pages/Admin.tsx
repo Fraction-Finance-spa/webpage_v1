@@ -8,7 +8,7 @@ import { type Candidatura } from "@/components/CandidaturaForm";
 import { getArticles, addArticle, updateArticle, deleteArticle, type BlogArticle } from "@/lib/blogManager";
 import { getEducacionCards, addEducacionCard, updateEducacionCard, deleteEducacionCard, type EducacionCard } from "@/lib/educacionManager";
 import { getSmartContracts, deleteSmartContract, type SmartContract } from "@/lib/smartContractManager";
-import { getSTOs, addSTO, updateSTO, deleteSTO, checkSTOAvailableForAsset, type STO } from "@/lib/stoManager";
+import { getSTOs, addSTO, updateSTO, deleteSTO, checkSTOAvailableForAsset, updateTokenosSoldCount, type STO } from "@/lib/stoManager";
 import { getMarketStats, getTotalPendingAssetsValue, getPendingListingsCount } from "@/lib/mercadoSecundarioManager";
 import SmartContractWizardSection from "@/components/SmartContractWizardSection";
 import STOWizardSection from "@/components/STOWizardSection";
