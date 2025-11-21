@@ -32,6 +32,7 @@ import {
   MessageSquare,
   Eye,
   Zap,
+  FileText,
 } from "lucide-react";
 
 type AdminSection =
