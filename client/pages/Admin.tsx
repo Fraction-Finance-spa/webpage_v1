@@ -601,6 +601,12 @@ export default function Admin() {
   const renderContent = () => {
     switch (activeSection) {
       case "dashboard":
+        const totalUsers = candidaturas.length;
+        const activeStos = stos.filter((s) => s.estado === "Activo" || s.estado === "Pendiente").length;
+        const totalAssets = smartContracts.length;
+        const pendingMessages = mensajesContacto.length;
+        const completedStos = stos.filter((s) => s.estado === "Cerrado").length;
+
         return (
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-foreground">Panel de Control</h2>
@@ -608,8 +614,8 @@ export default function Admin() {
               <div className="bg-white rounded-lg border border-border/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-foreground/60 mb-2">Total Usuarios</p>
-                    <p className="text-3xl font-bold text-foreground">1,234</p>
+                    <p className="text-sm text-foreground/60 mb-2">Total Candidaturas</p>
+                    <p className="text-3xl font-bold text-foreground">{totalUsers}</p>
                   </div>
                   <Users className="w-8 h-8 text-primary opacity-50" />
                 </div>
@@ -618,7 +624,7 @@ export default function Admin() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-foreground/60 mb-2">STOs Activos</p>
-                    <p className="text-3xl font-bold text-foreground">12</p>
+                    <p className="text-3xl font-bold text-foreground">{activeStos}</p>
                   </div>
                   <FileText className="w-8 h-8 text-primary opacity-50" />
                 </div>
@@ -627,7 +633,7 @@ export default function Admin() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-foreground/60 mb-2">Activos Digitales</p>
-                    <p className="text-3xl font-bold text-foreground">45</p>
+                    <p className="text-3xl font-bold text-foreground">{totalAssets}</p>
                   </div>
                   <Coins className="w-8 h-8 text-primary opacity-50" />
                 </div>
@@ -636,7 +642,7 @@ export default function Admin() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-foreground/60 mb-2">Mensajes Pendientes</p>
-                    <p className="text-3xl font-bold text-foreground">23</p>
+                    <p className="text-3xl font-bold text-foreground">{pendingMessages}</p>
                   </div>
                   <Mail className="w-8 h-8 text-primary opacity-50" />
                 </div>
@@ -645,20 +651,32 @@ export default function Admin() {
             <div className="bg-white rounded-lg border border-border/40 p-6">
               <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-primary" />
-                Estadísticas Recientes
+                Estadísticas
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-foreground/70">Usuarios registrados esta semana</p>
-                  <p className="font-bold text-foreground">+45</p>
+                  <p className="text-foreground/70">Candidaturas</p>
+                  <p className="font-bold text-foreground">{totalUsers}</p>
                 </div>
                 <div className="flex items-center justify-between">
-                  <p className="text-foreground/70">STOs completados</p>
-                  <p className="font-bold text-foreground">3</p>
+                  <p className="text-foreground/70">STOs Completados</p>
+                  <p className="font-bold text-foreground">{completedStos}</p>
                 </div>
                 <div className="flex items-center justify-between">
-                  <p className="text-foreground/70">Mensajes recibidos</p>
-                  <p className="font-bold text-foreground">127</p>
+                  <p className="text-foreground/70">Mensajes Totales</p>
+                  <p className="font-bold text-foreground">{pendingMessages}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">Equipo</p>
+                  <p className="font-bold text-foreground">{teamMembers.length}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">Posiciones de Empleo</p>
+                  <p className="font-bold text-foreground">{jobs.length}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">Cursos de Educación</p>
+                  <p className="font-bold text-foreground">{educacionCards.length}</p>
                 </div>
               </div>
             </div>
