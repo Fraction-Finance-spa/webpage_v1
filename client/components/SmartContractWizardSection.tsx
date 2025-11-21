@@ -748,7 +748,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
 
         <button
           onClick={() => setActiveSection("activos")}
-          className="px-4 py-2 border border-border/40 text-foreground rounded-lg hover:bg-secondary/20 transition-colors font-semibold text-sm"
+          className="px-4 py-2 border border-border/40 text-foreground rounded-lg hover:bg-secondary/20 transition-colors font-semibold text-sm ml-auto"
         >
           Cancelar
         </button>
