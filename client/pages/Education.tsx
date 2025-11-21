@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
+import { Link } from "react-router-dom";
 import { Users, Clock, ArrowRight } from "lucide-react";
 import { getPublishedCards, type EducacionCard } from "@/lib/educacionManager";
 
