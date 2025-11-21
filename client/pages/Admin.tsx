@@ -481,7 +481,7 @@ export default function Admin() {
   };
 
   const handleDeleteArticle = (id: string) => {
-    if (confirm("¿Está seguro que desea eliminar este artículo?")) {
+    if (confirm("¿Est�� seguro que desea eliminar este artículo?")) {
       deleteArticle(id);
       setArticles(getArticles());
     }
@@ -610,7 +610,7 @@ export default function Admin() {
     ],
     mensajes: [
       { id: 1, nombre: "Carlos", email: "carlos@example.com", asunto: "Consulta sobre STOs", leido: false },
-      { id: 2, nombre: "Ana", email: "ana@example.com", asunto: "Solicitud de Información", leido: true },
+      { id: 2, nombre: "Ana", email: "ana@example.com", asunto: "Solicitud de Informaci��n", leido: true },
     ],
     equipo: [
       { id: 1, nombre: "Carlos González", rol: "CEO", departamento: "Directiva" },
@@ -745,7 +745,12 @@ export default function Admin() {
         );
 
       case "smart-contract-wizard":
-        return <SmartContractWizardSection setActiveSection={setActiveSection} onContractCreated={() => setSmartContracts(getSmartContracts())} preFilledData={preFilledSmartContractData} />;
+        return <SmartContractWizardSection
+          setActiveSection={setActiveSection}
+          onContractCreated={() => setSmartContracts(getSmartContracts())}
+          preFilledData={preFilledSmartContractData}
+          onClearPreFilledData={() => setPreFilledSmartContractData(null)}
+        />;
 
       case "activos":
         const filteredSmartContracts = selectedActivoCategory === "Todas"
