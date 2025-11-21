@@ -78,12 +78,15 @@ export default function Admin() {
   const [searchTerm, setSearchTerm] = useState("");
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [editingTeamMember, setEditingTeamMember] = useState<TeamMember | null>(null);
+  const [showTeamForm, setShowTeamForm] = useState(false);
   const [teamForm, setTeamForm] = useState({
     nombre: "",
     rol: "",
     departamento: "",
     bio: "",
+    foto: "",
   });
+  const [teamPhoto, setTeamPhoto] = useState<File | null>(null);
 
   const [denuncias, setDenuncias] = useState<Denuncia[]>([]);
   const [reclamos, setReclamos] = useState<Reclamo[]>([]);
