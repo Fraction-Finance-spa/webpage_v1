@@ -568,11 +568,11 @@ export default function FinancingForm() {
                 </div>
 
                 {/* Key Metrics */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
                   <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
                     <div className="flex items-center gap-3 mb-2">
                       <TrendingUp className="w-5 h-5 text-blue-600" />
-                      <p className="text-sm text-foreground/60">Probabilidad de Aprobación</p>
+                      <p className="text-base text-foreground/60">Probabilidad de Aprobación</p>
                     </div>
                     <p className="text-3xl font-bold text-blue-700">
                       {simulationResults.estimatedApprovalChance}%
@@ -582,20 +582,10 @@ export default function FinancingForm() {
                   <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
                     <div className="flex items-center gap-3 mb-2">
                       <Zap className="w-5 h-5 text-green-600" />
-                      <p className="text-sm text-foreground/60">Monto Sugerido (80%)</p>
+                      <p className="text-base text-foreground/60">Monto Sugerido (80%)</p>
                     </div>
                     <p className="text-3xl font-bold text-green-700">
                       ${simulationResults.suggestedAmount.toLocaleString()}
-                    </p>
-                  </div>
-
-                  <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Target className="w-5 h-5 text-purple-600" />
-                      <p className="text-sm text-foreground/60">Tasa APY</p>
-                    </div>
-                    <p className="text-3xl font-bold text-purple-700">
-                      {simulationResults.interestRate}%
                     </p>
                   </div>
                 </div>
