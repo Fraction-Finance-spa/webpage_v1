@@ -143,28 +143,72 @@ export default function Layout({ children }: LayoutProps) {
                     </button>
                     <div className="absolute left-0 mt-0 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                       {item.submenu.map((subitem, idx) => (
-                        <Link
-                          key={subitem.label}
-                          to={subitem.path || "#"}
-                          onClick={subitem.label === "Financiamiento" ? handleFinanciamientoClick : undefined}
-                          className={cn(
-                            "block px-4 py-3 hover:bg-secondary transition-colors",
-                            idx === 0 && "rounded-t-lg",
-                            idx === item.submenu.length - 1 && "rounded-b-lg"
-                          )}
-                        >
-                          <div className="flex items-center gap-2 mb-1">
-                            <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2 flex-1">
-                              {subitem.icon}
-                              {subitem.label}
+                        subitem.submenu ? (
+                          <div key={subitem.label} className="relative group/nested">
+                            <button className={cn(
+                              "w-full text-left px-4 py-3 hover:bg-secondary transition-colors flex items-center justify-between",
+                              idx === 0 && "rounded-t-lg",
+                              idx === item.submenu!.length - 1 && "rounded-b-lg"
+                            )}>
+                              <div className="flex items-center gap-2 flex-1">
+                                <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2">
+                                  {subitem.icon}
+                                  {subitem.label}
+                                </div>
+                              </div>
+                              <ChevronDown className="w-3 h-3 text-foreground/60" />
+                            </button>
+                            <div className="absolute left-full top-0 ml-0 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-200">
+                              {subitem.submenu.map((nestedItem, nestedIdx) => (
+                                <Link
+                                  key={nestedItem.label}
+                                  to={nestedItem.path || "#"}
+                                  onClick={nestedItem.label === "Financiamiento" ? handleFinanciamientoClick : undefined}
+                                  className={cn(
+                                    "block px-4 py-3 hover:bg-secondary transition-colors",
+                                    nestedIdx === 0 && "rounded-t-lg",
+                                    nestedIdx === subitem.submenu!.length - 1 && "rounded-b-lg"
+                                  )}
+                                >
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2 flex-1">
+                                      {nestedItem.icon}
+                                      {nestedItem.label}
+                                    </div>
+                                  </div>
+                                  {nestedItem.description && (
+                                    <div className="text-foreground/60 text-sm">
+                                      {nestedItem.description}
+                                    </div>
+                                  )}
+                                </Link>
+                              ))}
                             </div>
                           </div>
-                          {subitem.description && (
-                            <div className="text-foreground/60 text-sm">
-                              {subitem.description}
+                        ) : (
+                          <Link
+                            key={subitem.label}
+                            to={subitem.path || "#"}
+                            onClick={subitem.label === "Financiamiento" ? handleFinanciamientoClick : undefined}
+                            className={cn(
+                              "block px-4 py-3 hover:bg-secondary transition-colors",
+                              idx === 0 && "rounded-t-lg",
+                              idx === item.submenu.length - 1 && "rounded-b-lg"
+                            )}
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <div className="text-foreground/70 hover:text-primary font-medium text-sm flex items-center gap-2 flex-1">
+                                {subitem.icon}
+                                {subitem.label}
+                              </div>
                             </div>
-                          )}
-                        </Link>
+                            {subitem.description && (
+                              <div className="text-foreground/60 text-sm">
+                                {subitem.description}
+                              </div>
+                            )}
+                          </Link>
+                        )
                       ))}
                     </div>
                   </>
