@@ -100,22 +100,22 @@ const BLOCKCHAIN_NETWORKS = [
   },
 ];
 
-export default function SmartContractWizardSection({ setActiveSection, onContractCreated }: SmartContractWizardSectionProps) {
+export default function SmartContractWizardSection({ setActiveSection, onContractCreated, preFilledData }: SmartContractWizardSectionProps) {
   const [state, setState] = useState<WizardState>({
     step: 1,
     assetClass: null,
     blockchain: null,
     adminWallet: "",
-    tokenName: "",
-    tokenSymbol: "",
-    maxSupply: "",
+    tokenName: preFilledData?.tokenName || "",
+    tokenSymbol: preFilledData?.tokenSymbol || "",
+    maxSupply: preFilledData?.maxSupply || "",
     adminAddress: "",
     contractCode: "",
     deploymentAddress: "",
     isDeploying: false,
-    contractDescription: "",
+    contractDescription: preFilledData?.contractDescription || "",
     contractPurpose: "",
-    contractCategory: "",
+    contractCategory: preFilledData?.contractCategory || "",
   });
 
   const [documentos, setDocumentos] = useState<Array<{ nombre: string; archivo: string; tipo: string }>>([]);
