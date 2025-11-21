@@ -595,37 +595,63 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
               Verifica todos los datos antes de desplegar el contrato.
             </p>
             <div className="space-y-3">
-              <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
+              <div className="p-4 bg-gray-50 rounded-lg border border-border/40 space-y-4">
+                <div>
+                  <p className="text-foreground/60 text-xs mb-1">Descripción</p>
+                  <p className="font-semibold text-foreground text-sm">{state.contractDescription}</p>
+                </div>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="text-foreground/60 text-xs">Nombre del Token</p>
-                    <p className="font-semibold text-foreground">{state.tokenName}</p>
+                    <p className="text-foreground/60 text-xs">Propósito</p>
+                    <p className="font-semibold text-foreground">{state.contractPurpose}</p>
                   </div>
                   <div>
-                    <p className="text-foreground/60 text-xs">Símbolo</p>
-                    <p className="font-semibold text-foreground">{state.tokenSymbol}</p>
-                  </div>
-                  <div>
-                    <p className="text-foreground/60 text-xs">Clase de Activo</p>
-                    <p className="font-semibold text-foreground">
-                      {state.assetClass === "equity" ? "Equity / Fund" : "Simple RWA"}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-foreground/60 text-xs">Red Blockchain</p>
-                    <p className="font-semibold text-foreground">
-                      {BLOCKCHAIN_NETWORKS.find((n) => n.id === state.blockchain)?.name}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-foreground/60 text-xs">Suministro Máximo</p>
-                    <p className="font-semibold text-foreground">{state.maxSupply}</p>
-                  </div>
-                  <div>
-                    <p className="text-foreground/60 text-xs">Administrador</p>
-                    <p className="font-semibold text-foreground text-xs">{state.adminAddress.substring(0, 20)}...</p>
+                    <p className="text-foreground/60 text-xs">Categoría</p>
+                    <p className="font-semibold text-foreground capitalize">{state.contractCategory}</p>
                   </div>
                 </div>
+                <div className="border-t border-border/40 pt-4">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="text-foreground/60 text-xs">Nombre del Token</p>
+                      <p className="font-semibold text-foreground">{state.tokenName}</p>
+                    </div>
+                    <div>
+                      <p className="text-foreground/60 text-xs">Símbolo</p>
+                      <p className="font-semibold text-foreground">{state.tokenSymbol}</p>
+                    </div>
+                    <div>
+                      <p className="text-foreground/60 text-xs">Clase de Activo</p>
+                      <p className="font-semibold text-foreground">
+                        {state.assetClass === "equity" ? "Equity / Fund" : "Simple RWA"}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-foreground/60 text-xs">Red Blockchain</p>
+                      <p className="font-semibold text-foreground">
+                        {BLOCKCHAIN_NETWORKS.find((n) => n.id === state.blockchain)?.name}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-foreground/60 text-xs">Suministro Máximo</p>
+                      <p className="font-semibold text-foreground">{state.maxSupply}</p>
+                    </div>
+                    <div>
+                      <p className="text-foreground/60 text-xs">Administrador</p>
+                      <p className="font-semibold text-foreground text-xs">{state.adminAddress.substring(0, 20)}...</p>
+                    </div>
+                  </div>
+                </div>
+                {documentos.length > 0 && (
+                  <div className="border-t border-border/40 pt-4">
+                    <p className="text-foreground/60 text-xs mb-2">Documentos Cargados</p>
+                    <div className="space-y-1">
+                      {documentos.map((doc, idx) => (
+                        <p key={idx} className="text-xs text-foreground">• {doc.nombre}</p>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg flex gap-2">
                 <AlertCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
