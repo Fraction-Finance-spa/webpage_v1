@@ -709,6 +709,14 @@ export default function Admin() {
                   <p className="text-foreground/70">Cursos de Educación</p>
                   <p className="font-bold text-foreground">{educacionCards.length}</p>
                 </div>
+                <div className="border-t border-border/20 pt-4 mt-4 flex items-center justify-between">
+                  <p className="text-foreground/70">Total Transado</p>
+                  <p className="font-bold text-foreground">${totalTraded.toLocaleString()}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-foreground/70">Valor Total de Activos</p>
+                  <p className="font-bold text-foreground">${totalAssetValueGenerated.toLocaleString()}</p>
+                </div>
               </div>
             </div>
           </div>
