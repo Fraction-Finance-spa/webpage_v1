@@ -43,7 +43,7 @@ export default function Inversiones() {
         <div className="max-w-6xl mx-auto" style={{ paddingTop: "40px" }}>
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl text-foreground mb-4 text-left">Alternativas de Financiamiento</h1>
+            <h1 className="text-4xl text-foreground mb-4 text-left">Alternativas de Financiamiento</h1>
             <p className="text-xl text-foreground/70 text-left">
               Accede a ofertas de tokens (STOs) con rentabilidad
             </p>
