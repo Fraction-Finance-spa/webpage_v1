@@ -10,6 +10,7 @@ import {
   DollarSign,
   CheckCircle,
   AlertCircle,
+  Tag,
 } from "lucide-react";
 import { getUserInvestments } from "@/lib/investmentManager";
 import {
@@ -25,6 +26,8 @@ import {
   getMarketStats,
   SecondaryMarketListing,
 } from "@/lib/mercadoSecundarioManager";
+import { getSTOs, type STO } from "@/lib/stoManager";
+import { getSmartContracts, type SmartContract } from "@/lib/smartContractManager";
 
 type ViewMode = "marketplace" | "portfolio" | "history" | "create-listing";
 
