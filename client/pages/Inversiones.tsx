@@ -171,6 +171,29 @@ export default function Inversiones() {
                         <span className="text-sm text-foreground">{sto.inversionistas || 0} inversores</span>
                       </div>
 
+                      {/* Documents Section */}
+                      {relatedContract && relatedContract.documentos && relatedContract.documentos.length > 0 && (
+                        <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                          <div className="flex items-center gap-2 mb-2">
+                            <FileText className="w-4 h-4 text-blue-600" />
+                            <p className="text-xs font-semibold text-blue-900">Documentos Técnicos</p>
+                          </div>
+                          <div className="space-y-1">
+                            {relatedContract.documentos.map((doc) => (
+                              <a
+                                key={doc.id}
+                                href={doc.url}
+                                download={doc.nombre}
+                                className="flex items-center gap-2 p-2 bg-white rounded hover:bg-blue-50 transition-colors text-xs text-blue-600 hover:text-blue-700 group"
+                              >
+                                <Download className="w-3 h-3 group-hover:scale-110 transition-transform" />
+                                <span className="truncate flex-1">{doc.nombre}</span>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       {/* CTA Button */}
                       <button
                         disabled={!isActive}
