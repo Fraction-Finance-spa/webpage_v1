@@ -112,11 +112,9 @@ export default function FinancingForm() {
   const calculateSimulation = (): SimulationResults => {
     const requestedAmount = parseFloat(formData.financingAmount);
 
-    // Factor de viabilidad basado en edad de la empresa
     const yearsInBusiness = new Date().getFullYear() - parseInt(formData.foundedYear);
     const ageScore = Math.min(yearsInBusiness / 10, 1);
 
-    // Factor de ingresos mensuales
     const revenueMap: Record<string, number> = {
       "0-10k": 2000,
       "10k-50k": 30000,
@@ -128,7 +126,6 @@ export default function FinancingForm() {
     const debtRatio = requestedAmount / (monthlyRevenue * 12);
     const debtScore = Math.max(1 - debtRatio / 2, 0);
 
-    // Factor de etapa del negocio
     const stageScores: Record<string, number> = {
       "startup": 0.6,
       "growth": 0.8,
@@ -137,7 +134,6 @@ export default function FinancingForm() {
     };
     const stageScore = stageScores[formData.businessStage] || 0.7;
 
-    // Factor de empleados
     const employeeMap: Record<string, number> = {
       "1-5": 0.6,
       "6-20": 0.75,
@@ -147,24 +143,19 @@ export default function FinancingForm() {
     };
     const employeeScore = employeeMap[formData.employeeCount] || 0.6;
 
-    // Cálculo de probabilidad de aprobación
     const approvalChance = Math.round((ageScore * 0.2 + debtScore * 0.3 + stageScore * 0.25 + employeeScore * 0.25) * 100);
 
-    // Monto sugerido
     const suggestedAmount = Math.round(requestedAmount * (approvalChance / 100));
 
-    // Tasa de interés basada en riesgo
     let interestRate = 8;
     if (approvalChance >= 80) interestRate = 5;
     else if (approvalChance >= 60) interestRate = 7;
     else if (approvalChance >= 40) interestRate = 10;
 
-    // Nivel de riesgo
     let riskLevel = "Alto";
     if (approvalChance >= 80) riskLevel = "Bajo";
     else if (approvalChance >= 60) riskLevel = "Medio";
 
-    // Recomendación
     let recommendation = "Necesitas fortalecer tu solicitud. Considera aumentar ingresos o reducir el monto.";
     if (approvalChance >= 80) recommendation = "Excelente perfil. Tu solicitud tiene alta probabilidad de aprobación.";
     else if (approvalChance >= 60) recommendation = "Buen perfil. Tu solicitud puede ser aprobada con condiciones ajustadas.";
@@ -422,7 +413,6 @@ export default function FinancingForm() {
             onSubmit={handleSimulate}
             className="bg-white rounded-lg p-8 sm:p-12 border border-border/40"
           >
-            {/* Información de la Empresa */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-foreground mb-8">
                 Información de la Empresa
@@ -539,7 +529,6 @@ export default function FinancingForm() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
                     Ingresos Mensuales *
@@ -589,7 +578,6 @@ export default function FinancingForm() {
               </div>
             </div>
 
-            {/* Detalles de Financiamiento */}
             <div className="mb-12 pb-12 border-b border-border/40">
               <h2 className="text-2xl font-bold text-foreground mb-8">
                 Detalles de Financiamiento
@@ -643,7 +631,7 @@ export default function FinancingForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
-                    <p>Propósito del Financiamiento *</p>
+                    Propósito del Financiamiento *
                   </label>
                   <select
                     name="financingPurpose"
@@ -668,7 +656,6 @@ export default function FinancingForm() {
               </div>
             </div>
 
-            {/* Información de Contacto */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-foreground mb-8">
                 Información de Contacto
@@ -753,7 +740,6 @@ export default function FinancingForm() {
               </div>
             </div>
 
-            {/* Terms and Conditions */}
             <div className="mb-8">
               <label className="flex items-start gap-3 cursor-pointer">
                 <input
@@ -780,7 +766,6 @@ export default function FinancingForm() {
               )}
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading || !isLoggedIn}
