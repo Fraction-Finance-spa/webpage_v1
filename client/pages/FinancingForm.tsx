@@ -465,36 +465,34 @@ export default function FinancingForm() {
                   </div>
 
                   <div className="p-4 bg-white rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">Monto de Comisión</p>
+                    <p className="text-2xl font-bold text-foreground">
+                      ${simulationResults.commissionAmount.toLocaleString()}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-white rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">
+                      Monto de Tasas Beneficio Aportante
+                    </p>
+                    <p className="text-2xl font-bold text-foreground">
+                      ${simulationResults.benefitRateAmount.toLocaleString()}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
+                    <p className="text-xs text-foreground/60 mb-1 font-semibold">
+                      Total a Financiar
+                    </p>
+                    <p className="text-2xl font-bold text-green-700">
+                      ${simulationResults.totalFinancingAmount.toLocaleString()}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-white rounded-lg border border-border/40">
                     <p className="text-xs text-foreground/60 mb-1">Plazo</p>
                     <p className="text-2xl font-bold text-foreground">
                       {simulationResults.plazo} días
-                    </p>
-                  </div>
-
-                  <div className="p-4 bg-white rounded-lg border border-border/40">
-                    <p className="text-xs text-foreground/60 mb-1">
-                      Monto Financiado (100%)
-                    </p>
-                    <p className="text-2xl font-bold text-foreground">
-                      ${simulationResults.financedAmount.toLocaleString()}
-                    </p>
-                  </div>
-
-                  <div className="p-4 bg-white rounded-lg border border-border/40">
-                    <p className="text-xs text-foreground/60 mb-1">
-                      Costo de Financiamiento
-                    </p>
-                    <p className="text-2xl font-bold text-foreground">
-                      {simulationResults.financingCostPercentage.toFixed(2)}% mensual
-                    </p>
-                  </div>
-
-                  <div className="p-4 bg-white rounded-lg border border-border/40">
-                    <p className="text-xs text-foreground/60 mb-1">
-                      Costo de Tasas y Beneficios
-                    </p>
-                    <p className="text-2xl font-bold text-foreground">
-                      {simulationResults.benefitCostPercentage}% (según riesgo)
                     </p>
                   </div>
 
