@@ -100,7 +100,7 @@ export default function BusinessModel() {
         {/* Hero Section */}
         <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-border/40">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h1 className="text-4xl font-bold text-foreground mb-6">
               Nuestro Modelo de Negocio
             </h1>
             <p className="text-xl text-foreground/70 leading-relaxed">
