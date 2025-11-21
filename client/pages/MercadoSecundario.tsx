@@ -64,6 +64,12 @@ export default function MercadoSecundario() {
   }, []);
 
   const loadData = () => {
+    // Load STOs and SmartContracts
+    const loadedSTOs = getSTOs();
+    const loadedContracts = getSmartContracts();
+    setSTOs(loadedSTOs);
+    setSmartContracts(loadedContracts);
+
     // Load marketplace listings
     const listings = getAllListings();
     setAllListings(listings);
@@ -83,6 +89,21 @@ export default function MercadoSecundario() {
     // Load market statistics
     const stats = getMarketStats();
     setMarketStats(stats);
+  };
+
+  const getListingDetails = (listing: SecondaryMarketListing) => {
+    const sto = stos.find((s) => s.id === listing.investmentId || s.nombreActivo === listing.assetName);
+    const contract = sto ? smartContracts.find((c) => c.id === sto.activoDigitalId) : null;
+    const totalTokens = sto ? parseInt(sto.numerosTokensVenta) : 0;
+    const listedTokens = listing.quantity || 1;
+    const tokenPercentage = totalTokens > 0 ? ((listedTokens / totalTokens) * 100).toFixed(2) : "0";
+
+    return {
+      category: contract?.categoria || "Sin Categoría",
+      totalTokens,
+      listedTokens,
+      tokenPercentage,
+    };
   };
 
   const handleCreateListing = () => {
