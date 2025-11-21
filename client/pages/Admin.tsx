@@ -985,13 +985,24 @@ export default function Admin() {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
               <h2 className="text-3xl font-bold text-foreground">Educación Financiera</h2>
+              {!showEducacionForm && !editingEducacionCard && (
+                <button
+                  onClick={() => setShowEducacionForm(true)}
+                  className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
+                >
+                  <Plus className="w-5 h-5" />
+                  Crear Nuevo Curso
+                </button>
+              )}
             </div>
 
             <div className="bg-white rounded-lg border border-border/40 p-8">
-              <h3 className="text-xl font-bold text-foreground mb-6">
-                {editingEducacionCard ? "Editar Curso" : "Crear Nuevo Curso"}
-              </h3>
-              <form onSubmit={handleEducacionFormSubmit} className="space-y-4 mb-8">
+              {(showEducacionForm || editingEducacionCard) && (
+                <>
+                  <h3 className="text-xl font-bold text-foreground mb-6">
+                    {editingEducacionCard ? "Editar Curso" : "Crear Nuevo Curso"}
+                  </h3>
+                  <form onSubmit={handleEducacionFormSubmit} className="space-y-4 mb-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">Título</label>
@@ -1145,6 +1156,29 @@ export default function Admin() {
                           imagen: "",
                         });
                         setEducacionImage(null);
+                        setShowEducacionForm(false);
+                      }}
+                      className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
+                    >
+                      Cancelar
+                    </button>
+                  )}
+                  {!editingEducacionCard && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowEducacionForm(false);
+                        setEducacionForm({
+                          titulo: "",
+                          descripcion: "",
+                          contenido: "",
+                          instructor: "",
+                          duracion: "",
+                          nivel: "Básico",
+                          estado: "Borrador",
+                          imagen: "",
+                        });
+                        setEducacionImage(null);
                       }}
                       className="px-6 py-2 bg-gray-300 text-foreground rounded-lg hover:bg-gray-400 transition-colors font-semibold"
                     >
@@ -1153,6 +1187,8 @@ export default function Admin() {
                   )}
                 </div>
               </form>
+                </>
+              )}
 
               <div className="border-t border-border/40 pt-6">
                 <h3 className="text-lg font-bold text-foreground mb-4">Cursos</h3>
