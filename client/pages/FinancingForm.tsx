@@ -276,10 +276,20 @@ export default function FinancingForm() {
   }
 
   if (showSimulation && simulationResults) {
+    const handleSimulationInputChange = (field: string, value: any) => {
+      setSimulationInputs((prev) => ({
+        ...prev,
+        [field]: value,
+      }));
+      // Recalculate simulation with new values
+      const newResults = calculateSimulation();
+      setSimulationResults(newResults);
+    };
+
     return (
       <Layout>
         <div className="bg-blue-50 px-8 pb-12" style={{ paddingTop: "120px" }}>
-          <div className="container max-w-4xl mx-auto">
+          <div className="container max-w-5xl mx-auto">
             <div className="mb-8">
               <button
                 onClick={() => setShowSimulation(false)}
@@ -291,44 +301,208 @@ export default function FinancingForm() {
 
             <div className="bg-white rounded-lg p-8 sm:p-12 border border-border/40">
               <h1 className="text-4xl font-bold text-foreground mb-2">
-                Simulación de Financiamiento
+                Simula tu primer financiamiento
               </h1>
               <p className="text-xl text-foreground/70 mb-8">
                 Resumen de tu evaluación preliminar
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
-                  <div className="flex items-center gap-3 mb-2">
-                    <TrendingUp className="w-5 h-5 text-blue-600" />
-                    <p className="text-sm text-foreground/60">Probabilidad de Aprobación</p>
-                  </div>
-                  <p className="text-3xl font-bold text-blue-700">
-                    {simulationResults.estimatedApprovalChance}%
+              {/* Simulation Input Section */}
+              <div className="mb-10 p-6 bg-blue-50 rounded-lg border border-blue-200">
+                <h2 className="text-2xl font-bold text-foreground mb-6">
+                  Configurar Simulación
+                </h2>
+
+                {/* CLP Amount Input */}
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Monto de que quieres adelantar CLP $
+                  </label>
+                  <input
+                    type="number"
+                    value={simulationInputs.clpAmount}
+                    onChange={(e) =>
+                      handleSimulationInputChange("clpAmount", parseFloat(e.target.value) || 0)
+                    }
+                    className="w-full px-4 py-3 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    placeholder="100000000"
+                    min="0"
+                  />
+                  <p className="text-xs text-foreground/60 mt-1">
+                    Ingresa el monto que deseas financiar
                   </p>
                 </div>
 
-                <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Zap className="w-5 h-5 text-green-600" />
-                    <p className="text-sm text-foreground/60">Monto Sugerido</p>
+                {/* Plazo Selection */}
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-foreground mb-3">
+                    Plazo de Pago
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    {[
+                      { value: 30, label: "30 días" },
+                      { value: 60, label: "60 días" },
+                      { value: 90, label: "90 días" },
+                    ].map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() =>
+                          handleSimulationInputChange("plazo", option.value)
+                        }
+                        className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                          simulationInputs.plazo === option.value
+                            ? "bg-primary text-white"
+                            : "bg-white border border-border/40 text-foreground hover:border-primary"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
                   </div>
-                  <p className="text-3xl font-bold text-green-700">
-                    ${simulationResults.suggestedAmount.toLocaleString()}
-                  </p>
+                  <div className="mt-3">
+                    <label className="block text-sm text-foreground/60 mb-2">
+                      Otro plazo (días):
+                    </label>
+                    <input
+                      type="number"
+                      min="0"
+                      max="365"
+                      className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      placeholder="Ingresa número de días"
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value);
+                        if (value > 0) {
+                          handleSimulationInputChange("plazo", value);
+                        }
+                      }}
+                    />
+                  </div>
                 </div>
 
-                <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Target className="w-5 h-5 text-purple-600" />
-                    <p className="text-sm text-foreground/60">Tasa de Interés Estimada</p>
+                {/* Interest Rate Slider */}
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Tasa de Interés Mensual: {simulationInputs.monthlyInterestRate.toFixed(2)}%
+                  </label>
+                  <p className="text-xs text-foreground/60 mb-3">Rango: 0.5% a 3%</p>
+                  <input
+                    type="range"
+                    min="0.5"
+                    max="3"
+                    step="0.1"
+                    value={simulationInputs.monthlyInterestRate}
+                    onChange={(e) =>
+                      handleSimulationInputChange(
+                        "monthlyInterestRate",
+                        parseFloat(e.target.value)
+                      )
+                    }
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                  />
+                  <div className="flex justify-between text-xs text-foreground/60 mt-2">
+                    <span>0.5%</span>
+                    <span>3%</span>
                   </div>
-                  <p className="text-3xl font-bold text-purple-700">
-                    {simulationResults.interestRate}% APY
-                  </p>
                 </div>
               </div>
 
+              {/* Summary Section */}
+              <div className="mb-10 p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                <h2 className="text-2xl font-bold text-foreground mb-6">
+                  Resumen de Financiamiento
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="p-4 bg-white rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">Monto a Financiar</p>
+                    <p className="text-2xl font-bold text-foreground">
+                      ${simulationResults.clpAmount.toLocaleString()}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-white rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">Plazo</p>
+                    <p className="text-2xl font-bold text-foreground">
+                      {simulationResults.plazo} días
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-white rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">
+                      Monto Financiado (100%)
+                    </p>
+                    <p className="text-2xl font-bold text-foreground">
+                      ${simulationResults.financedAmount.toLocaleString()}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-white rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">
+                      Costo de Financiamiento
+                    </p>
+                    <p className="text-2xl font-bold text-foreground">
+                      {simulationResults.financingCostPercentage.toFixed(2)}% mensual
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-white rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">
+                      Costo de Tasas y Beneficios
+                    </p>
+                    <p className="text-2xl font-bold text-foreground">
+                      {simulationResults.benefitCostPercentage}% (según riesgo)
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-white rounded-lg border border-border/40">
+                    <p className="text-xs text-foreground/60 mb-1">Nivel de Riesgo</p>
+                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
+                      simulationResults.riskLevel === "Bajo"
+                        ? "bg-green-100 text-green-700"
+                        : simulationResults.riskLevel === "Medio"
+                          ? "bg-yellow-100 text-yellow-700"
+                          : "bg-red-100 text-red-700"
+                    }`}>
+                      {simulationResults.riskLevel}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Key Metrics */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                    <div className="flex items-center gap-3 mb-2">
+                      <TrendingUp className="w-5 h-5 text-blue-600" />
+                      <p className="text-sm text-foreground/60">Probabilidad de Aprobación</p>
+                    </div>
+                    <p className="text-3xl font-bold text-blue-700">
+                      {simulationResults.estimatedApprovalChance}%
+                    </p>
+                  </div>
+
+                  <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Zap className="w-5 h-5 text-green-600" />
+                      <p className="text-sm text-foreground/60">Monto Sugerido</p>
+                    </div>
+                    <p className="text-3xl font-bold text-green-700">
+                      ${simulationResults.suggestedAmount.toLocaleString()}
+                    </p>
+                  </div>
+
+                  <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Target className="w-5 h-5 text-purple-600" />
+                      <p className="text-sm text-foreground/60">Tasa APY</p>
+                    </div>
+                    <p className="text-3xl font-bold text-purple-700">
+                      {simulationResults.interestRate}%
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recommendation Section */}
               <div className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
                 <h3 className="text-lg font-bold text-foreground mb-2">
                   Recomendación
@@ -336,42 +510,6 @@ export default function FinancingForm() {
                 <p className="text-foreground/70">
                   {simulationResults.recommendation}
                 </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
-                  <p className="text-xs text-foreground/60 mb-1">Monto Solicitado</p>
-                  <p className="text-xl font-bold text-foreground">
-                    ${simulationResults.requestedAmount.toLocaleString()}
-                  </p>
-                </div>
-
-                <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
-                  <p className="text-xs text-foreground/60 mb-1">Tiempo Estimado de Respuesta</p>
-                  <p className="text-xl font-bold text-foreground">
-                    {simulationResults.estimatedDuration}
-                  </p>
-                </div>
-
-                <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
-                  <p className="text-xs text-foreground/60 mb-1">Nivel de Riesgo</p>
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
-                    simulationResults.riskLevel === "Bajo"
-                      ? "bg-green-100 text-green-700"
-                      : simulationResults.riskLevel === "Medio"
-                        ? "bg-yellow-100 text-yellow-700"
-                        : "bg-red-100 text-red-700"
-                  }`}>
-                    {simulationResults.riskLevel}
-                  </span>
-                </div>
-
-                <div className="p-4 bg-gray-50 rounded-lg border border-border/40">
-                  <p className="text-xs text-foreground/60 mb-1">Empresa</p>
-                  <p className="text-xl font-bold text-foreground">
-                    {formData.companyName}
-                  </p>
-                </div>
               </div>
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
@@ -780,7 +918,7 @@ export default function FinancingForm() {
                 <span className="text-sm text-foreground/70">
                   Acepto los{" "}
                   <a href="/terminos-servicio" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
-                    Términos de Servicio
+                    T��rminos de Servicio
                   </a>{" "}
                   y la{" "}
                   <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
