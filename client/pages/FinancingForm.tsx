@@ -279,6 +279,7 @@ export default function FinancingForm() {
         financingPurpose: formData.financingPurpose,
         businessStage: formData.businessStage,
         financingType: formData.financingType,
+        financingSubtype: formData.financingSubtype,
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
