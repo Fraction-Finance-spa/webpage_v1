@@ -148,7 +148,7 @@ export default function BusinessModel() {
                           <h4 className="text-lg font-bold text-foreground mb-2 pt-2.5">
                             {instrument.title}
                           </h4>
-                          <div className="text-foreground/70 leading-relaxed mb-4.5">
+                          <div className="text-foreground/70 leading-relaxed" style={{ marginBottom: "18px" }}>
                             {Array.isArray(instrument.description) ? (
                               <>
                                 {instrument.description.map((item, idx) => (
