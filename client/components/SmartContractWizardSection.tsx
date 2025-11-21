@@ -254,7 +254,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
       {/* Progress Indicator */}
       <div className="bg-white rounded-lg border border-border/40 p-6">
         <div className="flex items-center justify-between mb-6">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((step) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((step) => (
             <div key={step} className="flex flex-col items-center flex-1">
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition-all ${
@@ -275,7 +275,7 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
         <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-primary to-blue-600 transition-all duration-300"
-            style={{ width: `${((state.step - 1) / 7) * 100}%` }}
+            style={{ width: `${((state.step - 1) / 8) * 100}%` }}
           />
         </div>
       </div>
