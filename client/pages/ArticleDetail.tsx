@@ -317,7 +317,7 @@ export default function ArticleDetail() {
               className="px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold inline-flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
-              Volver al Blog
+              Volver a Artículos y Noticias
             </button>
           </div>
         </div>
