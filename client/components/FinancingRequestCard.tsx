@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { FinancingRequest, EvaluacionComercial, calculateScoring, calculateRatesByScoring, getSTODataFromFinancingRequest, updateEvaluacionComercial, updateRequestStatus, deleteFinancingRequest, getFinancingRequests } from "@/lib/financingRequestManager";
+import { FinancingRequest, EvaluacionComercial, calculateScoring, calculateRatesByScoring, getSTODataFromFinancingRequest, updateEvaluacionComercial, updateRequestStatus, deleteFinancingRequest, getFinancingRequests, getFinancingRequestById } from "@/lib/financingRequestManager";
 import { addSTO } from "@/lib/stoManager";
 
 interface FinancingRequestCardProps {
