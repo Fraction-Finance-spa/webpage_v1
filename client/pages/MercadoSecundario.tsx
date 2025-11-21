@@ -571,9 +571,9 @@ export default function MercadoSecundario() {
           {viewMode === "history" && (
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">Mis Compras</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Mis Compras</h2>
                 {purchases.length === 0 ? (
-                  <div className="bg-white rounded-lg border border-border/40 p-12 text-center">
+                  <div className="bg-white rounded-lg border border-border/40 p-8 text-center">
                     <ShoppingCart className="w-16 h-16 text-foreground/20 mx-auto mb-4" />
                     <p className="text-foreground/70">No has comprado activos aún</p>
                   </div>
