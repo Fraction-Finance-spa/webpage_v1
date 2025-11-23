@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, LogOut, ChevronDown, DollarSign, TrendingUp, Building2, Zap, BookOpen, Newspaper, Users, Mail } from "lucide-react";
+import { Menu, X, LogOut, ChevronDown, DollarSign, TrendingUp, Building2, Zap, BookOpen, Newspaper, Users, Mail, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LayoutProps {
@@ -226,9 +226,15 @@ export default function Layout({ children }: LayoutProps) {
               <div className="flex items-center gap-4">
                 <Link
                   to="/profile"
-                  className="hidden sm:inline text-foreground/70 hover:text-primary transition-colors text-sm font-medium"
+                  className="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+                  title={displayName || userEmail}
+                  aria-label={`Perfil de ${displayName || userEmail}`}
                 >
-                  {displayName || userEmail}
+                  {userProfileType === "empresa" ? (
+                    <Building2 className="w-5 h-5 text-primary" />
+                  ) : (
+                    <User className="w-5 h-5 text-primary" />
+                  )}
                 </Link>
                 <button
                   onClick={handleLogout}
@@ -390,10 +396,16 @@ export default function Layout({ children }: LayoutProps) {
                   <>
                     <Link
                       to="/profile"
-                      className="block px-4 py-2 text-foreground/70 hover:text-primary text-sm font-medium"
+                      className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors mx-auto"
+                      title={displayName || userEmail}
+                      aria-label={`Perfil de ${displayName || userEmail}`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {displayName || userEmail}
+                      {userProfileType === "empresa" ? (
+                        <Building2 className="w-6 h-6 text-primary" />
+                      ) : (
+                        <User className="w-6 h-6 text-primary" />
+                      )}
                     </Link>
                     <button
                       onClick={() => {
