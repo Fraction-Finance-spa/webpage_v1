@@ -231,9 +231,9 @@ export default function Layout({ children }: LayoutProps) {
                   aria-label={`Perfil de ${displayName || userEmail}`}
                 >
                   {userProfileType === "empresa" ? (
-                    <Building2 className="w-5 h-5 text-primary" />
+                    <Building2 className="w-5 h-5 text-black" />
                   ) : (
-                    <User className="w-5 h-5 text-primary" />
+                    <User className="w-5 h-5 text-black" />
                   )}
                 </Link>
                 <button
@@ -402,9 +402,9 @@ export default function Layout({ children }: LayoutProps) {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {userProfileType === "empresa" ? (
-                        <Building2 className="w-6 h-6 text-primary" />
+                        <Building2 className="w-6 h-6 text-black" />
                       ) : (
-                        <User className="w-6 h-6 text-primary" />
+                        <User className="w-6 h-6 text-black" />
                       )}
                     </Link>
                     <button
