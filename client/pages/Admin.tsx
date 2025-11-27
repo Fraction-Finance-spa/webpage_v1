@@ -11,6 +11,7 @@ import { getSmartContracts, deleteSmartContract, type SmartContract } from "@/li
 import { getSTOs, addSTO, updateSTO, deleteSTO, checkSTOAvailableForAsset, updateTokenosSoldCount, type STO } from "@/lib/stoManager";
 import { getMarketStats, getTotalPendingAssetsValue, getPendingListingsCount } from "@/lib/mercadoSecundarioManager";
 import { getFinancingRequests, updateRequestStatus, deleteFinancingRequest, updateEvaluacionComercial, calculateScoring, getSTODataFromFinancingRequest, type FinancingRequest, type EvaluacionComercial } from "@/lib/financingRequestManager";
+import { getSocios, addSocio, updateSocio, deleteSocio, type Socio } from "@/lib/sociosManager";
 import SmartContractWizardSection from "@/components/SmartContractWizardSection";
 import STOWizardSection from "@/components/STOWizardSection";
 import FinancingRequestCard from "@/components/FinancingRequestCard";
