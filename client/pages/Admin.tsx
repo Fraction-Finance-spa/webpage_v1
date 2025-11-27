@@ -183,6 +183,45 @@ export default function Admin() {
     }
   };
 
+  const handleSocioFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setSocioForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSocioFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (editingSocio) {
+      updateSocio(editingSocio.id, socioForm);
+    } else {
+      addSocio(socioForm);
+    }
+    setSocios(getSocios());
+    setSocioForm({ nombre: "", logo: "", descripcion: "", enlace: "" });
+    setEditingSocio(null);
+    setShowSocioForm(false);
+  };
+
+  const handleEditSocio = (socio: Socio) => {
+    setEditingSocio(socio);
+    setShowSocioForm(true);
+    setSocioForm({
+      nombre: socio.nombre,
+      logo: socio.logo,
+      descripcion: socio.descripcion,
+      enlace: socio.enlace,
+    });
+  };
+
+  const handleDeleteSocio = (id: string) => {
+    if (confirm("¿Está seguro que desea eliminar este socio?")) {
+      deleteSocio(id);
+      setSocios(getSocios());
+    }
+  };
+
   const handleUpdateDenunciaStatus = (id: string, nuevoEstado: string) => {
     const updated = denuncias.map((d) =>
       d.id === id ? { ...d, estado: nuevoEstado } : d
@@ -2025,7 +2064,7 @@ export default function Admin() {
                             />
                           </svg>
                           <p className="text-foreground font-semibold">Haz clic para cargar foto</p>
-                          <p className="text-sm text-foreground/60">JPG, PNG, WebP (máx. 5MB)</p>
+                          <p className="text-sm text-foreground/60">JPG, PNG, WebP (m��x. 5MB)</p>
                         </div>
                       )}
                     </label>
