@@ -1,7 +1,15 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
-import { Users, TrendingUp, Shield, Zap, Globe, Leaf } from "lucide-react";
+import { Users, TrendingUp, Shield, Zap, Globe, Leaf, ExternalLink } from "lucide-react";
+import { getSocios, type Socio } from "@/lib/sociosManager";
 
 export default function Ecosistema() {
+  const [socios, setSocios] = useState<Socio[]>([]);
+
+  useEffect(() => {
+    setSocios(getSocios());
+  }, []);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -26,6 +34,58 @@ export default function Ecosistema() {
           </div>
         </div>
       </section>
+
+      {/* Logos de Socios Section */}
+      {socios.length > 0 && (
+        <section className="px-4 sm:px-6 lg:px-8 py-24 bg-white">
+          <div className="container max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
+                Nuestros Socios
+              </h2>
+              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+                Colaboramos con instituciones y empresas líderes en el mercado financiero.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {socios.map((socio) => (
+                <div
+                  key={socio.id}
+                  className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-blue-50 to-white rounded-2xl border border-primary/10 hover:shadow-lg transition-all duration-300 group"
+                >
+                  <a
+                    href={socio.enlace}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full h-32 flex items-center justify-center mb-4 relative"
+                  >
+                    <img
+                      src={socio.logo}
+                      alt={socio.nombre}
+                      className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </a>
+                  <h3 className="text-lg font-bold text-foreground text-center mb-2">
+                    {socio.nombre}
+                  </h3>
+                  <p className="text-sm text-foreground/70 text-center mb-4 flex-grow">
+                    {socio.descripcion}
+                  </p>
+                  <a
+                    href={socio.enlace}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium"
+                  >
+                    Visitar <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Partners Network Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-24 bg-gradient-to-b from-white to-blue-50/20">
