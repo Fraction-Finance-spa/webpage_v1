@@ -223,7 +223,8 @@ export default function Layout({ children }: LayoutProps) {
               <div className="flex items-center gap-4">
                 <Link
                   to="/profile"
-                  className="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+                  className="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-blue-100 transition-colors"
+                  style={{ backgroundColor: "#eff6ff" }}
                   title={displayName || userEmail}
                   aria-label={`Perfil de ${displayName || userEmail}`}
                 >
@@ -238,7 +239,7 @@ export default function Layout({ children }: LayoutProps) {
                   className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-foreground/70 hover:text-primary transition-colors text-sm font-medium"
                 >
                   <LogOut className="w-4 h-4" />
-                  Salir
+                  <div style={{ fontWeight: "600" }}>Salir</div>
                 </button>
               </div>
             ) : (

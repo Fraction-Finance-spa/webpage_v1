@@ -52,13 +52,13 @@ export default function Index() {
                   <>
                     <Link
                       to="/productos/financiamiento"
-                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl py-1"
                     >
                       Solicitar Financiamiento
                     </Link>
                     <Link
                       to="/productos/inversiones"
-                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl py-1"
                     >
                       Explorar Oportunidades
                     </Link>
