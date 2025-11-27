@@ -44,7 +44,7 @@ export default function Ecosistema() {
               {
                 icon: Shield,
                 title: "Instituciones Financieras",
-                description: "Bancos, fondos de inversión y plataformas de trading globales que confían en nuestra tecnología.",
+                description: "Bancos, fondos de inversi��n y plataformas de trading globales que confían en nuestra tecnología.",
               },
               {
                 icon: TrendingUp,
@@ -140,8 +140,8 @@ export default function Ecosistema() {
             Si eres una institución financiera, startup fintech o experto regulatorio interesado en colaborar con nosotros, nos gustaría conocerte.
           </p>
           <a
-            href="https://778acc0b37ea4f908e5dd2bdcf40c2ad-889a004e659943698fc0c8ce6.fly.dev/contact"
-            className="inline-flex px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all font-bold text-lg shadow-lg hover:shadow-xl"
+            href="/nosotros/contacto"
+            className="inline-flex px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all font-bold text-lg shadow-lg hover:shadow-xl cursor-pointer"
           >
             Contáctanos Hoy
           </a>
