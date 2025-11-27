@@ -22,7 +22,7 @@ export default function Index() {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        minHeight: "793px",
+        minHeight: "728px",
         padding: "150px 32px 120px 32px",
         marginBottom: "-4px",
         marginTop: "0",
