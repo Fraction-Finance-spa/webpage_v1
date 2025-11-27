@@ -131,7 +131,7 @@ export default function Index() {
                   >
                     <asset.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
+                  <h3 className="text-xl font-bold text-foreground mb-2 mx-auto">
                     {asset.name}
                   </h3>
                   <p className="text-sm text-foreground/60 font-medium text-left">
