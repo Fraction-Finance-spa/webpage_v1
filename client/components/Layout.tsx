@@ -208,7 +208,7 @@ export default function Layout({ children }: LayoutProps) {
                   <Link
                     to={item.path || "#"}
                     className={cn(
-                      "text-foreground/70 hover:text-primary transition-colors py-2 font-medium",
+                      "text-foreground/70 hover:text-primary transition-colors py-2 px-4 font-medium rounded-lg hover:bg-primary/5",
                       location.pathname === item.path && "text-primary"
                     )}
                     style={item.label === "Ecosistema" ? { color: "rgba(0, 0, 0, 1)", fontSize: "16px" } : undefined}
