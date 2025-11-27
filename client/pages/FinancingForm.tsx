@@ -98,6 +98,12 @@ export default function FinancingForm() {
       newErrors.financingAmount = "Monto de financiamiento requerido";
     if (!formData.financingType)
       newErrors.financingType = "Tipo de financiamiento requerido";
+    if (!formData.financingSubtype)
+      newErrors.financingSubtype = "Subtipo de financiamiento requerido";
+    if (!formData.financingTerm)
+      newErrors.financingTerm = "Plazo de financiamiento requerido";
+    if (formData.financingTerm === "otro" && !formData.financingTermCustom.trim())
+      newErrors.financingTermCustom = "Especifica el plazo personalizado";
     if (!formData.financingPurpose)
       newErrors.financingPurpose = "Propósito del financiamiento requerido";
     if (!formData.businessStage) newErrors.businessStage = "Etapa de negocio requerida";
