@@ -121,6 +121,7 @@ export default function Admin() {
 
   useEffect(() => {
     setTeamMembers(getTeamMembers());
+    setSocios(getSocios());
     setDenuncias(JSON.parse(localStorage.getItem("denuncias") || "[]"));
     setReclamos(JSON.parse(localStorage.getItem("reclamos") || "[]"));
     setMensajesContacto(JSON.parse(localStorage.getItem("mensajesContacto") || "[]"));
