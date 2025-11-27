@@ -661,7 +661,7 @@ export default function Admin() {
     ],
     mensajes: [
       { id: 1, nombre: "Carlos", email: "carlos@example.com", asunto: "Consulta sobre STOs", leido: false },
-      { id: 2, nombre: "Ana", email: "ana@example.com", asunto: "Solicitud de Informaci��n", leido: true },
+      { id: 2, nombre: "Ana", email: "ana@example.com", asunto: "Solicitud de Informaci���n", leido: true },
     ],
     equipo: [
       { id: 1, nombre: "Carlos González", rol: "CEO", departamento: "Directiva" },
@@ -2139,6 +2139,142 @@ export default function Admin() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "socios":
+        return (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <h2 className="text-3xl font-bold text-foreground">Gestionar Socios</h2>
+              {!showSocioForm && !editingSocio && (
+                <button
+                  onClick={() => setShowSocioForm(true)}
+                  className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold flex items-center gap-2"
+                >
+                  <Plus className="w-5 h-5" />
+                  Agregar Socio
+                </button>
+              )}
+            </div>
+
+            <div className="bg-white rounded-lg border border-border/40 p-8">
+              {(showSocioForm || editingSocio) && (
+                <>
+                  <h3 className="text-xl font-bold text-foreground mb-6">
+                    {editingSocio ? "Editar Socio" : "Agregar Nuevo Socio"}
+                  </h3>
+                  <form onSubmit={handleSocioFormSubmit} className="space-y-4 mb-8">
+                    <div>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Nombre</label>
+                      <input
+                        type="text"
+                        name="nombre"
+                        value={socioForm.nombre}
+                        onChange={handleSocioFormChange}
+                        className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-foreground mb-2">URL Logo</label>
+                      <input
+                        type="url"
+                        name="logo"
+                        value={socioForm.logo}
+                        onChange={handleSocioFormChange}
+                        className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                        placeholder="https://ejemplo.com/logo.png"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Descripción</label>
+                      <textarea
+                        name="descripcion"
+                        value={socioForm.descripcion}
+                        onChange={handleSocioFormChange}
+                        rows={3}
+                        className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Enlace del Socio</label>
+                      <input
+                        type="url"
+                        name="enlace"
+                        value={socioForm.enlace}
+                        onChange={handleSocioFormChange}
+                        className="w-full px-4 py-2 border border-border/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                        placeholder="https://www.ejemplo.com"
+                        required
+                      />
+                    </div>
+                    <div className="flex gap-3">
+                      <button
+                        type="submit"
+                        className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+                      >
+                        {editingSocio ? "Actualizar Socio" : "Crear Socio"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowSocioForm(false);
+                          setEditingSocio(null);
+                          setSocioForm({ nombre: "", logo: "", descripcion: "", enlace: "" });
+                        }}
+                        className="px-4 py-2 border border-border/40 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </form>
+                </>
+              )}
+
+              <div className="space-y-4">
+                {socios.map((socio) => (
+                  <div key={socio.id} className="flex items-center justify-between p-4 border border-border/40 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src={socio.logo} alt={socio.nombre} className="max-w-full max-h-full object-contain" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-foreground">{socio.nombre}</h4>
+                        <p className="text-sm text-foreground/70">{socio.descripcion}</p>
+                        <a
+                          href={socio.enlace}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-primary hover:text-primary/80 transition-colors"
+                        >
+                          {socio.enlace}
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleEditSocio(socio)}
+                        className="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                      >
+                        <Edit className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteSocio(socio.id)}
+                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                {socios.length === 0 && (
+                  <p className="text-center text-foreground/60 py-8">No hay socios registrados. Agrega uno para comenzar.</p>
+                )}
               </div>
             </div>
           </div>
