@@ -144,7 +144,7 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px", marginTop: "-1px" }}>
+      <section id="features" className="px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: "rgba(0, 45, 255, 0.02)", padding: "100px 32px" }}>
         <div className="absolute inset-0 -z-10">
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/5 to-white/0"></div>
