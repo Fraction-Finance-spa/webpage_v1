@@ -137,7 +137,7 @@ export default function Layout({ children }: LayoutProps) {
               <div key={item.label} className="relative group">
                 {item.submenu ? (
                   <>
-                    <button className="text-foreground/70 hover:text-primary transition-colors py-2 font-medium flex items-center gap-1">
+                    <button className="text-foreground/70 hover:text-primary transition-colors py-2 px-4 font-medium flex items-center gap-1 rounded-lg hover:bg-primary/5">
                       <div style={{ color: "rgba(0, 0, 0, 1)", fontSize: "16px" }}>
                         {item.label}
                       </div>
