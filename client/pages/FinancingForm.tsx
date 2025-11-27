@@ -45,6 +45,47 @@ interface SimulationResults {
   totalFinancingAmount: number;
 }
 
+const financingTermOptions: Record<string, string[]> = {
+  "capital-trabajo": [
+    "15 días",
+    "30 días",
+    "45 días",
+    "60 días",
+    "75 días",
+    "90 días",
+    "120 días",
+    "otro",
+  ],
+  "bonos-corporativos": [
+    "180 días",
+    "1 año",
+    "18 meses",
+    "2 años",
+    "3 años",
+    "4 años",
+    "5 años",
+    "otro",
+  ],
+  "deuda-privada": [
+    "3 meses",
+    "6 meses",
+    "9 meses",
+    "12 meses",
+    "18 meses",
+    "24 meses",
+    "36 meses",
+    "otro",
+  ],
+  "fondos-inversion": [
+    "6 meses",
+    "1 año",
+    "2 años",
+    "3 años",
+    "5 años",
+    "otro",
+  ],
+};
+
 export default function FinancingForm() {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const userEmail = localStorage.getItem("userEmail") || "";
