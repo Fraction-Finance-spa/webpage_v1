@@ -6,7 +6,7 @@ export default function Ecosistema() {
     <Layout>
       {/* Hero Section */}
       <section className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden" style={{
-        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fcfb1dbdec5284d19854f1a167f9f94b5)",
+        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fe696666e21b94ac6a9447362c5466c74)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -44,7 +44,7 @@ export default function Ecosistema() {
               {
                 icon: Shield,
                 title: "Instituciones Financieras",
-                description: "Bancos, fondos de inversi��n y plataformas de trading globales que confían en nuestra tecnología.",
+                description: "Bancos, fondos de inversión y plataformas de trading globales que confían en nuestra tecnología.",
               },
               {
                 icon: TrendingUp,
