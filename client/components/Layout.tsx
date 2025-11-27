@@ -236,10 +236,10 @@ export default function Layout({ children }: LayoutProps) {
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-foreground/70 hover:text-primary transition-colors text-sm font-medium"
+                  className="hidden sm:inline-flex items-center gap-2 px-4 py-2 hover:text-primary transition-colors text-sm"
                 >
-                  <LogOut className="w-4 h-4" />
-                  <div style={{ fontWeight: "600" }}>Salir</div>
+                  <LogOut className="w-4 h-4" style={{ color: "rgba(208, 2, 27, 1)" }} />
+                  <div style={{ fontWeight: "700", color: "rgba(243, 24, 32, 0.7)" }}>Salir</div>
                 </button>
               </div>
             ) : (
