@@ -121,7 +121,7 @@ export default function Layout({ children }: LayoutProps) {
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
-        <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 pb-0 flex justify-between" style={{ backgroundColor: "rgba(239, 246, 255, 1)", flexDirection: "row", overflowX: "auto", overflowY: "auto" }}>
+        <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20" style={{ backgroundColor: "rgba(239, 246, 255, 1)" }}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
@@ -137,11 +137,9 @@ export default function Layout({ children }: LayoutProps) {
               <div key={item.label} className="relative group">
                 {item.submenu ? (
                   <>
-                    <button className="text-foreground/70 hover:text-primary transition-colors py-2 px-4 font-medium flex items-center gap-1 rounded-lg hover:bg-primary/5">
-                      <div style={{ color: "rgba(0, 0, 0, 1)", fontSize: "16px" }}>
-                        {item.label}
-                      </div>
-                      <ChevronDown className="w-4 h-4" style={{ color: "rgba(0, 0, 0, 1)" }} />
+                    <button className="text-foreground hover:text-primary transition-colors py-2 px-4 font-medium flex items-center gap-1 rounded-lg hover:bg-primary/5">
+                      {item.label}
+                      <ChevronDown className="w-4 h-4" />
                     </button>
                     <div className="absolute left-0 mt-0 w-64 bg-white border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                       {item.submenu.map((subitem, idx) => (
@@ -208,10 +206,9 @@ export default function Layout({ children }: LayoutProps) {
                   <Link
                     to={item.path || "#"}
                     className={cn(
-                      "text-foreground/70 hover:text-primary transition-colors py-2 px-4 font-medium rounded-lg hover:bg-primary/5",
-                      location.pathname === item.path && "text-primary"
+                      "text-foreground hover:text-primary transition-colors py-2 px-4 font-medium rounded-lg hover:bg-primary/5",
+                      location.pathname === item.path && "text-primary font-semibold"
                     )}
-                    style={item.label === "Ecosistema" ? { color: "rgba(0, 0, 0, 1)", fontSize: "16px" } : undefined}
                   >
                     {item.label}
                   </Link>
@@ -248,15 +245,13 @@ export default function Layout({ children }: LayoutProps) {
               <div className="hidden sm:flex items-center gap-3">
                 <Link
                   to="/auth"
-                  className="px-4 py-2 text-foreground/70 hover:text-primary transition-colors font-medium"
-                  style={{ color: "rgba(0, 0, 0, 1)", fontSize: "16px" }}
+                  className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium"
                 >
                   Ingresar
                 </Link>
                 <Link
                   to="/auth"
-                  className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-medium"
-                  style={{ fontSize: "16px" }}
+                  className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium"
                 >
                   Registrarse
                 </Link>
