@@ -52,17 +52,15 @@ export default function Index() {
                   <>
                     <Link
                       to="/productos/financiamiento"
-                      className="flex-1 px-5 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                     >
-                      Solicita Financiamiento
-                      <ArrowRight className="w-5 h-5" />
+                      Solicitar Financiamiento
                     </Link>
                     <Link
                       to="/productos/inversiones"
-                      className="flex-1 px-5 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                     >
-                      Oportunidades Inversión
-                      <ArrowRight className="w-5 h-5" />
+                      Explorar Oportunidades
                     </Link>
                   </>
                 ) : (
