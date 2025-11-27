@@ -52,13 +52,13 @@ export default function Index() {
                   <>
                     <Link
                       to="/productos/financiamiento"
-                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl py-1"
+                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl py-2.5"
                     >
                       Solicitar Financiamiento
                     </Link>
                     <Link
                       to="/productos/inversiones"
-                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl py-1"
+                      className="flex-1 px-5 bg-blue-50 text-black rounded-xl hover:bg-blue-100 transition-all font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl py-2.5"
                     >
                       Explorar Oportunidades
                     </Link>
@@ -119,7 +119,7 @@ export default function Index() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative p-8 sm:p-10 h-full flex flex-col items-center justify-center">
+                <div className="relative p-5 h-full flex flex-col items-center justify-center">
                   <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500"
                     style={{
