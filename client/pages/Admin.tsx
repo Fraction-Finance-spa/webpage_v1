@@ -95,6 +95,16 @@ export default function Admin() {
   });
   const [teamPhoto, setTeamPhoto] = useState<File | null>(null);
 
+  const [socios, setSocios] = useState<Socio[]>([]);
+  const [editingSocio, setEditingSocio] = useState<Socio | null>(null);
+  const [showSocioForm, setShowSocioForm] = useState(false);
+  const [socioForm, setSocioForm] = useState({
+    nombre: "",
+    logo: "",
+    descripcion: "",
+    enlace: "",
+  });
+
   const [denuncias, setDenuncias] = useState<Denuncia[]>([]);
   const [reclamos, setReclamos] = useState<Reclamo[]>([]);
   const [mensajesContacto, setMensajesContacto] = useState<any[]>([]);
