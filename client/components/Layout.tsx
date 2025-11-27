@@ -121,7 +121,7 @@ export default function Layout({ children }: LayoutProps) {
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
-        <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 pb-0 flex justify-between" style={{ backgroundColor: "rgba(239, 246, 255, 1)", flexDirection: "row", overflow: "auto" }}>
+        <nav className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 pb-0 flex justify-between" style={{ backgroundColor: "rgba(239, 246, 255, 1)", flexDirection: "row", overflowX: "auto", overflowY: "auto" }}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
