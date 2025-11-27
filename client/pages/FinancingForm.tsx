@@ -997,6 +997,53 @@ export default function FinancingForm() {
                 </div>
               )}
 
+              {formData.financingType && (
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Plazo de Financiamiento *
+                  </label>
+                  <select
+                    name="financingTerm"
+                    value={formData.financingTerm}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border ${
+                      errors.financingTerm ? "border-red-500" : "border-border/40"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                  >
+                    <option value="">Selecciona plazo</option>
+                    {financingTermOptions[formData.financingType]?.map((term) => (
+                      <option key={term} value={term}>
+                        {term === "otro" ? "Otro (especificar)" : term}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.financingTerm && (
+                    <p className="text-red-600 text-sm mt-1">{errors.financingTerm}</p>
+                  )}
+                </div>
+              )}
+
+              {formData.financingTerm === "otro" && (
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
+                    Especifica el Plazo *
+                  </label>
+                  <input
+                    type="text"
+                    name="financingTermCustom"
+                    value={formData.financingTermCustom}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 border ${
+                      errors.financingTermCustom ? "border-red-500" : "border-border/40"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30`}
+                    placeholder="Ej: 150 días, 10 meses, etc."
+                  />
+                  {errors.financingTermCustom && (
+                    <p className="text-red-600 text-sm mt-1">{errors.financingTermCustom}</p>
+                  )}
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
