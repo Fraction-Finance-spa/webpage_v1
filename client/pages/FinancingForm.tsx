@@ -992,6 +992,21 @@ export default function FinancingForm() {
                         <option value="credito-garantia">Créditos con Garantía</option>
                       </>
                     )}
+                    {formData.financingType === "fondos-inversion" && (
+                      <>
+                        <option value="private-equity">Private Equity</option>
+                        <option value="real-estate">Real Estate</option>
+                        <option value="infraestructura">Infraestructura</option>
+                        <option value="energia-renovable">Energía Renovable</option>
+                        <option value="esg-sostenibles">ESG / Sostenibles</option>
+                        <option value="globales-diversificados">Globales Diversificados</option>
+                        <option value="sectoriales">Sectoriales (Tech, Salud, Finanzas, etc.)</option>
+                        <option value="emergentes">Emergentes</option>
+                        <option value="innovacion-tecnologia">Innovación y Tecnología</option>
+                        <option value="commodities">Commodities</option>
+                        <option value="criptoactivos">Criptoactivos</option>
+                      </>
+                    )}
                   </select>
                   {errors.financingSubtype && (
                     <p className="text-red-600 text-sm mt-1">{errors.financingSubtype}</p>
