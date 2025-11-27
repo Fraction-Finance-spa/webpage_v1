@@ -16,6 +16,8 @@ interface FormData {
   businessStage: string;
   financingType: string;
   financingSubtype: string;
+  financingTerm: string;
+  financingTermCustom: string;
   firstName: string;
   lastName: string;
   email: string;
