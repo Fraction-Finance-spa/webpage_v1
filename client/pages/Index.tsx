@@ -108,7 +108,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { name: "Capital de Trabajo", icon: Zap, description: "Financiamiento de corto plazo para cubrir necesidades operativas, como inventarios, proveedores o flujo diario de caja." },
               { name: "Bonos", icon: BarChart3, description: "Instrumentos de deuda emitidos por empresas para financiar expansión, proyectos o reestructuración, con pagos de interés y plazo definido." },
