@@ -334,6 +334,8 @@ export default function FinancingForm() {
         businessStage: formData.businessStage,
         financingType: formData.financingType,
         financingSubtype: formData.financingSubtype,
+        financingTerm: formData.financingTerm === "otro" ? formData.financingTermCustom : formData.financingTerm,
+        financingTermCustom: formData.financingTermCustom,
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
