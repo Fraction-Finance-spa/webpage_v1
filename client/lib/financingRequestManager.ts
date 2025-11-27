@@ -25,6 +25,8 @@ export interface FinancingRequest {
   businessStage: string;
   financingType: string;
   financingSubtype?: string;
+  financingTerm?: string;
+  financingTermCustom?: string;
   firstName: string;
   lastName: string;
   email: string;
