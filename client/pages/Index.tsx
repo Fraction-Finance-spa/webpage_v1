@@ -113,6 +113,7 @@ export default function Index() {
               { name: "Capital de Trabajo", icon: Zap, description: "Financiamiento de corto plazo para cubrir necesidades operativas, como inventarios, proveedores o flujo diario de caja." },
               { name: "Bonos", icon: BarChart3, description: "Instrumentos de deuda emitidos por empresas para financiar expansión, proyectos o reestructuración, con pagos de interés y plazo definido." },
               { name: "Deuda Privada", icon: TrendingUp, description: "Préstamos estructurados directamente entre empresa e inversionistas con condiciones flexibles y personalización del riesgo." },
+              { name: "Fondos de Inversión", icon: Globe, description: "Portafolios diversificados que invierten en múltiples activos, desde private equity y real estate hasta infraestructura y tecnología." },
             ].map((asset, i) => (
               <div
                 key={i}
