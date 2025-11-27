@@ -29,6 +29,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import MercadoSecundario from "./pages/MercadoSecundario";
+import Ecosistema from "./pages/Ecosistema";
 
 const queryClient = new QueryClient();
 
@@ -73,7 +74,7 @@ export default function App() {
             <Route path="/productos/mercado-secundario" element={<MercadoSecundario />} />
 
             {/* Ecosistema */}
-            <Route path="/ecosistema" element={<Placeholder />} />
+            <Route path="/ecosistema" element={<Ecosistema />} />
 
             {/* Nosotros */}
             <Route path="/nosotros/empresa" element={<AboutCompany />} />
