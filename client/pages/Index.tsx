@@ -6,7 +6,7 @@ import {
   Globe,
   TrendingUp,
   Users,
-  Leaf,
+  Brain,
   ArrowRight,
   BarChart3,
 } from "lucide-react";
@@ -175,34 +175,34 @@ export default function Index() {
                   "Auditorías, verificación integrada y cumplimiento AML, además de reportes automatizados.",
               },
               {
+                icon: Brain,
+                title: "Evaluación Inteligente con IA",
+                description:
+                  "Analizamos los datos de tu empresa para estimar probabilidad de aprobación, riesgo y condiciones de financiamiento antes de que envíes una solicitud formal.",
+              },
+              {
                 icon: Zap,
                 title: "Tokenización Instantánea",
                 description:
                   "Convierte activos financieros en tokens en minutos. Procesos totalmente automatizados, sin intermediarios.",
               },
               {
+                icon: TrendingUp,
+                title: "Financiamiento Colaborativo",
+                description:
+                  "Fracciona activos tradicionales y más. Crea oportunidades de inversión accesibles para todo tipo de inversionista.",
+              },
+              {
                 icon: Globe,
                 title: "Acceso 24/7",
                 description:
-                  "Operaciones a toda hora. Transacciones rápidas, seguras y eficientes.",
-              },
-              {
-                icon: TrendingUp,
-                title: "Financiamiento colaborativo",
-                description:
-                  "Fracciona activos tradicionales y más. Crea oportunidades de inversión accesibles para cualquier tipo de usuario.",
+                  "Solicita financiamiento y gestiona tus operaciones en cualquier momento, con transacciones rápidas, seguras y eficientes.",
               },
               {
                 icon: Users,
                 title: "Red de Inversores",
                 description:
-                  "Conecta con inversores institucionales y minoristas. Aumenta la visibilidad y demanda de tus activos tokenizados.",
-              },
-              {
-                icon: Leaf,
-                title: "Innovación y Sostenibilidad",
-                description:
-                  "Impulsa la inversión responsable con impacto real en la economía y el medio ambiente.",
+                  "Conecta con inversionistas institucionales y minoristas. Aumenta la visibilidad y demanda de tus activos digitales.",
               },
             ].map((feature, i) => (
               <div
