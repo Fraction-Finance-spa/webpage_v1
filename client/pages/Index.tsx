@@ -97,11 +97,16 @@ export default function Index() {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Financia e invierte en Activos Digitales
+              Financiamiento para empresas, oportunidades de inversión para ti
             </h2>
             <div className="text-xl text-foreground/70 mx-auto" style={{ maxWidth: "855px" }}>
               <p>
-                Accede a oportunidades de financiamiento empresarial mediante activos digitales, con procesos ágiles y alternativas diseñadas para ofrecer rendimientos estables y confiables.
+                Plataforma{" "}
+                <span>
+                  <strong>100%</strong>
+                </span>{" "}
+                <b>digital</b> que conecta empresas con inversionistas mediante activos
+                financieros digitales, con procesos simples, rápidos y seguros.
               </p>
             </div>
           </div>
@@ -179,7 +184,7 @@ export default function Index() {
               },
               {
                 icon: Brain,
-                title: "Evaluación Inteligente con IA",
+                title: "Evaluación Inteligente \"IA\"",
                 description:
                   "Analizamos los datos de tu empresa para estimar probabilidad de aprobación, riesgo y condiciones de financiamiento antes de que envíes una solicitud formal.",
               },
