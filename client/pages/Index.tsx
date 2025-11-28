@@ -162,12 +162,10 @@ export default function Index() {
               ¿Por qué elegir Fraction Finance?
             </h2>
             <p className="text-xl text-foreground/70 max-w-4xl mx-auto">
-              <p>
-                Porque reunimos en un solo lugar financiamiento, inversión y
-                tecnología. Te conectamos con inversionistas y usamos IA para
-                evaluar tu empresa y mostrarte condiciones claras y transparentes
-                para decidir cómo financiarte.
-              </p>
+              Porque reunimos en un solo lugar financiamiento, inversión y
+              tecnología. Te conectamos con inversionistas y usamos IA para
+              evaluar tu empresa y mostrarte condiciones claras y transparentes
+              para decidir cómo financiarte.
             </p>
           </div>
 
