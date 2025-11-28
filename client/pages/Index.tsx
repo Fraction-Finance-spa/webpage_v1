@@ -223,7 +223,7 @@ export default function Index() {
                 <h3 className="text-xl font-semibold text-foreground mb-3" style={{ textAlign: "center" }}>
                   {feature.title === "Financiamiento Colaborativo" ? <p style={{ textAlign: "center" }}>{feature.title}</p> : feature.title}
                 </h3>
-                <p className="text-foreground/70">{feature.description}</p>
+                <p className="text-foreground/70" style={{ textAlign: "center" }}>{feature.description}</p>
               </div>
             ))}
           </div>
