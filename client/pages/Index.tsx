@@ -213,7 +213,7 @@ export default function Index() {
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3" style={{ textAlign: "center" }}>
-                  {feature.title === "Financiamiento colaborativo" ? <p style={{ textAlign: "center" }}>{feature.title}</p> : feature.title}
+                  {feature.title === "Financiamiento Colaborativo" ? <p style={{ textAlign: "center" }}>{feature.title}</p> : feature.title}
                 </h3>
                 <p className="text-foreground/70">{feature.description}</p>
               </div>
