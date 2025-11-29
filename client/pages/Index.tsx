@@ -18,7 +18,7 @@ export default function Index() {
     <Layout>
       {/* Hero Section */}
       <section className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden" style={{
-        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fcfb1dbdec5284d19854f1a167f9f94b5)",
+        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F0889ae4e3089426dbfad888ca00b52ca)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -26,7 +26,8 @@ export default function Index() {
         padding: "150px 32px 120px 32px",
         marginBottom: "-4px",
         marginTop: "0",
-        opacity: "0.92",
+        boxShadow: "1px 1px 3px 0px rgba(0, 0, 0, 1)",
+        backgroundColor: "rgba(0, 0, 0, 1)",
       }}>
         <div className="container max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
