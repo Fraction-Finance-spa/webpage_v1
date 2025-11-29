@@ -24,11 +24,13 @@ export default function Ecosistema() {
       }}>
         <div className="container max-w-4xl mx-auto">
           <div className="text-center space-y-6 z-10">
-            <h1 className="text-5xl sm:text-6xl font-bold text-white leading-tight drop-shadow-lg">
+            <h1 className="text-5xl sm:text-6xl font-bold text-white leading-tight drop-shadow-lg" style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 1)" }}>
               Ecosistema de Innovación
             </h1>
-            <p className="text-xl sm:text-2xl text-white/90 drop-shadow-md max-w-3xl mx-auto leading-relaxed">
-              Únete a un próspero ecosistema de instituciones financieras, socios tecnológicos y expertos regulatorios que transforman el futuro de los mercados de capitales.
+            <p className="text-xl sm:text-2xl text-white/90 drop-shadow-md max-w-3xl mx-auto leading-relaxed" style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 1)" }}>
+              <span style={{ color: "rgb(255, 255, 255)" }}>
+                Únete a un próspero ecosistema de instituciones financieras, socios tecnológicos y expertos regulatorios que transforman el futuro de los mercados de capitales.
+              </span>
             </p>
           </div>
         </div>
