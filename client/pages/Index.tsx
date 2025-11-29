@@ -36,14 +36,16 @@ export default function Index() {
                 <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight">
                   <div className="inline text-black font-black">
                     <span style={{ fontWeight: "600", marginRight: "88px", color: "rgba(255, 255, 255, 1)", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)" }}>
-                      Acceso a financiamiento <br />
-                      sin limites
+                      Acceso a <i>financiamiento </i><br />
+                      <i>sin limites</i>
                     </span>
                   </div>
                 </h1>
                 <p style={{ color: "rgba(255, 255, 255, 1)", fontSize: "20px", fontWeight: "400", lineHeight: "28px", margin: "24px auto 0 auto" }}>
-                  <span style={{ letterSpacing: "1px", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)", marginRight: "44px", font: '600 25px "Inter Tight", sans-serif' }}>
-                    Potenciamos el crecimiento con soluciones digitales de inversión y financiamiento.
+                  <span style={{ letterSpacing: "1px", textShadow: "1px 1px 3px rgba(0, 0, 0, 1)", marginRight: "43px", font: '600 25px "Inter Tight", sans-serif' }}>
+                    <span style={{ fontWeight: "normal" }}>
+                      Potenciamos el crecimiento con soluciones digitales de inversión y financiamiento.
+                    </span>
                   </span>
                 </p>
               </div>
@@ -98,7 +100,9 @@ export default function Index() {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Financiamiento para <em>empresas</em>, oportunidades de inversión para <i>ti</i>
+              <span>Financiamiento para </span>
+              <span style={{ color: "rgb(0, 0, 0)" }}>empresas</span>
+              , oportunidades de inversión para <i>ti</i>
             </h2>
             <div className="text-xl text-foreground/70 mx-auto" style={{ maxWidth: "855px" }}>
               <p>
