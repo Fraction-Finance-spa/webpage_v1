@@ -115,7 +115,7 @@ export default function BusinessModel() {
           <section className="mb-20">
             <div className="mb-12">
               <h2 className="text-4xl font-bold text-foreground mb-6 text-center">
-                Instrumentos financieros tokenizados, Fondos de inversión
+                Instrumentos financieros
               </h2>
               <p className="text-lg text-foreground/70 leading-relaxed mb-6">
                 Digitalizamos instrumentos financieros para crear un
@@ -130,8 +130,8 @@ export default function BusinessModel() {
 
             {/* Instruments Grid */}
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {tokenizedInstruments.slice(0, 3).map((instrument, index) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {tokenizedInstruments.map((instrument, index) => (
                   <div
                     key={index}
                     className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
