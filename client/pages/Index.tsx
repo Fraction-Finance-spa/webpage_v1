@@ -100,9 +100,16 @@ export default function Index() {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              <span>Financiamiento para </span>
-              <span style={{ color: "rgb(0, 0, 0)" }}>empresas</span>
-              , oportunidades de inversión para <i>ti</i>
+              <div className="inline">
+                <span>Financiamiento para </span>
+              </div>
+              <div className="inline" style={{ color: "rgb(0, 0, 0)", fontWeight: "700" }}>
+                <i style={{ color: "rgb(0, 70, 255)" }}>empresas</i>
+              </div>
+              <span>, oportunidades de inversión para</span>
+              <div className="inline" style={{ fontWeight: "700" }}>
+                <span style={{ color: "rgb(0, 70, 255)" }}>ti</span>
+              </div>
             </h2>
             <div className="text-xl text-foreground/70 mx-auto" style={{ maxWidth: "855px" }}>
               <p>
