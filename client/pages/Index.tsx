@@ -108,7 +108,7 @@ export default function Index() {
               </div>
               <span>, oportunidades de inversión para</span>
               <div className="inline" style={{ fontWeight: "700" }}>
-                <span style={{ color: "rgb(0, 70, 255)" }}>ti</span>
+                <span style={{ color: "rgb(0, 70, 255)" }}><i>ti</i></span>
               </div>
             </h2>
             <div className="text-xl text-foreground/70 mx-auto" style={{ maxWidth: "855px" }}>
