@@ -197,10 +197,24 @@ export default function Index() {
               </span>
             </h2>
             <p className="text-xl text-foreground/70 max-w-4xl mx-auto text-center">
-              Porque reunimos en un solo lugar financiamiento, inversión y
-              tecnología. Te conectamos con inversionistas y usamos IA para
-              evaluar tu empresa y mostrarte condiciones claras y transparentes
-              para decidir cómo financiarte.
+              <em>
+                <strong>Reunimos</strong>{" "}
+              </em>
+              en un solo lugar{" "}
+              <em>
+                <strong>financiamiento</strong>
+              </em>
+              ,{" "}
+              <em>
+                <strong>inversión </strong>
+              </em>
+              y{" "}
+              <em>
+                <b>tecnología</b>
+              </em>
+              . Te conectamos con inversionistas y usamos IA para evaluar tu
+              empresa y mostrarte condiciones claras y transparentes para
+              decidir cómo financiarte.
             </p>
           </div>
 
