@@ -106,7 +106,10 @@ export default function Index() {
               <div className="inline" style={{ color: "rgb(0, 0, 0)", fontWeight: "700" }}>
                 <i style={{ color: "rgb(0, 70, 255)" }}>empresas</i>
               </div>
-              <p>, oportunidades de inversión para </p>
+              <p>
+                oportunidades de inversión para{" "}
+                <em style={{ color: "rgb(0, 70, 255)" }}>ti</em>
+              </p>
               <div className="inline" style={{ fontWeight: "700" }}>
                 <span style={{ color: "rgb(0, 70, 255)" }}><i>ti</i></span>
               </div>
