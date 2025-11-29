@@ -174,7 +174,7 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 icon: Shield,
@@ -215,15 +215,28 @@ export default function Index() {
             ].map((feature, i) => (
               <div
                 key={i}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 p-8 shadow-lg hover:shadow-2xl group"
+                className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
               >
-                <div className="w-12 h-12 flex items-center justify-center transition-all" style={{ animationDuration: "0.5s", backgroundImage: "linear-gradient(135deg, rgba(0, 26, 255, 0.15) 0%, rgba(0, 26, 255, 0.05) 100%)", borderRadius: "16px", boxShadow: "rgba(0, 26, 255, 0.08) 0px 8px 24px 0px", margin: "0 auto 24px", transitionDuration: "0.5s" }}>
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative p-5 h-full flex flex-col items-center justify-center">
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-500"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(0, 26, 255, 0.15) 0%, rgba(0, 26, 255, 0.05) 100%)",
+                      boxShadow: "0 8px 24px rgba(0, 26, 255, 0.08)"
+                    }}
+                  >
+                    <feature.icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2 mx-auto">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-foreground/60 font-medium text-center">
+                    {feature.description}
+                  </p>
+                  <div className="w-12 h-1 bg-primary rounded-full mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3" style={{ textAlign: "center" }}>
-                  {feature.title === "Financiamiento Colaborativo" ? <p style={{ textAlign: "center" }}>{feature.title}</p> : feature.title}
-                </h3>
-                <p className="text-foreground/70" style={{ textAlign: "center" }}>{feature.description}</p>
               </div>
             ))}
           </div>
