@@ -115,7 +115,7 @@ export default function BusinessModel() {
           <section className="mb-20">
             <div className="mb-12">
               <h2 className="text-4xl font-bold text-foreground mb-6 text-center">
-                Instrumentos financieros tokenizados
+                Instrumentos financieros tokenizados, Fondos de inversión
               </h2>
               <p className="text-lg text-foreground/70 leading-relaxed mb-6">
                 Digitalizamos instrumentos financieros para crear un
