@@ -305,7 +305,10 @@ export default function Index() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-4xl sm:text-5xl font-bold" style={{ color: "rgba(0, 0, 0, 1)" }}>
-                  Tokeniza con Fraction
+                  Tokeniza con{" "}
+                  <span style={{ color: "rgb(0, 70, 255)" }}>
+                    <i>Fraction</i>
+                  </span>
                 </h2>
                 <p className="text-xl text-foreground/70">
                   La forma más simple y segura de convertir activos en
