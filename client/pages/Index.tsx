@@ -98,16 +98,28 @@ export default function Index() {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Financiamiento para empresas, oportunidades de inversión para ti
+              Financiamiento para <em>empresas</em>, oportunidades de inversión para <i>ti</i>
             </h2>
             <div className="text-xl text-foreground/70 mx-auto" style={{ maxWidth: "855px" }}>
               <p>
                 Plataforma{" "}
                 <span>
-                  <strong>100%</strong>
+                  <strong><i>100%</i></strong>
                 </span>{" "}
-                <b>digital</b> que conecta empresas con inversionistas mediante activos
-                financieros digitales, con procesos simples, rápidos y seguros.
+                <b><i>digital</i></b> que conecta empresas con inversionistas mediante activos
+                financieros digitales, procesos{" "}
+                <em>
+                  <strong>simples</strong>
+                </em>
+                ,{" "}
+                <em>
+                  <strong>rápidos</strong>
+                </em>{" "}
+                y{" "}
+                <em>
+                  <b>seguros</b>
+                </em>
+                .
               </p>
             </div>
           </div>
@@ -115,7 +127,7 @@ export default function Index() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { name: "Capital de Trabajo", icon: Zap, description: "Financiamiento de corto plazo para cubrir necesidades operativas, como inventarios, proveedores o flujo diario de caja." },
-              { name: "Bonos", icon: BarChart3, description: "Instrumentos de deuda emitidos por empresas para financiar expansión, proyectos o reestructuración, con pagos de interés y plazo definido." },
+              { name: "Bonos Corporativos", icon: BarChart3, description: "Instrumentos de deuda emitidos por empresas para financiar expansión, proyectos o reestructuración, con pagos de interés y plazo definido." },
               { name: "Deuda Privada", icon: TrendingUp, description: "Préstamos estructurados directamente entre empresa e inversionistas con condiciones flexibles y personalización del riesgo." },
               { name: "Fondos de Inversión", icon: Globe, description: "Portafolios diversificados que invierten en múltiples activos, desde private equity y real estate hasta infraestructura y tecnología." },
             ].map((asset, i) => (
@@ -138,7 +150,7 @@ export default function Index() {
                   <h3 className="text-xl font-bold text-foreground mb-2 mx-auto">
                     {asset.name}
                   </h3>
-                  <p className="text-sm text-foreground/60 font-medium text-left">
+                  <p className="text-sm text-foreground/60 font-medium text-center">
                     {asset.description}
                   </p>
                   <div className="w-12 h-1 bg-primary rounded-full mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
