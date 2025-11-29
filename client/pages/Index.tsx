@@ -188,7 +188,13 @@ export default function Index() {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              ¿Por qué elegir Fraction Finance?
+              <span>
+                ¿Por qué elegir{" "}
+                <span style={{ color: "rgb(0, 70, 255)" }}>
+                  <em>Fraction</em>
+                </span>
+                ?
+              </span>
             </h2>
             <p className="text-xl text-foreground/70 max-w-4xl mx-auto text-center">
               Porque reunimos en un solo lugar financiamiento, inversión y
