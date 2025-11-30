@@ -14,13 +14,14 @@ export default function Ecosistema() {
     <Layout>
       {/* Hero Section */}
       <section className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden" style={{
-        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2Fb4afd7a5a58749dc883a987ee3ea2d24)",
+        backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F44950e1356bb408aac1613e5c84b6bbd%2F7377e0180d4344a19047a3ca88c73ea2)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
         minHeight: "600px",
         padding: "120px 32px",
         marginBottom: "-4px",
+        boxShadow: "1px 1px 3px 0px rgba(0, 0, 0, 1)",
       }}>
         <div className="container max-w-4xl mx-auto">
           <div className="text-center space-y-6 z-10">
