@@ -63,9 +63,8 @@ export default function BusinessModel() {
       description: ["Crédito corto plazo", "Crédito largo plazo", "Crédito con garantía"],
     },
     {
-      title: "Financiamiento Colaborativo",
-      description:
-        "Múltiples inversionistas participando en la originación y fondeo de activos mediante tokens fraccionados.",
+      title: "Fondos de Inversión",
+      description: ["Renta Variable", "ESG / Sostenibles", "Commodities", "Sectoriales", "Mercados Emergentes", "y más"],
     },
   ];
 
