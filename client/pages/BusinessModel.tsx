@@ -29,7 +29,7 @@ export default function BusinessModel() {
     },
     {
       title: "Costos operativos reducidos mediante automatización",
-      description: "Los smart contracts eliminan procesos manuales y disminuyen costos de originación, gestión y liquidación.",
+      description: "Los smart contracts eliminan procesos manuales y disminuyen costos de originación, gestión y liquidaci��n.",
       icon: Zap,
     },
     {
@@ -113,7 +113,7 @@ export default function BusinessModel() {
               Nuestro Modelo de Negocio
             </h1>
             <p className="text-xl text-foreground/70 leading-relaxed">
-              Conectamos el sistema financiero tradicional con tecnología blockchain
+              Conectamos el sistema financiero tradicional con tecnolog��a blockchain
               para habilitar un mercado de financiamiento más ágil, transparente y
               escalable.
             </p>
@@ -197,7 +197,7 @@ export default function BusinessModel() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative p-6">
+                  <div className="relative" style={{ padding: "10px 24px" }}>
                     <div className="flex flex-col items-center text-center gap-4">
                       <div className="flex-shrink-0">
                         <div className="flex items-center justify-center h-14 w-14 rounded-full bg-primary text-white font-bold text-lg">
