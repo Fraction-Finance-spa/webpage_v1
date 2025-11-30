@@ -16,9 +16,7 @@ export default function AboutCompany() {
         {/* Hero Section */}
         <div className="max-w-6xl mx-auto mb-20">
           <div className="text-center mb-12">
-            <div className="flex justify-center" style={{ margin: "40px 0 24px" }}>
-              <Lightbulb className="w-16 h-16 text-primary" />
-            </div>
+            <div className="flex justify-center" style={{ margin: "40px 0 24px" }} />
             <h1 className="font-bold text-foreground mb-6" style={{ fontSize: "40px", fontWeight: "700", letterSpacing: "normal", lineHeight: "40px" }}>
               Nuestra Visión
             </h1>
