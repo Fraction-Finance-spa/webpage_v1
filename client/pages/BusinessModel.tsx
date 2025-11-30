@@ -259,41 +259,6 @@ export default function BusinessModel() {
             </div>
           </section>
 
-          {/* Competitive Advantages */}
-          <section className="mb-20">
-            <h2 className="text-4xl font-bold text-foreground mb-4 text-center">
-              Ventajas Competitivas
-            </h2>
-            <p className="text-lg text-foreground/70 leading-relaxed mb-12">
-              Nuestra propuesta combina infraestructura blockchain con procesos
-              financieros tradicionales, permitiendo:
-            </p>
-
-            <div className="flex flex-col gap-4">
-              {competitiveAdvantages.map((advantage, index) => {
-                const IconComponent = advantage.icon;
-                return (
-                  <div
-                    key={index}
-                    className="relative group overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative pt-2.5 px-6">
-                      <div className="flex items-start gap-3 mb-4">
-                        <div className="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10" style={{ margin: "auto 0" }}>
-                          <IconComponent className="h-6 w-6 text-primary" />
-                        </div>
-                        <h3 className="font-bold text-foreground text-sm leading-snug" style={{ margin: "auto 0" }}>
-                          {advantage.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
         </div>
       </div>
     </Layout>
