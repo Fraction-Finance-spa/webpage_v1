@@ -18,10 +18,10 @@ export default function AboutCompany() {
           <div className="text-center mb-12">
             <div className="flex justify-center" style={{ margin: "40px 0 24px" }} />
             <h1 className="font-bold text-foreground mb-6" style={{ fontSize: "40px", fontWeight: "700", letterSpacing: "normal", lineHeight: "40px" }}>
-              Nuestra Visión
+              Nuestra Empresa
             </h1>
             <p className="text-2xl font-semibold text-primary mb-4">
-              Construyendo el Futuro de los Mercados de Capitales
+              <i>Construyendo el Futuro de los Mercados de Capitales</i>
             </p>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
               Somos un equipo dedicados a crear un sistema financiero global más abierto, eficiente y accesible.
@@ -38,13 +38,12 @@ export default function AboutCompany() {
               <div className="relative p-8 h-full flex flex-col justify-center">
                 <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
                   <div style={{ margin: "0 auto" }}>
-                    Nuestra
+                    <p>
+                      Nuestra{" "}
+                      <em style={{ color: "rgb(0, 70, 255)" }}>Misión</em>
+                    </p>
                     <div style={{ display: "inline" }}>
-                      <p>
-                        <span style={{ color: "rgb(0, 70, 255)" }}>
-                          Misión
-                        </span>
-                      </p>
+                      <p />
                     </div>
                   </div>
                 </h2>
@@ -58,11 +57,12 @@ export default function AboutCompany() {
               <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative h-full flex flex-col justify-center" style={{ padding: "29px 32px 11px" }}>
                 <h3 className="text-2xl font-bold text-foreground" style={{ margin: "0 auto 16px" }}>
-                  Nuestra
+                  <p>
+                    Nuestra{" "}
+                    <em style={{ color: "rgb(0, 70, 255)" }}>Visión</em>
+                  </p>
                   <div style={{ display: "inline" }}>
-                    <p>
-                      <span style={{ color: "rgb(48, 6, 255)" }}>Visión</span>
-                    </p>
+                    <p />
                   </div>
                 </h3>
                 <div className="text-foreground/70 leading-relaxed">
