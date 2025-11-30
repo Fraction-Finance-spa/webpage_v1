@@ -64,7 +64,7 @@ export default function BusinessModel() {
     },
     {
       title: "Fondos de Inversión",
-      description: ["Renta Variable", "ESG / Sostenibles", "Commodities", "Sectoriales", "Mercados Emergentes", "y más"],
+      description: ["Renta Variable", "ESG / Sostenibles", "Commodities", "Sectoriales", "y más"],
     },
   ];
 
@@ -152,7 +152,7 @@ export default function BusinessModel() {
                     <div className="relative p-8">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0" />
-                        <div className="flex flex-col" style={{ margin: "0 6px 0 -2px" }}>
+                        <div className="flex flex-col" style={{ margin: "0 auto" }}>
                           <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 mx-auto">
                             <CheckCircle2 className="h-6 w-6 text-primary" />
                           </div>
@@ -222,7 +222,10 @@ export default function BusinessModel() {
             <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative p-8 md:p-12">
               <h2 className="text-4xl font-bold text-foreground mb-6 text-center">
-                Creando un Ecosistema de Valor
+                <p>
+                  Creando un <em style={{ color: "rgb(0, 70, 255)" }}>Ecosistema </em>de
+                  Valor
+                </p>
               </h2>
               <p className="text-lg text-foreground/70 leading-relaxed mb-12 text-center">
                 Diseñamos una infraestructura que beneficia tanto a
