@@ -37,8 +37,8 @@ export default function AboutCompany() {
               <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative p-8 h-full flex flex-col justify-center">
                 <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
-                  <div>
-                    Nuestra Misión
+                  <div style={{ margin: "0 auto" }}>
+                    Nuestra <i>Misión</i>
                   </div>
                 </h2>
                 <p className="text-foreground/70 leading-relaxed">
@@ -50,7 +50,7 @@ export default function AboutCompany() {
               <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50/20 opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute inset-0 rounded-2xl border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative h-full flex flex-col justify-center" style={{ padding: "29px 32px 11px" }}>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Nuestra Visión Futura</h3>
+                <h3 className="text-2xl font-bold text-foreground" style={{ margin: "0 auto 16px" }}>Nuestra <i>Visión</i></h3>
                 <div className="text-foreground/70 leading-relaxed">
                   <p>
                     Convertirnos en la plataforma referente de tokenización y finanzas descentralizadas, facilitando el acceso a financiamiento e inversiones seguras.
