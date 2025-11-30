@@ -197,9 +197,6 @@ export default function BusinessModel() {
                         <h3 className="text-lg font-bold text-foreground mb-3">
                           {step.title}
                         </h3>
-                        <p className="text-sm text-foreground/70 leading-relaxed">
-                          {step.description}
-                        </p>
                       </div>
                     </div>
                   </div>
