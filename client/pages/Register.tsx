@@ -6,14 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
-  const { signIn } = useAuth();
+  const { signUp } = useAuth();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    fullName: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,19 +28,29 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      toast({
+        title: "Error",
+        description: "Las contraseñas no coinciden",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
-      await signIn(formData.email, formData.password);
+      await signUp(formData.email, formData.password, formData.fullName);
       toast({
         title: "Éxito",
-        description: "Sesión iniciada correctamente",
+        description: "Cuenta creada correctamente. Por favor confirma tu email.",
       });
-      navigate("/dashboard");
+      navigate("/login");
     } catch (error) {
       toast({
         title: "Error",
-        description: error instanceof Error ? error.message : "Error al iniciar sesión",
+        description: error instanceof Error ? error.message : "Error al crear cuenta",
         variant: "destructive",
       });
     } finally {
@@ -50,11 +62,23 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-2xl">Iniciar Sesión</CardTitle>
-          <CardDescription>Ingresa tus credenciales para continuar</CardDescription>
+          <CardTitle className="text-2xl">Crear Cuenta</CardTitle>
+          <CardDescription>Regístrate para acceder a nuestras soluciones</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Nombre Completo</label>
+              <Input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                placeholder="Juan Pérez"
+                required
+              />
+            </div>
+
             <div>
               <label className="block text-sm font-medium mb-2">Email</label>
               <Input
@@ -79,16 +103,28 @@ export default function Login() {
               />
             </div>
 
+            <div>
+              <label className="block text-sm font-medium mb-2">Confirmar Contraseña</label>
+              <Input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="••••••••"
+                required
+              />
+            </div>
+
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Cargando..." : "Iniciar Sesión"}
+              {loading ? "Cargando..." : "Crear Cuenta"}
             </Button>
           </form>
 
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-600">
-              ¿No tienes cuenta?{" "}
-              <Link to="/register" className="text-primary hover:underline font-medium">
-                Regístrate aquí
+              ¿Ya tienes cuenta?{" "}
+              <Link to="/login" className="text-primary hover:underline font-medium">
+                Inicia sesión aquí
               </Link>
             </p>
           </div>
