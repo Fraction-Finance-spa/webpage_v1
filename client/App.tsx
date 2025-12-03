@@ -60,54 +60,69 @@ const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
   return element;
 };
 
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/signup" element={<Navigate to="/register" />} />
+      <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+
+      {/* Productos */}
+      <Route path="/productos/financiamiento" element={<ProtectedRouteEmpresa element={<FinancingForm />} />} />
+      <Route path="/productos/inversiones" element={<Inversiones />} />
+      <Route path="/productos/mercado-secundario" element={<MercadoSecundario />} />
+
+      {/* Ecosistema */}
+      <Route path="/ecosistema" element={<Ecosistema />} />
+
+      {/* Nosotros */}
+      <Route path="/nosotros/empresa" element={<AboutCompany />} />
+      <Route path="/nosotros/modelo" element={<BusinessModel />} />
+      <Route path="/nosotros/educacion" element={<Education />} />
+      <Route path="/nosotros/educacion/:id" element={<EducationDetail />} />
+      <Route path="/nosotros/blog" element={<Blog />} />
+      <Route path="/nosotros/blog/:id" element={<ArticleDetail />} />
+      <Route path="/nosotros/careers" element={<Careers />} />
+      <Route path="/nosotros/contacto" element={<Contact />} />
+      <Route path="/canal-denuncias" element={<DenunciasChannel />} />
+      <Route path="/canal-reclamos" element={<ReclamosChannel />} />
+
+      {/* Policies */}
+      <Route path="/politica-privacidad" element={<PrivacyPolicy />} />
+      <Route path="/terminos-servicio" element={<TermsOfService />} />
+      <Route path="/politica-cookies" element={<CookiePolicy />} />
+
+      {/* Admin */}
+      <Route path="/admin" element={<Admin />} />
+
+      {/* Catch-all */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
+function AppContent() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/login" element={<Navigate to="/auth" />} />
-            <Route path="/signup" element={<Navigate to="/auth" />} />
-            <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
-
-            {/* Productos */}
-            <Route path="/productos/financiamiento" element={<ProtectedRouteEmpresa element={<FinancingForm />} />} />
-            <Route path="/productos/inversiones" element={<Inversiones />} />
-            <Route path="/productos/mercado-secundario" element={<MercadoSecundario />} />
-
-            {/* Ecosistema */}
-            <Route path="/ecosistema" element={<Ecosistema />} />
-
-            {/* Nosotros */}
-            <Route path="/nosotros/empresa" element={<AboutCompany />} />
-            <Route path="/nosotros/modelo" element={<BusinessModel />} />
-            <Route path="/nosotros/educacion" element={<Education />} />
-            <Route path="/nosotros/educacion/:id" element={<EducationDetail />} />
-            <Route path="/nosotros/blog" element={<Blog />} />
-            <Route path="/nosotros/blog/:id" element={<ArticleDetail />} />
-            <Route path="/nosotros/careers" element={<Careers />} />
-            <Route path="/nosotros/contacto" element={<Contact />} />
-            <Route path="/canal-denuncias" element={<DenunciasChannel />} />
-            <Route path="/canal-reclamos" element={<ReclamosChannel />} />
-
-            {/* Policies */}
-            <Route path="/politica-privacidad" element={<PrivacyPolicy />} />
-            <Route path="/terminos-servicio" element={<TermsOfService />} />
-            <Route path="/politica-cookies" element={<CookiePolicy />} />
-
-            {/* Admin */}
-            <Route path="/admin" element={<Admin />} />
-
-            {/* Catch-all */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <AppContent />
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
