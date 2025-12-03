@@ -7,9 +7,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
+import { AuthProvider, useAuth } from "@/lib/auth-context";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import FinancingForm from "./pages/FinancingForm";
 import Admin from "./pages/Admin";
@@ -34,20 +37,24 @@ import Ecosistema from "./pages/Ecosistema";
 const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  return isLoggedIn ? element : <Navigate to="/auth" />;
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Cargando...</div>;
+  }
+
+  return isAuthenticated ? element : <Navigate to="/login" />;
 };
 
 const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  const profileType = localStorage.getItem("userProfileType");
+  const { isAuthenticated, loading } = useAuth();
 
-  if (!isLoggedIn) {
-    return <Navigate to="/auth" />;
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Cargando...</div>;
   }
 
-  if (profileType !== "empresa") {
-    return <Navigate to="/" />;
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
   }
 
   return element;
