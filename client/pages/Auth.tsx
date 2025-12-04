@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/lib/auth-context";
 import Layout from "@/components/Layout";
 import { Mail, Lock, User, ArrowRight, CheckCircle, ArrowLeft } from "lucide-react";
 
 export default function Auth() {
   const [view, setView] = useState<"welcome" | "login" | "signup">("welcome");
-  
+  const navigate = useNavigate();
+  const { signUp, signIn } = useAuth();
+
   // Login state
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loginProfileType, setLoginProfileType] = useState<"persona" | "empresa" | "">("");
-  
+
   // Signup state
   const [signupFirstName, setSignupFirstName] = useState("");
   const [signupLastName, setSignupLastName] = useState("");
@@ -19,12 +22,11 @@ export default function Auth() {
   const [signupPassword, setSignupPassword] = useState("");
   const [signupConfirmPassword, setSignupConfirmPassword] = useState("");
   const [signupProfileType, setSignupProfileType] = useState<"persona" | "empresa" | "">("");
-  
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -49,16 +51,20 @@ export default function Auth() {
     }
 
     setLoading(true);
-    setTimeout(() => {
+    try {
+      await signIn(loginEmail, loginPassword);
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userEmail", loginEmail);
       localStorage.setItem("userProfileType", loginProfileType);
-      setLoading(false);
       navigate("/profile");
-    }, 1000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al iniciar sesión");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSignupSubmit = (e: React.FormEvent) => {
+  const handleSignupSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -98,7 +104,13 @@ export default function Auth() {
     }
 
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const fullName = signupProfileType === "persona"
+        ? `${signupFirstName} ${signupLastName}`
+        : signupCompanyName;
+
+      await signUp(signupEmail, signupPassword, fullName);
+
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userEmail", signupEmail);
       localStorage.setItem("userProfileType", signupProfileType);
@@ -110,9 +122,13 @@ export default function Auth() {
         localStorage.setItem("userCompanyName", signupCompanyName);
       }
 
-      setLoading(false);
+      setError("Usuario creado correctamente. Por favor confirma tu email.");
       navigate("/profile");
-    }, 1000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al crear usuario");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleBackToWelcome = () => {
