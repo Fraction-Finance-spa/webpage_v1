@@ -5,16 +5,19 @@ import type { User as SupabaseUser } from "@supabase/supabase-js";
 interface AuthContextType {
   user: SupabaseUser | null;
   loading: boolean;
+  userRole: string | null;
   signUp: (email: string, password: string, fullName: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
   isAuthenticated: boolean;
+  isAdmin: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [userRole, setUserRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,6 +27,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           data: { session },
         } = await supabase.auth.getSession();
         setUser(session?.user || null);
+
+        if (session?.user?.email) {
+          const { data, error } = await supabase
+            .from("users")
+            .select("user_type")
+            .eq("email", session.user.email)
+            .single();
+
+          if (data) {
+            setUserRole(data.user_type);
+          }
+        }
       } catch (error) {
         console.error("Error initializing auth:", error);
       } finally {
@@ -35,8 +50,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user || null);
+
+      if (session?.user?.email) {
+        const { data } = await supabase
+          .from("users")
+          .select("user_type")
+          .eq("email", session.user.email)
+          .single();
+
+        if (data) {
+          setUserRole(data.user_type);
+        }
+      } else {
+        setUserRole(null);
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -96,10 +125,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       value={{
         user,
         loading,
+        userRole,
         signUp,
         signIn,
         signOut,
         isAuthenticated: !!user,
+        isAdmin: userRole === "admin",
       }}
     >
       {children}
