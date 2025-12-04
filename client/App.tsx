@@ -72,7 +72,7 @@ function AppRoutes() {
 
       {/* Productos */}
       <Route path="/productos/financiamiento" element={<ProtectedRouteEmpresa element={<FinancingForm />} />} />
-      <Route path="/productos/inversiones" element={<Inversiones />} />
+      <Route path="/productos/inversiones" element={<ProtectedRouteEmpresa element={<Inversiones />} />} />
       <Route path="/productos/mercado-secundario" element={<ProtectedRouteEmpresa element={<MercadoSecundario />} />} />
 
       {/* Ecosistema */}
