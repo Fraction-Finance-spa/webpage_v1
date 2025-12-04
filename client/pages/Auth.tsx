@@ -167,7 +167,7 @@ export default function Auth() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            padding: "20px 48px 10px",
+            padding: "20px 48px",
           }}>
             {/* Welcome View */}
             {view === "welcome" && (
