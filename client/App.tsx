@@ -60,6 +60,24 @@ const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
   return element;
 };
 
+const ProtectedRouteAdmin = ({ element }: { element: React.ReactNode }) => {
+  const { isAuthenticated, isAdmin, loading } = useAuth();
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Cargando...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/auth" />;
+  }
+
+  if (!isAdmin) {
+    return <Navigate to="/" />;
+  }
+
+  return element;
+};
+
 function AppRoutes() {
   return (
     <Routes>
@@ -96,7 +114,7 @@ function AppRoutes() {
       <Route path="/politica-cookies" element={<CookiePolicy />} />
 
       {/* Admin */}
-      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin" element={<ProtectedRouteAdmin element={<Admin />} />} />
 
       {/* Catch-all */}
       <Route path="*" element={<NotFound />} />
