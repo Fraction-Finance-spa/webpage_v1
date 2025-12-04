@@ -87,7 +87,7 @@ export default function Login() {
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-600">
               ¿No tienes cuenta?{" "}
-              <Link to="/register" className="text-primary hover:underline font-medium">
+              <Link to="/auth" className="text-primary hover:underline font-medium">
                 Regístrate aquí
               </Link>
             </p>
