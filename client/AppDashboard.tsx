@@ -17,7 +17,7 @@ const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  return isLoggedIn ? element : <Navigate to="/login" />;
+  return isLoggedIn ? element : <Navigate to="/auth" />;
 };
 
 const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
@@ -25,11 +25,11 @@ const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
   const profileType = localStorage.getItem("userProfileType");
 
   if (!isLoggedIn) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/auth" />;
   }
 
   if (profileType !== "empresa") {
-    return <Navigate to="/login" />;
+    return <Navigate to="/auth" />;
   }
 
   return element;
