@@ -43,7 +43,7 @@ const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
     return <div className="min-h-screen flex items-center justify-center">Cargando...</div>;
   }
 
-  return isAuthenticated ? element : <Navigate to="/login" />;
+  return isAuthenticated ? element : <Navigate to="/auth" />;
 };
 
 const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
@@ -54,7 +54,7 @@ const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/auth" />;
   }
 
   return element;
