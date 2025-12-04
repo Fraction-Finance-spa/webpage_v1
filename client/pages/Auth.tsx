@@ -155,7 +155,7 @@ export default function Auth() {
         backgroundSize: "cover",
         opacity: "0.91",
       }}>
-        <div className="absolute inset-0 -z-10" style={{ left: "83px", top: "85px", width: "1472px" }}>
+        <div className="absolute inset-0 -z-10" style={{ left: "85px", top: "-305px", width: "1472px" }}>
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-3xl opacity-20"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl opacity-20" style={{ left: "856px", top: "720px" }}></div>
         </div>
@@ -167,7 +167,7 @@ export default function Auth() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            padding: "20px 48px",
+            padding: "20px 48px 10px",
           }}>
             {/* Welcome View */}
             {view === "welcome" && (
@@ -489,18 +489,9 @@ export default function Auth() {
 
                 <div className="mt-8 space-y-4 w-full">
                   <div className="grid grid-cols-3 gap-2 text-xs">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span style={{ color: "rgba(0, 0, 0, 1)" }}>Acceso inmediato</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span style={{ color: "rgba(0, 0, 0, 1)" }}>100% seguro</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span style={{ color: "rgba(0, 0, 0, 1)" }}>Rápido</span>
-                    </div>
+                    <div className="flex items-center gap-2" />
+                    <div className="flex items-center gap-2" />
+                    <div className="flex items-center gap-2" />
                   </div>
                 </div>
               </>
