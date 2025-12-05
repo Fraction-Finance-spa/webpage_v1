@@ -524,15 +524,19 @@ export default function Profile() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("userFirstName");
-    localStorage.removeItem("userLastName");
-    localStorage.removeItem("userCompanyName");
-    localStorage.removeItem("userProfileType");
-    localStorage.removeItem("userProfileData");
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      localStorage.removeItem("userEmail");
+      localStorage.removeItem("userProfileType");
+      localStorage.removeItem("userProfileData");
+      localStorage.removeItem("investmentProfile");
+      localStorage.removeItem("bankInfo");
+      navigate("/");
+    } catch (error) {
+      console.error("Error logging out:", error);
+      navigate("/");
+    }
   };
 
   const displayName = userProfileType === "persona" ? personaData.nombre : empresaData.nombreEmpresa;
