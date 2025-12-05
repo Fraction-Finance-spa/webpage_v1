@@ -15,7 +15,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import FinancingForm from "./pages/FinancingForm";
-import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
 import AboutCompany from "./pages/AboutCompany";
 import BusinessModel from "./pages/BusinessModel";
@@ -113,8 +112,6 @@ function AppRoutes() {
       <Route path="/terminos-servicio" element={<TermsOfService />} />
       <Route path="/politica-cookies" element={<CookiePolicy />} />
 
-      {/* Admin */}
-      <Route path="/admin" element={<ProtectedRouteAdmin element={<Admin />} />} />
 
       {/* Catch-all */}
       <Route path="*" element={<NotFound />} />
