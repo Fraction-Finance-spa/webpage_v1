@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/lib/auth-context";
 import { getUserInvestments, getTotalInvestedAmount, getAverageYield } from "@/lib/investmentManager";
 import { formatCLP } from "@/lib/utils";
 import {
@@ -31,6 +33,7 @@ interface ProfileResult {
 
 export default function Profile() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const userEmail = localStorage.getItem("userEmail") || "";
   const userFirstName = localStorage.getItem("userFirstName") || "";
   const userLastName = localStorage.getItem("userLastName") || "";
@@ -309,15 +312,109 @@ export default function Profile() {
     }));
   };
 
-  const handleSave = () => {
-    if (userProfileType === "persona") {
-      localStorage.setItem("userProfileData", JSON.stringify(personaData));
-    } else {
-      localStorage.setItem("userProfileData", JSON.stringify(empresaData));
+  const handleSave = async () => {
+    if (!user?.email) {
+      alert("Error: Usuario no autenticado");
+      return;
     }
-    localStorage.setItem("investmentProfile", JSON.stringify(investmentProfile));
-    localStorage.setItem("bankInfo", JSON.stringify(cuentaBancaria));
-    setIsEditing(false);
+
+    try {
+      // Get user ID from Supabase
+      const { data: userData } = await supabase
+        .from("users")
+        .select("id")
+        .eq("email", user.email)
+        .single();
+
+      if (!userData) {
+        alert("Error: No se encontró el usuario");
+        return;
+      }
+
+      const userId = userData.id;
+
+      // Update user profile data
+      if (userProfileType === "persona") {
+        const { error: updateError } = await supabase
+          .from("users")
+          .update({
+            full_name: personaData.nombre,
+            phone: personaData.telefonoContacto,
+            country: personaData.paisResidencia,
+            document_number: personaData.rutPasaporte,
+            birth_date: personaData.fechaNacimiento || null,
+            nationality: personaData.nacionalidad,
+            address: personaData.direccion,
+            residence_country: personaData.paisResidencia,
+          })
+          .eq("id", userId);
+
+        if (updateError) throw updateError;
+      } else {
+        const { error: updateError } = await supabase
+          .from("users")
+          .update({
+            full_name: empresaData.nombreEmpresa,
+            phone: empresaData.telefonoContacto,
+            country: empresaData.paisConstitucion,
+            company_name: empresaData.nombreEmpresa,
+            legal_name: empresaData.razonSocial,
+            constitution_country: empresaData.paisConstitucion,
+            business_activity: empresaData.actividad,
+            constitution_date: empresaData.fechaConstitucion || null,
+            legal_address: empresaData.direccionLegal,
+            commercial_address: empresaData.direccionComercial,
+            contact_information: empresaData.informacionContacto,
+            contact_person_name: empresaData.nombreContacto,
+          })
+          .eq("id", userId);
+
+        if (updateError) throw updateError;
+      }
+
+      // Save investment profile
+      const { error: investmentError } = await supabase
+        .from("investment_profiles")
+        .upsert({
+          user_id: userId,
+          objectives: investmentProfile.objetivos,
+          risk_tolerance: investmentProfile.toleranciaRiesgo,
+          experience: investmentProfile.experiencia,
+          available_capital: investmentProfile.capitalDisponible ? parseFloat(investmentProfile.capitalDisponible) : null,
+          investor_type: investmentProfile.tipoInversionista,
+        }, { onConflict: "user_id" });
+
+      if (investmentError) throw investmentError;
+
+      // Save bank account
+      const { error: bankError } = await supabase
+        .from("bank_accounts")
+        .upsert({
+          user_id: userId,
+          bank_name: cuentaBancaria.nombreBanco,
+          account_number: cuentaBancaria.numeroCuenta,
+          account_type: cuentaBancaria.tipoCuenta,
+          account_holder_name: cuentaBancaria.nombreTitular,
+          swift_code: cuentaBancaria.codigoSwift,
+        }, { onConflict: "user_id" });
+
+      if (bankError) throw bankError;
+
+      // Also save to localStorage for quick access
+      if (userProfileType === "persona") {
+        localStorage.setItem("userProfileData", JSON.stringify(personaData));
+      } else {
+        localStorage.setItem("userProfileData", JSON.stringify(empresaData));
+      }
+      localStorage.setItem("investmentProfile", JSON.stringify(investmentProfile));
+      localStorage.setItem("bankInfo", JSON.stringify(cuentaBancaria));
+
+      alert("Información guardada correctamente");
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error guardando información:", error);
+      alert("Error al guardar la información: " + (error instanceof Error ? error.message : "Error desconocido"));
+    }
   };
 
   const handleLogout = () => {
