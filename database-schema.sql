@@ -1,5 +1,5 @@
 -- Companies table
-CREATE TABLE IF NOT EXISTS companies (
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS companies (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) UNIQUE,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS companies (
 );
 
 -- Users table
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
   full_name VARCHAR(255),
@@ -39,7 +39,7 @@ CREATE TABLE users (
 );
 
 -- Financial Instruments table
-CREATE TABLE financial_instruments (
+CREATE TABLE IF NOT EXISTS financial_instruments (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   description TEXT,
@@ -56,7 +56,7 @@ CREATE TABLE financial_instruments (
 );
 
 -- Financing Requests table
-CREATE TABLE financing_requests (
+CREATE TABLE IF NOT EXISTS financing_requests (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   company_id UUID NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
   instrument_id UUID NOT NULL REFERENCES financial_instruments(id),
@@ -74,7 +74,7 @@ CREATE TABLE financing_requests (
 );
 
 -- Transactions table
-CREATE TABLE transactions (
+CREATE TABLE IF NOT EXISTS transactions (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   financing_request_id UUID NOT NULL REFERENCES financing_requests(id) ON DELETE CASCADE,
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -89,7 +89,7 @@ CREATE TABLE transactions (
 );
 
 -- Digital Assets table
-CREATE TABLE digital_assets (
+CREATE TABLE IF NOT EXISTS digital_assets (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   description TEXT,
@@ -104,7 +104,7 @@ CREATE TABLE digital_assets (
 );
 
 -- STOs table
-CREATE TABLE stos (
+CREATE TABLE IF NOT EXISTS stos (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   company_id UUID NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE stos (
 );
 
 -- Articles and News table
-CREATE TABLE articles_news (
+CREATE TABLE IF NOT EXISTS articles_news (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   slug VARCHAR(255) UNIQUE,
@@ -139,7 +139,7 @@ CREATE TABLE articles_news (
 );
 
 -- Educational Content table
-CREATE TABLE educational_content (
+CREATE TABLE IF NOT EXISTS educational_content (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   slug VARCHAR(255) UNIQUE,
@@ -157,7 +157,7 @@ CREATE TABLE educational_content (
 );
 
 -- Contact Messages table
-CREATE TABLE contact_messages (
+CREATE TABLE IF NOT EXISTS contact_messages (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE contact_messages (
 );
 
 -- Jobs table
-CREATE TABLE jobs (
+CREATE TABLE IF NOT EXISTS jobs (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   slug VARCHAR(255) UNIQUE,
@@ -192,7 +192,7 @@ CREATE TABLE jobs (
 );
 
 -- Job Applications table
-CREATE TABLE job_applications (
+CREATE TABLE IF NOT EXISTS job_applications (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   job_id UUID NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -205,7 +205,7 @@ CREATE TABLE job_applications (
 );
 
 -- Team Members table
-CREATE TABLE team_members (
+CREATE TABLE IF NOT EXISTS team_members (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   position VARCHAR(255),
@@ -222,7 +222,7 @@ CREATE TABLE team_members (
 );
 
 -- Ecosystem Partners table
-CREATE TABLE ecosystem_partners (
+CREATE TABLE IF NOT EXISTS ecosystem_partners (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   description TEXT,
@@ -238,7 +238,7 @@ CREATE TABLE ecosystem_partners (
 );
 
 -- Policies table
-CREATE TABLE policies (
+CREATE TABLE IF NOT EXISTS policies (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   slug VARCHAR(255) UNIQUE,
@@ -252,7 +252,7 @@ CREATE TABLE policies (
 );
 
 -- Complaints and Claims table
-CREATE TABLE complaints_claims (
+CREATE TABLE IF NOT EXISTS complaints_claims (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   type VARCHAR(50) NOT NULL,
   user_id UUID REFERENCES users(id),
