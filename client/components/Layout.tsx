@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, LogOut, ChevronDown, DollarSign, TrendingUp, Building2, Zap, BookOpen, Newspaper, Users, Mail, User } from "lucide-react";
+import { Menu, X, LogOut, ChevronDown, DollarSign, TrendingUp, Building2, Zap, BookOpen, Newspaper, Users, Mail, User, Linkedin, Instagram } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LayoutProps {
@@ -569,14 +569,32 @@ export default function Layout({ children }: LayoutProps) {
           <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/60">
             <p>&copy; 2024 Fraction Finance. Todos los derechos reservados.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">
-                Twitter
+              <a
+                href="https://x.com/Fractioncl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+                aria-label="X (Twitter)"
+              >
+                <X className="w-5 h-5" />
               </a>
-              <a href="#" className="hover:text-white transition-colors">
-                LinkedIn
+              <a
+                href="https://www.linkedin.com/company/fractioncl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Discord
+              <a
+                href="https://www.instagram.com/fraction.finance/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
