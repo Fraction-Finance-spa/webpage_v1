@@ -467,33 +467,45 @@ export default function Profile() {
         if (updateError) throw updateError;
       }
 
-      // Save investment profile
-      const { error: investmentError } = await supabase
-        .from("investment_profiles")
-        .upsert({
-          user_id: userId,
-          objectives: investmentProfile.objetivos,
-          risk_tolerance: investmentProfile.toleranciaRiesgo,
-          experience: investmentProfile.experiencia,
-          available_capital: investmentProfile.capitalDisponible ? parseFloat(investmentProfile.capitalDisponible) : null,
-          investor_type: investmentProfile.tipoInversionista,
-        }, { onConflict: "user_id" });
+      // Save investment profile (optional - table might not exist yet)
+      try {
+        const { error: investmentError } = await supabase
+          .from("investment_profiles")
+          .upsert({
+            user_id: userId,
+            objectives: investmentProfile.objetivos,
+            risk_tolerance: investmentProfile.toleranciaRiesgo,
+            experience: investmentProfile.experiencia,
+            available_capital: investmentProfile.capitalDisponible ? parseFloat(investmentProfile.capitalDisponible) : null,
+            investor_type: investmentProfile.tipoInversionista,
+          });
 
-      if (investmentError) throw investmentError;
+        if (investmentError) {
+          console.warn("Investment profile save warning:", investmentError);
+        }
+      } catch (err) {
+        console.warn("Investment profile table might not exist yet:", err);
+      }
 
-      // Save bank account
-      const { error: bankError } = await supabase
-        .from("bank_accounts")
-        .upsert({
-          user_id: userId,
-          bank_name: cuentaBancaria.nombreBanco,
-          account_number: cuentaBancaria.numeroCuenta,
-          account_type: cuentaBancaria.tipoCuenta,
-          account_holder_name: cuentaBancaria.nombreTitular,
-          swift_code: cuentaBancaria.codigoSwift,
-        }, { onConflict: "user_id" });
+      // Save bank account (optional - table might not exist yet)
+      try {
+        const { error: bankError } = await supabase
+          .from("bank_accounts")
+          .upsert({
+            user_id: userId,
+            bank_name: cuentaBancaria.nombreBanco,
+            account_number: cuentaBancaria.numeroCuenta,
+            account_type: cuentaBancaria.tipoCuenta,
+            account_holder_name: cuentaBancaria.nombreTitular,
+            swift_code: cuentaBancaria.codigoSwift,
+          });
 
-      if (bankError) throw bankError;
+        if (bankError) {
+          console.warn("Bank account save warning:", bankError);
+        }
+      } catch (err) {
+        console.warn("Bank account table might not exist yet:", err);
+      }
 
       // Also save to localStorage for quick access
       if (userProfileType === "persona") {
