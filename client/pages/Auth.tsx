@@ -53,10 +53,12 @@ export default function Auth() {
     setLoading(true);
     try {
       await signIn(loginEmail, loginPassword);
-      localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userEmail", loginEmail);
       localStorage.setItem("userProfileType", loginProfileType);
-      navigate("/profile");
+      // Navigate after a delay
+      setTimeout(() => {
+        navigate("/profile");
+      }, 500);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error al iniciar sesión");
     } finally {
