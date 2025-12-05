@@ -109,21 +109,20 @@ export default function Auth() {
         ? `${signupFirstName} ${signupLastName}`
         : signupCompanyName;
 
-      await signUp(signupEmail, signupPassword, fullName);
+      // Determine user type based on profile type
+      const userType = signupProfileType === "persona" ? "investor" : "empresa";
 
-      localStorage.setItem("isLoggedIn", "true");
+      await signUp(signupEmail, signupPassword, fullName, userType);
+
+      // Store minimal info in localStorage for quick access
       localStorage.setItem("userEmail", signupEmail);
       localStorage.setItem("userProfileType", signupProfileType);
 
-      if (signupProfileType === "persona") {
-        localStorage.setItem("userFirstName", signupFirstName);
-        localStorage.setItem("userLastName", signupLastName);
-      } else {
-        localStorage.setItem("userCompanyName", signupCompanyName);
-      }
-
       setError("Usuario creado correctamente. Por favor confirma tu email.");
-      navigate("/profile");
+      // Navigate after a delay to show confirmation message
+      setTimeout(() => {
+        navigate("/profile");
+      }, 1500);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error al crear usuario");
     } finally {
