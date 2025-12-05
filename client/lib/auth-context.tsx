@@ -81,9 +81,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email: string, password: string, fullName: string) => {
+  const signUp = async (email: string, password: string, fullName: string, userType: string = "investor") => {
     try {
-      const { error } = await supabase.auth.signUp({
+      // Create auth user
+      const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -93,16 +94,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
       });
 
-      if (error) throw error;
+      if (authError) throw authError;
 
-      await supabase.from("users").insert([
+      // Create user record in database
+      const { error: dbError } = await supabase.from("users").insert([
         {
+          id: authData.user?.id,
           email,
           full_name: fullName,
-          user_type: "investor",
+          user_type: userType,
           status: "active",
         },
       ]);
+
+      if (dbError) {
+        // If insert fails but auth succeeded, still complete the signup
+        console.warn("User record creation failed but auth succeeded:", dbError);
+      }
+
+      setUser(authData.user || null);
     } catch (error) {
       throw error;
     }
