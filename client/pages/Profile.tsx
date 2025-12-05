@@ -116,6 +116,95 @@ export default function Profile() {
     });
   }, []);
 
+  // Load profile data from Supabase
+  useEffect(() => {
+    const loadProfileData = async () => {
+      if (!user?.email) return;
+
+      try {
+        // Get user data
+        const { data: userData } = await supabase
+          .from("users")
+          .select("*")
+          .eq("email", user.email)
+          .single();
+
+        if (userData) {
+          const userId = userData.id;
+
+          // Update persona data
+          if (userProfileType === "persona") {
+            setPersonaData({
+              nombre: userData.full_name || userFirstName,
+              apellidos: userLastName,
+              fechaNacimiento: userData.birth_date || "",
+              nacionalidad: userData.nationality || "",
+              rutPasaporte: userData.document_number || "",
+              direccion: userData.address || "",
+              paisResidencia: userData.residence_country || "",
+              email: userData.email || userEmail,
+              telefonoContacto: userData.phone || "",
+            });
+          } else {
+            // Update empresa data
+            setEmpresaData({
+              nombreEmpresa: userData.company_name || userData.full_name || userName,
+              razonSocial: userData.legal_name || "",
+              paisConstitucion: userData.constitution_country || "",
+              rut: userData.document_number || "",
+              actividad: userData.business_activity || "",
+              fechaConstitucion: userData.constitution_date || "",
+              direccionLegal: userData.legal_address || "",
+              direccionComercial: userData.commercial_address || "",
+              informacionContacto: userData.contact_information || "",
+              nombreContacto: userData.contact_person_name || "",
+              telefonoContacto: userData.phone || "",
+              emailCorporativo: userData.email || userEmail,
+            });
+          }
+
+          // Load investment profile
+          const { data: investmentData } = await supabase
+            .from("investment_profiles")
+            .select("*")
+            .eq("user_id", userId)
+            .single();
+
+          if (investmentData) {
+            setInvestmentProfile({
+              objetivos: investmentData.objectives || "",
+              toleranciaRiesgo: investmentData.risk_tolerance || "",
+              experiencia: investmentData.experience || "",
+              capitalDisponible: investmentData.available_capital?.toString() || "",
+              tipoInversionista: investmentData.investor_type || "",
+            });
+          }
+
+          // Load bank account
+          const { data: bankData } = await supabase
+            .from("bank_accounts")
+            .select("*")
+            .eq("user_id", userId)
+            .single();
+
+          if (bankData) {
+            setCuentaBancaria({
+              nombreBanco: bankData.bank_name || "",
+              numeroCuenta: bankData.account_number || "",
+              tipoCuenta: bankData.account_type || "",
+              nombreTitular: bankData.account_holder_name || "",
+              codigoSwift: bankData.swift_code || "",
+            });
+          }
+        }
+      } catch (error) {
+        console.error("Error loading profile data:", error);
+      }
+    };
+
+    loadProfileData();
+  }, [user, userFirstName, userLastName, userName, userEmail, userProfileType]);
+
   const testQuestions = [
     {
       id: 1,
