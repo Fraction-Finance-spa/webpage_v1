@@ -563,14 +563,6 @@ export default function Layout({ children }: LayoutProps) {
               </ul>
             </div>
 
-            {/* Administración Section */}
-            <div>
-              <h4 className="font-semibold text-lg mb-6 text-white">Administración</h4>
-              <ul className="space-y-3 text-sm">
-                <li>
-                </li>
-              </ul>
-            </div>
           </div>
 
           {/* Footer Bottom */}
