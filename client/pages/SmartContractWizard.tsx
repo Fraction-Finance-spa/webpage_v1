@@ -594,15 +594,6 @@ contract ${state.tokenSymbol} is ERC20, ERC20Burnable, Ownable${state.assetClass
               </button>
             )}
 
-            {state.step === 7 && state.deploymentAddress && (
-              <button
-                onClick={() => navigate("/admin?section=activos")}
-                className="flex items-center gap-2 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-semibold"
-              >
-                Volver a Activos Digitales
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            )}
           </div>
         </div>
       </div>

@@ -8,7 +8,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import FinancingForm from "./pages/FinancingForm";
-import Admin from "./pages/Admin";
 import Profile from "./pages/Profile";
 import Inversiones from "./pages/Inversiones";
 import MercadoSecundario from "./pages/MercadoSecundario";
@@ -52,8 +51,6 @@ export default function AppDashboard() {
             {/* User Profile */}
             <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
 
-            {/* Admin Panel */}
-            <Route path="/admin" element={<ProtectedRoute element={<Admin />} />} />
 
             {/* Redirect root to profile */}
             <Route path="/" element={<Navigate to="/profile" />} />

@@ -568,12 +568,6 @@ export default function Layout({ children }: LayoutProps) {
               <h4 className="font-semibold text-lg mb-6 text-white">Administración</h4>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link
-                    to="/admin"
-                    className="text-white/70 hover:text-white transition-colors"
-                  >
-                    Panel de Administración
-                  </Link>
                 </li>
               </ul>
             </div>
