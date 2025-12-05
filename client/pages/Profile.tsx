@@ -123,82 +123,88 @@ export default function Profile() {
 
       try {
         // Get user data
-        const { data: userData } = await supabase
+        const { data: userData, error: userError } = await supabase
           .from("users")
           .select("*")
           .eq("email", user.email)
           .single();
 
-        if (userData) {
-          const userId = userData.id;
+        if (userError || !userData) {
+          console.warn("User data not found or error:", userError);
+          return;
+        }
 
-          // Update persona data
-          if (userProfileType === "persona") {
-            setPersonaData({
-              nombre: userData.full_name || userFirstName,
-              apellidos: userLastName,
-              fechaNacimiento: userData.birth_date || "",
-              nacionalidad: userData.nationality || "",
-              rutPasaporte: userData.document_number || "",
-              direccion: userData.address || "",
-              paisResidencia: userData.residence_country || "",
-              email: userData.email || userEmail,
-              telefonoContacto: userData.phone || "",
-            });
-          } else {
-            // Update empresa data
-            setEmpresaData({
-              nombreEmpresa: userData.company_name || userData.full_name || userName,
-              razonSocial: userData.legal_name || "",
-              paisConstitucion: userData.constitution_country || "",
-              rut: userData.document_number || "",
-              actividad: userData.business_activity || "",
-              fechaConstitucion: userData.constitution_date || "",
-              direccionLegal: userData.legal_address || "",
-              direccionComercial: userData.commercial_address || "",
-              informacionContacto: userData.contact_information || "",
-              nombreContacto: userData.contact_person_name || "",
-              telefonoContacto: userData.phone || "",
-              emailCorporativo: userData.email || userEmail,
-            });
-          }
+        const userId = userData.id;
 
-          // Load investment profile
-          const { data: investmentData } = await supabase
-            .from("investment_profiles")
-            .select("*")
-            .eq("user_id", userId)
-            .single();
+        // Update persona data
+        if (userProfileType === "persona") {
+          setPersonaData({
+            nombre: userData.full_name || userFirstName,
+            apellidos: userLastName,
+            fechaNacimiento: userData.birth_date || "",
+            nacionalidad: userData.nationality || "",
+            rutPasaporte: userData.document_number || "",
+            direccion: userData.address || "",
+            paisResidencia: userData.residence_country || "",
+            email: userData.email || userEmail,
+            telefonoContacto: userData.phone || "",
+          });
+        } else {
+          // Update empresa data
+          setEmpresaData({
+            nombreEmpresa: userData.company_name || userData.full_name || userName,
+            razonSocial: userData.legal_name || "",
+            paisConstitucion: userData.constitution_country || "",
+            rut: userData.document_number || "",
+            actividad: userData.business_activity || "",
+            fechaConstitucion: userData.constitution_date || "",
+            direccionLegal: userData.legal_address || "",
+            direccionComercial: userData.commercial_address || "",
+            informacionContacto: userData.contact_information || "",
+            nombreContacto: userData.contact_person_name || "",
+            telefonoContacto: userData.phone || "",
+            emailCorporativo: userData.email || userEmail,
+          });
+        }
 
-          if (investmentData) {
-            setInvestmentProfile({
-              objetivos: investmentData.objectives || "",
-              toleranciaRiesgo: investmentData.risk_tolerance || "",
-              experiencia: investmentData.experience || "",
-              capitalDisponible: investmentData.available_capital?.toString() || "",
-              tipoInversionista: investmentData.investor_type || "",
-            });
-          }
+        // Load investment profile (optional - table might not exist yet)
+        const { data: investmentData } = await supabase
+          .from("investment_profiles")
+          .select("*")
+          .eq("user_id", userId)
+          .single()
+          .catch(() => ({ data: null }));
 
-          // Load bank account
-          const { data: bankData } = await supabase
-            .from("bank_accounts")
-            .select("*")
-            .eq("user_id", userId)
-            .single();
+        if (investmentData) {
+          setInvestmentProfile({
+            objetivos: investmentData.objectives || "",
+            toleranciaRiesgo: investmentData.risk_tolerance || "",
+            experiencia: investmentData.experience || "",
+            capitalDisponible: investmentData.available_capital?.toString() || "",
+            tipoInversionista: investmentData.investor_type || "",
+          });
+        }
 
-          if (bankData) {
-            setCuentaBancaria({
-              nombreBanco: bankData.bank_name || "",
-              numeroCuenta: bankData.account_number || "",
-              tipoCuenta: bankData.account_type || "",
-              nombreTitular: bankData.account_holder_name || "",
-              codigoSwift: bankData.swift_code || "",
-            });
-          }
+        // Load bank account (optional - table might not exist yet)
+        const { data: bankData } = await supabase
+          .from("bank_accounts")
+          .select("*")
+          .eq("user_id", userId)
+          .single()
+          .catch(() => ({ data: null }));
+
+        if (bankData) {
+          setCuentaBancaria({
+            nombreBanco: bankData.bank_name || "",
+            numeroCuenta: bankData.account_number || "",
+            tipoCuenta: bankData.account_type || "",
+            nombreTitular: bankData.account_holder_name || "",
+            codigoSwift: bankData.swift_code || "",
+          });
         }
       } catch (error) {
         console.error("Error loading profile data:", error);
+        // Continue anyway - don't block the page
       }
     };
 
