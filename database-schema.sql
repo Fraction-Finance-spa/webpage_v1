@@ -1,5 +1,5 @@
 -- Companies table
-CREATE TABLE companies (
+CREATE TABLE IF NOT EXISTS companies (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) UNIQUE,
