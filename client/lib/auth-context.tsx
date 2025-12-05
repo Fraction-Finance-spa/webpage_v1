@@ -29,14 +29,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(session?.user || null);
 
         if (session?.user?.email) {
-          const { data, error } = await supabase
-            .from("users")
-            .select("user_type")
-            .eq("email", session.user.email)
-            .single();
+          try {
+            const { data } = await supabase
+              .from("users")
+              .select("user_type")
+              .eq("email", session.user.email)
+              .single();
 
-          if (data) {
-            setUserRole(data.user_type);
+            if (data?.user_type) {
+              setUserRole(data.user_type);
+            }
+          } catch (err) {
+            console.warn("Could not fetch user role:", err);
+            setUserRole(null);
           }
         }
       } catch (error) {
@@ -54,14 +59,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session?.user || null);
 
       if (session?.user?.email) {
-        const { data } = await supabase
-          .from("users")
-          .select("user_type")
-          .eq("email", session.user.email)
-          .single();
+        try {
+          const { data } = await supabase
+            .from("users")
+            .select("user_type")
+            .eq("email", session.user.email)
+            .single();
 
-        if (data) {
-          setUserRole(data.user_type);
+          if (data?.user_type) {
+            setUserRole(data.user_type);
+          }
+        } catch (err) {
+          console.warn("Could not fetch user role:", err);
+          setUserRole(null);
         }
       } else {
         setUserRole(null);
