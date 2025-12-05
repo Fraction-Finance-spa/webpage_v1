@@ -182,18 +182,7 @@ export default function Auth() {
                   </p>
                 </div>
 
-                <div className="space-y-3 w-full">
-                  <button
-                    onClick={() => {
-                      setView("login");
-                      setError("");
-                    }}
-                    className="w-full px-4 py-3 border-2 border-primary text-primary rounded-xl hover:bg-primary/5 transition-all shadow-md hover:shadow-lg font-bold flex items-center justify-center gap-2"
-                  >
-                    Iniciar Sesión
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-
+                <div className="w-full">
                   <button
                     onClick={() => {
                       setView("signup");
