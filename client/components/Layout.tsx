@@ -412,13 +412,6 @@ export default function Layout({ children }: LayoutProps) {
                   <>
                     <Link
                       to="/auth"
-                      className="block text-center px-4 py-2 text-foreground/70 hover:text-primary text-sm font-medium"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Ingresar
-                    </Link>
-                    <Link
-                      to="/auth"
                       className="block text-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
                       onClick={() => setMobileMenuOpen(false)}
                     >
