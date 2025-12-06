@@ -10,6 +10,7 @@ import type {
   Job,
   EducationalContent,
   ComplaintClaim,
+  Policy,
 } from "./types/database";
 
 // Companies queries
@@ -449,5 +450,72 @@ export const complaintsQueries = {
       .single();
     if (error) throw error;
     return data as ComplaintClaim;
+  },
+};
+
+// Policies queries
+export const policiesQueries = {
+  getBySlug: async (slug: string) => {
+    const { data, error } = await supabase
+      .from("policies")
+      .select("*")
+      .eq("slug", slug)
+      .eq("published", true)
+      .single();
+    if (error) {
+      console.warn(`Policy with slug "${slug}" not found:`, error);
+      return null;
+    }
+    return data as Policy;
+  },
+
+  getByType: async (policyType: string) => {
+    const { data, error } = await supabase
+      .from("policies")
+      .select("*")
+      .eq("policy_type", policyType)
+      .eq("published", true)
+      .order("version", { ascending: false })
+      .limit(1)
+      .single();
+    if (error) {
+      console.warn(`Policy of type "${policyType}" not found:`, error);
+      return null;
+    }
+    return data as Policy;
+  },
+
+  getAll: async () => {
+    const { data, error } = await supabase
+      .from("policies")
+      .select("*")
+      .eq("published", true)
+      .order("updated_at", { ascending: false });
+    if (error) throw error;
+    return data as Policy[];
+  },
+
+  create: async (policy: Omit<Policy, "id" | "created_at" | "updated_at">) => {
+    const { data, error } = await supabase
+      .from("policies")
+      .insert([policy])
+      .select()
+      .single();
+    if (error) throw error;
+    return data as Policy;
+  },
+
+  update: async (
+    id: string,
+    updates: Partial<Omit<Policy, "id" | "created_at" | "updated_at">>
+  ) => {
+    const { data, error } = await supabase
+      .from("policies")
+      .update(updates)
+      .eq("id", id)
+      .select()
+      .single();
+    if (error) throw error;
+    return data as Policy;
   },
 };
