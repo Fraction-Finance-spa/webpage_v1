@@ -302,9 +302,20 @@ export default function Auth() {
                   </button>
                 </form>
 
-                <p className="text-center text-gray-600 text-sm mt-6 w-full">
-                  Primero debes <strong>registrarte</strong> para crear una cuenta, luego podrás iniciar sesión
-                </p>
+                <div className="space-y-4 mt-6 w-full">
+                  <p className="text-center text-gray-600 text-sm">
+                    ¿No tienes cuenta?
+                  </p>
+                  <button
+                    onClick={() => {
+                      setView("signup");
+                      setError("");
+                    }}
+                    className="w-full px-4 py-3 border-2 border-primary text-primary rounded-xl hover:bg-primary/5 transition-all font-bold"
+                  >
+                    Registrarse aquí
+                  </button>
+                </div>
               </>
             )}
 
