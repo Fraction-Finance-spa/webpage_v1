@@ -96,24 +96,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (authError) throw authError;
 
-      // Create user record in database
-      const { error: dbError } = await supabase.from("users").insert([
-        {
-          id: authData.user?.id,
-          email,
-          full_name: fullName,
-          user_type: userType,
-          status: "active",
-        },
-      ]);
+      // Wait a moment for auth to be ready
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-      if (dbError) {
-        // If insert fails but auth succeeded, still complete the signup
-        console.warn("User record creation failed but auth succeeded:", dbError);
+      // Create user record in database
+      if (authData.user?.id) {
+        const { error: dbError } = await supabase.from("users").insert([
+          {
+            id: authData.user.id,
+            email,
+            full_name: fullName,
+            user_type: userType,
+            status: "active",
+          },
+        ]);
+
+        if (dbError) {
+          console.error("User record creation failed:", dbError);
+          // Still set the user even if DB insert fails
+        }
       }
 
       setUser(authData.user || null);
+      return authData.user;
     } catch (error) {
+      console.error("Signup error:", error);
       throw error;
     }
   };
