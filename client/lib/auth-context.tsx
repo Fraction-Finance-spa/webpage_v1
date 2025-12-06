@@ -152,7 +152,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           console.warn("Could not fetch user role:", err);
         }
       }
+
+      return data.user;
     } catch (error) {
+      console.error("SignIn error:", error);
       throw error;
     }
   };
