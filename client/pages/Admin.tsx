@@ -6,8 +6,10 @@ import { getTeamMembers, addTeamMember, updateTeamMember, deleteTeamMember, type
 import { getJobs, addJob, updateJob, deleteJob, type Job } from "@/lib/jobsManager";
 import { type Candidatura } from "@/components/CandidaturaForm";
 import { getArticles, addArticle, updateArticle, deleteArticle, type BlogArticle } from "@/lib/blogManager";
-import { getEducacionCards, addEducacionCard, updateEducacionCard, deleteEducacionCard, type EducacionCard } from "@/lib/educacionManager";
+import type { EducacionCard } from "@/lib/educacionManager";
 import { getSmartContracts, deleteSmartContract, type SmartContract } from "@/lib/smartContractManager";
+import { educationQueries, policiesQueries } from "@/lib/supabase-queries";
+import type { EducationalContent, Policy } from "@/lib/types/database";
 import { getSTOs, addSTO, updateSTO, deleteSTO, checkSTOAvailableForAsset, updateTokenosSoldCount, type STO } from "@/lib/stoManager";
 import { getMarketStats, getTotalPendingAssetsValue, getPendingListingsCount } from "@/lib/mercadoSecundarioManager";
 import { getFinancingRequests, updateRequestStatus, deleteFinancingRequest, updateEvaluacionComercial, calculateScoring, getSTODataFromFinancingRequest, type FinancingRequest, type EvaluacionComercial } from "@/lib/financingRequestManager";
@@ -109,9 +111,18 @@ export default function Admin() {
   const [reclamos, setReclamos] = useState<Reclamo[]>([]);
   const [mensajesContacto, setMensajesContacto] = useState<any[]>([]);
   const [policies, setPolicies] = useState({
-    privacidad: localStorage.getItem("politica_privacidad") || "",
-    terminos: localStorage.getItem("politica_terminos") || "",
-    cookies: localStorage.getItem("politica_cookies") || "",
+    privacidad: "",
+    terminos: "",
+    cookies: "",
+  });
+  const [policyRecords, setPolicyRecords] = useState<{
+    privacidad: Policy | null;
+    terminos: Policy | null;
+    cookies: Policy | null;
+  }>({
+    privacidad: null,
+    terminos: null,
+    cookies: null,
   });
   const [editingPolicy, setEditingPolicy] = useState<string | null>(null);
   const [policyContent, setPolicyContent] = useState("");
@@ -125,6 +136,37 @@ export default function Admin() {
     setDenuncias(JSON.parse(localStorage.getItem("denuncias") || "[]"));
     setReclamos(JSON.parse(localStorage.getItem("reclamos") || "[]"));
     setMensajesContacto(JSON.parse(localStorage.getItem("mensajesContacto") || "[]"));
+
+    const loadPoliciesFromSupabase = async () => {
+      try {
+        const [privacy, terms, cookiesPolicy] = await Promise.all([
+          policiesQueries.getBySlug("politica-privacidad"),
+          policiesQueries.getBySlug("terminos-servicio"),
+          policiesQueries.getBySlug("politica-cookies"),
+        ]);
+
+        setPolicyRecords({
+          privacidad: privacy,
+          terminos: terms,
+          cookies: cookiesPolicy,
+        });
+
+        setPolicies({
+          privacidad: privacy?.content || localStorage.getItem("politica_privacidad") || "",
+          terminos: terms?.content || localStorage.getItem("politica_terminos") || "",
+          cookies: cookiesPolicy?.content || localStorage.getItem("politica_cookies") || "",
+        });
+      } catch (error) {
+        console.error("Error loading policies from Supabase:", error);
+        setPolicies({
+          privacidad: localStorage.getItem("politica_privacidad") || "",
+          terminos: localStorage.getItem("politica_terminos") || "",
+          cookies: localStorage.getItem("politica_cookies") || "",
+        });
+      }
+    };
+
+    loadPoliciesFromSupabase();
   }, []);
 
   const handleTeamFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -282,17 +324,71 @@ export default function Admin() {
     setPolicyContent(policies[policyKey as keyof typeof policies]);
   };
 
-  const handleSavePolicy = () => {
+  const handleSavePolicy = async () => {
     if (!editingPolicy) return;
 
-    const key = `politica_${editingPolicy === "privacidad" ? "privacidad" : editingPolicy === "terminos" ? "terminos" : "cookies"}`;
-    localStorage.setItem(key, policyContent);
-    setPolicies((prev) => ({
-      ...prev,
-      [editingPolicy]: policyContent,
-    }));
-    setEditingPolicy(null);
-    setPolicyContent("");
+    const key = editingPolicy as "privacidad" | "terminos" | "cookies";
+    const slugMap = {
+      privacidad: "politica-privacidad",
+      terminos: "terminos-servicio",
+      cookies: "politica-cookies",
+    } as const;
+    const typeMap = {
+      privacidad: "privacy",
+      terminos: "terms",
+      cookies: "cookies",
+    } as const;
+    const titleMap = {
+      privacidad: "Política de Privacidad",
+      terminos: "Términos de Servicio",
+      cookies: "Política de Cookies",
+    } as const;
+
+    try {
+      const existing = policyRecords[key];
+      let saved: Policy;
+
+      if (existing) {
+        saved = await policiesQueries.update(existing.id, {
+          content: policyContent,
+          version: existing.version + 1,
+          published: true,
+        });
+      } else {
+        saved = await policiesQueries.create({
+          title: titleMap[key],
+          slug: slugMap[key],
+          content: policyContent,
+          policy_type: typeMap[key],
+          version: 1,
+          effective_date: new Date().toISOString(),
+          published: true,
+        });
+      }
+
+      const storageKey =
+        key === "privacidad"
+          ? "politica_privacidad"
+          : key === "terminos"
+          ? "politica_terminos"
+          : "politica_cookies";
+
+      localStorage.setItem(storageKey, policyContent);
+
+      setPolicies((prev) => ({
+        ...prev,
+        [key]: policyContent,
+      }));
+      setPolicyRecords((prev) => ({
+        ...prev,
+        [key]: saved,
+      }));
+      setEditingPolicy(null);
+      setPolicyContent("");
+    } catch (error) {
+      console.error("Error saving policy:", error);
+      alert("Error al guardar la política. Por favor intenta nuevamente.");
+    }
   };
 
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -450,12 +546,38 @@ export default function Admin() {
     descripcion: "",
   });
 
+  const mapEducationalToCard = (item: EducationalContent): EducacionCard => ({
+    id: item.id,
+    titulo: item.title,
+    descripcion: item.description || "",
+    contenido: item.content || "",
+    instructor: item.instructor || "",
+    duracion: item.duration_label || (item.duration_minutes ? `${item.duration_minutes} minutos` : ""),
+    nivel: (item.level as "Básico" | "Intermedio" | "Avanzado" | undefined),
+    imagen: item.image_url || "",
+    estado: item.published ? "Publicado" : "Borrador",
+    fechaCreacion: item.created_at,
+    fechaActualizacion: item.updated_at,
+  });
+
   useEffect(() => {
-    setArticles(getArticles());
-    setEducacionCards(getEducacionCards());
-    setSmartContracts(getSmartContracts());
-    setSTOs(getSTOs());
-    setFinancingRequests(getFinancingRequests());
+    const loadData = async () => {
+      setArticles(getArticles());
+
+      try {
+        const educationItems = await educationQueries.getAll();
+        setEducacionCards(educationItems.map(mapEducationalToCard));
+      } catch (error) {
+        console.error("Error loading educational content from Supabase:", error);
+        setEducacionCards([]);
+      }
+
+      setSmartContracts(getSmartContracts());
+      setSTOs(getSTOs());
+      setFinancingRequests(getFinancingRequests());
+    };
+
+    loadData();
   }, []);
 
   const handleArticleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -561,37 +683,54 @@ export default function Admin() {
     }
   };
 
-  const handleEducacionFormSubmit = (e: React.FormEvent) => {
+  const handleEducacionFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!educacionForm.titulo || !educacionForm.descripcion || !educacionForm.contenido || !educacionForm.instructor) {
       alert("Por favor completa todos los campos requeridos.");
       return;
     }
 
-    const educacionData = {
-      ...educacionForm,
-      nivel: educacionForm.nivel as "Básico" | "Intermedio" | "Avanzado",
+    const payload = {
+      title: educacionForm.titulo,
+      description: educacionForm.descripcion,
+      content: educacionForm.contenido,
+      category: "Educación financiera",
+      level: educacionForm.nivel,
+      instructor: educacionForm.instructor,
+      duration_label: educacionForm.duracion || undefined,
+      image_url: educacionForm.imagen || undefined,
+      published: educacionForm.estado === "Publicado",
+    } as Omit<EducationalContent, "id" | "created_at" | "updated_at" | "views_count"> & {
+      views_count?: number;
     };
 
-    if (editingEducacionCard) {
-      updateEducacionCard(editingEducacionCard.id, educacionData);
-    } else {
-      addEducacionCard(educacionData);
+    try {
+      if (editingEducacionCard) {
+        await educationQueries.update(editingEducacionCard.id, payload);
+      } else {
+        await educationQueries.create(payload);
+      }
+
+      const refreshed = await educationQueries.getAll();
+      setEducacionCards(refreshed.map(mapEducationalToCard));
+
+      setEducacionForm({
+        titulo: "",
+        descripcion: "",
+        contenido: "",
+        instructor: "",
+        duracion: "",
+        nivel: "Básico",
+        estado: "Borrador",
+        imagen: "",
+      });
+      setEducacionImage(null);
+      setEditingEducacionCard(null);
+      setShowEducacionForm(false);
+    } catch (error) {
+      console.error("Error saving educational content:", error);
+      alert("Error al guardar el curso. Por favor intenta nuevamente.");
     }
-    setEducacionCards(getEducacionCards());
-    setEducacionForm({
-      titulo: "",
-      descripcion: "",
-      contenido: "",
-      instructor: "",
-      duracion: "",
-      nivel: "Básico",
-      estado: "Borrador",
-      imagen: "",
-    });
-    setEducacionImage(null);
-    setEditingEducacionCard(null);
-    setShowEducacionForm(false);
   };
 
   const handleEditEducacionCard = (card: EducacionCard) => {
@@ -609,10 +748,16 @@ export default function Admin() {
     });
   };
 
-  const handleDeleteEducacionCard = (id: string) => {
+  const handleDeleteEducacionCard = async (id: string) => {
     if (confirm("¿Está seguro que desea eliminar este curso?")) {
-      deleteEducacionCard(id);
-      setEducacionCards(getEducacionCards());
+      try {
+        await educationQueries.update(id, { published: false });
+        const refreshed = await educationQueries.getAll();
+        setEducacionCards(refreshed.map(mapEducationalToCard));
+      } catch (error) {
+        console.error("Error deleting educational content:", error);
+        alert("Error al eliminar el curso. Por favor intenta nuevamente.");
+      }
     }
   };
 

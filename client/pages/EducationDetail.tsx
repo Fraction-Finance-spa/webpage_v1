@@ -2,19 +2,35 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Users, Clock, ArrowLeft, AlertCircle } from "lucide-react";
-import { getEducacionCards, type EducacionCard } from "@/lib/educacionManager";
+import { educationQueries } from "@/lib/supabase-queries";
+import type { EducationalContent } from "@/lib/types/database";
 
 export default function EducationDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [card, setCard] = useState<EducacionCard | null>(null);
+  const [card, setCard] = useState<EducationalContent | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const cards = getEducacionCards();
-    const found = cards.find((c) => c.id === id);
-    setCard(found || null);
-    setLoading(false);
+    const fetchCard = async () => {
+      if (!id) {
+        setCard(null);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const data = await educationQueries.getById(id);
+        setCard(data);
+      } catch (error) {
+        console.error("Error fetching educational content:", error);
+        setCard(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCard();
   }, [id]);
 
   if (loading) {
@@ -68,25 +84,25 @@ export default function EducationDetail() {
           {/* Course Header */}
           <div className="bg-white rounded-lg border border-border/40 p-8 mb-8">
             {/* Level Badge */}
-            {card.nivel && (
+            {card.level && (
               <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 ${
-                card.nivel === "Básico" ? "bg-green-100 text-green-700" :
-                card.nivel === "Intermedio" ? "bg-yellow-100 text-yellow-700" :
+                card.level === "Básico" ? "bg-green-100 text-green-700" :
+                card.level === "Intermedio" ? "bg-yellow-100 text-yellow-700" :
                 "bg-red-100 text-red-700"
               }`}>
-                {card.nivel}
+                {card.level}
               </span>
             )}
 
             {/* Title */}
             <h1 className="text-4xl font-bold text-foreground mb-4">
-              {card.titulo}
+              {card.title}
             </h1>
 
             {/* Description */}
-            {card.descripcion && (
+            {card.description && (
               <p className="text-lg text-foreground/70 mb-6">
-                {card.descripcion}
+                {card.description}
               </p>
             )}
 
@@ -98,16 +114,16 @@ export default function EducationDetail() {
 
             <div className="prose prose-sm max-w-none">
               {/* Parse and render HTML content */}
-              <div 
+              <div
                 className="text-foreground/80 leading-relaxed space-y-4"
-                dangerouslySetInnerHTML={{ __html: card.contenido }}
+                dangerouslySetInnerHTML={{ __html: card.content || "" }}
               />
             </div>
 
             {/* Additional Info */}
             <div className="mt-8 pt-8 border-t border-border/40">
               <p className="text-sm text-foreground/60">
-                Creado el {new Date(card.fechaCreacion).toLocaleDateString("es-ES", {
+                Creado el {new Date(card.created_at).toLocaleDateString("es-ES", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
