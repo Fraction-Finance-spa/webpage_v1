@@ -452,6 +452,7 @@ export default function Profile() {
             full_name: empresaData.nombreEmpresa,
             phone: empresaData.telefonoContacto,
             country: empresaData.paisConstitucion,
+            document_number: empresaData.rut || null,
             company_name: empresaData.nombreEmpresa,
             legal_name: empresaData.razonSocial,
             constitution_country: empresaData.paisConstitucion,
