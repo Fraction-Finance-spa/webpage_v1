@@ -128,6 +128,13 @@ export default function Auth() {
     }
 
     setLoading(true);
+
+    // Add timeout to prevent hanging
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+      setError("La solicitud tardó demasiado. Por favor intenta de nuevo.");
+    }, AUTH_TIMEOUT);
+
     try {
       const fullName = signupProfileType === "persona"
         ? `${signupFirstName} ${signupLastName}`
@@ -137,6 +144,7 @@ export default function Auth() {
       const userType = signupProfileType === "persona" ? "investor" : "empresa";
 
       const user = await signUp(signupEmail, signupPassword, fullName, userType);
+      clearTimeout(timeoutId);
 
       if (user) {
         // Store minimal info in localStorage for quick access
@@ -144,15 +152,13 @@ export default function Auth() {
         localStorage.setItem("userProfileType", signupProfileType);
         localStorage.setItem("isLoggedIn", "true");
 
-        // Use a very short delay to allow state to update
-        setTimeout(() => {
-          navigate("/profile");
-        }, 100);
-        return; // Don't reset loading state, let navigation complete
+        navigate("/profile");
+        return;
       } else {
         throw new Error("No user returned from signup");
       }
     } catch (err) {
+      clearTimeout(timeoutId);
       console.error("Signup error:", err);
       setError(err instanceof Error ? err.message : "Error al crear usuario");
       setLoading(false);
