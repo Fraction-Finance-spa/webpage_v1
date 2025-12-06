@@ -104,18 +104,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUserRole(userType);
 
         // Try to create user record asynchronously (non-blocking)
-        // Don't wait for this to complete
-        supabase.from("users").insert([
-          {
-            id: authData.user.id,
-            email,
-            full_name: fullName,
-            user_type: userType,
-            status: "active",
-          },
-        ]).catch((err) => {
-          console.warn("Could not create user profile:", err);
-        });
+        // This runs in the background without blocking signup completion
+        setTimeout(() => {
+          supabase.from("users").insert([
+            {
+              id: authData.user.id,
+              email,
+              full_name: fullName,
+              user_type: userType,
+              status: "active",
+            },
+          ]).catch((err) => {
+            console.warn("Could not create user profile:", err);
+          });
+        }, 0);
       }
 
       return authData.user;
