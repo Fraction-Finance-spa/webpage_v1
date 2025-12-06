@@ -560,6 +560,16 @@ export default function Layout({ children }: LayoutProps) {
                     contacto@fractionfinance.cl
                   </a>
                 </li>
+                <li>
+                  <Link
+                    to="/admin"
+                    className="text-white/70 hover:text-white transition-colors inline-flex items-center gap-2"
+                    title="Panel de Administración"
+                  >
+                    <Settings className="w-4 h-4" />
+                    Admin
+                  </Link>
+                </li>
               </ul>
             </div>
 
