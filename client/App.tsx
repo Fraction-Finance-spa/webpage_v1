@@ -33,6 +33,7 @@ import CookiePolicy from "./pages/CookiePolicy";
 import MercadoSecundario from "./pages/MercadoSecundario";
 import Ecosistema from "./pages/Ecosistema";
 import Admin from "./pages/Admin";
+import { SubdomainRouter } from "@/components/SubdomainRouter";
 
 const queryClient = new QueryClient();
 
