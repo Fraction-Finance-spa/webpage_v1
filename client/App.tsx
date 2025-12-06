@@ -32,6 +32,7 @@ import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import MercadoSecundario from "./pages/MercadoSecundario";
 import Ecosistema from "./pages/Ecosistema";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
