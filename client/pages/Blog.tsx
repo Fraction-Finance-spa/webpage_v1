@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import Layout from "@/components/Layout";
 import { Calendar, ArrowRight } from "lucide-react";
 import { articlesQueries } from "@/lib/supabase-queries";
 import type { Article } from "@/lib/types/database";
 import { getPublishedArticles, type BlogArticle } from "@/lib/blogManager";
 
+const ARTICLES_PER_PAGE = 6;
+
 export default function Blog() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -44,20 +47,38 @@ export default function Blog() {
     fetchArticles();
   }, []);
 
-  const categories = [
-    "Todos",
-    ...Array.from(new Set(articles.map((a) => a.category).filter((c) => c))),
-  ];
+  const categories = useMemo(
+    () => [
+      "Todos",
+      ...Array.from(new Set(articles.map((a) => a.category).filter((c) => c))),
+    ],
+    [articles]
+  );
 
-  const filteredArticles = (
-    selectedCategory === "Todos"
-      ? articles
-      : articles.filter((a) => a.category === selectedCategory)
-  ).sort((a, b) => {
-    const dateA = new Date(a.published_at || a.created_at).getTime();
-    const dateB = new Date(b.published_at || b.created_at).getTime();
-    return dateB - dateA;
-  });
+  const sortedAndFiltered = useMemo(
+    () => (
+      selectedCategory === "Todos"
+        ? articles
+        : articles.filter((a) => a.category === selectedCategory)
+    ).sort((a, b) => {
+      const dateA = new Date(a.published_at || a.created_at).getTime();
+      const dateB = new Date(b.published_at || b.created_at).getTime();
+      return dateB - dateA;
+    }),
+    [articles, selectedCategory]
+  );
+
+  const paginatedArticles = useMemo(() => {
+    const startIdx = (currentPage - 1) * ARTICLES_PER_PAGE;
+    return sortedAndFiltered.slice(startIdx, startIdx + ARTICLES_PER_PAGE);
+  }, [sortedAndFiltered, currentPage]);
+
+  const totalPages = Math.ceil(sortedAndFiltered.length / ARTICLES_PER_PAGE);
+
+  const handleCategoryChange = useCallback((category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  }, []);
 
   if (loading) {
     return (
