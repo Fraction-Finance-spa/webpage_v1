@@ -83,6 +83,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signUp = async (email: string, password: string, fullName: string, userType: string = "investor") => {
     try {
+      console.log("Starting signup for:", email);
+
       // Create auth user - this is the only essential step
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
@@ -96,8 +98,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
 
       if (authError) {
+        console.error("Auth signup error:", authError);
         throw new Error(authError.message || "Failed to create account");
       }
+
+      console.log("Signup successful for:", email);
 
       if (authData.user) {
         setUser(authData.user);
@@ -106,9 +111,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Try to create user record asynchronously (non-blocking)
         // This runs in the background without blocking signup completion
         setTimeout(() => {
+          console.log("Creating user profile in database...");
           supabase.from("users").insert([
             {
-              id: authData.user.id,
+              id: authData.user!.id,
               email,
               full_name: fullName,
               user_type: userType,
