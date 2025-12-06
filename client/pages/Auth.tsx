@@ -5,9 +5,15 @@ import Layout from "@/components/Layout";
 import { Mail, Lock, User, ArrowRight, CheckCircle, ArrowLeft } from "lucide-react";
 
 export default function Auth() {
-  const [view, setView] = useState<"welcome" | "login" | "signup">("welcome");
+  const initialView = (localStorage.getItem("authView") as "welcome" | "login" | "signup") || "welcome";
+  const [view, setView] = useState<"welcome" | "login" | "signup">(initialView);
   const navigate = useNavigate();
   const { signUp, signIn } = useAuth();
+
+  // Clear authView from localStorage once it's used
+  React.useEffect(() => {
+    localStorage.removeItem("authView");
+  }, []);
 
   // Login state
   const [loginEmail, setLoginEmail] = useState("");
