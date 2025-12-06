@@ -132,25 +132,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         password,
       });
 
-      if (error) throw error;
+      if (error) {
+        throw new Error(error.message || "Failed to sign in");
+      }
 
       if (data.user) {
         setUser(data.user);
 
-        // Fetch user role
-        try {
-          const { data: userData } = await supabase
-            .from("users")
-            .select("user_type")
-            .eq("email", email)
-            .single();
-
-          if (userData?.user_type) {
-            setUserRole(userData.user_type);
-          }
-        } catch (err) {
-          console.warn("Could not fetch user role:", err);
-        }
+        // Try to fetch user role asynchronously (non-blocking)
+        supabase
+          .from("users")
+          .select("user_type")
+          .eq("email", email)
+          .single()
+          .then(({ data: userData }) => {
+            if (userData?.user_type) {
+              setUserRole(userData.user_type);
+            }
+          })
+          .catch((err) => {
+            console.warn("Could not fetch user role:", err);
+          });
       }
 
       return data.user;
