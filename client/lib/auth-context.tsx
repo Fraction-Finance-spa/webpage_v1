@@ -135,32 +135,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     try {
+      console.log("Starting signin for:", email);
+
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
       if (error) {
+        console.error("Auth signin error:", error);
         throw new Error(error.message || "Failed to sign in");
       }
+
+      console.log("Signin successful for:", email);
 
       if (data.user) {
         setUser(data.user);
 
         // Try to fetch user role asynchronously (non-blocking)
-        supabase
-          .from("users")
-          .select("user_type")
-          .eq("email", email)
-          .single()
-          .then(({ data: userData }) => {
-            if (userData?.user_type) {
-              setUserRole(userData.user_type);
-            }
-          })
-          .catch((err) => {
-            console.warn("Could not fetch user role:", err);
-          });
+        setTimeout(() => {
+          supabase
+            .from("users")
+            .select("user_type")
+            .eq("email", email)
+            .single()
+            .then(({ data: userData }) => {
+              if (userData?.user_type) {
+                setUserRole(userData.user_type);
+              }
+            })
+            .catch((err) => {
+              console.warn("Could not fetch user role:", err);
+            });
+        }, 0);
       }
 
       return data.user;
