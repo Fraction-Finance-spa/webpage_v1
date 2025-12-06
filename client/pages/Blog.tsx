@@ -1,30 +1,75 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Calendar, ArrowRight } from "lucide-react";
+import { articlesQueries } from "@/lib/supabase-queries";
+import type { Article } from "@/lib/types/database";
 import { getPublishedArticles, type BlogArticle } from "@/lib/blogManager";
 
 export default function Blog() {
-  const [articles, setArticles] = useState<BlogArticle[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setArticles(getPublishedArticles());
+    const fetchArticles = async () => {
+      try {
+        const data = await articlesQueries.getAll();
+        setArticles(data);
+      } catch (error) {
+        console.error("Error fetching articles from Supabase:", error);
+        // Fallback to local articles
+        const localArticles = getPublishedArticles();
+        setArticles(
+          localArticles.map((a) => ({
+            id: a.id,
+            title: a.titulo,
+            slug: a.id,
+            content: a.contenido,
+            excerpt: a.resumen,
+            author: undefined,
+            featured_image_url: a.imagen,
+            category: a.categoria,
+            published: a.estado === "Publicado",
+            views_count: 0,
+            published_at: a.fechaPublicacion || a.fechaCreacion,
+            created_at: a.fechaCreacion,
+            updated_at: a.fechaActualizacion,
+          }))
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
   }, []);
 
   const categories = [
     "Todos",
-    ...Array.from(new Set(articles.map((a) => a.categoria).filter((c) => c))),
+    ...Array.from(new Set(articles.map((a) => a.category).filter((c) => c))),
   ];
 
   const filteredArticles = (
     selectedCategory === "Todos"
       ? articles
-      : articles.filter((a) => a.categoria === selectedCategory)
+      : articles.filter((a) => a.category === selectedCategory)
   ).sort((a, b) => {
-    const dateA = new Date(a.fechaPublicacion || a.fechaCreacion).getTime();
-    const dateB = new Date(b.fechaPublicacion || b.fechaCreacion).getTime();
+    const dateA = new Date(a.published_at || a.created_at).getTime();
+    const dateB = new Date(b.published_at || b.created_at).getTime();
     return dateB - dateA;
   });
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-blue-50 flex items-center justify-center" style={{ paddingTop: "80px" }}>
+          <div className="text-center">
+            <p className="text-foreground/70">Cargando artículos...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -65,11 +110,11 @@ export default function Blog() {
                   key={article.id}
                   className="bg-white rounded-lg border border-border/40 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
                 >
-                  {article.imagen ? (
+                  {article.featured_image_url ? (
                     <div className="w-full h-48 overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5">
                       <img
-                        src={article.imagen}
-                        alt={article.titulo}
+                        src={article.featured_image_url}
+                        alt={article.title}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </div>
@@ -84,19 +129,19 @@ export default function Blog() {
                   )}
 
                   <div className="p-6 flex flex-col flex-1">
-                    {article.categoria && (
+                    {article.category && (
                       <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold mb-3 w-fit">
-                        {article.categoria}
+                        {article.category}
                       </span>
                     )}
 
                     <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2">
-                      {article.titulo}
+                      {article.title}
                     </h3>
 
-                    {article.resumen && (
+                    {article.excerpt && (
                       <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
-                        {article.resumen}
+                        {article.excerpt}
                       </p>
                     )}
 
@@ -104,13 +149,13 @@ export default function Blog() {
                       <div className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         <span>
-                          {new Date(article.fechaPublicacion || article.fechaCreacion).toLocaleDateString("es-ES")}
+                          {new Date(article.published_at || article.created_at).toLocaleDateString("es-ES")}
                         </span>
                       </div>
                     </div>
 
                     <a
-                      href={`/nosotros/blog/${article.id}`}
+                      href={`/nosotros/blog/${article.slug || article.id}`}
                       className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all font-semibold text-sm"
                     >
                       Leer más
