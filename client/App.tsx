@@ -114,7 +114,7 @@ function AppRoutes() {
       <Route path="/politica-cookies" element={<CookiePolicy />} />
 
       {/* Admin */}
-      <Route path="/admin" element={<ProtectedRouteAdmin element={<Admin />} />} />
+      <Route path="/admin" element={<Admin />} />
 
       {/* Catch-all */}
       <Route path="*" element={<NotFound />} />
