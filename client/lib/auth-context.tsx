@@ -28,21 +28,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         } = await supabase.auth.getSession();
         setUser(session?.user || null);
 
+        // Fetch user role asynchronously without blocking
         if (session?.user?.email) {
-          try {
-            const { data } = await supabase
-              .from("users")
-              .select("user_type")
-              .eq("email", session.user.email)
-              .single();
-
-            if (data?.user_type) {
-              setUserRole(data.user_type);
-            }
-          } catch (err) {
-            console.warn("Could not fetch user role:", err);
-            setUserRole(null);
-          }
+          supabase
+            .from("users")
+            .select("user_type")
+            .eq("email", session.user.email)
+            .single()
+            .then(({ data }) => {
+              if (data?.user_type) {
+                setUserRole(data.user_type);
+              }
+            })
+            .catch((err) => {
+              console.warn("Could not fetch user role:", err);
+            });
         }
       } catch (error) {
         console.error("Error initializing auth:", error);
