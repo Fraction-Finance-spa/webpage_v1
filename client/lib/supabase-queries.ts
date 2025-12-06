@@ -308,14 +308,41 @@ export const contactMessagesQueries = {
 
 // Articles queries
 export const articlesQueries = {
-  getAll: async () => {
-    const { data, error } = await supabase
+  getAll: async (limit?: number) => {
+    let query = supabase
       .from("articles_news")
       .select("*")
       .eq("published", true)
       .order("published_at", { ascending: false });
+
+    if (limit) {
+      query = query.limit(limit);
+    }
+
+    const { data, error } = await query;
     if (error) throw error;
     return data as Article[];
+  },
+
+  getPaginated: async (page: number = 1, pageSize: number = 6) => {
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize - 1;
+
+    const { data, error, count } = await supabase
+      .from("articles_news")
+      .select("*", { count: "exact" })
+      .eq("published", true)
+      .order("published_at", { ascending: false })
+      .range(from, to);
+
+    if (error) throw error;
+    return {
+      data: data as Article[],
+      total: count || 0,
+      page,
+      pageSize,
+      totalPages: Math.ceil((count || 0) / pageSize)
+    };
   },
 
   getBySlug: async (slug: string) => {
