@@ -4,6 +4,9 @@ import { useAuth } from "@/lib/auth-context";
 import Layout from "@/components/Layout";
 import { Mail, Lock, User, ArrowRight, CheckCircle, ArrowLeft } from "lucide-react";
 
+// Add timeout to prevent hanging
+const AUTH_TIMEOUT = 15000; // 15 seconds
+
 export default function Auth() {
   const initialView = (localStorage.getItem("authView") as "welcome" | "login" | "signup") || "welcome";
   const [view, setView] = useState<"welcome" | "login" | "signup">(initialView);
