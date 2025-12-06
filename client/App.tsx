@@ -61,7 +61,7 @@ const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
 };
 
 const ProtectedRouteAdmin = ({ element }: { element: React.ReactNode }) => {
-  const { isAuthenticated, isAdmin, loading } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Cargando...</div>;
@@ -69,10 +69,6 @@ const ProtectedRouteAdmin = ({ element }: { element: React.ReactNode }) => {
 
   if (!isAuthenticated) {
     return <Navigate to="/auth" />;
-  }
-
-  if (!isAdmin) {
-    return <Navigate to="/" />;
   }
 
   return element;
