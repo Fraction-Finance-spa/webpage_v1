@@ -124,7 +124,6 @@ function AppContent() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <SubdomainRouter />
       <AppRoutes />
     </BrowserRouter>
   );
