@@ -134,8 +134,13 @@ export default function Auth() {
         localStorage.setItem("userProfileType", signupProfileType);
         localStorage.setItem("isLoggedIn", "true");
 
-        // Navigate to profile
-        navigate("/profile");
+        // Use a very short delay to allow state to update
+        setTimeout(() => {
+          navigate("/profile");
+        }, 100);
+        return; // Don't reset loading state, let navigation complete
+      } else {
+        throw new Error("No user returned from signup");
       }
     } catch (err) {
       console.error("Signup error:", err);
