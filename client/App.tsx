@@ -37,7 +37,8 @@ import { SubdomainRouter } from "@/components/SubdomainRouter";
 
 const queryClient = new QueryClient();
 
-const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
+// These must be inside the component tree with AuthProvider
+function ProtectedRoute({ element }: { element: React.ReactNode }) {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
@@ -45,9 +46,9 @@ const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
   }
 
   return isAuthenticated ? element : <Navigate to="/auth" />;
-};
+}
 
-const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
+function ProtectedRouteEmpresa({ element }: { element: React.ReactNode }) {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
@@ -59,9 +60,9 @@ const ProtectedRouteEmpresa = ({ element }: { element: React.ReactNode }) => {
   }
 
   return element;
-};
+}
 
-const ProtectedRouteAdmin = ({ element }: { element: React.ReactNode }) => {
+function ProtectedRouteAdmin({ element }: { element: React.ReactNode }) {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
@@ -73,7 +74,7 @@ const ProtectedRouteAdmin = ({ element }: { element: React.ReactNode }) => {
   }
 
   return element;
-};
+}
 
 function AppRoutes() {
   return (
