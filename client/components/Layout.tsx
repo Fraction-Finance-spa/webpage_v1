@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, LogOut, ChevronDown, DollarSign, TrendingUp, Building2, Zap, BookOpen, Newspaper, Users, Mail, User, Linkedin, Instagram } from "lucide-react";
+import { Menu, X, LogOut, ChevronDown, DollarSign, TrendingUp, Building2, Zap, BookOpen, Newspaper, Users, Mail, User, Linkedin, Instagram, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LayoutProps {
