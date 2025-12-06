@@ -58,16 +58,17 @@ export default function Auth() {
 
     setLoading(true);
     try {
-      await signIn(loginEmail, loginPassword);
-      localStorage.setItem("userEmail", loginEmail);
-      localStorage.setItem("userProfileType", loginProfileType);
-      // Navigate after a delay
-      setTimeout(() => {
+      const user = await signIn(loginEmail, loginPassword);
+      if (user) {
+        localStorage.setItem("userEmail", loginEmail);
+        localStorage.setItem("userProfileType", loginProfileType);
+        localStorage.setItem("isLoggedIn", "true");
+        // Navigate immediately, auth state is ready
         navigate("/profile");
-      }, 500);
+      }
     } catch (err) {
+      console.error("Login error:", err);
       setError(err instanceof Error ? err.message : "Error al iniciar sesión");
-    } finally {
       setLoading(false);
     }
   };
