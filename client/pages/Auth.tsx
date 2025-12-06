@@ -303,7 +303,7 @@ export default function Auth() {
                 </form>
 
                 <p className="text-center text-gray-600 text-sm mt-6 w-full">
-                  Demo: usa cualquier email y contraseña (mín. 6 caracteres)
+                  Primero debes <strong>registrarte</strong> para crear una cuenta, luego podrás iniciar sesión
                 </p>
               </>
             )}
