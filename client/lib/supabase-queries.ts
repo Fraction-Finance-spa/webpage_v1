@@ -389,12 +389,43 @@ export const educationQueries = {
     return data as EducationalContent[];
   },
 
+  getById: async (id: string) => {
+    const { data, error } = await supabase
+      .from("educational_content")
+      .select("*")
+      .eq("id", id)
+      .single();
+    if (error) throw error;
+    return data as EducationalContent;
+  },
+
   create: async (
-    content: Omit<EducationalContent, "id" | "created_at" | "updated_at">
+    content: Omit<EducationalContent, "id" | "created_at" | "updated_at" | "views_count"> & {
+      views_count?: number;
+    }
+  ) => {
+    const payload = {
+      views_count: content.views_count ?? 0,
+      ...content,
+    };
+
+    const { data, error } = await supabase
+      .from("educational_content")
+      .insert([payload])
+      .select()
+      .single();
+    if (error) throw error;
+    return data as EducationalContent;
+  },
+
+  update: async (
+    id: string,
+    updates: Partial<Omit<EducationalContent, "id" | "created_at" | "updated_at">>
   ) => {
     const { data, error } = await supabase
       .from("educational_content")
-      .insert([content])
+      .update(updates)
+      .eq("id", id)
       .select()
       .single();
     if (error) throw error;

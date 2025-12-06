@@ -141,6 +141,9 @@ export interface EducationalContent {
   duration_minutes?: number;
   video_url?: string;
   pdf_url?: string;
+  instructor?: string;
+  duration_label?: string;
+  image_url?: string;
   views_count: number;
   published: boolean;
   created_at: string;
