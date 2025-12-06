@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Shield, Send, CheckCircle } from "lucide-react";
+import { complaintsQueries } from "@/lib/supabase-queries";
+import { useToast } from "@/hooks/use-toast";
 
 export default function DenunciasChannel() {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     anonimo: true,
     nombre: "",
@@ -23,28 +26,40 @@ export default function DenunciasChannel() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Save to localStorage
-    const denuncias = JSON.parse(localStorage.getItem("denuncias") || "[]");
-    denuncias.push({
-      id: Date.now().toString(),
-      ...formData,
-      fecha: new Date().toISOString(),
-      estado: "Nuevo",
-    });
-    localStorage.setItem("denuncias", JSON.stringify(denuncias));
+    try {
+      await complaintsQueries.create({
+        type: "denuncia",
+        title: `Denuncia ${formData.anonimo ? "Anónima" : `de ${formData.nombre}`}`,
+        description: formData.detalles,
+        status: "open",
+        priority: "high",
+      });
 
-    setLoading(false);
-    setSubmitted(true);
+      toast({
+        title: "Éxito",
+        description: "Tu denuncia ha sido registrada correctamente.",
+      });
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({ anonimo: true, nombre: "", email: "", detalles: "" });
-      setSubmitted(false);
-    }, 3000);
+      setLoading(false);
+      setSubmitted(true);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({ anonimo: true, nombre: "", email: "", detalles: "" });
+        setSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Error al registrar la denuncia",
+        variant: "destructive",
+      });
+      setLoading(false);
+    }
   };
 
   if (submitted) {
