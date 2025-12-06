@@ -120,12 +120,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
       if (error) throw error;
+
+      if (data.user) {
+        setUser(data.user);
+
+        // Fetch user role
+        try {
+          const { data: userData } = await supabase
+            .from("users")
+            .select("user_type")
+            .eq("email", email)
+            .single();
+
+          if (userData?.user_type) {
+            setUserRole(userData.user_type);
+          }
+        } catch (err) {
+          console.warn("Could not fetch user role:", err);
+        }
+      }
     } catch (error) {
       throw error;
     }
