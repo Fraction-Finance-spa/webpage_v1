@@ -2,28 +2,39 @@ import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { Users, Clock, ArrowRight } from "lucide-react";
-import { getPublishedCards, type EducacionCard } from "@/lib/educacionManager";
+import { educationQueries } from "@/lib/supabase-queries";
+import type { EducationalContent } from "@/lib/types/database";
 
 export default function Education() {
-  const [cards, setCards] = useState<EducacionCard[]>([]);
+  const [cards, setCards] = useState<EducationalContent[]>([]);
   const [selectedLevel, setSelectedLevel] = useState<string>("Todos");
 
   useEffect(() => {
-    setCards(getPublishedCards());
+    const fetchCards = async () => {
+      try {
+        const data = await educationQueries.getAll();
+        setCards(data);
+      } catch (error) {
+        console.error("Error fetching educational content:", error);
+        setCards([]);
+      }
+    };
+
+    fetchCards();
   }, []);
 
   const levels = [
     "Todos",
-    ...Array.from(new Set(cards.map((c) => c.nivel).filter((n) => n))),
+    ...Array.from(new Set(cards.map((c) => c.level).filter((n) => n))),
   ];
 
   const filteredCards = (
     selectedLevel === "Todos"
       ? cards
-      : cards.filter((c) => c.nivel === selectedLevel)
+      : cards.filter((c) => c.level === selectedLevel)
   ).sort((a, b) => {
-    const dateA = new Date(a.fechaCreacion).getTime();
-    const dateB = new Date(b.fechaCreacion).getTime();
+    const dateA = new Date(a.created_at).getTime();
+    const dateB = new Date(b.created_at).getTime();
     return dateB - dateA;
   });
 
@@ -66,23 +77,23 @@ export default function Education() {
                   key={card.id}
                   className="bg-white rounded-lg border border-border/40 hover:shadow-lg transition-all duration-300 flex flex-col p-6"
                 >
-                  {card.nivel && (
+                  {card.level && (
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3 w-fit ${
-                      card.nivel === "Básico" ? "bg-green-100 text-green-700" :
-                      card.nivel === "Intermedio" ? "bg-yellow-100 text-yellow-700" :
+                      card.level === "Básico" ? "bg-green-100 text-green-700" :
+                      card.level === "Intermedio" ? "bg-yellow-100 text-yellow-700" :
                       "bg-red-100 text-red-700"
                     }`}>
-                      {card.nivel}
+                      {card.level}
                     </span>
                   )}
 
                   <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2">
-                    {card.titulo}
+                    {card.title}
                   </h3>
 
-                  {card.descripcion && (
+                  {card.description && (
                     <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
-                      {card.descripcion}
+                      {card.description}
                     </p>
                   )}
 
@@ -91,10 +102,10 @@ export default function Education() {
                       <Users className="w-4 h-4" />
                       <span>{card.instructor}</span>
                     </div>
-                    {card.duracion && (
+                    {(card.duration_label || card.duration_minutes) && (
                       <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4" />
-                        <span>{card.duracion}</span>
+                        <span>{card.duration_label || `${card.duration_minutes} minutos`}</span>
                       </div>
                     )}
                   </div>
