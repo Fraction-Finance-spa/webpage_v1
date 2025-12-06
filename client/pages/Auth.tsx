@@ -63,8 +63,13 @@ export default function Auth() {
         localStorage.setItem("userEmail", loginEmail);
         localStorage.setItem("userProfileType", loginProfileType);
         localStorage.setItem("isLoggedIn", "true");
-        // Navigate immediately, auth state is ready
-        navigate("/profile");
+        // Use a very short delay to allow state to update
+        setTimeout(() => {
+          navigate("/profile");
+        }, 100);
+        return; // Don't reset loading state, let navigation complete
+      } else {
+        throw new Error("No user returned from login");
       }
     } catch (err) {
       console.error("Login error:", err);
