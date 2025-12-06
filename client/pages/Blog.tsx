@@ -110,7 +110,7 @@ export default function Blog() {
               {categories.map((category) => (
                 <button
                   key={category}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => handleCategoryChange(category)}
                   className={`px-6 py-2 rounded-full font-semibold transition-all ${
                     selectedCategory === category
                       ? "bg-primary text-white shadow-lg"
@@ -124,9 +124,10 @@ export default function Blog() {
           )}
 
           {/* Articles Grid */}
-          {filteredArticles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredArticles.map((article) => (
+          {sortedAndFiltered.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {paginatedArticles.map((article) => (
                 <article
                   key={article.id}
                   className="bg-white rounded-lg border border-border/40 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
@@ -136,6 +137,7 @@ export default function Blog() {
                       <img
                         src={article.featured_image_url}
                         alt={article.title}
+                        loading="lazy"
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </div>
@@ -185,7 +187,43 @@ export default function Blog() {
                   </div>
                 </article>
               ))}
-            </div>
+              </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="flex justify-center items-center gap-2 mt-12">
+                  <button
+                    onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 rounded-lg border border-border/40 text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover:bg-secondary/20 transition-colors font-semibold"
+                  >
+                    Anterior
+                  </button>
+                  <div className="flex gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`px-3 py-2 rounded-lg font-semibold transition-all ${
+                          currentPage === page
+                            ? "bg-primary text-white shadow-lg"
+                            : "border border-border/40 text-foreground hover:bg-secondary/20"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 rounded-lg border border-border/40 text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover:bg-secondary/20 transition-colors font-semibold"
+                  >
+                    Siguiente
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="text-center py-16">
               <p className="text-lg text-foreground/70 mb-4">
