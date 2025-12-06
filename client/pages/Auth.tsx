@@ -60,21 +60,28 @@ export default function Auth() {
     }
 
     setLoading(true);
+
+    // Add timeout to prevent hanging
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+      setError("La solicitud tardó demasiado. Por favor intenta de nuevo.");
+    }, AUTH_TIMEOUT);
+
     try {
       const user = await signIn(loginEmail, loginPassword);
+      clearTimeout(timeoutId);
+
       if (user) {
         localStorage.setItem("userEmail", loginEmail);
         localStorage.setItem("userProfileType", loginProfileType);
         localStorage.setItem("isLoggedIn", "true");
-        // Use a very short delay to allow state to update
-        setTimeout(() => {
-          navigate("/profile");
-        }, 100);
-        return; // Don't reset loading state, let navigation complete
+        navigate("/profile");
+        return;
       } else {
         throw new Error("No user returned from login");
       }
     } catch (err) {
+      clearTimeout(timeoutId);
       console.error("Login error:", err);
       setError(err instanceof Error ? err.message : "Error al iniciar sesión");
       setLoading(false);
