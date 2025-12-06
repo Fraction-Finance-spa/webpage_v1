@@ -11,7 +11,7 @@ export default function Auth() {
   const { signUp, signIn } = useAuth();
 
   // Clear authView from localStorage once it's used
-  React.useEffect(() => {
+  useEffect(() => {
     localStorage.removeItem("authView");
   }, []);
 
