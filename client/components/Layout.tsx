@@ -246,7 +246,24 @@ export default function Layout({ children }: LayoutProps) {
               <div className="hidden sm:flex items-center gap-3">
                 <Link
                   to="/auth"
+                  className="px-4 py-2 text-foreground hover:text-primary transition-colors font-medium"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const view = localStorage.getItem("authView") || "login";
+                    localStorage.setItem("authView", "login");
+                    navigate("/auth");
+                  }}
+                >
+                  Iniciar Sesión
+                </Link>
+                <Link
+                  to="/auth"
                   className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    localStorage.setItem("authView", "signup");
+                    navigate("/auth");
+                  }}
                 >
                   Registrarse
                 </Link>
